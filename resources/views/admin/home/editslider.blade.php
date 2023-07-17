@@ -64,7 +64,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <button class="btn btn-success">Save</button>
+                            <button class="btn btn-success">Update</button>
                         </div>
                     </div>
 

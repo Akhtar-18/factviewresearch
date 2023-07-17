@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('report_sub_category', function (Blueprint $table) {
+        Schema::create('report_subcategory', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id')->index()->nullable();
             $table->string('sub_category')->index()->nullable();
-            $table->foreign('category_id')->references('id')->on('reportscategory')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('report_category')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('report_sub_category');
+        Schema::dropIfExists('report_subcategory');
     }
 };

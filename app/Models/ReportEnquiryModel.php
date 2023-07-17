@@ -12,4 +12,8 @@ class ReportEnquiryModel extends Model
     protected $table="enquiry";
     protected $primaryKey = "id";
     protected $fillable = ['report_id','types','name','email','country','contact_no','organizations','others'];
+    public function getReportName()
+    {
+        return $this->hasOne(ReportsModel::class,'id','report_id')->select(['id','heading']);
+    }
 }

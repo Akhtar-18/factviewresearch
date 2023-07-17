@@ -5,8 +5,9 @@
 @section('frontpage')
 
     <!-- PAGE TITLE
-                ================================================== -->
-    <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7" data-background="{{asset('front/img/bg/bg5.jpg')}}">
+                    ================================================== -->
+    <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7"
+        data-background="{{ asset('front/img/bg/bg5.jpg') }}">
         <div class="container">
 
             <div class="row">
@@ -26,7 +27,7 @@
 
 
     <!-- CONTACT
-                ================================================== -->
+                    ================================================== -->
     <section class="md">
         <div class="container">
             <div class="row">
@@ -39,8 +40,8 @@
                         <div class="alert alert-danger print-error-msg" style="display:none">
                             <ul></ul>
                         </div>
-                        <form class="contact quform"  id ="contactUsForm" action="#"
-                            method="post" enctype="multipart/form-data">
+                        <form class="contact quform" id="contactUsForm" action="#" method="post"
+                            enctype="multipart/form-data">
                             <div class="quform-elements">
                                 <div class="row">
 
@@ -110,7 +111,7 @@
                                             <div class="form-group">
                                                 <div class="quform-captcha">
                                                     <div class="quform-captcha-inner">
-                                                        <img src="{{asset('front/quform/images/captcha/courier-new-light.png')}}"
+                                                        <img src="{{ asset('front/quform/images/captcha/courier-new-light.png') }}"
                                                             alt="...">
                                                     </div>
                                                 </div>
@@ -122,7 +123,8 @@
                                     <!-- Begin Submit button -->
                                     <div class="col-md-12">
                                         <div class="quform-submit-inner">
-                                            <button class="butn btn-submit" type="button"><span>Sumbit comment</span></button>
+                                            <button class="butn btn-submit" type="button"><span>Sumbit
+                                                    comment</span></button>
                                         </div>
                                         <div class="quform-loading-wrap text-start"><span class="quform-loading"></span>
                                         </div>
@@ -157,14 +159,25 @@
                                     <ul class="mb-0 ps-0 list-unstyled">
                                         <li class="mb-2">
                                             <p><i class="fas fa-map-marker-alt text-center"></i> <strong>Address:</strong>
-                                                @if(isset($contactData->address)){{$contactData->address}}@endif</p>
+                                                @if (isset($contactData->address))
+                                                    {{ $contactData->address }}
+                                                @endif
+                                            </p>
                                         </li>
                                         <li class="mb-2">
-                                            <p><i class="fas fa-phone text-center"></i> <strong>Phone:</strong> @if(isset($contactData->contact_no)){{$contactData->contact_no}}@endif</p>
+                                            <p><i class="fas fa-phone text-center"></i> <strong>Phone:</strong>
+                                                @if (isset($contactData->contact_no))
+                                                    {{ $contactData->contact_no }}
+                                                @endif
+                                            </p>
                                         </li>
                                         <li>
                                             <p><i class="far fa-envelope text-center"></i> <strong>Email:</strong> <a
-                                                    href="#!">@if(isset($contactData->email_address)){{$contactData->email_address}}@endif</a></p>
+                                                    href="#!">
+                                                    @if (isset($contactData->email_address))
+                                                        {{ $contactData->email_address }}
+                                                    @endif
+                                                </a></p>
                                         </li>
                                     </ul>
 
@@ -192,51 +205,50 @@
     </section>
 
     <!-- MAP
-                ================================================== -->
+                    ================================================== -->
     <iframe class="map"
         src="https://maps.google.com/maps?q=london&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" scrolling="no"
         marginheight="0" marginwidth="0"></iframe>
 
-        @include('front.testimonial-section')
-        @include('front.client-section')
+    @include('front.testimonial-section')
+    @include('front.client-section')
 
-        <script type="text/javascript">
-       $(document).ready(function(){
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-});
-  
-    $(".btn-submit").click(function(e){
-    
-        e.preventDefault();
-     
-     
-        $.ajax({
-           type:'POST',
-           url:"{{route('submit.contact_enquiry')}}",
-           data:$('#contactUsForm').serialize(),
-           success:function(data){
-                if($.isEmptyObject(data.error)){
-                    //alert(data.success);
-                    location.reload();
-                }else{
-                    printErrorMsg(data.error);
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
-           }
+            });
         });
-    
-    });
-  
-    function printErrorMsg (msg) {
-        $(".print-error-msg").find("ul").html('');
-        $(".print-error-msg").css('display','block');
-        $.each( msg, function( key, value ) {
-            $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+
+        $(".btn-submit").click(function(e) {
+
+            e.preventDefault();
+
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('submit.contact_enquiry') }}",
+                data: $('#contactUsForm').serialize(),
+                success: function(data) {
+                    if ($.isEmptyObject(data.error)) {
+                        //alert(data.success);
+                        location.reload();
+                    } else {
+                        printErrorMsg(data.error);
+                    }
+                }
+            });
+
         });
-    }
-  
-</script>
+
+        function printErrorMsg(msg) {
+            $(".print-error-msg").find("ul").html('');
+            $(".print-error-msg").css('display', 'block');
+            $.each(msg, function(key, value) {
+                $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
+            });
+        }
+    </script>
 @endsection

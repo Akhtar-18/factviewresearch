@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta nam="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -54,6 +54,9 @@ tinymce.init({
     text-transform: uppercase;
     transition: .3s ease-in-out;
 
+}
+.mtl-5{
+ margin: 5px;
 }
 
 </style>
@@ -122,6 +125,9 @@ tinymce.init({
                         @if(auth()->user()->can('contactdetails-list'))
                         <a class="collapse-item" href="{{ url('admin/contactdetails')}}">Contact Details</a>
                         @endif
+                        @if(auth()->user()->can('whowe-list'))
+                        <a class="collapse-item" href="{{ url('admin/whowe')}}">Who We Are</a>
+                        @endif
                         @if(auth()->user()->can('whychoose-list'))
                         <a class="collapse-item" href="{{ url('admin/whychoose')}}">Why Choose Us</a>
                         @endif
@@ -182,6 +188,12 @@ tinymce.init({
                         <a class="collapse-item" href="{{url('admin/reports/bulk-upload')}}">Bulk Upload</a>
                     </div>
                 </div>
+            </li>
+            <!---- Enquiry------>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url('admin/enquiry') }}">
+                    <i class="fas fa-fw fa-comments"></i>
+                    <span>Enquiries</span></a>
             </li>
 
             <!-- Divider -->

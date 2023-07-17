@@ -137,7 +137,7 @@
                                                             <ul>
                                                                 @if ($cate->getSubCategory)
                                                                     @foreach ($cate->getSubCategory as $sub)
-                                                                        <li><a href="">{{ $sub->sub_category }}</a></li>
+                                                                        <li><a href="@if(isset($sub->sub_category)){{ route('front.reportsubcategory',strtolower($sub->sub_category))}}@endif">{{ $sub->sub_category }}</a></li>
                                                                     @endforeach
                                                                 @endif
                                                             </ul>
@@ -166,7 +166,7 @@
                                                 <li><a href="{{ route('front.partners') }}">Partners</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#!">Media/Insights</a>
+                                        <!--<li><a href="#!">Media/Insights</a>
                                             <ul>
                                                 <li><a href="">Blogs</a></li>
                                                 <li><a href="">Articles</a></li>
@@ -174,7 +174,7 @@
                                                 <li><a href="">Case Studies</a></li>
                                                 <li><a href="">Infographics</a></li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                         <li><a href="{{ route('front.contact') }}">Contact Us</a></li>
                                     </ul>
                                     <!-- end menu area -->

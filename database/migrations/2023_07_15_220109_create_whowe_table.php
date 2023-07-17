@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reportscategory', function (Blueprint $table) {
+        Schema::create('whowe', function (Blueprint $table) {
             $table->id();
-            $table->string('cat_name')->index();
+            $table->string('heading',200);
+            $table->longText('content')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reportscategory');
+        Schema::dropIfExists('whowe');
     }
 };

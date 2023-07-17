@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AdminloginRequest;
+use App\Models\ReportCategoryModel;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -61,7 +62,8 @@ class AdminController extends Controller
         if(Auth::check()){
             //dd(auth()->user());
             $TotalUsers= User::count();
-            return view('admin.dashboard')->with(['TotalUsers'=>$TotalUsers]);
+            $TotalReportCat=ReportCategoryModel::count();
+            return view('admin.dashboard')->with(['TotalUsers'=>$TotalUsers,'TotalReportCat'=>$TotalReportCat]);
         }
   
         return redirect("login")->withSuccess('You are not allowed to access');

@@ -2,22 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ReportCategoryModel;
+use App\Http\Requests\WhoWeAreRequest;
+use App\Models\WhoWeModel;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class ReportCategoryController extends Controller
+class WhoWeAreController extends Controller
 {
+  function __construct()
+    {
+         $this->middleware('permission:whowe-list|whowe-create|whowe-edit|whowe-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:whowe-create', ['only' => ['create','store']]);
+         $this->middleware('permission:whowe-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:whowe-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
-        return view('admin.home.reportcategorylist');
+        return view('admin.home.whowelist');
     }
 
 
     public function list(Request $request)
     {
         if ($request->ajax()) {
-            $data = ReportCategoryModel::select('*')->orderBy('id','desc');
+            $data = WhoWeModel::select('*')->orderBy('id','desc');
             return DataTables::of($data)
                     ->addIndexColumn()
                ->addColumn('content', function($row){
@@ -27,15 +35,15 @@ class ReportCategoryController extends Controller
 
 
               ->addColumn('action', function($row){
-                if(auth()->user()->can('reportcategory-edit'))
+                if(auth()->user()->can('whowe-edit'))
                 {
-                  $editbtn='<a  href="'.url('admin/reportcategory/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
+                  $editbtn='<a  href="'.url('admin/whowe/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
                 }
                 else
                 {
                   $editbtn='';
                 }
-                if(auth()->user()->can('reportcategory-delete'))
+                if(auth()->user()->can('whowe-delete'))
                 {
                   $deletebtn='<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#DeleteModal'.$row->id.'"><i class="fa fa-trash"></i></a>';
                 }
@@ -46,7 +54,7 @@ class ReportCategoryController extends Controller
                 $btn = $editbtn.'|'.$deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/reportcategory/delete/').'/'.$row->id.'" method="post">
+        <form action="'.url('admin/whowe/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -74,50 +82,46 @@ class ReportCategoryController extends Controller
 
     public function add()
     {
-        return view('admin.home.addreportcategory');
+        return view('admin.home.addwhowe');
     }
 
-    public function submit(Request $request)
+    public function submit(WhoWeAreRequest $request)
     {
-        $request->validate([
-            'cat_name' => 'required|unique:report_category',
-        ]);
+        $request->validated();
         $input = $request->all();
-        ReportCategoryModel::create($input);
-        return redirect('/admin/reportcategory')->with('success','Category created successfully.');
+        WhoWeModel::create($input);
+        return redirect('/admin/whowe')->with('success','Post created successfully.');
 
 
     }
    public function edit($id)
    {
-    $reportcategory=ReportCategoryModel::find($id);
-      if($reportcategory =='')
+    $whowe=WhoWeModel::find($id);
+      if($whowe =='')
       {
-        return redirect('admin/reportcategory/')
-        ->with('error',"Category is Not Avaiable");
+        return redirect('admin/whowe/')
+        ->with('error',"Post is Not Avaiable");
       }
       else
       {
-        $data['category']=$reportcategory;
-       return view('admin.home.editreportcategory',$data);
+        $data['whowe']=$whowe;
+       return view('admin.home.editwhowe',$data);
       }
    }
 
-   public function update($id,Request $request)
+   public function update($id,WhoWeAreRequest $request)
    {
-    $request->validate([
-        'cat_name' => 'required',
-    ]);
+      $request->validated();
       $input = $request->all();
-      $career=ReportCategoryModel::find($id);
-      $career->update($input);
+      $whowe=WhoWeModel::find($id);
+      $whowe->update($input);
 
-        return redirect('admin/reportcategory/')->with('success','Category updated successfully');
+        return redirect('admin/whowe/')->with('success','Post updated successfully');
    }
   public function delete($id)
   {
-    $careers=ReportCategoryModel::find($id);
-    $careers->delete();
-    return redirect('admin/reportcategory/')->with('success','Category Deleted successfully');
+    $whowe=WhoWeModel::find($id);
+    $whowe->delete();
+    return redirect('admin/whowe/')->with('success','Post Deleted successfully');
   }
 }

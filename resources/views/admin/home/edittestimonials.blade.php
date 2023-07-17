@@ -4,7 +4,7 @@
 <div class="container-fluid">
 
 
-<!-- Page Heading -->
+<!-- Page name -->
 <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1> -->
 
 <!-- DataTales Example -->
@@ -25,14 +25,27 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="mb-2">Heading <span class="text-danger">*</span></label>
+                                <label class="mb-2">Name <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control"
-                                placeholder="Enter heading"
-                                name="heading"
-                                value="{{ $testimonial->heading }}"
+                                placeholder="Enter name"
+                                name="name"
+                                value="{{ $testimonial->name }}"
                                 required>
-                                @if ($errors->has('heading'))
-                                    <span class="text-danger">{{ $errors->first('heading') }}</span>
+                                @if ($errors->has('name'))
+                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="mb-2">profile <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control"
+                                placeholder="Enter profile"
+                                profile="profile"
+                                value="{{ $testimonial->profile }}"
+                                required>
+                                @if ($errors->has('profile'))
+                                    <span class="text-danger">{{ $errors->first('profile') }}</span>
                                 @endif
                             </div>
                         </div>
@@ -48,7 +61,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <button class="btn btn-success">Save</button>
+                            <button class="btn btn-success">Update</button>
                         </div>
                     </div>
 

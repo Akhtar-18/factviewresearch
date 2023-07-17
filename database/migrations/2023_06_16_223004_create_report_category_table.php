@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('testimonials', function (Blueprint $table) {
+        Schema::create('report_category', function (Blueprint $table) {
             $table->id();
-            $table->longText('name')->nullable()->index();
-            $table->longText('profile')->nullable()->index();
-            $table->longText('comments')->nullable();
+            $table->string('cat_name')->index();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('testimonials');
+        Schema::dropIfExists('report_category');
     }
 };

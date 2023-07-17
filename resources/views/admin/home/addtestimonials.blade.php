@@ -25,22 +25,36 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="mb-2">Heading <span class="text-danger">*</span></label>
+                                <label class="mb-2">Name <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control"
-                                placeholder="Enter heading"
-                                name="heading"
-                                value="{{ old('heading') }}"
+                                placeholder="Enter name"
+                                name="name"
+                                value="{{ old('name') }}"
                                 required>
-                                @if ($errors->has('heading'))
-                                    <span class="text-danger">{{ $errors->first('heading') }}</span>
+                                @if ($errors->has('name'))
+                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="mb-2">Profile <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control"
+                                placeholder="Enter profile"
+                                name="profile"
+                                value="{{ old('profile') }}"
+                                required>
+                                @if ($errors->has('profile'))
+                                    <span class="text-danger">{{ $errors->first('profile') }}</span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="col-md-8">
                             <div class="form-group">
-                                <label class="mb-2">Content</label>
-                                <textarea class="form-control" rows="12" name="content">{{ old('content') }}</textarea>
+                                <label class="mb-2">Comments</label>
+                                <textarea class="form-control" rows="12" name="comments">{{ old('comments') }}</textarea>
                             </div>
                         </div>
                     </div>

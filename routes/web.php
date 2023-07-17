@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\EnquiryController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WhyChooseUsController;
+use App\Http\Controllers\WhoWeAreController;
 use App\Http\Controllers\ReportSubCategoryController;
 
 
@@ -30,9 +32,12 @@ Route::get('/', [FrontController::class, 'home'])->name('front.home');
 Route::match(['GET','POST'],'/report/{category}/{subcategory}/{id}', [FrontController::class, 'report'])->name('front.report');
 Route::match(['GET','POST'],'/enquiry/{id}/{type}', [FrontController::class, 'enquiry'])->name('front.enquiry');
 Route::get('/all-reports', [FrontController::class, 'reports'])->name('front.reports');
+Route::get('/fetch_datas', [FrontController::class, 'fetch_datas'])->name('front.fetch_datas');
 Route::get('/reportcategory', [FrontController::class, 'reportcategory'])->name('front.reportcategory');
-Route::get('/reportsubcategory', [FrontController::class, 'reportsubcategory'])->name('front.reportsubcategory');
-Route::get('/fetch_data', [FrontController::class, 'fetch_data'])->name('front.fetch_data');
+Route::get('/reportsubcategory/{id}', [FrontController::class, 'reportsubcategory'])->name('front.reportsubcategory');
+
+Route::get('/fetchsubcategory_data/{id}', [FrontController::class, 'fetchsubcategory_data'])->name('front.fetchsubcategory_data');
+
 Route::get('/about', [FrontController::class, 'about'])->name('front.about');
 Route::get('/whowe', [FrontController::class, 'whowe'])->name('front.whowe');
 Route::get('/whyus', [FrontController::class, 'whyus'])->name('front.whyus');
@@ -47,6 +52,7 @@ Route::post('/submit-contact-enquiry', [FrontController::class, 'storecontact'])
 
 Auth::routes();
 
+Route::get('/adminlogin',[AdminController::class],'login')->name('login');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function() {
@@ -108,6 +114,16 @@ Route::group(['middleware' => ['auth']], function() {
             Route::match(['GET','POST'],'/delete/{id}',[WhyChooseUsController::class,'delete']);
         });
 
+        Route::group(['prefix'=>'whowe'],function(){
+            Route::get('/',[WhoWeAreController::class,'index']);
+            Route::get('/list',[WhoWeAreController::class,'list']);
+            Route::get('/add',[WhoWeAreController::class,'add'])->name('admin.whowe.add');
+            Route::post('/submit',[WhoWeAreController::class,'submit']);
+            Route::get('/edit/{id}',[WhoWeAreController::class,'edit']);
+            Route::match(['GET','POST'],'/update/{id}',[WhoWeAreController::class,'update']);
+            Route::match(['GET','POST'],'/delete/{id}',[WhoWeAreController::class,'delete']);
+        });
+
         Route::group(['prefix'=>'getintouch'],function(){
             Route::get('/',[GetInTouchController::class,'index']);
             Route::get('/list',[GetInTouchController::class,'list']);
@@ -159,7 +175,7 @@ Route::group(['middleware' => ['auth']], function() {
 
         // reports category Route
         Route::group(['prefix'=>'reportcategory'],function(){
-            Route::get('/',[ReportCategoryController::class,'index']);
+            Route::get('/',[ReportCategoryController::class,'index'])->name('report.category.index');
             Route::get('/list',[ReportCategoryController::class,'list']);
             Route::get('/add',[ReportCategoryController::class,'add'])->name('admin.reportcategory.add');
             Route::post('/submit',[ReportCategoryController::class,'submit']);
@@ -189,15 +205,27 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/edit/{id}',[ReportsController::class,'edit']);
             Route::match(['GET','POST'],'/update/{id}',[ReportsController::class,'update']);
             Route::match(['GET','POST'],'/delete/{id}',[ReportsController::class,'delete']);
-             Route::get('/export',[ReportsController::class,'export']);
-
-
+            Route::get('/export',[ReportsController::class,'export']);
 
             Route::get('bulk-upload',[ReportsController::class,'bulkUpload']);
             Route::post('reportContentImports',[ReportsController::class,'reportContentImports']);
             Route::post('reportFaqImports',[ReportsController::class,'reportFaqImports']);
             Route::post('marketValueImports',[ReportsController::class,'marketValueImports']);
             Route::post('seoImports',[ReportsController::class,'seoImports']);
+
+        });
+        /****************************** Enquiry ******************/
+        Route::group(['prefix'=>'enquiry'],function()
+        {
+            Route::get('/',[EnquiryController::class,'index']);
+            Route::get('/list',[EnquiryController::class,'enquiry']);
+            Route::get('/request',[EnquiryController::class,'reportRequest']);
+            Route::get('/discount',[EnquiryController::class,'reportDiscount']);
+            Route::match(['GET','POST'],'/delete/{id}',[EnquiryController::class,'delete']);
+
+            Route::get('/contact',[EnquiryController::class,'contact']);
+            Route::match(['GET','POST'],'/deletecontact/{id}',[EnquiryController::class,'deletecontact']);
+
         });
 
 });

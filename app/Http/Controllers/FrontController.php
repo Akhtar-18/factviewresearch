@@ -11,9 +11,11 @@ use App\Models\RegionGraphicalModel;
 use App\Models\ReportCategoryModel;
 use App\Models\ReportEnquiryModel;
 use App\Models\ReportsModel;
+use App\Models\ReportSubCategoryModel;
 use App\Models\SegmentGraphicalModel;
 use App\Models\ServicesModel;
 use App\Models\TestimonialModel;
+use App\Models\WhoWeModel;
 use App\Models\WhyChooseUsModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -22,6 +24,7 @@ class FrontController extends Controller
 {
     public function home()
     {
+        $data['aboutData']=AboutUsModel::select(['heading','content'])->get();
         $data['reportsData']=ReportsModel::with(['getCategoryName','getSubCategoryName'])->select(['id','category_id','sub_category_id','heading','url','pages','publish_month','description'])->limit(6)->get();
         $data['contactData']=ContactDetailsModel::select(['company_name','address','contact_no','email_address','facebook','twitter','instagram','linkedin'])->get();
         $data['services']=ServicesModel::select(['id','heading','content'])->latest('id')->limit(6)->get();
@@ -75,6 +78,7 @@ class FrontController extends Controller
         $data['ReportCategory']=ReportCategoryModel::with('getSubCategory')->select(['id','cat_name'])->get();
 
         $data['contactData']=ContactDetailsModel::select(['contact_no','email_address'])->first();
+        // dd( $data['reports']);
         return view('front.reports',$data);
     }
 
@@ -97,30 +101,71 @@ class FrontController extends Controller
         return view('front.reportcategory',$data);
     }
 
-    public function reportsubcategory(Request $request)
+    public function reportsubcategory($id,Request $request)
     {
-        if(isset($request->search))
+        $subcategory=ReportSubCategoryModel::where('sub_category',$id)->first();
+        if($subcategory)
         {
-            $data['reports']=ReportsModel::latest('id')->with(['getSubCategoryName','getCategoryName'])
-            ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
-            ->where('heading', 'like', '%' . $request->search . '%')
-            ->orderBy('id','desc')->paginate(10);
+            $data['reports']=ReportsModel::latest('id')
+        ->with(['getSubCategoryName','getCategoryName'])
+        ->where('sub_category_id',$subcategory->id)
+        ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
+        ->orderBy('id','desc')
+        ->paginate(10);
         }
         else
         {
-            $data['reports']=ReportsModel::latest('id')->with(['getSubCategoryName','getCategoryName'])->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])->orderBy('id','desc')->paginate(10);
+            $data['reports']=ReportsModel::latest('id')
+            ->with(['getSubCategoryName','getCategoryName'])
+            ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
+            ->orderBy('id','desc')
+            ->paginate(10);
         }
+
+
         $data['ReportCategory']=ReportCategoryModel::with('getSubCategory')->select(['id','cat_name'])->get();
+        $data['subcategory']=$id;
 
         $data['contactData']=ContactDetailsModel::select(['contact_no','email_address'])->first();
         return view('front.reportsubcategory',$data);
     }
 
-    public function fetch_data(Request $request)
+    public function fetchsubcategory_data($id=null,Request $request)
     {
         if($request->ajax())
         {
-             $reports=ReportsModel::latest('id')->with(['getSubCategoryName','getCategoryName'])->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])->orderBy('id','desc')->paginate(10);
+            if($id)
+            {
+                $subcategory=ReportSubCategoryModel::where('sub_category',$id)->first();
+                $reports=ReportsModel::latest('id')
+                ->with(['getSubCategoryName','getCategoryName'])
+                ->where('sub_category_id',$subcategory->id)
+                ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
+                ->orderBy('id','desc')
+                ->paginate(10);
+            }
+            else
+            {
+                $reports=ReportsModel::latest('id')
+             ->with(['getSubCategoryName','getCategoryName'])
+             ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
+             ->orderBy('id','desc')
+             ->paginate(10);
+            }
+
+            return view('front.ajaxsubreport',compact('reports'));
+        }
+    }
+    public function fetch_datas(Request $request)
+    {
+        ///return $request;exit;
+        if($request->ajax())
+        {
+            $reports=ReportsModel::latest('id')
+             ->with(['getSubCategoryName','getCategoryName'])
+             ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
+             ->orderBy('id','desc')
+             ->paginate(10);
             return view('front.ajaxreport',compact('reports'));
         }
     }
@@ -131,7 +176,8 @@ class FrontController extends Controller
     }
     public function whowe()
     {
-        return view('front.whowe');
+        $data['whoweData']=WhoWeModel::all();
+        return view('front.whowe',$data);
     }
     public function whyus()
     {
@@ -156,7 +202,8 @@ class FrontController extends Controller
     }
     public function services()
     {
-        return view('front.services');
+        $data['services']=ServicesModel::select(['id','heading','content'])->latest('id')->get();
+        return view('front.services',$data);
     }
     public function service($id,Request $request)
     {
@@ -171,14 +218,14 @@ class FrontController extends Controller
 
     public function enquiry($id,$type,Request $request)
     {
-        
+
         $data['type']=$type;
         $data['reports']=ReportsModel::with(['getCategoryName'])->select(['id','url','publish_month','category_id','heading','pages'])->where('url',$id)->first();
         return view('front.form',$data);
     }
     function storeenquiry(Request $request)
     {
-        
+
         $validator = Validator::make($request->all(), [
 
             'name'           => 'required',
@@ -189,7 +236,7 @@ class FrontController extends Controller
 
         ]);
 
-  
+
 
         if ($validator->fails()) {
 
@@ -206,7 +253,7 @@ class FrontController extends Controller
 
     function storecontact(Request $request)
     {
-        
+
         $validator = Validator::make($request->all(), [
 
             'name'           => 'required',
@@ -216,7 +263,7 @@ class FrontController extends Controller
 
         ]);
 
-  
+
 
         if ($validator->fails()) {
 

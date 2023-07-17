@@ -10,7 +10,7 @@ class ReportSubCategoryModel extends Model
 {
     use HasFactory,SoftDeletes;
     use HasFactory,SoftDeletes;
-    protected $table="report_sub_category";
+    protected $table="report_subcategory";
     protected $primaryKey = "id";
     protected $fillable = ['category_id','sub_category'];
     public function getCategoryName()

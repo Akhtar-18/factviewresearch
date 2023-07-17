@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ReportCategoryModel extends Model
 {
     use HasFactory,SoftDeletes;
-    protected $table="reportscategory";
+    protected $table="report_category";
     protected $primaryKey = "id";
     protected $fillable = ['cat_name'];
 
@@ -18,5 +18,5 @@ class ReportCategoryModel extends Model
         return $this->hasMany(ReportSubCategoryModel::class,'category_id','id')->select(['category_id','sub_category']);
     }
 
-    
+
 }
