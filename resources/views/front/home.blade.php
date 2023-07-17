@@ -122,7 +122,7 @@
                                 <div class="section-heading left half">
                                     <h2 class="title-style2">{{ $about->heading }}</h2>
                                 </div>
-                                <p>{!! html_entity_decode($about->content) !!}</p>
+                                <p>{!! html_entity_decode(Str::of($about->content)->words(100, '...')) !!}</p>
                                 <a href="{{ route('front.about') }}" class="butn medium"><span>About Company</span></a>
                             @endforeach
                         @endif
@@ -162,34 +162,6 @@
                 <p>We always try to provide you our best business consulting service.</p>
             </div>
             <a href="#!" class="butn primary white-hover"><span>Contact Us</span></a>
-        </div>
-    </section>
-
-    <!-- WHAT WE WORK
-            ================================================== -->
-    <section>
-        <div class="container">
-            <div class="section-heading"><span>How We Work</span>
-                <h2>Make Successful Business</h2>
-                <p class="w-95 w-md-75 w-lg-55 mx-auto">Business consulting excepteur sint occaecat cupidatat consulting
-                    non proident, sunt in culpa qui officia deserunt laborum Market.</p>
-            </div>
-            <div class="row mt-n4">
-                @if (count($services) > 0)
-                    @foreach ($services as $key => $service)
-                        @php $key++; @endphp
-                        <div class="col-lg-3 mt-4">
-                            <div class="feature-box-01">
-                                <i class="ti-world display-19"></i>
-                                <h3 class="display-28 mt-3">{{ $service->heading }}</h3>
-                                <p>{!! html_entity_decode(wordLimit($service->content)) !!}</p>
-                                <a class="butn medium primary read-more"
-                                    href="{{ route('front.service-single', $service->id) }}">Read More</a>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-            </div>
         </div>
     </section>
 
@@ -280,111 +252,6 @@
                         <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Tour Types</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICES
-            ================================================== -->
-    <section class="md">
-        <div class="container">
-            <div class="section-heading">
-                <h2>Our Business Services</h2>
-                <p class="w-95 w-md-75 w-lg-55 mx-auto">Business consulting excepteur sint occaecat cupidatat consulting
-                    non proident, sunt in culpa qui officia deserunt laborum Market.</p>
-            </div>
-            <div class="row mt-n1-9">
-                @if (count($services) > 0)
-                    @foreach ($services as $service)
-                        <div class="col-lg-4 col-md-6 mt-1-9">
-                            <div class="feature-flex-square">
-                                <div class="clearfix">
-                                    <div class="feature-flex-square-icon">
-                                        <i class="ti-ruler-pencil"></i>
-                                    </div>
-                                    <div class="feature-flex-square-content">
-                                        <h4><a
-                                                href="{{ route('front.service-single', $service->id) }}">{{ $service->heading }}</a>
-                                        </h4>
-                                        <p>{!! html_entity_decode(wordLimit($service->content)) !!}</p>
-                                        <a href="{{ route('front.service-single', $service->id) }}"
-                                            class="feature-flex-square-content-button">Learn More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-                <!-- <div class="col-lg-4 col-md-6 mt-1-9">
-                            <div class="feature-flex-square">
-                                <div class="clearfix">
-                                    <div class="feature-flex-square-icon">
-                                        <i class="ti-world"></i>
-                                    </div>
-                                    <div class="feature-flex-square-content">
-                                        <h4><a href="#!">Online Consulting</a></h4>
-                                        <p>Our Mission is to deliver true results for your impressive international Businesses consultant.</p>
-                                        <a href="#!" class="feature-flex-square-content-button">Learn More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mt-1-9">
-                            <div class="feature-flex-square">
-                                <div class="clearfix">
-                                    <div class="feature-flex-square-icon">
-                                        <i class="ti-tablet"></i>
-                                    </div>
-                                    <div class="feature-flex-square-content">
-                                        <h4><a href="#!">Investment Plan</a></h4>
-                                        <p>Our Mission is to deliver true results for your impressive international Businesses consultant.</p>
-                                        <a href="#!" class="feature-flex-square-content-button">Learn More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mt-1-9">
-                            <div class="feature-flex-square">
-                                <div class="clearfix">
-                                    <div class="feature-flex-square-icon">
-                                        <i class="ti-layers-alt"></i>
-                                    </div>
-                                    <div class="feature-flex-square-content">
-                                        <h4><a href="#!">Investment Bank</a></h4>
-                                        <p>Our Mission is to deliver true results for your impressive international Businesses consultant.</p>
-                                        <a href="#!" class="feature-flex-square-content-button">Learn More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mt-1-9">
-                            <div class="feature-flex-square">
-                                <div class="clearfix">
-                                    <div class="feature-flex-square-icon">
-                                        <i class="ti-blackboard"></i>
-                                    </div>
-                                    <div class="feature-flex-square-content">
-                                        <h4><a href="#!">Business Consult</a></h4>
-                                        <p>Our Mission is to deliver true results for your impressive international Businesses consultant.</p>
-                                        <a href="#!" class="feature-flex-square-content-button">Learn More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mt-1-9">
-                            <div class="feature-flex-square">
-                                <div class="clearfix">
-                                    <div class="feature-flex-square-icon">
-                                        <i class="ti-package"></i>
-                                    </div>
-                                    <div class="feature-flex-square-content">
-                                        <h4><a href="#!">Finance Analysis</a></h4>
-                                        <p>Our Mission is to deliver true results for your impressive international Businesses consultant.</p>
-                                        <a href="#!" class="feature-flex-square-content-button">Learn More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
             </div>
         </div>
     </section>
