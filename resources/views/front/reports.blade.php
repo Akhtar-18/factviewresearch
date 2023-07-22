@@ -9,9 +9,6 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-md-12 ">
-                    <h1>Research Website</h1>
-                </div>
                 <div class="col-md-12">
                     <ul class="ps-0">
                         <ul class="ps-0">
@@ -38,11 +35,11 @@
                         @foreach ($ReportCategory as $key => $cat)
                             <div class="card">
                                 <div class="card-header" id="headingOne{{ $key }}">
-                                    <h5 class="mb-0">
+                                    <a href="{{route('front.reportcategory',strtolower($cat->cat_name))}}"><h5 class="mb-0">
                                         <button class="btn btn-link" data-bs-toggle="collapse"
                                             data-bs-target="#collapseOne{{ $key }}" aria-expanded="true"
                                             aria-controls="collapseOne{{ $key }}">{{ $cat->cat_name }}</button>
-                                    </h5>
+                                    </h5></a>
                                 </div>
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne{{ $key }}"
                                     data-bs-parent="#accordion">
@@ -51,7 +48,7 @@
                                             @if ($cat->getSubCategory)
                                                 @foreach ($cat->getSubCategory as $sub)
                                                     <li><a
-                                                            href="{{ route('front.reportsubcategory', strtolower($sub->sub_category)) }}">{{ $sub->sub_category }}</a>
+                                                            href="@if(isset($sub->sub_category)){{ route('front.reportsubcategory',strtolower($sub->sub_category))}}@endif">{{ $sub->sub_category }}</a>
                                                     </li>
                                                 @endforeach
                                             @endif
@@ -125,7 +122,7 @@
                 $.ajax({
                     url: "fetch_datas?page=" + page,
                     success: function(data) {
-                        console.log(data);
+                        //console.log(data);
                         $('#lists').html(data);
                     }
                 });

@@ -13,14 +13,21 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Form</h1>
+                    <h1>
+                        @if ($type == 'request')
+                        {{ 'REQUEST SAMPLE' }}
+                    @elseif($type == 'enquiry')
+                        {{ 'ENQUIRY BEFORE BUYING' }}
+                    @elseif($type == 'discount')
+                        {{ 'ASK FOR DISCOUNT' }}
+                    @endif
+                    </h1>
                 </div>
                 <div class="col-md-12">
                     <ul class="ps-0">
                         <li><a href="{{ route('front.home') }}">Home</a></li>
                         @if ($type == 'request')
-                            <li><a
-                                    href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}">{{ 'REQUEST SAMPLE' }}</a>
+                            <li><a href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}">{{ 'REQUEST SAMPLE' }}</a>
                             </li>
                         @elseif($type == 'enquiry')
                             <li><a

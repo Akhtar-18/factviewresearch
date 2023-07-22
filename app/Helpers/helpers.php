@@ -87,6 +87,14 @@ if (! function_exists('wordLimit')) {
     }
 }
 
+if (! function_exists('wordLimitset')) {
+    function wordLimitset($description,$limits)
+    {
+        $limit=Str::words($description, $limits, '...');
+        return $limit;
+    }
+}
+
 if (! function_exists('getCountry')) {
     function getCountry()
     {

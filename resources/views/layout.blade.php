@@ -221,13 +221,15 @@ tinymce.init({
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Blog</span>
+                    <span>Media/Insights</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Blog:</h6>
-                        <a class="collapse-item" href="">Blogs Category</a>
-                        <a class="collapse-item" href="">Blogs</a>
+                        <!-- <a class="collapse-item" href="{{url('admin/blog-category')}}">Blogs Category</a> -->
+                        <a class="collapse-item" href="{{url('admin/admin-blogs')}}">Blogs</a>
+                        <a class="collapse-item" href="{{url('admin/admin-press-releases')}}">Press Releases</a>
+                        <a class="collapse-item" href="{{url('admin/admin-case-studies')}}">Case Studies</a>
                     </div>
                 </div>
             </li>
@@ -410,7 +412,7 @@ tinymce.init({
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                    <p class="mb-0">&copy; Copyright <span class="current-year"></span>. All Rights Reserved.</p>
                     </div>
                 </div>
             </footer>

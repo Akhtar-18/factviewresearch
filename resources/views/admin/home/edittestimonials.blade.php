@@ -39,7 +39,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="mb-2">profile <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control"
+                                <input type="text" class="form-control" name="profile"
                                 placeholder="Enter profile"
                                 profile="profile"
                                 value="{{ $testimonial->profile }}"
@@ -52,9 +52,9 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="mb-2">Content</label>
-                                <textarea class="form-control" rows="12" name="content">{{ $testimonial->content }}</textarea>
-                                @if ($errors->has('content'))
-                                    <span class="text-danger">{{ $errors->first('content') }}</span>
+                                <textarea class="form-control" rows="12" name="comments">{{ $testimonial->comments }}</textarea>
+                                @if ($errors->has('comments'))
+                                    <span class="text-danger">{{ $errors->first('comments') }}</span>
                                 @endif
                             </div>
                         </div>

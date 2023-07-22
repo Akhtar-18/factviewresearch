@@ -1,14 +1,3 @@
-/*-----------------------------------------------------------------------------------
-
-    Theme Name: Fabrex - Multipurpose Business and Admin Template
-    Description: Multipurpose Business and Admin Template
-    Author: Chitrakoot Web
-
------------------------------------------------------------------------------------*/
-
-/* ----------------------------------------------------------------
-			[ All CSS Plugins & Default Classes File ]
------------------------------------------------------------------*/
 
 /* == bootstrap == */
 @import url("plugins/bootstrap.min.css");
@@ -34,10 +23,10 @@
 
 /* == zoom css == */
 @import url("plugins/xzoom.css");
-    
+
 /* == datetimepicker == */
 @import url("plugins/datetimepicker.css");
-    
+
 /* == default classes == */
 @import url("plugins/default.css");
 

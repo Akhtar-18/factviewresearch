@@ -2013,7 +2013,7 @@ h6.title-style2.white {
 @media screen and (max-width: 991px) {
     .page-title-section2 {
         /*padding: 148px 0 75px*/
-        padding: 80px 0 75px
+        padding: 0px 0 0px
     }
 
     .page-title-section2 h1 {
@@ -2397,7 +2397,7 @@ h6.title-style2.white {
         padding: 0 15px
     }
 
-    .custom-controls .tp-leftarrow,
+    /*.custom-controls .tp-leftarrow,
     .custom-controls .tp-rightarrow {
         width: 40px !important;
         height: 40px !important
@@ -2414,7 +2414,7 @@ h6.title-style2.white {
 
     .custom-controls .tparrows:before {
         line-height: 20px !important
-    }
+    }*/
 }
 
 @media screen and (max-width: 479px) {
@@ -9331,8 +9331,8 @@ h2.resp-accordion.resp-tab-active {
 
 .pagination ul {
     display: inline-block;
-    *display: inline;
-    *zoom: 1;
+    /*display: inline;*/
+    /*zoom: 1;*/
     margin: 0 auto;
     padding: 0
 }

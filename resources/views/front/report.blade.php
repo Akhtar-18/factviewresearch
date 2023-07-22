@@ -12,14 +12,10 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-md-12 ">
-                    <h1>Research Website</h1>
-                </div>
                 <div class="col-md-12">
                     <ul class="ps-0">
                         <li><a href="{{ route('front.home') }}">Home</a></li>
-                        <li><a
-                                href="{{ route('front.report', ['category' => strtolower($reports->getCategoryName->cat_name), 'subcategory' => strtolower($reports->getSubCategoryName->sub_category), 'id' => $reports->url]) }}">{{ $reports->heading }}</a>
+                        <li><a href="{{ route('front.report', ['category' => strtolower($reports->getCategoryName->cat_name), 'subcategory' => strtolower($reports->getSubCategoryName->sub_category), 'id' => $reports->url]) }}">{{ $reports->heading }}</a>
                         </li>
                     </ul>
                 </div>

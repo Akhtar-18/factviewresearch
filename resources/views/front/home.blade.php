@@ -48,7 +48,7 @@
                                 <p class="white-space text-center px-3 px-md-0">{{ $list->subheading }}</p>
                             </div>
                             <!-- layer nr. 3 -->
-                            <div class="tp-caption tp-resizeme" id="slide-2-layer-3"
+                            <!--<div class="tp-caption tp-resizeme" id="slide-2-layer-3"
                                 data-x="['center','center','center','center']"
                                 data-y="['middle','middle','middle','middle']" data-hoffset="['0','0','0','0']"
                                 data-voffset="['65','65','65','65']" data-fontsize="['18','18','14','14']"
@@ -59,56 +59,74 @@
                                 data-splitin="none" data-splitout="none" data-responsive_offset="on"
                                 style="z-index: 5; white-space: nowrap; line-height: 22px;"><a href="#!"
                                     class="butn primary"><span>Contact Us</span></a>
-                            </div>
+                            </div>-->
                         </li>
                     @endforeach
                 @endif
             </ul>
         </div>
     </div>
-    <!-- <section class="full-screen p-0 top-position top-position3">
-                <div class="row slider-fade">
-                    <div class="owl-carousel owl-theme w-100">
-                        <div class="text-center item bg-img" data-overlay-dark="7" data-background="{{ asset('front/img/slider/slide9.jpg') }}">
-                            <div class="h-100 d-table caption position-relative">
-                                <div class="overflow-hidden d-table-cell align-middle h-100">
-                                    <h3 class="alt-font text-white m-0">We Are Awesome</h3>
-                                    <h1 class="text-white">Creative for Startup</h1>
-                                    <p class="d-none d-lg-block mb-3 mb-lg-4">We provide best for our client and respect their business design idea.</p>
-                                    <a href="#!" class="butn medium primary">
-                                        <span class="alt-font">Learn More</span><i class="fas fa-angle-right text-white ms-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center item bg-img" data-overlay-dark="6" data-background="{{ asset('front/img/slider/slide17.jpg') }}">
-                            <div class="h-100 d-table caption position-relative">
-                                <div class="overflow-hidden d-table-cell align-middle h-100">
-                                    <h3 class="alt-font text-white m-0">We Are Awesome</h3>
-                                    <h1 class="text-white">Creative for Website</h1>
-                                    <p class="d-none d-lg-block mb-3 mb-lg-4">We provide best for our client and respect their business design idea.</p>
-                                    <a href="#!" class="butn medium primary">
-                                        <span class="alt-font">Learn More</span><i class="fas fa-angle-right text-white ms-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center item bg-img" data-overlay-dark="6" data-background="{{ asset('front/img/slider/slide8.jpg') }}">
-                            <div class="h-100 d-table caption position-relative">
-                                <div class="overflow-hidden d-table-cell align-middle h-100">
-                                    <h3 class="alt-font text-white m-0">We Are Awesome</h3>
-                                    <h1 class="text-white">Creative for Agency</h1>
-                                    <p class="d-none d-lg-block mb-3 mb-lg-4">We provide best for our client and respect their business design idea.</p>
-                                    <a href="#!" class="butn medium primary">
-                                        <span class="alt-font">Learn More</span><i class="fas fa-angle-right text-white ms-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
-            </section> -->
+    <div class="rev_slider_wrapper custom-controls custom-paragraph d-none d-md-block">
+        <div id="rev_slider_2" class="rev_slider" style="display: none;" data-version="5.4.5">
+            <ul>
+                @if (GetSlider())
+                    @foreach (GetSlider() as $list)
+                        <li data-transition="parallaxtoright">
+
+                            <!-- overlay -->
+                            <div class="opacity-extra-medium bg-black z-index-1"></div>
+
+                            <img src="{{ asset('images') }}/{{ $list->slider_image }}" alt="slide1" class="rev-slidebg">
+
+                            <!-- layer 1 -->
+                            <div class="tp-caption tp-resizeme max-style alt-font" id="slide-2-layer-1"
+                                data-x="['center','center','center','center']"
+                                data-y="['middle','middle','middle','middle']" data-hoffset="['0','0','0','0']"
+                                data-voffset="['-100','-100','-100','-120']" data-width="none" data-height="none"
+                                data-whitespace="nowrap" data-transform_idle="o:1;"
+                                data-transform_in="x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;"
+                                data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                data-mask_in="x:[100%];y:0;s:inherit;e:inherit;" data-start="1000" data-splitin="chars"
+                                data-splitout="none" data-responsive_offset="on" data-elementdelay="0.05"
+                                style="z-index: 5; white-space: nowrap; color: #fff; font-weight: 700; text-transform: uppercase;">
+                                {{ $list->heading }}
+                            </div>
+                            <!-- end layer 1 -->
+
+                            <!-- layer nr. 2 -->
+                            <div class="tp-caption tp-resizeme slider-text" id="slide-2-layer-2"
+                                data-x="['center','center','center','center']"
+                                data-y="['middle','middle','middle','middle']" data-hoffset="['0','0','0','0']"
+                                data-voffset="['-20','-20','-20','-40']" data-fontsize="['18','20','20','20']"
+                                data-lineheight="['30','30','28','28']" data-width="none" data-height="none"
+                                data-transform_idle="o:1;"
+                                data-transform_in="x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;"
+                                data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                data-mask_in="x:[-100%];y:0;s:inherit;e:inherit;" data-start="2500" data-splitin="none"
+                                data-splitout="none" data-responsive_offset="on"
+                                style="z-index: 5; white-space: nowrap; color: #fff; text-align: center;">
+                                <p class="white-space text-center px-3 px-md-0">{{ $list->subheading }}</p>
+                            </div>
+                            <!-- layer nr. 3 -->
+                            <!--<div class="tp-caption tp-resizeme" id="slide-2-layer-3"
+                                data-x="['center','center','center','center']"
+                                data-y="['middle','middle','middle','middle']" data-hoffset="['0','0','0','0']"
+                                data-voffset="['65','65','65','65']" data-fontsize="['18','18','14','14']"
+                                data-lineheight="['26','26','22','22']" data-width="none" data-height="none"
+                                data-transform_idle="o:1;"
+                                data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                                data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" data-start="2800"
+                                data-splitin="none" data-splitout="none" data-responsive_offset="on"
+                                style="z-index: 5; white-space: nowrap; line-height: 22px;"><a href="#!"
+                                    class="butn primary"><span>Contact Us</span></a>
+                            </div>-->
+                        </li>
+                    @endforeach
+                @endif
+            </ul>
+        </div>
+    </div>
 
     <!-- ABOUT
             ================================================== -->
@@ -122,7 +140,7 @@
                                 <div class="section-heading left half">
                                     <h2 class="title-style2">{{ $about->heading }}</h2>
                                 </div>
-                                <p>{!! html_entity_decode(Str::of($about->content)->words(100, '...')) !!}</p>
+                                <p>{!! html_entity_decode(wordLimitset($about->content,500)) !!}</p>
                                 <a href="{{ route('front.about') }}" class="butn medium"><span>About Company</span></a>
                             @endforeach
                         @endif
@@ -182,16 +200,17 @@
                                 @php $key++; @endphp
                                 <!-- feature box item-->
                                 <div class="bg-white border border-color-light-black p-4 feature-box-08">
-                                    <div class="p-0 mb-3 mb-md-4 alt-font">
+                                    <div class="p-0 mb-3 mb-md-12 alt-font">
                                         <i class="text-primary ti-world display-18"></i>
                                         <h3 class="h5 mb-0 mt-2 w-100">{{ $service->heading }}</h3>
                                     </div>
-                                    <p class="w-95">{!! html_entity_decode(wordLimit($service->content)) !!}</p>
+
+                                    <p class="w-95">{!! html_entity_decode(wordLimitset($service->content,100)) !!}</p>
                                     <div class="border-top border-color-light-black pt-3">
                                         <a href="{{ route('front.service-single', $service->id) }}"
                                             class="font-weight-700">Read More...</a>
                                     </div>
-                                    <div class="show-details">
+                                    <!-- <div class="show-details">
                                         <img src="img/content/feature-04.jpg" alt="...">
                                         <div class="feature-box-detail p-1-9">
                                             <div class="border border-color-light-white h-100 p-4">
@@ -203,7 +222,7 @@
                                                     more...</a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- end feature box item-->
                             @endforeach

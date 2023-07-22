@@ -11,12 +11,16 @@ use App\Http\Controllers\ProductController;
 
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BlogCategoryController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CareersController;
+use App\Http\Controllers\CaseStudieController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\ContactDetailsController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GetInTouchController;
 use App\Http\Controllers\HomePageSliderController;
+use App\Http\Controllers\PressReleaseController;
 use App\Http\Controllers\ReportCategoryController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\ServicesController;
@@ -31,12 +35,16 @@ use App\Http\Controllers\ReportSubCategoryController;
 Route::get('/', [FrontController::class, 'home'])->name('front.home');
 Route::match(['GET','POST'],'/report/{category}/{subcategory}/{id}', [FrontController::class, 'report'])->name('front.report');
 Route::match(['GET','POST'],'/enquiry/{id}/{type}', [FrontController::class, 'enquiry'])->name('front.enquiry');
+
 Route::get('/all-reports', [FrontController::class, 'reports'])->name('front.reports');
 Route::get('/fetch_datas', [FrontController::class, 'fetch_datas'])->name('front.fetch_datas');
-Route::get('/reportcategory', [FrontController::class, 'reportcategory'])->name('front.reportcategory');
-Route::get('/reportsubcategory/{id}', [FrontController::class, 'reportsubcategory'])->name('front.reportsubcategory');
 
-Route::get('/fetchsubcategory_data/{id}', [FrontController::class, 'fetchsubcategory_data'])->name('front.fetchsubcategory_data');
+Route::get('/reportcategory/{id}', [FrontController::class, 'reportcategory'])->name('front.reportcategory');
+Route::get('/reportcategory/fetchcategory_data/{id}', [FrontController::class, 'fetchcategory_data'])->name('front.fetchcategory_data');
+
+
+Route::get('/reportsubcategory/{id}', [FrontController::class, 'reportsubcategory'])->name('front.reportsubcategory');
+Route::get('/reportsubcategory/fetchsubcategory_data/{id}', [FrontController::class, 'fetchsubcategory_data'])->name('front.fetchsubcategory_data');
 
 Route::get('/about', [FrontController::class, 'about'])->name('front.about');
 Route::get('/whowe', [FrontController::class, 'whowe'])->name('front.whowe');
@@ -49,6 +57,24 @@ Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact
 Route::get('/form', [FrontController::class, 'form'])->name('front.form');
 Route::post('/submit-enquiry', [FrontController::class, 'storeenquiry'])->name('submit.enquiry');
 Route::post('/submit-contact-enquiry', [FrontController::class, 'storecontact'])->name('submit.contact_enquiry');
+
+//blog
+Route::get('/all-blogs', [FrontController::class, 'blogs'])->name('front.blogs');
+Route::get('/fetch_blogs', [FrontController::class, 'fetch_blogs'])->name('front.fetch_blogs');
+Route::get('/blog/{url}', [FrontController::class, 'blog'])->name('front.blog');
+
+
+/*********************** Press Releases Route******************************/
+Route::get('/all-press-releases', [FrontController::class, 'pressreleases'])->name('front.press-releases');
+Route::get('/fetch_press', [FrontController::class, 'fetch_press'])->name('front.fetch_press');
+Route::get('/press-release/{url}', [FrontController::class, 'press'])->name('front.press');
+
+
+/*********************** Case Studies Front Route******************************/
+Route::get('/all-case-studies', [FrontController::class, 'casestudies'])->name('front.case-studies');
+Route::get('/fetch_case', [FrontController::class, 'fetch_case'])->name('front.fetch_case');
+Route::get('/case-studie/{url}', [FrontController::class, 'casestudiedetails'])->name('front.case-studie');
+
 
 Auth::routes();
 
@@ -226,6 +252,52 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/contact',[EnquiryController::class,'contact']);
             Route::match(['GET','POST'],'/deletecontact/{id}',[EnquiryController::class,'deletecontact']);
 
+        });
+
+
+         /*******************Blog category Route****************************/
+         Route::group(['prefix'=>'blog-category'],function(){
+            Route::get('/',[BlogCategoryController::class,'index'])->name('report.blog-category.index');
+            Route::get('/list',[BlogCategoryController::class,'list']);
+            Route::get('/add',[BlogCategoryController::class,'add'])->name('admin.blog-category.add');
+            Route::post('/submit',[BlogCategoryController::class,'submit']);
+            Route::get('/edit/{id}',[BlogCategoryController::class,'edit']);
+            Route::match(['GET','POST'],'/update/{id}',[BlogCategoryController::class,'update']);
+            Route::match(['GET','POST'],'/delete/{id}',[BlogCategoryController::class,'delete']);
+        });
+
+        
+         /*******************Blogs Route****************************/
+         Route::group(['prefix'=>'admin-blogs'],function(){
+            Route::get('/',[BlogController::class,'index'])->name('report.admin-blogs.index');
+            Route::get('/list',[BlogController::class,'list']);
+            Route::get('/add',[BlogController::class,'add'])->name('admin.admin-blogs.add');
+            Route::post('/submit',[BlogController::class,'submit']);
+            Route::get('/edit/{id}',[BlogController::class,'edit']);
+            Route::match(['GET','POST'],'/update/{id}',[BlogController::class,'update']);
+            Route::match(['GET','POST'],'/delete/{id}',[BlogController::class,'delete']);
+        });
+
+         /*******************Press Releases Route****************************/
+         Route::group(['prefix'=>'admin-press-releases'],function(){
+            Route::get('/',[PressReleaseController::class,'index'])->name('report.admin-press-releases.index');
+            Route::get('/list',[PressReleaseController::class,'list']);
+            Route::get('/add',[PressReleaseController::class,'add'])->name('admin.admin-press-releases.add');
+            Route::post('/submit',[PressReleaseController::class,'submit']);
+            Route::get('/edit/{id}',[PressReleaseController::class,'edit']);
+            Route::match(['GET','POST'],'/update/{id}',[PressReleaseController::class,'update']);
+            Route::match(['GET','POST'],'/delete/{id}',[PressReleaseController::class,'delete']);
+        });
+
+         /*******************Case Studies Route****************************/
+         Route::group(['prefix'=>'admin-case-studies'],function(){
+            Route::get('/',[CaseStudieController::class,'index'])->name('report.admin-case-studies.index');
+            Route::get('/list',[CaseStudieController::class,'list']);
+            Route::get('/add',[CaseStudieController::class,'add'])->name('admin.admin-case-studies.add');
+            Route::post('/submit',[CaseStudieController::class,'submit']);
+            Route::get('/edit/{id}',[CaseStudieController::class,'edit']);
+            Route::match(['GET','POST'],'/update/{id}',[CaseStudieController::class,'update']);
+            Route::match(['GET','POST'],'/delete/{id}',[CaseStudieController::class,'delete']);
         });
 
 });

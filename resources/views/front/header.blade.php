@@ -13,7 +13,7 @@
     <meta name="description" content="" />
 
     <!-- title  -->
-    <title>Research Website</title>
+    <title>FactViewResearch</title>
 
     <!-- favicon -->
     <link rel="shortcut icon" href="">
@@ -69,7 +69,6 @@
                                     <li><i class="fas fa-mobile-alt"></i>@if(getCompanyDetail()){{getCompanyDetail()->contact_no}}@endif</li>
                                     <li><i class="fas fa-envelope"></i>@if(getCompanyDetail()){{getCompanyDetail()->email_address}}@endif</li>
                                     <li><i class="fas fa-map-marker-alt"></i>@if(getCompanyDetail()){{getCompanyDetail()->address}}@endif</li>
-                                    <li><i class="fas fa-clock"></i>Working Hours</li>
                                 </ul>
                             </div>
                         </div>
@@ -111,9 +110,9 @@
 
                                     <div class="navbar-header navbar-header-custom">
                                         <!-- logo -->
-                                        <a href="{{ route('front.home') }}" class="navbar-brand logo4">
+                                        <a href="{{ route('front.home') }}" class="navbar-brand logodefault">
                                             @if(getCompanyDetail())
-                                            <img src="{{asset('company_logo')}}/{{getCompanyDetail()->company_logo}}" width="150px">
+                                            <img id="logo" src="{{asset('company_logo')}}/{{getCompanyDetail()->company_logo}}" alt="logo">
                                             @elseif(isset(getCompanyDetail()->company_name))
                                             {{getCompanyDetail()->company_name}}
                                             @endif
@@ -166,15 +165,16 @@
                                                 <li><a href="{{ route('front.partners') }}">Partners</a></li>
                                             </ul>
                                         </li>
-                                        <!--<li><a href="#!">Media/Insights</a>
+                                        <li><a href="#!">Media/Insights</a>
                                             <ul>
-                                                <li><a href="">Blogs</a></li>
-                                                <li><a href="">Articles</a></li>
-                                                <li><a href="">Press Releases</a></li>
-                                                <li><a href="">Case Studies</a></li>
-                                                <li><a href="">Infographics</a></li>
+                                                <li><a href="{{route('front.blogs')}}">Blogs</a></li>
+
+                                                <li><a href="{{route('front.press-releases')}}">Press Releases</a></li>
+                                                <li><a href="{{route('front.case-studies')}}">Case Studies</a></li>
+                                                 <!-- <li><a href="">Articles</a></li>
+                                                <li><a href="">Infographics</a></li> -->
                                             </ul>
-                                        </li> -->
+                                        </li>
                                         <li><a href="{{ route('front.contact') }}">Contact Us</a></li>
                                     </ul>
                                     <!-- end menu area -->

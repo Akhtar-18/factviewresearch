@@ -29,8 +29,8 @@ class TestimonialController extends Controller
             $data = TestimonialModel::select('*')->orderBy('id','desc');
             return DataTables::of($data)
                     ->addIndexColumn()
-               ->addColumn('content', function($row){
-                $contents = strip_tags($row->content);
+               ->addColumn('comments', function($row){
+                $contents = strip_tags($row->comments);
                 return $contents;
               })
 
@@ -76,7 +76,7 @@ class TestimonialController extends Controller
      
                             return $btn;
                     })
-                    ->rawColumns(['content','action'])
+                    ->rawColumns(['comments','action'])
                     ->make(true);
         }
     }

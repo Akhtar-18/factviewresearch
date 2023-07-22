@@ -1,5 +1,3 @@
-<?php //include("header.php");
-?>
 @extends('front.layout')
 @section('title', 'Service Name')
 @section('frontpage')

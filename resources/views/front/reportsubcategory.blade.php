@@ -9,9 +9,6 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-md-12 ">
-                    <h1>Research Website</h1>
-                </div>
                 <div class="col-md-12">
                     <ul class="ps-0">
                         <ul class="ps-0">
@@ -38,11 +35,12 @@
                         @foreach ($ReportCategory as $key => $cat)
                             <div class="card">
                                 <div class="card-header" id="headingOne{{ $key }}">
-                                    <h5 class="mb-0">
+                                <a href="{{route('front.reportcategory',strtolower($cat->cat_name))}}"><h5 class="mb-0">
                                         <button class="btn btn-link" data-bs-toggle="collapse"
                                             data-bs-target="#collapseOne{{ $key }}" aria-expanded="true"
                                             aria-controls="collapseOne{{ $key }}">{{ $cat->cat_name }}</button>
                                     </h5>
+                                </a>
                                 </div>
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne{{ $key }}"
                                     data-bs-parent="#accordion">
@@ -50,7 +48,7 @@
                                         <ul class="list-style-5">
                                             @if ($cat->getSubCategory)
                                                 @foreach ($cat->getSubCategory as $sub)
-                                                    <li><a href="#!">{{ $sub->sub_category }}</a></li>
+                                                    <li><a href="@if(isset($sub->sub_category)){{ route('front.reportsubcategory',strtolower($sub->sub_category))}}@endif">{{ $sub->sub_category }}</a></li>
                                                 @endforeach
                                             @endif
                                         </ul>
@@ -104,7 +102,7 @@
                 <input type="hidden" id="subcategory" value="{{ $subcategory }}">
                 <div class="col-lg-9 ps-lg-1-9" id="lists">
                     <div class="section-heading">
-                        <h2 class="title-style2 text-center">{{ $subcategory }}</h2>
+                        <h2 class="title-style2 text-center">{{ strtoupper($subcategory) }}</h2>
 
                     </div>
                     @include('front.ajaxreport')
@@ -130,7 +128,7 @@
                     url: "fetchsubcategory_data/" + subcategory + "?page=" + page,
                     //data:{subcategory:subcategory}
                     success: function(data) {
-                        console.log(data);
+                        //console.log(data);
                         $('#lists').html(data);
                     }
                 });

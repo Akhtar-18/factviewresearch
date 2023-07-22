@@ -2396,7 +2396,7 @@ h6.title-style2.white {
         padding: 0 15px
     }
 
-    .custom-controls .tp-leftarrow,
+    /*.custom-controls .tp-leftarrow,
     .custom-controls .tp-rightarrow {
         width: 40px !important;
         height: 40px !important
@@ -2413,7 +2413,7 @@ h6.title-style2.white {
 
     .custom-controls .tparrows:before {
         line-height: 20px !important
-    }
+    }*/
 }
 
 @media screen and (max-width: 479px) {

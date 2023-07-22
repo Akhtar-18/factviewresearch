@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AdminReportEnquir;
+use App\Mail\MyReportEnquiry;
 use App\Models\AboutUsModel;
+use App\Models\Blog;
+use App\Models\CaseStudie;
 use App\Models\ContactDetailsModel;
 use App\Models\ContactEnquiryModel;
 use App\Models\MarketGraphicalModel;
 use App\Models\MarketShareGraphicalModel;
+use App\Models\PressRelease;
 use App\Models\RegionGraphicalModel;
 use App\Models\ReportCategoryModel;
 use App\Models\ReportEnquiryModel;
@@ -19,6 +24,7 @@ use App\Models\WhoWeModel;
 use App\Models\WhyChooseUsModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 
 class FrontController extends Controller
 {
@@ -82,13 +88,14 @@ class FrontController extends Controller
         return view('front.reports',$data);
     }
 
-    public function reportcategory(Request $request)
+    public function reportcategory($id,Request $request)
     {
-        if(isset($request->search))
+        $category=ReportCategoryModel::where('cat_name',$id)->first();
+        if(isset($category))
         {
             $data['reports']=ReportsModel::latest('id')->with(['getSubCategoryName','getCategoryName'])
             ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
-            ->where('heading', 'like', '%' . $request->search . '%')
+            ->where('category_id',$category->id)
             ->orderBy('id','desc')->paginate(10);
         }
         else
@@ -98,7 +105,35 @@ class FrontController extends Controller
         $data['ReportCategory']=ReportCategoryModel::with('getSubCategory')->select(['id','cat_name'])->get();
 
         $data['contactData']=ContactDetailsModel::select(['contact_no','email_address'])->first();
+        $data['category']=$id;
         return view('front.reportcategory',$data);
+    }
+
+    public function fetchcategory_data($id=null,Request $request)
+    {
+        if($request->ajax())
+        {
+            if($id)
+            {
+                $category=ReportCategoryModel::where('cat_name',$id)->first();
+                $reports=ReportsModel::latest('id')
+                ->with(['getSubCategoryName','getCategoryName'])
+                ->where('category_id',$category->id)
+                ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
+                ->orderBy('id','desc')
+                ->paginate(10);
+            }
+            else
+            {
+                $reports=ReportsModel::latest('id')
+             ->with(['getSubCategoryName','getCategoryName'])
+             ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
+             ->orderBy('id','desc')
+             ->paginate(10);
+            }
+
+            return view('front.ajaxcategoryreport',compact('reports'));
+        }
     }
 
     public function reportsubcategory($id,Request $request)
@@ -245,9 +280,17 @@ class FrontController extends Controller
         }
 
 
-
+        $type = $request->types;
+        $name = $request->name;
         $input=$request->all();
         ReportEnquiryModel::create($input);
+
+
+
+        $email = 'minhaj.khan@researchforetell.com';
+
+        Mail::to($email)->send(new MyReportEnquiry($type,$name));
+        Mail::to($email)->send(new AdminReportEnquir($type,$name));
         return response()->json([ 'success'=> 'Form is successfully submitted!']);
     }
 
@@ -275,7 +318,71 @@ class FrontController extends Controller
 
         $input=$request->all();
         ContactEnquiryModel::create($input);
+
+
         return response()->json([ 'success'=> 'Form is successfully submitted!']);
+    }
+
+    public function blogs()
+    {
+        $data['blogs']=Blog::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
+        return view('front.blog-grid',$data);
+    }
+    public function fetch_blogs(Request $request)
+    {
+        ///return $request;exit;
+        if($request->ajax())
+        {
+            $blogs=Blog::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
+            return view('front.ajaxblog',compact('blogs'));
+        }
+    }
+
+    public function blog($url,Request $request)
+    {
+        $data['blog']=Blog::select('*')->where('url',$url)->first();
+        return view('front.blog-post',$data);
+    }
+
+
+    public function pressreleases()
+    {
+        $data['press']=PressRelease::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
+        return view('front.press-grid',$data);
+    }
+    public function fetch_press(Request $request)
+    {
+        if($request->ajax())
+        {
+            $press=PressRelease::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
+            return view('front.ajaxpress',compact('press'));
+        }
+    }
+
+    public function press($url,Request $request)
+    {
+        $data['press']=PressRelease::select('*')->where('url',$url)->first();
+        return view('front.press-details',$data);
+    }
+
+    public function casestudies()
+    {
+        $data['case']=CaseStudie::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
+        return view('front.case-studies-grid',$data);
+    }
+    public function fetch_case(Request $request)
+    {
+        if($request->ajax())
+        {
+            $case=CaseStudie::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
+            return view('front.ajaxcase',compact('case'));
+        }
+    }
+
+    public function casestudiedetails($url,Request $request)
+    {
+        $data['case']=CaseStudie::select('*')->where('url',$url)->first();
+        return view('front.case-details',$data);
     }
 
 }
