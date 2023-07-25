@@ -37,28 +37,28 @@
                             <div class="col-md-12">
                                 <div class="blog-list-simple-text">
                                     <!-- <span>Business</span> -->
-                                    <h5><a href="">{{ $reports->heading }}</a></h5>
+                                    <h5><a href="{{ route('front.report', ['category' => strtolower($reports->getCategoryName->cat_name), 'subcategory' => strtolower($reports->getSubCategoryName->sub_category), 'id' => $reports->url]) }}" class="text-primary-use">{{ $reports->heading }}</a></h5>
                                     <ul class="meta ps-0">
                                         <li>
-                                            <i aria-hidden="true" class="fas fa-clock text-primary"></i> Published Date:
+                                            <i aria-hidden="true" class="fas fa-clock text-primary-new"></i> Published Date:
                                             {{ date('M, Y', strtotime($reports->publish_month)) }}
                                         </li>|
                                         <li>
-                                            <i aria-hidden="true" class="fas fa-book text-primary"></i> Pages:
+                                            <i aria-hidden="true" class="fas fa-book text-primary-new"></i> Pages:
                                             {{ $reports->pages }}
                                         </li>|
                                         <li>
-                                            <i aria-hidden="true" class="fas fa-industry text-primary"></i> Industry:
+                                            <i aria-hidden="true" class="fas fa-industry text-primary-new"></i> Industry:
                                             @if (isset($reports->getSubCategoryName->sub_category))
                                                 {{ $reports->getSubCategoryName->sub_category }}
                                             @endif
                                         </li>
                                         <li>
-                                            <i aria-hidden="true" class="fas fa-file-alt text-primary"></i> Format: <i
+                                            <i aria-hidden="true" class="fas fa-file-alt text-primary-new"></i> Format: <i
                                                 aria-hidden="true" class="fas fa-file-pdf text-danger"></i> PDF
                                         </li>
                                     </ul>
-                                    <p></p>
+                                    <p class="text-primary"></p>
                                 </div>
                             </div>
                         </div>
@@ -317,11 +317,11 @@
                         <div class="section-heading">
                             <h2>Frequently Asked Questions</h2>
                         </div>
-                        <div id="accordion" class="accordion-style">
+                        <div id="accordion" class="accordion-style bg-warning">
                             @if (isset($reports->getReportFaq))
                                 @foreach ($reports->getReportFaq as $key => $faq)
                                     <div class="card">
-                                        <div class="card-header bg-primary text-white" id="headingOne{{ $key }}">
+                                        <div class="card-header bg-warning text-white" id="headingOne{{ $key }}">
                                             <h5 class="mb-0">
                                                 <button class="btn btn-link" data-bs-toggle="collapse"
                                                     data-bs-target="#collapseOne{{ $key }}" aria-expanded="true"
@@ -334,7 +334,7 @@
                                         </div>
                                         <div id="collapseOne{{ $key }}" class="collapse show"
                                             aria-labelledby="headingOne{{ $key }}" data-bs-parent="#accordion">
-                                            <div class="card-body">
+                                            <div class="card-body text-white">
                                                 @if (isset($faq->answer))
                                                     {!! html_entity_decode($faq->answer) !!}
                                                 @endif
@@ -357,7 +357,7 @@
                             <h2>Get Your Customized Report</h2>
                         </div>
                         <article class="card card-style1">
-                            <div class="card-header bg-primary text-white">
+                            <div class="card-header bg-success text-white">
                                 Get Your Customized Report
                             </div>
                             <div class="card-body">
@@ -366,7 +366,7 @@
                                     {!! html_entity_decode($reports->customized) !!}
                                 @endif
                                 <div class="text-center">
-                                    <a class="butn primary mt-2" href="#!"><span>Request for Customization</span></a>
+                                    <a class="btn btn-success mt-2" href="#!"><span>Request for Customization</span></a>
                                 </div>
                             </div>
                         </article>
@@ -431,7 +431,7 @@
                             <article class="card card-style1">
 
                                 <div class="card-body text-center">
-                                    <a class="butn primary mt-2" href="#!"><span>Buy Report</span></a>
+                                    <a class="butn primary mt-2" href="{{route('front.buynow',$reports->id)}}"><span>Buy Report</span></a>
                                     <a class="butn primary mt-2"
                                         href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}"><span>Free
                                             Sample</span></a>
@@ -546,77 +546,6 @@
                                         </div>
                                     </div>
                                     <!-- start testimonial -->
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="widget">
-
-                            <article class="card card-style1">
-                                <div class="card-header bg-primary text-white">
-                                    Why Choose Us?
-                                </div>
-                                <div class="card-body">
-                                    @if (isset($whyusData))
-                                        @foreach ($whyusData as $whyus)
-                                            <div class="col-md-12 mt-1-9">
-                                                <div class="feature-flex-square">
-                                                    <div class="clearfix">
-                                                        <div class="feature-flex-square-icon">
-                                                            <i class="fa ti-package"></i>
-                                                        </div>
-                                                        <div class="feature-flex-square-content">
-                                                            <h4><a href="#!">{{ $whyus->heading }}</a></h4>
-                                                            <p>{!! html_entity_decode($whyus->content) !!}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    @endif
-                                    <!-- <div class="col-md-12 mt-1-9">
-                                <div class="feature-flex-square">
-                                    <div class="clearfix">
-                                        <div class="feature-flex-square-icon">
-                                            <i class="ti-layers"></i>
-                                        </div>
-                                        <div class="feature-flex-square-content">
-                                            <h4><a href="#!">Free Consultation</a></h4>
-                                            <p>Our Mission is to deliver true results for your impressive
-                                            international dream.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 mt-1-9">
-                                <div class="feature-flex-square">
-                                    <div class="clearfix">
-                                        <div class="feature-flex-square-icon">
-                                            <i class="fa ti-wallet"></i>
-                                        </div>
-                                        <div class="feature-flex-square-content">
-                                            <h4><a href="#!">Affordable Price</a></h4>
-                                            <p>Our Mission is to deliver true results for your impressive
-                                            international dream.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 mt-1-9">
-                                <div class="feature-flex-square">
-                                    <div class="clearfix">
-                                        <div class="feature-flex-square-icon">
-                                            <i class="ti-world"></i>
-                                        </div>
-                                        <div class="feature-flex-square-content">
-                                            <h4><a href="#!">Guaranteed Works</a></h4>
-                                            <p>Our Mission is to deliver true results for your impressive
-                                            international dream.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-
                                 </div>
                             </article>
                         </div>

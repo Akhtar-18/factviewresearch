@@ -18,11 +18,11 @@ class MyReportEnquiry extends Mailable
      *
      * @return void
      */
-    public $type;
+    public $types;
     public $name;
-    public function __construct($type,$name)
+    public function __construct($types,$name)
     {
-        $this->type=$type;
+        $this->types=$types;
         $this->name=$name;
     }
 
@@ -32,7 +32,7 @@ class MyReportEnquiry extends Mailable
    
     public function build()
     {
-        $data['type']=$this->type;
+        $data['type']=$this->types;
         $data['name']=$this->name;
         //return $this->markdown('emails.enquiry',$data);
         return $this->subject('Enquiry Submitted')

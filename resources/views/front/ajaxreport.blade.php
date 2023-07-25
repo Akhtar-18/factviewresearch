@@ -8,22 +8,22 @@
                                     <h3><a href="{{route('front.report',['category'=>strtolower($list->getCategoryName->cat_name),'subcategory'=>strtolower($list->getSubCategoryName->sub_category),'id'=>$list->url])}}">{{$list->heading}}</a></h3>
                                     <ul class="meta ps-0">
                                         <li>
-                                            <i aria-hidden="true" class="fas fa-clock text-primary"></i> Published Date:
+                                            <i aria-hidden="true" class="fas fa-clock text-success"></i> Published Date:
                                             {{date('M, Y',strtotime($list->publish_month))}}
                                         </li>|
                                         <li>
-                                            <i aria-hidden="true" class="fas fa-book text-primary"></i> Pages: {{$list->pages}}
+                                            <i aria-hidden="true" class="fas fa-book text-success"></i> Pages: {{$list->pages}}
                                         </li>|
                                         <li>
-                                            <i aria-hidden="true" class="fas fa-industry text-primary"></i> @if(isset($list->getSubCategoryName->sub_category)){{$list->getSubCategoryName->sub_category}}@endif
+                                            <i aria-hidden="true" class="fas fa-industry text-success"></i> @if(isset($list->getSubCategoryName->sub_category)){{$list->getSubCategoryName->sub_category}}@endif
                                         </li>
                                         <li>
-                                            <i aria-hidden="true" class="fas fa-file-alt text-primary"></i> Format: <i
+                                            <i aria-hidden="true" class="fas fa-file-alt text-success"></i> Format: <i
                                                 aria-hidden="true" class="fas fa-file-pdf text-danger"></i> PDF
                                         </li>
                                     </ul>
                                     <p>{!! html_entity_decode(wordLimit($list->description)) !!}.
-                                    <div class="text-start mt-2"><a href="{{route('front.report',['category'=>strtolower($list->getCategoryName->cat_name),'subcategory'=>strtolower($list->getSubCategoryName->sub_category),'id'=>$list->url])}}" class="butn small"><span>Read
+                                    <div class="text-start mt-2"><a href="{{route('front.report',['category'=>strtolower($list->getCategoryName->cat_name),'subcategory'=>strtolower($list->getSubCategoryName->sub_category),'id'=>$list->url])}}" class="btn btn-warning text-white"><span>Read
                                                 More</span></a></div>
                                 </div>
                             </div>
@@ -45,8 +45,8 @@
 <article class=blog-list-simple>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="blog-list-simple-text" align="center">
-                                
+                                <div class="blog-list-simple-text text-center">
+
                                         <p class="h3">No Data Found</p>
 </div>
 </div>

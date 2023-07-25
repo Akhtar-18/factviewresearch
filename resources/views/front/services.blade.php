@@ -17,7 +17,7 @@
                 <div class="col-md-12">
                     <ul class="ps-0">
                         <li><a href="{{ route('front.home') }}">Home</a></li>
-                        <li><a href="#!">Services</a></li>
+                        <li><a href="{{ route('front.services') }}">Services</a></li>
                     </ul>
                 </div>
             </div>
@@ -29,11 +29,11 @@
             ================================================== -->
     <section>
         <div class="container">
-            <div class="section-heading">
+            <!--<div class="section-heading">
                 <h2>We Provide Faster Service</h2>
                 <p class="w-95 w-md-75 w-lg-55 mx-auto">Business consulting excepteur sint occaecat cupidatat consulting non
                     proident, sunt in culpa qui officia deserunt laborum Market.</p>
-            </div>
+            </div>-->
             <div class="row mt-n1-9">
                 @if (count($services) > 0)
                     @foreach ($services as $key => $service)

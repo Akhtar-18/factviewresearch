@@ -30,7 +30,7 @@
             @if($aboutData)
             @foreach($aboutData as $about)
             <div class="ps-lg-1-9">
-                <h4 class="h3 mb-4">{{$about->heading}}</h4>
+                <!-- <h4 class="h3 mb-4">{{$about->heading}}</h4> -->
                 {{-- $about->content --}}
                 {!! html_entity_decode($about->content) !!}
             </div>

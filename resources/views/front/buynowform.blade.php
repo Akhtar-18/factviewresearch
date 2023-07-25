@@ -1,7 +1,7 @@
 <?php //include("header.php");
 ?>
 @extends('front.layout')
-@section('title', 'Form Enquiry')
+@section('title', 'Buy Now')
 @section('frontpage')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -14,30 +14,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1>
-                        @if ($type == 'request')
-                        {{ 'REQUEST SAMPLE' }}
-                    @elseif($type == 'enquiry')
-                        {{ 'ENQUIRY BEFORE BUYING' }}
-                    @elseif($type == 'discount')
-                        {{ 'ASK FOR DISCOUNT' }}
-                    @endif
+                    PURCHASE
                     </h1>
                 </div>
                 <div class="col-md-12">
                     <ul class="ps-0">
                         <li><a href="{{ route('front.home') }}">Home</a></li>
-                        @if ($type == 'request')
-                            <li><a href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}">{{ 'REQUEST SAMPLE' }}</a>
+                        <li><a href="#">{{ $reports->heading }}</a>
                             </li>
-                        @elseif($type == 'enquiry')
-                            <li><a
-                                    href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'enquiry']) }}">{{ 'ENQUIRY BEFORE BUYING' }}</a>
-                            </li>
-                        @elseif($type == 'discount')
-                            <li><a
-                                    href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'discount']) }}">{{ 'ASK FOR DISCOUNT' }}</a>
-                            </li>
-                        @endif
+
 
                     </ul>
                 </div>
@@ -56,13 +41,7 @@
                 <div class="col-lg-8 mb-1-9 mb-lg-0">
                     <div class="section-heading center">
                         <h3>
-                            @if ($type == 'request')
-                                {{ 'REQUEST SAMPLE' }}
-                            @elseif($type == 'enquiry')
-                                {{ 'ENQUIRY BEFORE BUYING' }}
-                            @elseif($type == 'discount')
-                                {{ 'ASK FOR DISCOUNT' }}
-                            @endif
+                        PURCHASE
                         </h3>
                     </div>
                     <div class="title text-center mb-2">
@@ -84,19 +63,10 @@
                                 <div class="row">
 
                                     <!-- Begin Text input element -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
                                                 <label>Name:</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Text input element -->
-                                    <!-- Begin Text input element -->
-                                    <div class="col-md-8">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <input type="hidden" name="types" value="{{ $type }}">
                                                 <input type="hidden" name="report_id"
                                                     value="@if (isset($reports->id)) {{ $reports->id }} @endif">
                                                 <input class="form-control" id="name" type="text" name="name"
@@ -106,38 +76,32 @@
                                     </div>
                                     <!-- End Text input element -->
                                     <!-- Begin Text input element -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
-                                                <label>Email:</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Text input element -->
-                                    <!-- Begin Text input element -->
-                                    <div class="col-md-8">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <input class="form-control" id="email" type="text" name="email"
-                                                    placeholder="Enter Email" required />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Text input element -->
+                                            <label>Company Name:</label>
+                                                <input class="form-control" id="name" type="text" name="name"
+                                                    placeholder="Enter Company Name" required />
 
-                                    <!-- Begin Text input element -->
-                                    <div class="col-md-4">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="quform-element form-group">
+                                            <div class="quform-input">
+                                            <label>Job Title:</label>
+                                                <input class="form-control" id="name" type="text" name="name"
+                                                    placeholder="Job Title" required />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Text input element -->
+                                    <div class="col-md-6">
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
                                                 <label>Country:</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Text input element -->
-                                    <!-- Begin Text input element -->
-                                    <div class="col-md-8">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
                                                 <select class="form-control" id="country" type="text" name="country"
                                                     placeholder="Select Country" required>
                                                     <option value="">Select Country</option>
@@ -147,92 +111,117 @@
                                                             </option>
                                                         @endforeach
                                                     @endif
-                                                    <option value="USA">USA</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="quform-element form-group">
+                                            <div class="quform-input">
+                                                <label>State:</label>
+                                                <select class="form-control" id="country" type="text" name="country"
+                                                    placeholder="Select State" required>
+                                                    <option value="">Select Country</option>
+                                                    @if (getCountry())
+                                                        @foreach (getCountry() as $country)
+                                                            <option value="{{ $country['name'] }}">{{ $country['name'] }}
+                                                            </option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="quform-element form-group">
+                                            <div class="quform-input">
+                                            <label>City:</label>
+                                                <input class="form-control" id="name" type="text" name="name"
+                                                    placeholder="City name" required />
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="quform-element form-group">
+                                            <div class="quform-input">
+                                            <label>Zip Code:</label>
+                                                <input class="form-control" id="name" type="text" name="name"
+                                                    placeholder="Zip Code" required />
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Begin Text input element -->
+                                    <div class="col-md-6">
+                                        <div class="quform-element form-group">
+                                            <div class="quform-input">
+                                                <label>Email:</label>
+                                                <input class="form-control" id="email" type="text" name="email"
+                                                    placeholder="Enter Email" required />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- End Text input element -->
+                                    <div class="col-md-6">
+                                        <div class="quform-element form-group">
+                                            <div class="quform-input">
+                                                <label>Contact No:</label>
+                                                <input class="form-control" id="contact_no" type="number" name="contact_no"
+                                                    placeholder="Enter Contact No" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Begin Text input element -->
+                                    <div class="col-md-6">
+                                        <div class="quform-element form-group">
+                                            <div class="quform-input">
+                                                <label>License Type:</label>
+                                                <select class="form-control" id="country" type="text" name="country"
+                                                    placeholder="Select State" required>
+                                                    <option value="">Select License Type</option>
+                                                    @if ($reports->getReportLicenses)
+                                                    <option value="{{ $reports->getReportLicenses->single_user}}">{{ 'Single User' }}($ {{$reports->getReportLicenses->single_user}})</option>
+                                                    <option value="{{ $reports->getReportLicenses->multi_user}}">{{ 'Multi User' }}($ {{$reports->getReportLicenses->multi_user}})</option>
+                                                    <option value="{{ $reports->getReportLicenses->enterprise_user}}">{{ 'EnterPrise User' }}($ {{$reports->getReportLicenses->enterprise_user}})</option>
+                                                    @endif
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- End Text input element -->
                                     <!-- Begin Text input element -->
-                                    <div class="col-md-4">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <label>Contact No:</label>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <!-- End Text input element -->
                                     <!-- Begin Text input element -->
-                                    <div class="col-md-8">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <input class="form-control" id="contact_no" type="number" name="contact_no"
-                                                    placeholder="Enter Contact No" required />
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <!-- End Text input element -->
                                     <!-- Begin Text input element -->
-                                    <div class="col-md-4">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <label>Company/Organization:</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Text input element -->
-                                    <!-- Begin Text input element -->
-                                    <div class="col-md-8">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <input class="form-control" id="subject" type="text"
-                                                    name="organizations" placeholder="Enter Company/Organization Name"
-                                                    required />
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <!-- End Text input element -->
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
-                                                <label>15% Free Customization <br />
-                                                    (Mention the sections of the report that you would like to review so we
-                                                    will share the relevant chapters of report, for your Study):</label>
+                                                <label>Address :</label>
+                                                    <textarea class="form-control h-100" id="message" name="others" rows="6"
+                                                    placeholder="Address" required></textarea>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Begin Textarea element -->
-                                    <div class="col-md-8">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <textarea class="form-control h-100" id="message" name="others" rows="6"
-                                                    placeholder="Any other requirement" required></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <!-- End Textarea element -->
-                                    <div class="col-md-4">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                            <div class="captcha">
-                                                <span>{!! captcha_img() !!}</span>
-                                                <a type="button" class="btn btn-danger" class="reload" id="reload">
-                                                    &#x21bb;
-</a>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
+
                                     <!-- Begin Submit button -->
                                     <div class="col-md-12 text-center">
                                         <div class="quform-submit-inner">
@@ -346,7 +335,7 @@
        $(this).find('.btn-submit').prop('disabled', true);
        $(this).find('.btn-submit').html('Loading ...');
 
-       
+
        $(this).find('button[type="button"]').prop('disabled', true);
        $(this).find('button[type="button"]').html('Loading ...');
 

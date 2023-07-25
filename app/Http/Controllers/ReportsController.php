@@ -20,6 +20,7 @@ use App\Models\CagrModel;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ExportReport;
 use App\Imports\ReportContentImport;
+use Illuminate\Support\Facades\URL;
 
 class ReportsController extends Controller
 {
@@ -32,7 +33,7 @@ class ReportsController extends Controller
     public function list(Request $request)
     {
         if ($request->ajax()) {
-            $data = ReportsModel::with('getCategoryName')->select(['id','category_id','heading','url','pages','publish_month'])->orderBy('id','desc');
+            $data = ReportsModel::with(['getCategoryName','getSubCategoryName'])->select(['id','category_id','sub_category_id','heading','url','pages','publish_month'])->orderBy('id','desc');
             return DataTables::of($data)
                     ->addIndexColumn()
                ->addColumn('category_id', function($row){
@@ -46,6 +47,20 @@ class ReportsController extends Controller
                 }
 
                 return $contents;
+              })
+
+              ->addColumn('url', function($row){
+                if(isset($row->url))
+                {
+                  $contents = URL::to('report/').'/'.strtolower($row->getCategoryName->cat_name).'/'.strtolower($row->getSubCategoryName->sub_category).'/'.$row->url;
+                 $url='<a  href="'.$contents.'">'.$contents.'</a>';
+                }
+                else
+                {
+                  $url = '';
+                }
+
+                return $url;
               })
 
 
@@ -90,7 +105,7 @@ class ReportsController extends Controller
 
                             return $btn;
                     })
-                    ->rawColumns(['category_id','action'])
+                    ->rawColumns(['category_id','url','action'])
                     ->make(true);
         }
     }

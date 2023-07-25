@@ -14,7 +14,7 @@
                     <div class="col-md-12">
                         <ul class="ps-0">
                             <li><a href="{{route('front.home')}}">Home</a></li>
-                            <li><a href="#!">Press Release Details</a></li>
+                            <li><a href="{{route('front.press-releases')}}">Press Release Details</a></li>
                         </ul>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                     <!-- end blog left -->

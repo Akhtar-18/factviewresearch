@@ -1,12 +1,3 @@
-/*-----------------------------------------------------------------------------------
-
-    Theme Name: Fabrex - Multipurpose Business and Admin Template
-    Description: Multipurpose Business and Admin Template
-    Author: Chitrakoot Web
-    Version: 3.4
-
-    ---------------------------------- */
-
 !(function (g) {
     "use strict";
     var o,

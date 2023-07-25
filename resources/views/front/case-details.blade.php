@@ -14,7 +14,7 @@
                     <div class="col-md-12">
                         <ul class="ps-0">
                             <li><a href="{{route('front.home')}}">Home</a></li>
-                            <li><a href="#!">Case Studies Details</a></li>
+                            <li><a href="{{route('front.case-studies')}}">Case Studies Details</a></li>
                         </ul>
                     </div>
                 </div>

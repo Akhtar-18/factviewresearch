@@ -102,20 +102,17 @@
                                     <!-- Begin Captcha element -->
                                     <div class="col-md-12">
                                         <div class="quform-element">
-                                            <div class="form-group">
-                                                <div class="quform-input">
-                                                    <input class="form-control" id="type_the_word" type="text"
-                                                        name="type_the_word" placeholder="Type the below word" />
-                                                </div>
+                                            <div class="form-group mt-4 mb-4">
+                                            <div class="captcha">
+                                                <span>{!! captcha_img() !!}</span>
+                                                <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                                    &#x21bb;
+                                                </button>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="quform-captcha">
-                                                    <div class="quform-captcha-inner">
-                                                        <img src="{{ asset('front/quform/images/captcha/courier-new-light.png') }}"
-                                                            alt="...">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                                        </div>
                                         </div>
                                     </div>
                                     <!-- End Captcha element -->
@@ -123,7 +120,7 @@
                                     <!-- Begin Submit button -->
                                     <div class="col-md-12">
                                         <div class="quform-submit-inner">
-                                            <button class="butn btn-submit" type="button"><span>Sumbit
+                                            <button class="butn btn-submit" type="button"><span>Submit
                                                     comment</span></button>
                                         </div>
                                         <div class="quform-loading-wrap text-start"><span class="quform-loading"></span>
@@ -251,4 +248,16 @@
             });
         }
     </script>
+
+<script type="text/javascript">
+    $('#reload').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: 'reload-captcha',
+            success: function (data) {
+                $(".captcha span").html(data.captcha);
+            }
+        });
+    });
+</script>
 @endsection

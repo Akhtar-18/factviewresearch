@@ -135,40 +135,40 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="mb-2">Customized <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="customized">@if(isset($report->customized)){{$report->customized}}@endif</textarea>
+                                <textarea class="form-control"  name="customized" rows="12">@if(isset($report->customized)){{$report->customized}}@endif</textarea>
                                 @if ($errors->has('customized'))
                                     <span class="text-danger">{{ $errors->first('customized') }}</span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="mb-2">Summary/Description <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="description">@if(isset($report->description)){{$report->description}}@endif</textarea>
+                                <textarea class="form-control"  name="description" rows="12">@if(isset($report->description)){{$report->description}}@endif</textarea>
                                 @if ($errors->has('description'))
                                     <span class="text-danger">{{ $errors->first('description') }}</span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="mb-2">Table of Contents <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="toc">@if(isset($report->toc)){{$report->toc}}@endif</textarea>
+                                <textarea class="form-control"  name="toc" rows="12">@if(isset($report->toc)){{$report->toc}}@endif</textarea>
                                 @if ($errors->has('toc'))
                                     <span class="text-danger">{{ $errors->first('toc') }}</span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="mb-2">Segmentation <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="segment">@if(isset($report->segment)){{$report->segment}}@endif</textarea>
+                                <textarea class="form-control"  name="segment" rows="12">@if(isset($report->segment)){{$report->segment}}@endif</textarea>
                                 @if ($errors->has('segment'))
                                     <span class="text-danger">{{ $errors->first('segment') }}</span>
                                 @endif
@@ -178,7 +178,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="mb-2">Methodology <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="methodology">@if(isset($report->methodology)){{$report->methodology}}@endif</textarea>
+                                <textarea class="form-control"  name="methodology" rows="12">@if(isset($report->methodology)){{$report->methodology}}@endif</textarea>
                                 @if ($errors->has('methodology'))
                                     <span class="text-danger">{{ $errors->first('methodology') }}</span>
                                 @endif
@@ -188,37 +188,37 @@
                             <hr class="bg-info">
                             <p><b> SEO Section</b></p>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="mb-2">Schema <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="schema">@if(isset($report->schema)){{$report->schema}}@endif</textarea>
+                                <textarea class="form-control"  name="schema" rows="12">@if(isset($report->schema)){{$report->schema}}@endif</textarea>
                                 @if ($errors->has('schema'))
                                     <span class="text-danger">{{ $errors->first('schema') }}</span>
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="mb-2">Meta Title <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="meta_title">@if(isset($report->meta_title)){{$report->meta_title}}@endif</textarea>
+                                <textarea class="form-control"  name="meta_title" rows="12">@if(isset($report->meta_title)){{$report->meta_title}}@endif</textarea>
                                 @if ($errors->has('meta_title'))
                                     <span class="text-danger">{{ $errors->first('meta_title') }}</span>
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="mb-2">Meta Description <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="meta_des">@if(isset($report->meta_des)){{$report->meta_des}}@endif</textarea>
+                                <textarea class="form-control"  name="meta_des" rows="12">@if(isset($report->meta_des)){{$report->meta_des}}@endif</textarea>
                                 @if ($errors->has('meta_des'))
                                     <span class="text-danger">{{ $errors->first('meta_des') }}</span>
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="mb-2">Meta Keywords <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="metal_keywords">@if(isset($report->metal_keywords)){{$report->metal_keywords}}@endif</textarea>
+                                <textarea class="form-control"  name="metal_keywords" rows="12">@if(isset($report->metal_keywords)){{$report->metal_keywords}}@endif</textarea>
                                 @if ($errors->has('metal_keywords'))
                                     <span class="text-danger">{{ $errors->first('metal_keywords') }}</span>
                                 @endif
@@ -317,7 +317,7 @@
                                         <label class="mb-2">CAGR<span class="text-danger"></span></label>
                                         <input type="hidden" name="cagr_id" value="@if(isset($report->getReportCAGR->id)){{$report->getReportCAGR->id}}@endif">
                                         <input type="text" class="form-control" name="cagr"
-                                        placeholder="CAGR" value="@if(isset($report->getReportCAGR->cagr)){{$report->getReportCAGR->cagr}}@endif" required>
+                                        placeholder="CAGR" value="@if(isset($report->getReportCAGR->cagr)){{$report->getReportCAGR->cagr}}@endif">
                                     </div>
                                 </div>
                             </div>

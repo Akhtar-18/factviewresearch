@@ -4,129 +4,75 @@
 @section('title', 'Home')
 @section('frontpage')
 
+<style> /*hide mobile view for desktop view*/
+    .mobile-view {display:none}
+      @media all and (max-width :767) {
+      .desktop-view {
+        display:none;
+      }
+     .mobile-view{
+      display:block;
+      }
+     }
+
+ </style>
     <!-- REVOLUTION SLIDER
             ================================================== -->
-    <div class="rev_slider_wrapper custom-controls custom-paragraph">
-        <div id="rev_slider_2" class="rev_slider" style="display: none;" data-version="5.4.5">
-            <ul>
+
+
+            <div class="desktop-view">
+                <section class="top-position top-position3">
+                    <div class="row slider-fade">
+                        <div class="owl-carousel owl-theme w-100">
+                            @if (GetSlider())
+                        @foreach (GetSlider() as $list)
+                            <div class="text-center item bg-img" data-overlay-dark="7" data-background="{{ asset('images') }}/{{ $list->slider_image }}">
+                                <div class="h-100 d-table caption position-relative">
+                                    <div class="overflow-hidden d-table-cell align-middle h-100">
+                                        <h1 class="alt-font text-success m-0">{{ $list->heading }}</h1>
+                                        <h3 class="text-warning">{{ $list->subheading }}</h3>
+                                        <!-- <p class="d-none d-lg-block mb-3 mb-lg-4">We provide best for our client and respect their business design idea.</p> -->
+                                        <p><a href="#!" class="butn medium primary">
+                                            <span class="alt-font">Learn More</span><i class="fas fa-angle-right text-white ms-2"></i>
+                                        </a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            @endif
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+<div class="mobile-view">
+    <section class="top-position top-position3">
+        <div class="row slider-fade">
+            <div class="owl-carousel owl-theme w-100">
                 @if (GetSlider())
-                    @foreach (GetSlider() as $list)
-                        <li data-transition="parallaxtoright">
-
-                            <!-- overlay -->
-                            <div class="opacity-extra-medium bg-black z-index-1"></div>
-
-                            <img src="{{ asset('images') }}/{{ $list->slider_image }}" alt="slide1" class="rev-slidebg">
-
-                            <!-- layer 1 -->
-                            <div class="tp-caption tp-resizeme max-style alt-font" id="slide-2-layer-1"
-                                data-x="['center','center','center','center']"
-                                data-y="['middle','middle','middle','middle']" data-hoffset="['0','0','0','0']"
-                                data-voffset="['-100','-100','-100','-120']" data-width="none" data-height="none"
-                                data-whitespace="nowrap" data-transform_idle="o:1;"
-                                data-transform_in="x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;"
-                                data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
-                                data-mask_in="x:[100%];y:0;s:inherit;e:inherit;" data-start="1000" data-splitin="chars"
-                                data-splitout="none" data-responsive_offset="on" data-elementdelay="0.05"
-                                style="z-index: 5; white-space: nowrap; color: #fff; font-weight: 700; text-transform: uppercase;">
-                                {{ $list->heading }}
-                            </div>
-                            <!-- end layer 1 -->
-
-                            <!-- layer nr. 2 -->
-                            <div class="tp-caption tp-resizeme slider-text" id="slide-2-layer-2"
-                                data-x="['center','center','center','center']"
-                                data-y="['middle','middle','middle','middle']" data-hoffset="['0','0','0','0']"
-                                data-voffset="['-20','-20','-20','-40']" data-fontsize="['18','20','20','20']"
-                                data-lineheight="['30','30','28','28']" data-width="none" data-height="none"
-                                data-transform_idle="o:1;"
-                                data-transform_in="x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;"
-                                data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
-                                data-mask_in="x:[-100%];y:0;s:inherit;e:inherit;" data-start="2500" data-splitin="none"
-                                data-splitout="none" data-responsive_offset="on"
-                                style="z-index: 5; white-space: nowrap; color: #fff; text-align: center;">
-                                <p class="white-space text-center px-3 px-md-0">{{ $list->subheading }}</p>
-                            </div>
-                            <!-- layer nr. 3 -->
-                            <!--<div class="tp-caption tp-resizeme" id="slide-2-layer-3"
-                                data-x="['center','center','center','center']"
-                                data-y="['middle','middle','middle','middle']" data-hoffset="['0','0','0','0']"
-                                data-voffset="['65','65','65','65']" data-fontsize="['18','18','14','14']"
-                                data-lineheight="['26','26','22','22']" data-width="none" data-height="none"
-                                data-transform_idle="o:1;"
-                                data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
-                                data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" data-start="2800"
-                                data-splitin="none" data-splitout="none" data-responsive_offset="on"
-                                style="z-index: 5; white-space: nowrap; line-height: 22px;"><a href="#!"
-                                    class="butn primary"><span>Contact Us</span></a>
-                            </div>-->
-                        </li>
-                    @endforeach
+            @foreach (GetSlider() as $list)
+                <div class="text-center item bg-img" data-overlay-dark="7" data-background="{{ asset('images') }}/{{ $list->slider_image }}">
+                    <div class="h-100 d-table caption position-relative">
+                        <div class="overflow-hidden d-table-cell align-middle h-100">
+                            <h3 class="alt-font text-white m-0">{{ $list->heading }}</h3>
+                            <h1 class="text-white">{{ $list->subheading }}</h1>
+                            <!--<p class="d-none d-lg-block mb-3 mb-lg-4">We provide best for our client and respect their business design idea.</p>-->
+                            <a href="{{ route('front.contact') }}" class="butn medium primary">
+                                <span class="alt-font">Contact Us</span><i class="fas fa-angle-right text-white ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
                 @endif
-            </ul>
+
+            </div>
         </div>
-    </div>
+    </section>
+</div>
 
-    <div class="rev_slider_wrapper custom-controls custom-paragraph d-none d-md-block">
-        <div id="rev_slider_2" class="rev_slider" style="display: none;" data-version="5.4.5">
-            <ul>
-                @if (GetSlider())
-                    @foreach (GetSlider() as $list)
-                        <li data-transition="parallaxtoright">
 
-                            <!-- overlay -->
-                            <div class="opacity-extra-medium bg-black z-index-1"></div>
 
-                            <img src="{{ asset('images') }}/{{ $list->slider_image }}" alt="slide1" class="rev-slidebg">
-
-                            <!-- layer 1 -->
-                            <div class="tp-caption tp-resizeme max-style alt-font" id="slide-2-layer-1"
-                                data-x="['center','center','center','center']"
-                                data-y="['middle','middle','middle','middle']" data-hoffset="['0','0','0','0']"
-                                data-voffset="['-100','-100','-100','-120']" data-width="none" data-height="none"
-                                data-whitespace="nowrap" data-transform_idle="o:1;"
-                                data-transform_in="x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;"
-                                data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
-                                data-mask_in="x:[100%];y:0;s:inherit;e:inherit;" data-start="1000" data-splitin="chars"
-                                data-splitout="none" data-responsive_offset="on" data-elementdelay="0.05"
-                                style="z-index: 5; white-space: nowrap; color: #fff; font-weight: 700; text-transform: uppercase;">
-                                {{ $list->heading }}
-                            </div>
-                            <!-- end layer 1 -->
-
-                            <!-- layer nr. 2 -->
-                            <div class="tp-caption tp-resizeme slider-text" id="slide-2-layer-2"
-                                data-x="['center','center','center','center']"
-                                data-y="['middle','middle','middle','middle']" data-hoffset="['0','0','0','0']"
-                                data-voffset="['-20','-20','-20','-40']" data-fontsize="['18','20','20','20']"
-                                data-lineheight="['30','30','28','28']" data-width="none" data-height="none"
-                                data-transform_idle="o:1;"
-                                data-transform_in="x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;"
-                                data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
-                                data-mask_in="x:[-100%];y:0;s:inherit;e:inherit;" data-start="2500" data-splitin="none"
-                                data-splitout="none" data-responsive_offset="on"
-                                style="z-index: 5; white-space: nowrap; color: #fff; text-align: center;">
-                                <p class="white-space text-center px-3 px-md-0">{{ $list->subheading }}</p>
-                            </div>
-                            <!-- layer nr. 3 -->
-                            <!--<div class="tp-caption tp-resizeme" id="slide-2-layer-3"
-                                data-x="['center','center','center','center']"
-                                data-y="['middle','middle','middle','middle']" data-hoffset="['0','0','0','0']"
-                                data-voffset="['65','65','65','65']" data-fontsize="['18','18','14','14']"
-                                data-lineheight="['26','26','22','22']" data-width="none" data-height="none"
-                                data-transform_idle="o:1;"
-                                data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
-                                data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" data-start="2800"
-                                data-splitin="none" data-splitout="none" data-responsive_offset="on"
-                                style="z-index: 5; white-space: nowrap; line-height: 22px;"><a href="#!"
-                                    class="butn primary"><span>Contact Us</span></a>
-                            </div>-->
-                        </li>
-                    @endforeach
-                @endif
-            </ul>
-        </div>
-    </div>
 
     <!-- ABOUT
             ================================================== -->
@@ -411,7 +357,7 @@
 
     <!-- BLOGS
             ================================================== -->
-    <!-- <section>
+    <section>
                 <div class="container">
 
                     <div class="row">
@@ -428,34 +374,39 @@
                     </div>
 
                     <div class="row mt-n1-9">
-
+                        @if(count($blogs))
+                        @foreach($blogs as $blog)
                         <div class="col-md-6 col-lg-4 mt-1-9">
                             <article>
                                 <div class="position-relative">
-                                    <a href="blog-post.html">
-                                        <img src="{{ asset('front/img/blog/blog-01.jpg') }}" alt="...">
+                                    <a href="{{route('front.blog',$blog->url)}}">
+                                        <img src="{{ asset('blogs') }}/{{$blog->image}}" alt="{{$blog->image_alt}}">
                                     </a>
-                                    <div class="position-absolute position-right position-bottom"><a href="blog-list-sidebar.html" class="text-uppercase display-32 alt-font py-2 px-3 d-inline-block bg-black text-white">Redesign</a></div>
+                                    <div class="position-absolute position-right position-bottom"><a href="{{route('front.blog',$blog->url)}}" class="text-uppercase display-32 alt-font py-2 px-3 d-inline-block bg-black text-white">Redesign</a></div>
                                 </div>
                                 <div class="border border-width-2 border-color-extra-light-gray p-1-9">
-                                    <h3 class="h5 mb-3"><a href="blog-post.html" class="post-title d-block">Create some different design for Redesigning With Individuality.</a></h3>
+                                    <h3 class="h5 mb-3"><a href="{{route('front.blog',$blog->url)}}" class="post-title d-block">{{$blog->heading}}</a></h3>
                                     <div class="author">
-                                        <span class="text-uppercase display-30 d-inline-block">by <a href="#!">JAY BENJAMIN</a>&nbsp;&nbsp;|&nbsp;&nbsp;20 April 2020</span>
+                                        <span class="text-uppercase display-30 d-inline-block">
+                                            <!-- by <a href="#!">JAY BENJAMIN</a>&nbsp;&nbsp;|&nbsp;&nbsp; -->
+                                        {{date('M D Y',strtotime($blog->created_at))}}</span>
                                     </div>
                                     <div class="separator-line-horrizontal-full bg-medium-gray my-3 my-lg-4"></div>
-                                    <p >Lorem ipsum dolor sit amet, tempor consectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Ut enim ad Lorem ipsum dolor sit amet ... </p>
-                                    <a href="blog-post.html" class="btn-style4 btn-small min-width-auto"><span>Read more</span></a>
+                                    <p >{!! html_entity_decode(wordLimitset($blog->description,80)) !!} </p>
+                                    <a href="{{route('front.blog',$blog->url)}}" class="btn-style4 btn-small min-width-auto"><span>Read more</span></a>
                                 </div>
                             </article>
                         </div>
+                        @endforeach
+                        @endif
 
-                        <div class="col-md-6 col-lg-4 mt-1-9">
+                        <!-- <div class="col-md-6 col-lg-4 mt-1-9">
                             <article>
                                 <div class="position-relative">
                                     <a href="blog-post.html">
                                         <img src="{{ asset('front/img/blog/blog-02.jpg') }}" alt="...">
                                     </a>
-                                    <div class="position-absolute position-right position-bottom"><a href="blog-list-sidebar.html" class="text-uppercase display-32 alt-font py-2 px-3 d-inline-block bg-black text-white">creative ideas</a></div>
+                                    <div class="position-absolute position-right position-bottom"><a href="" class="text-uppercase display-32 alt-font py-2 px-3 d-inline-block bg-black text-white">creative ideas</a></div>
                                 </div>
                                 <div class="border border-width-2 border-color-extra-light-gray p-1-9">
                                     <h3 class="h5 mb-3"><a href="blog-post.html" class="post-title d-block">Creative idea for creative design. make some new design.</a></h3>
@@ -475,7 +426,7 @@
                                     <a href="blog-post.html">
                                         <img src="{{ asset('front/img/blog/blog-03.jpg') }}" alt="...">
                                     </a>
-                                    <div class="position-absolute position-right position-bottom"><a href="blog-list-sidebar.html" class="text-uppercase display-32 alt-font py-2 px-3 d-inline-block bg-black text-white">better design</a></div>
+                                    <div class="position-absolute position-right position-bottom"><a href="" class="text-uppercase display-32 alt-font py-2 px-3 d-inline-block bg-black text-white">better design</a></div>
                                 </div>
                                 <div class="border border-width-2 border-color-extra-light-gray p-1-9">
                                     <h3 class="h5 mb-3"><a href="blog-post.html" class="post-title d-block">We are creating strong and idol blogs for a better tomorrow.</a></h3>
@@ -487,22 +438,22 @@
                                     <a href="blog-post.html" class="btn-style4 btn-small min-width-auto"><span>Read more</span></a>
                                 </div>
                             </article>
-                        </div>
+                        </div> -->
 
                     </div>
 
                 </div>
-            </section> -->
+            </section>
 
 
     <!-- Press Releases
             ================================================== -->
-    <!-- <section>
+    <section>
                 <div class="container">
 
                     <div class="row">
                         <div class="col-lg-5 mb-lg-5">
-                            <h2 class="alt-font text-uppercase title-style8">Publications</h2>
+                            <h2 class="alt-font text-uppercase title-style8">Press Releases</h2>
                         </div>
                         <div class="col-lg-7 mb-1-9 mb-lg-6">
                             <div class="d-table h-100">
@@ -515,21 +466,33 @@
 
                     <div class="row mt-n1-9">
 
+                    @if(count($press))
+                        @foreach($press as $pres)
                         <div class="col-md-6 col-lg-4 mt-1-9">
                             <article>
+                                <div class="position-relative">
+                                    <a href="{{route('front.press',$pres->url)}}">
+                                        <img src="{{ asset('press-releases') }}/{{$pres->image}}" alt="{{$pres->image_alt}}">
+                                    </a>
+                                    <div class="position-absolute position-right position-bottom"><a href="{{route('front.press',$pres->url)}}" class="text-uppercase display-32 alt-font py-2 px-3 d-inline-block bg-black text-white">Redesign</a></div>
+                                </div>
                                 <div class="border border-width-2 border-color-extra-light-gray p-1-9">
-                                    <h3 class="h5 mb-3"><a href="blog-post.html" class="post-title d-block">Create some different design for Redesigning With Individuality.</a></h3>
+                                    <h3 class="h5 mb-3"><a href="{{route('front.press',$pres->url)}}" class="post-title d-block">{{$pres->heading}}</a></h3>
                                     <div class="author">
-                                        <span class="text-uppercase display-30 d-inline-block">by <a href="#!">JAY BENJAMIN</a>&nbsp;&nbsp;|&nbsp;&nbsp;20 April 2020</span>
+                                        <span class="text-uppercase display-30 d-inline-block">
+                                            <!-- by <a href="#!">JAY BENJAMIN</a>&nbsp;&nbsp;|&nbsp;&nbsp; -->
+                                        {{date('M D Y',strtotime($pres->created_at))}}</span>
                                     </div>
                                     <div class="separator-line-horrizontal-full bg-medium-gray my-3 my-lg-4"></div>
-                                    <p >Lorem ipsum dolor sit amet, tempor consectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Ut enim ad Lorem ipsum dolor sit amet ... </p>
-                                    <a href="blog-post.html" class="btn-style4 btn-small min-width-auto"><span>Read more</span></a>
+                                    <p >{!! html_entity_decode(wordLimitset($pres->description,80)) !!} </p>
+                                    <a href="{{route('front.press',$pres->url)}}" class="btn-style4 btn-small min-width-auto"><span>Read more</span></a>
                                 </div>
                             </article>
                         </div>
+                        @endforeach
+                        @endif
 
-                        <div class="col-md-6 col-lg-4 mt-1-9">
+                        <!-- <div class="col-md-6 col-lg-4 mt-1-9">
                             <article>
                                 <div class="border border-width-2 border-color-extra-light-gray p-1-9">
                                     <h3 class="h5 mb-3"><a href="blog-post.html" class="post-title d-block">Creative idea for creative design. make some new design.</a></h3>
@@ -555,21 +518,21 @@
                                     <a href="blog-post.html" class="btn-style4 btn-small min-width-auto"><span>Read more</span></a>
                                 </div>
                             </article>
-                        </div>
+                        </div> -->
 
                     </div>
 
                 </div>
-            </section> -->
+            </section>
 
     <!-- Case Studies
             ================================================== -->
-    <!-- <section>
+    <section>
                 <div class="container">
 
                     <div class="row">
                         <div class="col-lg-5 mb-lg-5">
-                            <h2 class="alt-font text-uppercase title-style8">Publications</h2>
+                            <h2 class="alt-font text-uppercase title-style8">Case Studies</h2>
                         </div>
                         <div class="col-lg-7 mb-1-9 mb-lg-6">
                             <div class="d-table h-100">
@@ -582,21 +545,33 @@
 
                     <div class="row mt-n1-9">
 
+                    @if(count($casses))
+                        @foreach($casses as $case)
                         <div class="col-md-6 col-lg-4 mt-1-9">
                             <article>
+                                <div class="position-relative">
+                                    <a href="{{route('front.case-studie',$case->url)}}">
+                                        <img src="{{ asset('case-studies') }}/{{$case->image}}" alt="{{$case->image_alt}}">
+                                    </a>
+                                    <div class="position-absolute position-right position-bottom"><a href="{{route('front.case-studie',$case->url)}}" class="text-uppercase display-32 alt-font py-2 px-3 d-inline-block bg-black text-white">Redesign</a></div>
+                                </div>
                                 <div class="border border-width-2 border-color-extra-light-gray p-1-9">
-                                    <h3 class="h5 mb-3"><a href="blog-post.html" class="post-title d-block">Create some different design for Redesigning With Individuality.</a></h3>
+                                    <h3 class="h5 mb-3"><a href="{{route('front.case-studie',$case->url)}}" class="post-title d-block">{{$case->heading}}</a></h3>
                                     <div class="author">
-                                        <span class="text-uppercase display-30 d-inline-block">by <a href="#!">JAY BENJAMIN</a>&nbsp;&nbsp;|&nbsp;&nbsp;20 April 2020</span>
+                                        <span class="text-uppercase display-30 d-inline-block">
+                                            <!-- by <a href="#!">JAY BENJAMIN</a>&nbsp;&nbsp;|&nbsp;&nbsp; -->
+                                        {{date('M D Y',strtotime($case->created_at))}}</span>
                                     </div>
                                     <div class="separator-line-horrizontal-full bg-medium-gray my-3 my-lg-4"></div>
-                                    <p >Lorem ipsum dolor sit amet, tempor consectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Ut enim ad Lorem ipsum dolor sit amet ... </p>
-                                    <a href="blog-post.html" class="btn-style4 btn-small min-width-auto"><span>Read more</span></a>
+                                    <p >{!! html_entity_decode(wordLimitset($case->description,80)) !!} </p>
+                                    <a href="{{route('front.case-studie',$case->url)}}" class="btn-style4 btn-small min-width-auto"><span>Read more</span></a>
                                 </div>
                             </article>
                         </div>
+                        @endforeach
+                        @endif
 
-                        <div class="col-md-6 col-lg-4 mt-1-9">
+                        <!-- <div class="col-md-6 col-lg-4 mt-1-9">
                             <article>
                                 <div class="border border-width-2 border-color-extra-light-gray p-1-9">
                                     <h3 class="h5 mb-3"><a href="blog-post.html" class="post-title d-block">Creative idea for creative design. make some new design.</a></h3>
@@ -622,12 +597,12 @@
                                     <a href="blog-post.html" class="btn-style4 btn-small min-width-auto"><span>Read more</span></a>
                                 </div>
                             </article>
-                        </div>
+                        </div> -->
 
                     </div>
 
                 </div>
-            </section> -->
+            </section>
 
     @include('front.testimonial-section')
     @include('front.client-section')

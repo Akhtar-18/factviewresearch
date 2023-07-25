@@ -6,8 +6,8 @@
 <body>
 
     <h1>Dear {{ $name }}</h1>
-    <p>Yor Inquiry Type: {{ $type}}</p>
+    <p>Your Inquiry Type: {{ $type}}</p>
 
-    <p>Thank you for submitted</p>
+    <p>Thank you your {{$type}} has been submitted</p>
 </body>
 </html>

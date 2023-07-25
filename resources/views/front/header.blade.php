@@ -106,7 +106,7 @@
                     <div class="row align-items-center">
                         <div class="col-12">
                             <div class="menu_area alt-font">
-                                <nav class="navbar navbar-expand-lg navbar-light p-0">
+                                <nav class="navbar navbar-expand-lg p-0">
 
                                     <div class="navbar-header navbar-header-custom">
                                         <!-- logo -->
@@ -146,14 +146,15 @@
                                             </ul>
                                         </li>
                                         <li><a href="#!">Services</a>
-                                            <ul>
+
                                             @if (GetServiceMenu())
+                                            <ul>
                                                     @foreach (GetServiceMenu() as $service)
                                                 <li><a href="{{ route('front.service-single',$service->id) }}">{{$service->heading}}</a>
                                                 </li>
                                                 @endforeach
-                                            @endif
                                             </ul>
+                                            @endif
                                         </li>
                                         <li><a href="#!">About Us</a>
                                             <ul>

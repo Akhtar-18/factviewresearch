@@ -3,7 +3,7 @@
 @section('frontpage')
 
     <!-- PAGE TITLE
-                ==========================      ======================== -->
+                    ==========================      ======================== -->
     <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7"
         data-background="{{ asset('front/img/bg/bg5.jpg') }}">
         <div class="container">
@@ -23,7 +23,7 @@
     </section>
 
     <!-- ALL REPORTS
-                ================================================== -->
+                    ================================================== -->
     <section>
         <div class="container">
             <div class="row">
@@ -35,11 +35,13 @@
                         @foreach ($ReportCategory as $key => $cat)
                             <div class="card">
                                 <div class="card-header" id="headingOne{{ $key }}">
-                                    <a href="{{route('front.reportcategory',strtolower($cat->cat_name))}}"><h5 class="mb-0">
-                                        <button class="btn btn-link" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne{{ $key }}" aria-expanded="true"
-                                            aria-controls="collapseOne{{ $key }}">{{ $cat->cat_name }}</button>
-                                    </h5></a>
+                                    <a href="{{ route('front.reportcategory', strtolower($cat->cat_name)) }}">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" data-bs-toggle="collapse"
+                                                data-bs-target="#collapseOne{{ $key }}" aria-expanded="true"
+                                                aria-controls="collapseOne{{ $key }}">{{ $cat->cat_name }}</button>
+                                        </h5>
+                                    </a>
                                 </div>
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne{{ $key }}"
                                     data-bs-parent="#accordion">
@@ -48,7 +50,7 @@
                                             @if ($cat->getSubCategory)
                                                 @foreach ($cat->getSubCategory as $sub)
                                                     <li><a
-                                                            href="@if(isset($sub->sub_category)){{ route('front.reportsubcategory',strtolower($sub->sub_category))}}@endif">{{ $sub->sub_category }}</a>
+                                                            href="@if (isset($sub->sub_category)) {{ route('front.reportsubcategory', strtolower($sub->sub_category)) }} @endif">{{ $sub->sub_category }}</a>
                                                     </li>
                                                 @endforeach
                                             @endif

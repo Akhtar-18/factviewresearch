@@ -31,7 +31,7 @@
                     @if($whoweData)
                     @foreach($whoweData as $whowe)
                     <div class="ps-lg-1-9">
-                        <h4 class="h3 mb-4">{{$whowe->heading}}</h4>
+                        <!-- <h4 class="h3 mb-4">{{$whowe->heading}}</h4> -->
                         {{-- $whowe->content --}}
                         {!! html_entity_decode($whowe->content) !!}
                     </div>

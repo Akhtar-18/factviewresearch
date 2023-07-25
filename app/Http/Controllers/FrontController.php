@@ -34,6 +34,9 @@ class FrontController extends Controller
         $data['reportsData']=ReportsModel::with(['getCategoryName','getSubCategoryName'])->select(['id','category_id','sub_category_id','heading','url','pages','publish_month','description'])->limit(6)->get();
         $data['contactData']=ContactDetailsModel::select(['company_name','address','contact_no','email_address','facebook','twitter','instagram','linkedin'])->get();
         $data['services']=ServicesModel::select(['id','heading','content'])->latest('id')->limit(6)->get();
+        $data['blogs']=Blog::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->limit(3)->get();
+        $data['press']=PressRelease::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->limit(3)->get();
+        $data['casses']=CaseStudie::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->limit(3)->get();
         return view('front.home',$data);
     }
 
@@ -260,6 +263,7 @@ class FrontController extends Controller
     }
     function storeenquiry(Request $request)
     {
+        //return $request;
 
         $validator = Validator::make($request->all(), [
 
@@ -268,6 +272,7 @@ class FrontController extends Controller
             'country'        => 'required',
             'contact_no'  => 'required|numeric',
             'organizations' => 'required',
+            'captcha' => 'required|captcha'
 
         ]);
 
@@ -278,20 +283,28 @@ class FrontController extends Controller
             return response()->json(['error' => $validator->errors()->all()]);
 
         }
-
+        
 
         $type = $request->types;
         $name = $request->name;
         $input=$request->all();
         ReportEnquiryModel::create($input);
-
+        
 
 
         $email = 'minhaj.khan@researchforetell.com';
 
         Mail::to($email)->send(new MyReportEnquiry($type,$name));
         Mail::to($email)->send(new AdminReportEnquir($type,$name));
-        return response()->json([ 'success'=> 'Form is successfully submitted!']);
+        return response()->json([ 'success'=> 'Form is successfully submitted!',
+                                'id'=>$request->report_id]);
+    }
+
+    function enquerythankyou($id)
+    {
+        $reports=ReportsModel::latest('id')
+             ->select(['id','heading'])->find($id);
+        return view('front.thankyou',compact('reports'));
     }
 
     function storecontact(Request $request)
@@ -303,6 +316,7 @@ class FrontController extends Controller
             'email'          => 'required|email',
             'contact_no'  => 'required|numeric',
             'subject' => 'required',
+            'captcha' => 'required|captcha'
 
         ]);
 
@@ -385,4 +399,19 @@ class FrontController extends Controller
         return view('front.case-details',$data);
     }
 
+    public function reloadCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img()]);
+    }
+
+    public function reloadformCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img()]);
+    }
+    
+    public function buynow($id)
+    {
+        $reports=ReportsModel::with(['getCategoryName','getReportLicenses'])->select(['id','url','publish_month','category_id','heading','pages'])->find($id);
+        return view('front.buynowform',compact('reports'));
+    }
 }

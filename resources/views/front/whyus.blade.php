@@ -33,7 +33,7 @@
             @if (isset($whyusData))
                 @foreach ($whyusData as $whyus)
                     <div class="ps-lg-1-9">
-                        <h4 class="h3 mb-4">{{ $whyus->heading }}</h4>
+                        <!-- <h4 class="h3 mb-4">{{ $whyus->heading }}</h4> -->
                         {{-- $about->content --}}
                         {!! html_entity_decode($whyus->content) !!}
                     </div>

@@ -57,6 +57,8 @@ Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact
 Route::get('/form', [FrontController::class, 'form'])->name('front.form');
 Route::post('/submit-enquiry', [FrontController::class, 'storeenquiry'])->name('submit.enquiry');
 Route::post('/submit-contact-enquiry', [FrontController::class, 'storecontact'])->name('submit.contact_enquiry');
+Route::get('/thankyou/{id}', [FrontController::class, 'enquerythankyou'])->name('front.thankyou');
+Route::get('/buynow/{id}', [FrontController::class, 'buynow'])->name('front.buynow');
 
 //blog
 Route::get('/all-blogs', [FrontController::class, 'blogs'])->name('front.blogs');
@@ -75,6 +77,9 @@ Route::get('/all-case-studies', [FrontController::class, 'casestudies'])->name('
 Route::get('/fetch_case', [FrontController::class, 'fetch_case'])->name('front.fetch_case');
 Route::get('/case-studie/{url}', [FrontController::class, 'casestudiedetails'])->name('front.case-studie');
 
+
+Route::get('/reload-captcha', [FrontController::class, 'reloadCaptcha']);
+Route::get('/reload-from-captcha', [FrontController::class, 'reloadformCaptcha'])->name('reload-from-captcha');
 
 Auth::routes();
 
