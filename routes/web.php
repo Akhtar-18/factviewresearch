@@ -14,7 +14,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CareersController;
-use App\Http\Controllers\CaseStudieController;
+use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\ContactDetailsController;
 use App\Http\Controllers\FrontController;
@@ -75,7 +75,7 @@ Route::get('/press-release/{url}', [FrontController::class, 'press'])->name('fro
 /*********************** Case Studies Front Route******************************/
 Route::get('/all-case-studies', [FrontController::class, 'casestudies'])->name('front.case-studies');
 Route::get('/fetch_case', [FrontController::class, 'fetch_case'])->name('front.fetch_case');
-Route::get('/case-studie/{url}', [FrontController::class, 'casestudiedetails'])->name('front.case-studie');
+Route::get('/case-study/{url}', [FrontController::class, 'casestudydetails'])->name('front.case-study');
 
 
 Route::get('/reload-captcha', [FrontController::class, 'reloadCaptcha']);
@@ -271,7 +271,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::match(['GET','POST'],'/delete/{id}',[BlogCategoryController::class,'delete']);
         });
 
-        
+
          /*******************Blogs Route****************************/
          Route::group(['prefix'=>'admin-blogs'],function(){
             Route::get('/',[BlogController::class,'index'])->name('report.admin-blogs.index');
@@ -296,13 +296,13 @@ Route::group(['middleware' => ['auth']], function() {
 
          /*******************Case Studies Route****************************/
          Route::group(['prefix'=>'admin-case-studies'],function(){
-            Route::get('/',[CaseStudieController::class,'index'])->name('report.admin-case-studies.index');
-            Route::get('/list',[CaseStudieController::class,'list']);
-            Route::get('/add',[CaseStudieController::class,'add'])->name('admin.admin-case-studies.add');
-            Route::post('/submit',[CaseStudieController::class,'submit']);
-            Route::get('/edit/{id}',[CaseStudieController::class,'edit']);
-            Route::match(['GET','POST'],'/update/{id}',[CaseStudieController::class,'update']);
-            Route::match(['GET','POST'],'/delete/{id}',[CaseStudieController::class,'delete']);
+            Route::get('/',[CaseStudyController::class,'index'])->name('report.admin-case-studies.index');
+            Route::get('/list',[CaseStudyController::class,'list']);
+            Route::get('/add',[CaseStudyController::class,'add'])->name('admin.admin-case-studies.add');
+            Route::post('/submit',[CaseStudyController::class,'submit']);
+            Route::get('/edit/{id}',[CaseStudyController::class,'edit']);
+            Route::match(['GET','POST'],'/update/{id}',[CaseStudyController::class,'update']);
+            Route::match(['GET','POST'],'/delete/{id}',[CaseStudyController::class,'delete']);
         });
 
 });

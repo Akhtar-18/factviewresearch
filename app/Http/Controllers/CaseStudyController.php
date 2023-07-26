@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CaseStudie;
+use App\Models\CaseStudy;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class CaseStudieController extends Controller
+class CaseStudyController extends Controller
 {
     public function index()
     {
@@ -17,14 +17,14 @@ class CaseStudieController extends Controller
     public function list(Request $request)
     {
         if ($request->ajax()) {
-            $data = CaseStudie::select(['id','heading','url'])->latest('id');
+            $data = CaseStudy::select(['id','heading','url'])->latest('id');
             return DataTables::of($data)
                     ->addIndexColumn()
               ->addColumn('action', function($row){
-                
+
                   $editbtn='<a  href="'.url('admin/admin-case-studies/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
                   $deletebtn='<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#DeleteModal'.$row->id.'"><i class="fa fa-trash"></i></a>';
-               
+
                 $btn = $editbtn.'|'.$deletebtn.'
                                 <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true">
@@ -76,13 +76,13 @@ class CaseStudieController extends Controller
         }
         $input = $request->all();
         $input['image']=$image;
-        CaseStudie::create($input);
+        CaseStudy::create($input);
         return redirect('/admin/admin-case-studies')->with('success','Case Studies created successfully.');
 
     }
    public function edit($id)
    {
-      $case_studies=CaseStudie::find($id);
+      $case_studies=CaseStudy::find($id);
       if($case_studies =='')
       {
         return redirect('admin/admin-case-studies/')
@@ -102,7 +102,7 @@ class CaseStudieController extends Controller
                 'url'=>'required'
         ]);
       $input = $request->all();
-      $blog=CaseStudie::find($id);
+      $blog=CaseStudy::find($id);
         if ($request->file('image'))
         {
             $image=ImageUpload('case-studies',$request->file('image'));
@@ -118,7 +118,7 @@ class CaseStudieController extends Controller
    }
   public function delete($id)
   {
-    $blog=CaseStudie::find($id);
+    $blog=CaseStudy::find($id);
     $blog->delete();
     return redirect('admin/admin-case-studies/')->with('success','Case Studies  Deleted successfully');
   }

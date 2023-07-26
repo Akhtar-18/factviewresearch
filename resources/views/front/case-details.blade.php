@@ -9,12 +9,13 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <h1>Case Studies Details</h1>
+                        <h1>{{$case->heading}}</h1>
                     </div>
                     <div class="col-md-12">
                         <ul class="ps-0">
                             <li><a href="{{route('front.home')}}">Home</a></li>
-                            <li><a href="{{route('front.case-studies')}}">Case Studies Details</a></li>
+                            <li><a href="{{route('front.case-studies')}}">{{$case->heading}}</a></li>
+                            <li><a href="{{route('front.case-study', ['url' => $case->url])}}">{{$case->heading}}</a></li>
                         </ul>
                     </div>
                 </div>

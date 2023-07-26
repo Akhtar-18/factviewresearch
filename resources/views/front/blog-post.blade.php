@@ -9,12 +9,13 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <h1>Blog Details</h1>
+                        <h1>{{$blog->heading}}</h1>
                     </div>
                     <div class="col-md-12">
                         <ul class="ps-0">
                             <li><a href="{{route('front.home')}}">Home</a></li>
-                            <li><a href="#!">Blog Details</a></li>
+                            <li><a href="{{route('front.blogs')}}">Blogs</a></li>
+                            <li><a href="{{route('front.blog', ['url' => $blog->url])}}">{{$blog->heading}}</a></li>
                         </ul>
                     </div>
                 </div>

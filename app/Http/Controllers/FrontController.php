@@ -6,7 +6,7 @@ use App\Mail\AdminReportEnquir;
 use App\Mail\MyReportEnquiry;
 use App\Models\AboutUsModel;
 use App\Models\Blog;
-use App\Models\CaseStudie;
+use App\Models\CaseStudy;
 use App\Models\ContactDetailsModel;
 use App\Models\ContactEnquiryModel;
 use App\Models\MarketGraphicalModel;
@@ -36,7 +36,7 @@ class FrontController extends Controller
         $data['services']=ServicesModel::select(['id','heading','content'])->latest('id')->limit(6)->get();
         $data['blogs']=Blog::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->limit(3)->get();
         $data['press']=PressRelease::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->limit(3)->get();
-        $data['casses']=CaseStudie::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->limit(3)->get();
+        $data['casses']=CaseStudy::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->limit(3)->get();
         return view('front.home',$data);
     }
 
@@ -283,13 +283,13 @@ class FrontController extends Controller
             return response()->json(['error' => $validator->errors()->all()]);
 
         }
-        
+
 
         $type = $request->types;
         $name = $request->name;
         $input=$request->all();
         ReportEnquiryModel::create($input);
-        
+
 
 
         $email = 'minhaj.khan@researchforetell.com';
@@ -381,21 +381,21 @@ class FrontController extends Controller
 
     public function casestudies()
     {
-        $data['case']=CaseStudie::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
+        $data['case']=CaseStudy::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
         return view('front.case-studies-grid',$data);
     }
     public function fetch_case(Request $request)
     {
         if($request->ajax())
         {
-            $case=CaseStudie::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
+            $case=CaseStudy::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
             return view('front.ajaxcase',compact('case'));
         }
     }
 
-    public function casestudiedetails($url,Request $request)
+    public function casestudydetails($url,Request $request)
     {
-        $data['case']=CaseStudie::select('*')->where('url',$url)->first();
+        $data['case']=CaseStudy::select('*')->where('url',$url)->first();
         return view('front.case-details',$data);
     }
 
@@ -408,7 +408,7 @@ class FrontController extends Controller
     {
         return response()->json(['captcha'=> captcha_img()]);
     }
-    
+
     public function buynow($id)
     {
         $reports=ReportsModel::with(['getCategoryName','getReportLicenses'])->select(['id','url','publish_month','category_id','heading','pages'])->find($id);

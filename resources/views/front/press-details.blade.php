@@ -9,12 +9,13 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <h1>Press Release Details</h1>
+                        <h1>{{$press->heading}}</h1>
                     </div>
                     <div class="col-md-12">
                         <ul class="ps-0">
                             <li><a href="{{route('front.home')}}">Home</a></li>
-                            <li><a href="{{route('front.press-releases')}}">Press Release Details</a></li>
+                            <li><a href="{{route('front.press-releases')}}">All Press Releases</a></li>
+                            <li><a href="{{route('front.press', ['url' => $press->url])}}">{{$press->heading}}</a></li>
                         </ul>
                     </div>
                 </div>

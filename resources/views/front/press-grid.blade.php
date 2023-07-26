@@ -14,7 +14,7 @@
                     <div class="col-md-12">
                         <ul class="ps-0">
                             <li><a href="{{route('front.home')}}">Home</a></li>
-                            <li><a href="#!">All Press Releases</a></li>
+                            <li><a href="{{route('front.press-releases')}}">All Press Releases</a></li>
                         </ul>
                     </div>
                 </div>
@@ -26,10 +26,10 @@
         ================================================== -->
         <section>
             <div class="container">
-                <div class="section-heading">
+                <!-- <div class="section-heading">
                     <h2>Read Our Recent Press Released</h2>
                     <p class="w-95 w-md-75 w-lg-55 mx-auto">Business consulting excepteur sint occaecat cupidatat consulting non proident, sunt in culpa qui officia deserunt laborum Market.</p>
-                </div>
+                </div> -->
                 <div class="row" id="lists">
                 @include('front.ajaxpress')
 
