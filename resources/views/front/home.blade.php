@@ -79,7 +79,7 @@
     <section class="md">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 mb-1-9 mb-lg-0">
+                <div class="col-lg-12 mb-1-9 mb-lg-0">
                     <div>
                         @if ($aboutData)
                             @foreach ($aboutData as $about)
@@ -92,14 +92,7 @@
                         @endif
                     </div>
                 </div>
-                <!-- <div class="col-lg-5 offset-lg-1 text-center">
-                            <div>
-                                <img src="{{ asset('front/img/content/team-11.jpg') }}" alt="..." class="w-50 float-start pe-1 border-radius-5">
-                                <img src="{{ asset('front/img/content/team-10.jpg') }}" alt="..." class="w-50 float-start ps-1 border-radius-5">
-
-                            </div>
-                        </div> -->
-                <div class="col-lg-5 story-video offset-lg-1 text-center d-table">
+                <!-- <div class="col-lg-5 story-video offset-lg-1 text-center d-table">
                     <div class="d-table-cell vertical-align-middle border-radius-5 box-shadow-primary">
                         <a class="video" href="https://www.youtube.com/watch?v=f5BBJ4ySgpo">
                             <img src="{{ asset('front/img/content/tab-img-02.jpg') }}" alt="..."
@@ -112,7 +105,7 @@
                         </a>
 
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
