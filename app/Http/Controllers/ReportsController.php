@@ -277,16 +277,32 @@ class ReportsController extends Controller
                       ];
       $reports->update($insertReportData);
       $report_id=$id;
-    $reportLicenseDat=ReportsLicenseModel::find($request->license_id);
-    /*************************Reports License Update ************************/
-    $insertLicenseData=['report_id'=>$report_id,
-                        'single_user'=>$request->single_user,
-                        'multi_user'=>$request->multi_user,
-                        'enterprise_user'=>$request->enterprise_user
-                    ];
-    $reportLicenseDat->update($insertLicenseData);
+      if($request->license_id)
+      {
+        $reportLicenseDat=ReportsLicenseModel::find($request->license_id);
+        /*************************Reports License Update ************************/
+        $insertLicenseData=['report_id'=>$report_id,
+                            'single_user'=>$request->single_user,
+                            'multi_user'=>$request->multi_user,
+                            'enterprise_user'=>$request->enterprise_user
+                        ];
+        $reportLicenseDat->update($insertLicenseData);
+      }
+      else
+      {
+        /*************************Reports License Insert ************************/
+        $insertLicenseData=['report_id'=>$report_id,
+                            'single_user'=>$request->single_user,
+                            'multi_user'=>$request->multi_user,
+                            'enterprise_user'=>$request->enterprise_user
+                        ];
+        ReportsLicenseModel::create($insertLicenseData);
+      }
+    
 
   /*************************Reports FAQ Create ************************/
+  if($request->question)
+  {
   foreach($request->question as $key=> $list)
   {
     if($request->faq_id[$key]!='')
@@ -308,6 +324,7 @@ class ReportsController extends Controller
     }
 
   }
+}
 
 
    /**************************CAGR Graph Update **********************/

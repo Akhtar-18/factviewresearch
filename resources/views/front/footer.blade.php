@@ -13,11 +13,12 @@
                     {{getCompanyDetail()->company_name}}
                     @endif
                 </a>
-                @if ($aboutData)
-                            @foreach ($aboutData as $about)
-                            <p class="mt-3 display-30">{!! html_entity_decode(wordLimitset($about->content,100)) !!}</p>
-                            @endforeach
-                        @endif
+                
+                @if (aboutData())
+                    @foreach (aboutData() as $about)
+                    <p class="mt-3 display-30">{!! html_entity_decode(wordLimitset($about->content,50)) !!}</p>
+                    @endforeach
+                @endif
                 <div class="mt-4 footer-social-icons">
                     <ul class="mb-0 ps-0">
                         <li><a href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i

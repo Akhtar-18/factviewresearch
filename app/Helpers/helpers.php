@@ -1,4 +1,6 @@
 <?php
+
+use App\Models\AboutUsModel;
 use App\Models\ClientsModel;
 use App\Models\ContactDetailsModel;
 use App\Models\HomeSliderModel;
@@ -56,6 +58,14 @@ if (! function_exists('GetServiceMenu')) {
     {
         $getServiceMenuData = ServicesModel::select(['id','heading'])->get();
         return $getServiceMenuData;
+    }
+}
+
+if (! function_exists('aboutData')) {
+    function aboutData()
+    {
+        $aboutDataData = AboutUsModel::select(['content'])->get();
+        return $aboutDataData;
     }
 }
 
