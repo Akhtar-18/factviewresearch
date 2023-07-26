@@ -416,17 +416,17 @@
                         <div class="col-md-6 col-lg-4 mt-1-9">
                             <article>
                                 <div class="position-relative">
-                                    <a href="{{ route('front.case-studie', $case->url) }}">
+                                    <a href="{{ route('front.case-study', $case->url) }}">
                                         <img src="{{ asset('case-studies') }}/{{ $case->image }}"
                                             alt="{{ $case->image_alt }}">
                                     </a>
                                     <div class="position-absolute position-right position-bottom"><a
-                                            href="{{ route('front.case-studie', $case->url) }}"
+                                            href="{{ route('front.case-study', $case->url) }}"
                                             class="text-uppercase display-32 alt-font py-2 px-3 d-inline-block bg-black text-white">Redesign</a>
                                     </div>
                                 </div>
                                 <div class="border border-width-2 border-color-extra-light-gray p-1-9">
-                                    <h3 class="h5 mb-3"><a href="{{ route('front.case-studie', $case->url) }}"
+                                    <h3 class="h5 mb-3"><a href="{{ route('front.case-study', $case->url) }}"
                                             class="post-title d-block">{{ $case->heading }}</a></h3>
                                     <div class="author">
                                         <span class="text-uppercase display-30 d-inline-block">
@@ -436,7 +436,7 @@
                                     </div>
                                     <div class="separator-line-horrizontal-full bg-medium-gray my-3 my-lg-4"></div>
                                     <p>{!! html_entity_decode(wordLimitset($case->description, 80)) !!} </p>
-                                    <a href="{{ route('front.case-studie', $case->url) }}"
+                                    <a href="{{ route('front.case-study', $case->url) }}"
                                         class="btn-style4 btn-small min-width-auto"><span>Read more</span></a>
                                 </div>
                             </article>

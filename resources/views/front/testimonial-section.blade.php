@@ -10,9 +10,9 @@
                         @if(getTestimonial())
                         @foreach(getTestimonial() as $testimonial)
                         <div class="testmonial-single mx-auto w-95 w-lg-65">
-                            <p class="text-light-gray">{!! html_entity_decode($testimonial->content) !!}</p>
-                            <h4 class="pt-4 text-white">{{$testimonial->heading}}</h4>
-                            <!-- <h6 class="mb-1-9">Networking Lead</h6> -->
+                            <p class="text-light-gray">{!! html_entity_decode($testimonial->comments) !!}</p>
+                            <h4 class="pt-4 text-white">{{$testimonial->name}}</h4>
+                            <h6 class="mb-1-9">{{$testimonial->profile}}</h6>
                         </div>
                         @endforeach
                         @endif
