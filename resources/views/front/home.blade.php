@@ -224,13 +224,7 @@
                 <div class="col-lg-5 mb-lg-5">
                     <h2 class="alt-font text-uppercase title-style8">Recent Reports</h2>
                 </div>
-                <!-- <div class="col-lg-7 mb-1-9 mb-lg-6">
-                            <div class="d-table h-100">
-                                <div class="d-table-cell vertical-align-middle">
-                                    <p class="mb-0 border-lg-start border-color-light-black py-lg-4 ps-lg-6">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
-                                </div>
-                            </div>
-                        </div> -->
+                <!--  -->
             </div>
             <div class="carousel-style3">
                 <div class="owl-carousel owl-theme">
@@ -357,13 +351,7 @@
                         <div class="col-lg-5 mb-lg-5">
                             <h2 class="alt-font text-uppercase title-style8">Recent Blogs</h2>
                         </div>
-                        <div class="col-lg-7 mb-1-9 mb-lg-6">
-                            <div class="d-table h-100">
-                                <div class="d-table-cell vertical-align-middle">
-                                    <p class="mb-0 border-lg-start border-color-light-black py-lg-4 ps-lg-6">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
 
                     <div class="row mt-n1-9">
@@ -448,13 +436,7 @@
                         <div class="col-lg-5 mb-lg-5">
                             <h2 class="alt-font text-uppercase title-style8">Press Releases</h2>
                         </div>
-                        <div class="col-lg-7 mb-1-9 mb-lg-6">
-                            <div class="d-table h-100">
-                                <div class="d-table-cell vertical-align-middle">
-                                    <p class="mb-0 border-lg-start border-color-light-black py-lg-4 ps-lg-6">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
 
                     <div class="row mt-n1-9">
@@ -527,13 +509,7 @@
                         <div class="col-lg-5 mb-lg-5">
                             <h2 class="alt-font text-uppercase title-style8">Case Studies</h2>
                         </div>
-                        <div class="col-lg-7 mb-1-9 mb-lg-6">
-                            <div class="d-table h-100">
-                                <div class="d-table-cell vertical-align-middle">
-                                    <p class="mb-0 border-lg-start border-color-light-black py-lg-4 ps-lg-6">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
 
                     <div class="row mt-n1-9">
