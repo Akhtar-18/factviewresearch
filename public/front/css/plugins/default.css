@@ -590,7 +590,7 @@ h6 a,
 
 section {
     /*padding: 120px 0;*/
-    padding: 70px 0;
+    padding: 70px 0 20px 0;
     overflow: hidden;
     background: #fff;
     position: relative
@@ -18168,7 +18168,9 @@ section.md {
 
 @media (max-width: 1199px) {
     section {
-        padding: 90px 0
+        /*padding: 90px 0*/
+        padding: 70px 0 20px 0
+
     }
 
     section.md {
@@ -18274,11 +18276,13 @@ section.md {
     }
 
     section {
-        padding: 70px 0
+        /*padding: 70px 0*/
+        padding: 70px 0 20px 0
     }
 
     section.md {
-        padding: 50px 0
+        /*padding: 50px 0*/
+        padding: 20px 0
     }
 
     .sm-vertical-align-middle {

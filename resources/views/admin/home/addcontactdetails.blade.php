@@ -63,8 +63,14 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="mb-2">Contact No <span class="text-danger">*</span></label>
+                        <label class="mb-2">Contact No <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <input type="text" name="no_prefix" class="form-control" placeholder="+91" required>
+                                @if ($errors->has('no_prefix'))
+                                    <span class="text-danger">{{ $errors->first('no_prefix') }}</span>
+                                @endif
+                                </div>
                                 <input type="number" class="form-control"
                                 placeholder="Enter Contact No"
                                 name="contact_no"

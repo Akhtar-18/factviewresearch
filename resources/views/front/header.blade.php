@@ -46,20 +46,19 @@
         }
     </style>
 
-    <meta name="google-site-verification" content="ttXl7RH9nKnXlHD17fSjZEaoD-uIiT5OROVTnU4EPG0" />
+<meta name="google-site-verification" content="ttXl7RH9nKnXlHD17fSjZEaoD-uIiT5OROVTnU4EPG0" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4GY78SDX0H"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4GY78SDX0H"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-4GY78SDX0H');
-    </script>
-
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-4GY78SDX0H');
+</script>
 
 
 </head>
@@ -70,7 +69,8 @@
     ================================================== -->
     <!-- <div id="preloader"></div> -->
 
-    <!-- MAIN WRAPPER
+    <!
+    -- MAIN WRAPPER
     ================================================== -->
     <div class="main-wrapper">
 
@@ -82,38 +82,18 @@
                         <div class="col-md-9">
                             <div class="top-bar-info">
                                 <ul class="ps-0">
-                                    <li><i class="fas fa-mobile-alt"></i>
-                                        @if (getCompanyDetail())
-                                            {{ getCompanyDetail()->contact_no }}
-                                        @endif
-                                    </li>
-                                    <li><i class="fas fa-envelope"></i>
-                                        @if (getCompanyDetail())
-                                            {{ getCompanyDetail()->email_address }}
-                                        @endif
-                                    </li>
-                                    <li><i class="fas fa-map-marker-alt"></i>
-                                        @if (getCompanyDetail())
-                                            {{ getCompanyDetail()->address }}
-                                        @endif
-                                    </li>
+                                    <li><i class="fas fa-mobile-alt"></i>@if(getCompanyDetail()){{getCompanyDetail()->no_prefix}}{{getCompanyDetail()->contact_no}}@endif</li>
+                                    <li><i class="fas fa-envelope"></i>@if(getCompanyDetail()){{getCompanyDetail()->email_address}}@endif</li>
+                                    <li><i class="fas fa-map-marker-alt"></i>@if(getCompanyDetail()){{getCompanyDetail()->address}}@endif</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-3 d-none d-md-block">
                             <ul class="top-social-icon ps-0">
-                                <li><a
-                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i
-                                            class="fab fa-facebook-f"></i></a></li>
-                                <li><a
-                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif"><i
-                                            class="fab fa-twitter"></i></a></li>
-                                <li><a
-                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif"><i
-                                            class="fab fa-instagram"></i></a></li>
-                                <li><a
-                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"><i
-                                            class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="@if(getCompanyDetail()){{getCompanyDetail()->facebook}}@endif"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="@if(getCompanyDetail()){{getCompanyDetail()->twitter}}@endif"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="@if(getCompanyDetail()){{getCompanyDetail()->instagram}}@endif"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="@if(getCompanyDetail()){{getCompanyDetail()->linkedin}}@endif"><i class="fab fa-linkedin-in"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -125,7 +105,7 @@
                 <!-- top search -->
                 <div class="top-search bg-primary">
                     <div class="container">
-                        <form class="search-form" action="{{ route('front.reports') }}" method="GET">
+                        <form class="search-form" action="{{route('front.reports')}}" method="GET">
                             <div class="input-group">
                                 <span class="input-group-addon cursor-pointer">
                                     <button class="search-form_submit fas fa-search text-white" type="submit"></button>
@@ -147,12 +127,10 @@
                                     <div class="navbar-header navbar-header-custom">
                                         <!-- logo -->
                                         <a href="{{ route('front.home') }}" class="navbar-brand logodefault">
-                                            @if (getCompanyDetail())
-                                                <img id="logo"
-                                                    src="{{ asset('company_logo') }}/{{ getCompanyDetail()->company_logo }}"
-                                                    alt="logo">
+                                            @if(getCompanyDetail())
+                                            <img id="logo" src="{{asset('company_logo')}}/{{getCompanyDetail()->company_logo}}" alt="logo">
                                             @elseif(isset(getCompanyDetail()->company_name))
-                                                {{ getCompanyDetail()->company_name }}
+                                            {{getCompanyDetail()->company_name}}
                                             @endif
                                         </a>
                                         <!-- end logo -->
@@ -174,9 +152,7 @@
                                                             <ul>
                                                                 @if ($cate->getSubCategory)
                                                                     @foreach ($cate->getSubCategory as $sub)
-                                                                        <li><a
-                                                                                href="@if (isset($sub->sub_category)) {{ route('front.reportsubcategory', strtolower($sub->sub_category)) }} @endif">{{ $sub->sub_category }}</a>
-                                                                        </li>
+                                                                        <li><a href="@if(isset($sub->sub_category)){{ route('front.reportsubcategory',strtolower($sub->sub_category))}}@endif">{{ $sub->sub_category }}</a></li>
                                                                     @endforeach
                                                                 @endif
                                                             </ul>
@@ -188,13 +164,12 @@
                                         <li><a href="#!">Services</a>
 
                                             @if (GetServiceMenu())
-                                                <ul>
+                                            <ul>
                                                     @foreach (GetServiceMenu() as $service)
-                                                        <li><a
-                                                                href="{{ route('front.service-single', $service->id) }}">{{ $service->heading }}</a>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
+                                                <li><a href="{{ route('front.service-single',$service->id) }}">{{$service->heading}}</a>
+                                                </li>
+                                                @endforeach
+                                            </ul>
                                             @endif
                                         </li>
                                         <li><a href="#!">About Us</a>
@@ -209,12 +184,11 @@
                                         </li>
                                         <li><a href="#!">Media/Insights</a>
                                             <ul>
-                                                <li><a href="{{ route('front.blogs') }}">Blogs</a></li>
+                                                <li><a href="{{route('front.blogs')}}">Blogs</a></li>
 
-                                                <li><a href="{{ route('front.press-releases') }}">Press Releases</a>
-                                                </li>
-                                                <li><a href="{{ route('front.case-studies') }}">Case Studies</a></li>
-                                                <!-- <li><a href="">Articles</a></li>
+                                                <li><a href="{{route('front.press-releases')}}">Press Releases</a></li>
+                                                <li><a href="{{route('front.case-studies')}}">Case Studies</a></li>
+                                                 <!-- <li><a href="">Articles</a></li>
                                                 <li><a href="">Infographics</a></li> -->
                                             </ul>
                                         </li>

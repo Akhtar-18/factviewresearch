@@ -422,7 +422,7 @@
                                         </label>
                                     </div>
 
-                                    <a class="butn primary mt-2" href="#!"><span>Buy Now</span></a>
+                                    <a class="butn primary mt-2" href="{{route('front.buynow',$reports->id)}}"><span>Buy Now</span></a>
                                 </div>
                             </article>
                         </div>
@@ -566,6 +566,32 @@
         </div>
     </section>
 
+<!-- Modal -->
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Looking for Solution...</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4>What are you looking for?</h4>
+        <p>We are here for all solutions..</p>
+        <a href="{{ route('front.contact') }}" class="butn primary white-hover"><span>Speak to Anlayst</span></a>
+        <a href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}" class="butn primary white-hover"><span>Request a Sample pdf</span></a>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+<script>
+    window.onload = function() {
+  jQuery('#exampleModal').modal('show');
+}
+</script>
 
 
     <?php //include("footer.php");

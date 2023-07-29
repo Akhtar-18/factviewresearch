@@ -1632,7 +1632,8 @@ h6.title-style2.white {
     display: block;
     position: relative;
     z-index: 999;
-    background: #1c1c1c;
+    /*background: #1c1c1c;*/
+    background: #2a66b1;
     padding: 7px 0
 }
 
@@ -10771,7 +10772,7 @@ footer h3:after {
 .footer-list-style3 li a {
     font-size: 15px;
     font-weight: 400;
-    color: #6f6f6f;
+    color: #fff;
 }
 
 .footer-list-style3 li a:before {
@@ -11039,3 +11040,33 @@ footer h3.footer-title-style7:before {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     z-index: 99999
 }
+
+@media screen and (max-width: 991px) {
+    .slider-fade .owl-item {
+        height: 30vh;
+        position: relative
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .slider-fade .owl-item {
+        height: 30vh;
+        position: relative
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .slider-fade .owl-item {
+        height: 30vh;
+        position: relative
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .slider-fade .owl-item {
+        height: 30vh;
+        position: relative
+    }
+}
+

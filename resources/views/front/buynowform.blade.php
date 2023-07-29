@@ -80,7 +80,7 @@
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
                                             <label>Company Name:</label>
-                                                <input class="form-control" id="name" type="text" name="name"
+                                                <input class="form-control" id="name" type="text" name="company_name"
                                                     placeholder="Enter Company Name" required />
 
                                             </div>
@@ -91,7 +91,7 @@
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
                                             <label>Job Title:</label>
-                                                <input class="form-control" id="name" type="text" name="name"
+                                                <input class="form-control" id="name" type="text" name="job_title"
                                                     placeholder="Job Title" required />
 
                                             </div>
@@ -102,7 +102,7 @@
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
                                                 <label>Country:</label>
-                                                <select class="form-control" id="country" type="text" name="country"
+                                                <select class="form-control" id="country" type="text" name="country_name"
                                                     placeholder="Select Country" required>
                                                     <option value="">Select Country</option>
                                                     @if (getCountry())
@@ -122,7 +122,7 @@
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
                                                 <label>State:</label>
-                                                <select class="form-control" id="country" type="text" name="country"
+                                                <select class="form-control" id="country" type="text" name="state_name"
                                                     placeholder="Select State" required>
                                                     <option value="">Select Country</option>
                                                     @if (getCountry())
@@ -140,7 +140,7 @@
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
                                             <label>City:</label>
-                                                <input class="form-control" id="name" type="text" name="name"
+                                                <input class="form-control" id="name" type="text" name="city_name"
                                                     placeholder="City name" required />
 
                                             </div>
@@ -152,7 +152,7 @@
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
                                             <label>Zip Code:</label>
-                                                <input class="form-control" id="name" type="text" name="name"
+                                                <input class="form-control" id="name" type="text" name="zip_code"
                                                     placeholder="Zip Code" required />
 
                                             </div>
@@ -175,7 +175,7 @@
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
                                                 <label>Contact No:</label>
-                                                <input class="form-control" id="contact_no" type="number" name="contact_no"
+                                                <input class="form-control" id="contact_no" type="number" name="contact"
                                                     placeholder="Enter Contact No" required />
                                             </div>
                                         </div>
@@ -185,7 +185,7 @@
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
                                                 <label>License Type:</label>
-                                                <select class="form-control" id="country" type="text" name="country"
+                                                <select class="form-control" id="lisence_amount" name="lisence_amount"
                                                     placeholder="Select State" required>
                                                     <option value="">Select License Type</option>
                                                     @if ($reports->getReportLicenses)
@@ -212,7 +212,7 @@
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
                                                 <label>Address :</label>
-                                                    <textarea class="form-control h-100" id="message" name="others" rows="6"
+                                                    <textarea class="form-control h-100" id="message" name="address" rows="6"
                                                     placeholder="Address" required></textarea>
                                             </div>
                                         </div>
@@ -330,18 +330,18 @@
 
             e.preventDefault();
             var ButtonText = $(this).find('button[type="button"]').html();
-       /*$(this).find('button').prop('disabled', true);
-       $(this).find('button').html('Loading ...');*/
-       $(this).find('.btn-submit').prop('disabled', true);
-       $(this).find('.btn-submit').html('Loading ...');
+       $(this).find('button').prop('disabled', true);
+       $(this).find('button').html('Loading ...');
+    //    $(this).find('.btn-submit').prop('disabled', true);
+    //    $(this).find('.btn-submit').html('Loading ...');
 
 
-       $(this).find('button[type="button"]').prop('disabled', true);
-       $(this).find('button[type="button"]').html('Loading ...');
+    //    $(this).find('button[type="button"]').prop('disabled', true);
+    //    $(this).find('button[type="button"]').html('Loading ...');
 
             $.ajax({
                 type: 'POST',
-                url: "{{ route('submit.enquiry') }}",
+                url: "{{ route('submit.buynow') }}",
                 data: $('#contactUsForm').serialize(),
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
@@ -362,15 +362,6 @@
             });
         }
 
-          $('#reload').click(function () {
-        $.ajax({
-            type: 'GET',
-            url: '{{route("reload-from-captcha")}}',
-            success: function (data) {
-                $(".captcha span").html(data.captcha);
-            }
-        });
-    });
     </script>
 
 @endsection

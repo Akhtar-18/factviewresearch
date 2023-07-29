@@ -116,14 +116,22 @@
                                     <div class="form-group">
                                         <label class="mb-2">Summary/Description <span
                                                 class="text-danger"></span></label>
-                                        <textarea class="form-control" name="description" rows="12">{{ old('description') }}</textarea>
+                                        <textarea class="form-control" name="description" rows="20">{{ old('description') }}</textarea>
                                         @if ($errors->has('description'))
                                             <span class="text-danger">{{ $errors->first('description') }}</span>
                                         @endif
                                     </div>
                                 </div>
 
-
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="mb-2">Table of Contents <span class="text-danger"></span></label>
+                                        <textarea class="form-control"  name="toc" rows="20">{{ old('toc') }}</textarea>
+                                        @if ($errors->has('toc'))
+                                            <span class="text-danger">{{ $errors->first('toc') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">

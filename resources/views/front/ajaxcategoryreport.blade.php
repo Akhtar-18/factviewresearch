@@ -6,7 +6,7 @@
                     <div class="blog-list-simple-text">
                         <!-- <span>Business</span> -->
                         <h3><a
-                                href="{{ route('front.report', ['category' => strtolower($list->getCategoryName->cat_name), 'subcategory' => strtolower($list->getSubCategoryName->sub_category), 'id' => $list->url]) }}">{{ $list->heading }}</a>
+                                href="{{ route('front.report', ['id' => $list->url]) }}">{{ $list->heading }}</a>
                         </h3>
                         <ul class="meta ps-0">
                             <li>
@@ -29,7 +29,7 @@
                         </ul>
                         <p>{!! html_entity_decode(wordLimit($list->description)) !!}.
                         <div class="text-start mt-2"><a
-                                href="{{ route('front.report', ['category' => strtolower($list->getCategoryName->cat_name), 'subcategory' => strtolower($list->getSubCategoryName->sub_category), 'id' => $list->url]) }}"
+                                href="{{ route('front.report', ['id' => $list->url]) }}"
                                 class="btn btn-warning text-white"><span>Read
                                     More</span></a></div>
                     </div>

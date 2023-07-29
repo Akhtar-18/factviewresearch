@@ -25,7 +25,7 @@
 		{
 			return [
 				$row->heading,
-				URL::to('report/').'/'.strtolower($row->cat_name).'/'.strtolower($row->sub_category).'/'.$row->url,
+				URL::to('report/').'/'.$row->url,
 			];
 		}
 

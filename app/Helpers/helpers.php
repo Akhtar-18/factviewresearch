@@ -84,7 +84,7 @@ if (! function_exists('ImageUpload')) {
 if (! function_exists('getCompanyDetail')) {
     function getCompanyDetail()
     {
-        $getCompanyDetailData = ContactDetailsModel::select(['company_name','address','contact_no','email_address','facebook','twitter','instagram','linkedin','company_logo'])->first();
+        $getCompanyDetailData = ContactDetailsModel::select(['company_name','address','no_prefix','contact_no','email_address','facebook','twitter','instagram','linkedin','company_logo'])->first();
         return $getCompanyDetailData;
     }
 }

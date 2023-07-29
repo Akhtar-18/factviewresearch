@@ -26,6 +26,7 @@
     <style type="text/css">.tox .tox-statusbar__text-container {display:none !important;}</style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 <script type="text/javascript">
+    
 const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
 tinymce.init({
@@ -33,6 +34,7 @@ tinymce.init({
     plugins: "emoticons hr image link lists charmap table",
     toolbar: "bold italic underline | bullist numlist | alignleft aligncenter alignright alignjustify",
     menubar: false*/
+     paste_data_images: true,
     selector: 'textarea#open-source-plugins',
   plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons',
   editimage_cors_hosts: ['picsum.photos'],
@@ -208,6 +210,7 @@ tinymce.init({
                     </div>
                 </div>
             </li>
+            @if(auth()->user()->can('role-list') || auth()->user()->can('users-list'))
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
                     aria-expanded="true" aria-controls="collapseUsers">
@@ -227,8 +230,10 @@ tinymce.init({
                     </div>
                 </div>
             </li>
+            @endif
 
             <!-- Nav Item - Utilities Collapse Menu -->
+            @if(auth()->user()->can('reportcategory-list') || auth()->user()->can('reportsubcategory-list') ||  auth()->user()->can('reports-list') || auth()->user()->can('reportsbulk-list'))
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
@@ -240,24 +245,30 @@ tinymce.init({
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Reports</h6>
 
-                        <!-- @if(auth()->user()->can('reportcategory-list')) -->
+                        @if(auth()->user()->can('reportcategory-list'))
                         <a class="collapse-item" href="{{ url('admin/reportcategory')}}">Report Category</a>
-                        <!-- @endif -->
+                        @endif
+                        @if(auth()->user()->can('reportsubcategory-list'))
                         <a class="collapse-item" href="{{ route('report.subcategory.index')}}">Report Sub Category</a>
-                        <!-- @if(auth()->user()->can('reports-list')) -->
+                        @endif
+                        @if(auth()->user()->can('reports-list'))
                         <a class="collapse-item" href="{{ url('admin/reports')}}">Reports</a>
-                        <!-- @endif -->
+                        @endif
+                        @if(auth()->user()->can('reportsbulk-list'))
                         <a class="collapse-item" href="{{url('admin/reports/bulk-upload')}}">Bulk Upload</a>
+                        @endif
                     </div>
                 </div>
             </li>
+            @endif
             <!---- Enquiry------>
+            @if(auth()->user()->can('enquiry-list'))
             <li class="nav-item active">
                 <a class="nav-link" href="{{ url('admin/enquiry') }}">
                     <i class="fas fa-fw fa-comments"></i>
                     <span>Enquiries</span></a>
             </li>
-
+            @endif
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -266,19 +277,15 @@ tinymce.init({
                 Addons
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            @if(auth()->user()->can('payment-list'))
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-table"></i>
-                    <span>Lead</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('report.payment')}}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Payment</span>
                 </a>
             </li>
+            @endif
+            @if(auth()->user()->can('blog-list') || auth()->user()->can('adminpressreleases-list') || auth()->user()->can('admincasestudies-list'))
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
@@ -289,13 +296,19 @@ tinymce.init({
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Blog:</h6>
                         <!-- <a class="collapse-item" href="{{url('admin/blog-category')}}">Blogs Category</a> -->
+                        @if(auth()->user()->can('blog-list'))
                         <a class="collapse-item" href="{{url('admin/admin-blogs')}}">Blogs</a>
+                        @endif
+                        @if(auth()->user()->can('adminpressreleases-list'))
                         <a class="collapse-item" href="{{url('admin/admin-press-releases')}}">Press Releases</a>
+                        @endif
+                        @if(auth()->user()->can('admincasestudies-list'))
                         <a class="collapse-item" href="{{url('admin/admin-case-studies')}}">Case Studies</a>
+                        @endif
                     </div>
                 </div>
             </li>
-
+            @endif
             <!-- Nav Item - Charts -->
 
             <!-- Nav Item - Tables -->

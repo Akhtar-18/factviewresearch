@@ -1,5 +1,5 @@
 
-<footer>
+<footer style="background: #2a66b1">
     <div class="container">
         <div class="row mt-n1-9">
 
@@ -13,7 +13,7 @@
                     {{getCompanyDetail()->company_name}}
                     @endif
                 </a>
-                
+
                 @if (aboutData())
                     @foreach (aboutData() as $about)
                     <p class="mt-3 display-30">{!! html_entity_decode(wordLimitset($about->content,50)) !!}</p>
@@ -38,7 +38,7 @@
             <div class="col-lg-4 col-md-6 mt-1-9">
                 <h3 class="footer-title-style2 text-primary-new">Quick Links</h3>
                 <div class="row">
-                    <div class="col-md-6 ps-md-0 text-primary-new">
+                    <div class="col-md-6 ps-md-0 text-primary">
                         <ul class="footer-list-style3 mb-2 mb-md-0 ps-0">
                             <li><a href="{{ route('front.home') }}">Home</a></li>
                             <li><a href="{{ route('front.about') }}">About Us</a></li>
@@ -49,11 +49,10 @@
                     </div>
                     <div class="col-md-6 ps-md-0">
                         <ul class="footer-list-style3 mb-2 mb-md-0 ps-0">
-                            <li><a href="#!">Privacy Policy</a></li>
-                            <li><a href="#!">Refund Policy</a></li>
-                            <li><a href="#!">Disclaimer</a></li>
-                            <li><a href="#!">Terms & Conditions</a></li>
-                            <li><a href="#!">FAQs</a></li>
+                            <li><a href="{{ route('front.privacy-policy') }}">Privacy Policy</a></li>
+                            <li><a href="{{ route('front.refund') }}">Refund Policy</a></li>
+                            <li><a href="{{ route('front.disclaimer') }}">Disclaimer</a></li>
+                            <li><a href="{{ route('front.terms') }}">Terms & Conditions</a></li>
                         </ul>
                     </div>
                 </div>
@@ -162,24 +161,17 @@
 
 <!-- all js include end -->
 
-<script>
+<!--<script>
     $(document).ready(function() {
         $('body').bind('cut copy', function(e) {
             e.preventDefault();
         });
-        /*$("body").on("contextmenu", function(e) {
+        $("body").on("contextmenu", function(e) {
             return false;
-        });*/
-    });
-</script>
-
-    <script>
-      $(document).ready(function() {
-          $('body').bind('cut copy', function(e) {
-              e.preventDefault();
-            });
         });
-    </script>
+    });
+</script> -->
+
 
 </body>
 

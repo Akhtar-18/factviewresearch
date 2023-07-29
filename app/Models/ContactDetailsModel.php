@@ -11,5 +11,5 @@ class ContactDetailsModel extends Model
     use HasFactory,SoftDeletes;
     protected $table="contact_details";
     protected $primaryKey = "id";
-    protected $fillable = ['company_name','address','contact_no','email_address','facebook','twitter','instagram','linkedin','company_logo'];
+    protected $fillable = ['company_name','address','no_prefix','contact_no','email_address','facebook','twitter','instagram','linkedin','company_logo'];
 }

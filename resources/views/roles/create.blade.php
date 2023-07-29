@@ -268,6 +268,200 @@
                             </div>
                         </div>
 
+
+                        <div class="col-md-6 mt-2">
+                            <div class="card">
+                                <div class="card-header" id="headingReportCategory">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseReportCategory" aria-expanded="false" aria-controls="collapseReportCategory">
+                                        Report Category
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseReportCategory" class="collapse" aria-labelledby="headingReportCategory" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        @foreach(nameByPermisson('Reportcategory') as $permission)
+                                        <div class="col-xl-6 col-md-6 col-12 float-left mb-2">
+                                            <input type="checkbox"  name="permission[{{ $permission->name }}]" value="{{ $permission->name }}" class='admin'> {{ $permission->name }}
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mt-2">
+                            <div class="card">
+                                <div class="card-header" id="headingReportSubCategory">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseReportSubCategory" aria-expanded="false" aria-controls="collapseReportSubCategory">
+                                        Report Sub Category
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseReportSubCategory" class="collapse" aria-labelledby="headingReportSubCategory" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        @foreach(nameByPermisson('Reportsubcategory') as $permission)
+                                        <div class="col-xl-6 col-md-6 col-12 float-left mb-2">
+                                            <input type="checkbox"  name="permission[{{ $permission->name }}]" value="{{ $permission->name }}" class='admin'> {{ $permission->name }}
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="col-md-6 mt-2">
+                            <div class="card">
+                                <div class="card-header" id="headingReportBulk">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsReportsBulk" aria-expanded="false" aria-controls="collapsReportsBulk">
+                                        Report Bulk
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapsReportsBulk" class="collapse" aria-labelledby="headingReportBulk" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        @foreach(nameByPermisson('Reportsbulk') as $permission)
+                                        <div class="col-xl-6 col-md-6 col-12 float-left mb-2">
+                                            <input type="checkbox"  name="permission[{{ $permission->name }}]" value="{{ $permission->name }}" class='admin'> {{ $permission->name }}
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mt-2">
+                            <div class="card">
+                                <div class="card-header" id="headingReports">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsReports" aria-expanded="false" aria-controls="collapsReports">
+                                        Reports
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapsReports" class="collapse" aria-labelledby="headingReports" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        @foreach(nameByPermisson('Reports') as $permission)
+                                        <div class="col-xl-6 col-md-6 col-12 float-left mb-2">
+                                            <input type="checkbox"  name="permission[{{ $permission->name }}]" value="{{ $permission->name }}" class='admin'> {{ $permission->name }}
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mt-2">
+                            <div class="card">
+                                <div class="card-header" id="headingEnqiry">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsEnquiry" aria-expanded="false" aria-controls="collapsEnquiry">
+                                        Enquiry
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapsEnquiry" class="collapse" aria-labelledby="headingEnqiry" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        @foreach(nameByPermisson('Enquiry') as $permission)
+                                        <div class="col-xl-6 col-md-6 col-12 float-left mb-2">
+                                            <input type="checkbox"  name="permission[{{ $permission->name }}]" value="{{ $permission->name }}" class='admin'> {{ $permission->name }}
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="col-md-6 mt-2">
+                            <div class="card">
+                                <div class="card-header" id="headingPayment">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsPayment" aria-expanded="false" aria-controls="collapsPayment">
+                                        Payments
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapsPayment" class="collapse" aria-labelledby="headingPayment" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        @foreach(nameByPermisson('Payment') as $permission)
+                                        <div class="col-xl-6 col-md-6 col-12 float-left mb-2">
+                                            <input type="checkbox"  name="permission[{{ $permission->name }}]" value="{{ $permission->name }}" class='admin'> {{ $permission->name }}
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 mt-2">
+                            <div class="card">
+                                <div class="card-header" id="headingBlogs">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsBlogs" aria-expanded="false" aria-controls="collapsBlogs">
+                                        Blogs
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapsBlogs" class="collapse" aria-labelledby="headingBlogs" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        @foreach(nameByPermisson('Blog') as $permission)
+                                        <div class="col-xl-6 col-md-6 col-12 float-left mb-2">
+                                            <input type="checkbox"  name="permission[{{ $permission->name }}]" value="{{ $permission->name }}" class='admin'> {{ $permission->name }}
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 mt-2">
+                            <div class="card">
+                                <div class="card-header" id="headingPressReleases">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsPressReleases" aria-expanded="false" aria-controls="collapsPressReleases">
+                                        Press Releases
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapsPressReleases" class="collapse" aria-labelledby="headingPressReleases" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        @foreach(nameByPermisson('Adminpressreleases') as $permission)
+                                        <div class="col-xl-6 col-md-6 col-12 float-left mb-2">
+                                            <input type="checkbox"  name="permission[{{ $permission->name }}]" value="{{ $permission->name }}" class='admin'> {{ $permission->name }}
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mt-2">
+                            <div class="card">
+                                <div class="card-header" id="headingCaseStudy">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsCaseStudy" aria-expanded="false" aria-controls="collapsCaseStudy">
+                                       Case Studies
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapsCaseStudy" class="collapse" aria-labelledby="headingCaseStudy" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        @foreach(nameByPermisson('Admincasestudies') as $permission)
+                                        <div class="col-xl-6 col-md-6 col-12 float-left mb-2">
+                                            <input type="checkbox"  name="permission[{{ $permission->name }}]" value="{{ $permission->name }}" class='admin'> {{ $permission->name }}
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         </div>
                     </div>
                     <div class="row">

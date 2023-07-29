@@ -20,6 +20,7 @@ use App\Http\Controllers\ContactDetailsController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GetInTouchController;
 use App\Http\Controllers\HomePageSliderController;
+use App\Http\Controllers\OrderHistoryController;
 use App\Http\Controllers\PressReleaseController;
 use App\Http\Controllers\ReportCategoryController;
 use App\Http\Controllers\ReportsController;
@@ -33,7 +34,7 @@ use App\Http\Controllers\ReportSubCategoryController;
 
 //Front End Routes
 Route::get('/', [FrontController::class, 'home'])->name('front.home');
-Route::match(['GET','POST'],'/report/{category}/{subcategory}/{id}', [FrontController::class, 'report'])->name('front.report');
+Route::match(['GET','POST'],'/report/{id}', [FrontController::class, 'report'])->name('front.report');
 Route::match(['GET','POST'],'/enquiry/{id}/{type}', [FrontController::class, 'enquiry'])->name('front.enquiry');
 
 Route::get('/all-reports', [FrontController::class, 'reports'])->name('front.reports');
@@ -59,6 +60,7 @@ Route::post('/submit-enquiry', [FrontController::class, 'storeenquiry'])->name('
 Route::post('/submit-contact-enquiry', [FrontController::class, 'storecontact'])->name('submit.contact_enquiry');
 Route::get('/thankyou/{id}', [FrontController::class, 'enquerythankyou'])->name('front.thankyou');
 Route::get('/buynow/{id}', [FrontController::class, 'buynow'])->name('front.buynow');
+Route::post('/submit-buynow', [FrontController::class, 'storebuynow'])->name('submit.buynow');
 
 //blog
 Route::get('/all-blogs', [FrontController::class, 'blogs'])->name('front.blogs');
@@ -80,6 +82,12 @@ Route::get('/case-study/{url}', [FrontController::class, 'casestudydetails'])->n
 
 Route::get('/reload-captcha', [FrontController::class, 'reloadCaptcha']);
 Route::get('/reload-from-captcha', [FrontController::class, 'reloadformCaptcha'])->name('reload-from-captcha');
+
+Route::get('/privacy-policy', [FrontController::class, 'privacypolicy'])->name('front.privacy-policy');
+Route::get('/refund', [FrontController::class, 'refund'])->name('front.refund');
+Route::get('/terms', [FrontController::class, 'terms'])->name('front.terms');
+Route::get('/disclaimer', [FrontController::class, 'disclaimer'])->name('front.disclaimer');
+
 
 Auth::routes();
 
@@ -303,6 +311,11 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/edit/{id}',[CaseStudyController::class,'edit']);
             Route::match(['GET','POST'],'/update/{id}',[CaseStudyController::class,'update']);
             Route::match(['GET','POST'],'/delete/{id}',[CaseStudyController::class,'delete']);
+        });
+        // Payment Details
+        Route::group(['prefix'=>'order-history'],function(){
+        Route::get('/',[OrderHistoryController::class,'index'])->name('report.payment');
+        Route::get('/list',[OrderHistoryController::class,'list'])->name('report.payment.list');
         });
 
 });

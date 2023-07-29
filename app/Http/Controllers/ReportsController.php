@@ -52,7 +52,7 @@ class ReportsController extends Controller
               ->addColumn('url', function($row){
                 if(isset($row->url))
                 {
-                  $contents = URL::to('report/').'/'.strtolower($row->getCategoryName->cat_name).'/'.strtolower($row->getSubCategoryName->sub_category).'/'.$row->url;
+                  $contents = URL::to('report/').'/'.$row->url;
                  $url='<a  href="'.$contents.'">'.$contents.'</a>';
                 }
                 else

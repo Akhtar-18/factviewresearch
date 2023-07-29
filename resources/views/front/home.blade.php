@@ -4,86 +4,36 @@
 @section('title', 'Home')
 @section('frontpage')
 
-    <style>
-        /*hide mobile view for desktop view*/
-        .mobile-view {
-            display: none
-        }
-
-        @media all and (max-width :767) {
-            .desktop-view {
-                display: none;
-            }
-
-            .mobile-view {
-                display: block;
-            }
-        }
-    </style>
     <!-- REVOLUTION SLIDER
-                    ================================================== -->
-
-
-    <div class="desktop-view">
-        <section class="top-position top-position3">
-            <div class="row slider-fade">
-                <div class="owl-carousel owl-theme w-100">
-                    @if (GetSlider())
-                        @foreach (GetSlider() as $list)
-                            <div class="text-center item bg-img" data-overlay-dark="7"
-                                data-background="{{ asset('images') }}/{{ $list->slider_image }}">
-                                <div class="h-100 d-table caption position-relative">
-                                    <div class="overflow-hidden d-table-cell align-middle h-100">
-                                        <h1 class="alt-font text-success m-0">{{ $list->heading }}</h1>
-                                        <h3 class="text-warning">{{ $list->subheading }}</h3>
-                                        <!-- <p class="d-none d-lg-block mb-3 mb-lg-4">We provide best for our client and respect their business design idea.</p> -->
-                                        <p><a href="#!" class="butn medium primary">
-                                                <span class="alt-font">Learn More</span><i
-                                                    class="fas fa-angle-right text-white ms-2"></i>
-                                            </a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    @endif
-
-                </div>
-            </div>
-        </section>
-    </div>
-    <div class="mobile-view">
-        <section class="top-position top-position3">
-            <div class="row slider-fade">
-                <div class="owl-carousel owl-theme w-100">
-                    @if (GetSlider())
-                        @foreach (GetSlider() as $list)
-                            <div class="text-center item bg-img" data-overlay-dark="7"
-                                data-background="{{ asset('images') }}/{{ $list->slider_image }}">
-                                <div class="h-100 d-table caption position-relative">
-                                    <div class="overflow-hidden d-table-cell align-middle h-100">
-                                        <h3 class="alt-font text-white m-0">{{ $list->heading }}</h3>
-                                        <h1 class="text-white">{{ $list->subheading }}</h1>
-                                        <!--<p class="d-none d-lg-block mb-3 mb-lg-4">We provide best for our client and respect their business design idea.</p>-->
-                                        <a href="{{ route('front.contact') }}" class="butn medium primary">
-                                            <span class="alt-font">Contact Us</span><i
+                        ================================================== -->
+    <section class="top-position top-position3">
+        <div class="row slider-fade">
+            <div class="owl-carousel owl-theme w-100">
+                @if (GetSlider())
+                    @foreach (GetSlider() as $list)
+                        <div class="text-center item bg-img" data-overlay-dark="7"
+                            data-background="{{ asset('images') }}/{{ $list->slider_image }}">
+                            <div class="h-100 d-table caption position-relative">
+                                <div class="overflow-hidden d-table-cell align-middle h-100">
+                                    <h1 class="alt-font text-success m-0">{{ $list->heading }}</h1>
+                                    <h3 class="text-warning">{{ $list->subheading }}</h3>
+                                    <!-- <p class="d-none d-lg-block mb-3 mb-lg-4">We provide best for our client and respect their business design idea.</p> -->
+                                    <p><a href="#!" class="butn medium primary">
+                                            <span class="alt-font">Learn More</span><i
                                                 class="fas fa-angle-right text-white ms-2"></i>
-                                        </a>
-                                    </div>
+                                        </a></p>
                                 </div>
                             </div>
-                        @endforeach
-                    @endif
+                        </div>
+                    @endforeach
+                @endif
 
-                </div>
             </div>
-        </section>
-    </div>
-
-
-
+        </div>
+    </section>
 
     <!-- ABOUT
-                    ================================================== -->
+                        ================================================== -->
     <section class="md">
         <div class="container">
             <div class="row align-items-center">
@@ -95,7 +45,8 @@
                                     <h2 class="title-style2">{{ $about->heading }}</h2>
                                 </div>
                                 <p>{!! html_entity_decode(wordLimitset($about->content, 500)) !!}</p>
-                                <a href="{{ route('front.about') }}" class="butn medium"><span>About Company</span></a>
+                                <p><a href="{{ route('front.about') }}" class="btn btn-warning medium"><span>About Company</span></a>
+                                </p>
                             @endforeach
                         @endif
                     </div>
@@ -105,19 +56,19 @@
     </section>
 
     <!-- ADVICE
-                    ================================================== -->
-    <section class="parallax md" data-overlay-dark="8" data-background="{{ asset('front/img/bg/bg1.jpg') }}">
+                        ================================================== -->
+    <!-- <section class="parallax md" data-overlay-dark="8" data-background="{{ asset('front/img/bg/bg1.jpg') }}">
         <div class="container text-center">
             <div class="section-heading half white">
                 <h2>Are you looking for professional advice?</h2>
                 <p>We always try to provide you our best business consulting service.</p>
             </div>
-            <a href="#!" class="butn primary white-hover"><span>Contact Us</span></a>
+            <a href="{{ route('front.contact') }}" class="butn primary white-hover"><span>Contact Us</span></a>
         </div>
-    </section>
+    </section> -->
 
     <!-- SERVICES
-                    ================================================== -->
+                        ================================================== -->
     <section>
         <div class="container">
 
@@ -158,37 +109,37 @@
 
 
     <!-- COUNTER
-                    ================================================== -->
-    <section class="parallax md" data-overlay-dark="7" data-background="{{ asset('front/img/bg/bg5.jpg') }}">
+                        ================================================== -->
+    <section class="parallax md" style="background: #2a66b1">
         <div class="container">
             <div class="row mt-n1-9">
                 <div class="col-6 col-lg-3 mt-1-9">
                     <div class="counter-box">
-                        <h4 class="countup text-white d-block">1826</h4>
+                        <h4 class="countup text-white d-block">1200</h4>
                         <div class="separator-line-horrizontal-medium-light3 bg-white mb-2 mt-3 opacity5 mx-auto"></div>
-                        <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Satisfied Visitors
+                        <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Reports Published Annually
                         </p>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 mt-1-9">
-                    <div class="counter-box">
-                        <h4 class="countup text-white d-block">875</h4>
-                        <div class="separator-line-horrizontal-medium-light3 bg-white mb-2 mt-3 opacity5 mx-auto"></div>
-                        <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Destinations</p>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 mt-1-9">
-                    <div class="counter-box">
-                        <h4 class="countup text-white d-block">1412</h4>
-                        <div class="separator-line-horrizontal-medium-light3 bg-white mb-2 mt-3 opacity5 mx-auto"></div>
-                        <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Tours</p>
                     </div>
                 </div>
                 <div class="col-6 col-lg-3 mt-1-9">
                     <div class="counter-box">
                         <h4 class="countup text-white d-block">100</h4>
                         <div class="separator-line-horrizontal-medium-light3 bg-white mb-2 mt-3 opacity5 mx-auto"></div>
-                        <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Tour Types</p>
+                        <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Consulting Projects Per Month</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3 mt-1-9">
+                    <div class="counter-box">
+                        <h4 class="countup text-white d-block">30</h4>
+                        <div class="separator-line-horrizontal-medium-light3 bg-white mb-2 mt-3 opacity5 mx-auto"></div>
+                        <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Geography Covered</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3 mt-1-9">
+                    <div class="counter-box">
+                        <h4 class="countup text-white d-block">50</h4>
+                        <div class="separator-line-horrizontal-medium-light3 bg-white mb-2 mt-3 opacity5 mx-auto"></div>
+                        <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Subject Matter Expert</p>
                     </div>
                 </div>
             </div>
@@ -198,7 +149,7 @@
 
 
     <!-- REPORTS
-                    ================================================== -->
+                        ================================================== -->
     <section>
         <div class="container">
             <div class="row">
@@ -215,8 +166,7 @@
                         @foreach ($reportsData as $report)
                             <article class="card card-style2 box-shadow-none">
                                 <div class="border border-width-2 border-color-extra-light-gray p-1-9">
-                                    <h3 class="h5 mb-3"><a
-                                            href="{{ route('front.report', ['category' => strtolower($report->getCategoryName->cat_name), 'subcategory' => strtolower($report->getSubCategoryName->sub_category), 'id' => $report->url]) }}"
+                                    <h3 class="h5 mb-3"><a href="{{ route('front.report', ['id' => $report->url]) }}"
                                             class="post-title d-block">{{ $report->heading }}</a></h3>
                                     <div class="author">
                                         <span class="text-uppercase display-30 d-inline-block">Published Date:
@@ -225,7 +175,7 @@
                                             {{ $report->pages }}</span>
                                     </div>
                                     <div class="separator-line-horrizontal-full bg-medium-gray my-3 my-lg-4"></div>
-                                    <a href="{{ route('front.report', ['category' => strtolower($report->getCategoryName->cat_name), 'subcategory' => strtolower($report->getSubCategoryName->sub_category), 'id' => $report->url]) }}"
+                                    <a href="{{ route('front.report', ['id' => $report->url]) }}"
                                         class="btn-style4 btn-small min-width-auto"><span>Read more</span></a>
                                 </div>
 
@@ -246,18 +196,17 @@
     </section>
 
     <!-- SUBSCRIBE
-                    ================================================== -->
-    <section class="parallax" data-overlay-dark="6" data-background="{{ asset('front/img/bg/bg2.jpg') }}">
+                        ================================================== -->
+    <section class="parallax" style="background: #2a66b1">
         <div class="container">
             <div class="section-heading white">
                 <span>News Letter</span>
                 <h2>Stay informed</h2>
-                <p class="w-95 w-md-75 w-lg-55 mx-auto">Business consulting excepteur sint occaecat cupidatat consulting
-                    non proident, sunt in culpa qui officia deserunt laborum Market.</p>
+                <p class="w-95 w-md-75 w-lg-55 mx-auto">Please subscribe our newsletter for latest industry updates.</p>
             </div>
             <div class="text-center">
                 <form class="quform newsletter-form2 w-sm-85 w-md-65 w-lg-45 w-xl-35 mx-auto"
-                    action="https://fabrex.websitelayout.net/quform/newsletter-two.php" method="post"
+                    action="" method="post"
                     enctype="multipart/form-data" onclick="">
 
                     <div class="quform-elements text-center">
@@ -294,7 +243,7 @@
     </section>
 
     <!-- BLOGS
-                    ================================================== -->
+                        ================================================== -->
     <section>
         <div class="container">
 
@@ -346,7 +295,7 @@
 
 
     <!-- Press Releases
-                    ================================================== -->
+                        ================================================== -->
     <section>
         <div class="container">
 
@@ -398,7 +347,7 @@
     </section>
 
     <!-- Case Studies
-                    ================================================== -->
+                        ================================================== -->
     <section>
         <div class="container">
 

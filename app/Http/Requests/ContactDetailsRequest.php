@@ -28,6 +28,7 @@ class ContactDetailsRequest extends FormRequest
             'address' => 'required',
             'contact_no' => 'required',
             'email_address' => 'required',
+            'no_prefix'=>'required'
         ];
     }
 }

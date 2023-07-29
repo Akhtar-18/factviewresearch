@@ -15,6 +15,7 @@ use App\Models\PressRelease;
 use App\Models\RegionGraphicalModel;
 use App\Models\ReportCategoryModel;
 use App\Models\ReportEnquiryModel;
+use App\Models\ReportPayment;
 use App\Models\ReportsModel;
 use App\Models\ReportSubCategoryModel;
 use App\Models\SegmentGraphicalModel;
@@ -40,7 +41,7 @@ class FrontController extends Controller
         return view('front.home',$data);
     }
 
-    public function report($category,$subcategory,$id,Request $request)
+    public function report($id,Request $request)
     {
         $data['reports']=ReportsModel::with(['getReportLicenses','getReportFaq','getReportmarketgraph','getReportmarketsharegraph','getReportSegmentgraph','getReportRegiongraph','getSubCategoryName','getReportCAGR'])->where('url',$id)->first();
         $data['whyusData']=WhyChooseUsModel::select(['heading','content'])->get();
@@ -413,5 +414,65 @@ class FrontController extends Controller
     {
         $reports=ReportsModel::with(['getCategoryName','getReportLicenses'])->select(['id','url','publish_month','category_id','heading','pages'])->find($id);
         return view('front.buynowform',compact('reports'));
+    }
+
+
+    function storebuynow(Request $request)
+    {
+        //return $request;
+
+        $validator = Validator::make($request->all(), [
+
+            'name'           => 'required',
+            'email'          => 'required|email',
+            'country_name'        => 'required',
+            'contact'  => 'required|numeric',
+            'lisence_amount' => 'required',
+            'company_name'=>'required',
+            'job_title' =>'required'
+        ]);
+
+
+
+        if ($validator->fails()) {
+
+            return response()->json(['error' => $validator->errors()->all()]);
+
+        }
+
+
+        // $type = $request->types;
+        // $name = $request->name;
+        $input=$request->all();
+        ReportPayment::create($input);
+
+
+
+        // $email = 'minhaj.khan@researchforetell.com';
+
+        // Mail::to($email)->send(new MyReportEnquiry($type,$name));
+        // Mail::to($email)->send(new AdminReportEnquir($type,$name));
+        return response()->json([ 'success'=> 'Form is successfully submitted!',
+                                'id'=>$request->report_id]);
+    }
+
+    public function privacypolicy()
+    {
+        return view('front.privacypolicy');
+    }
+
+    public function refund()
+    {
+        return view('front.refund');
+    }
+
+    public function terms()
+    {
+        return view('front.terms');
+    }
+
+    public function disclaimer()
+    {
+        return view('front.disclaimer');
     }
 }

@@ -34,7 +34,6 @@ class MyReportEnquiry extends Mailable
     {
         $data['type']=$this->types;
         $data['name']=$this->name;
-        //return $this->markdown('emails.enquiry',$data);
         return $this->subject('Enquiry Submitted')
                     ->view('emails.enquiry',$data);
     }
