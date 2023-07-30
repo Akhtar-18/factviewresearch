@@ -112,15 +112,7 @@
                                     </div>
                                 </div>
 
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="mb-2">Customized <span class="text-danger"></span></label>
-                                        <textarea class="form-control" name="customized" rows="12">{{ old('customized') }}</textarea>
-                                        @if ($errors->has('customized'))
-                                            <span class="text-danger">{{ $errors->first('customized') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
+
 
 
                                 <div class="col-md-12">
@@ -164,7 +156,7 @@
                                     </div>
                                 </div>
 
-                               
+
                                 <div class="col-md-12">
                                     <hr class="bg-info">
                                     <p><b>License Types</b></p>
@@ -561,7 +553,7 @@
                                                     placeholder="Region Percentage">
                                             </div>
                                         </div>
-                                        
+
 
                                     </div>
 
@@ -648,13 +640,16 @@
                                     </div>
 
                                 </div>
-                               
-                                
 
-                              
-
-                                
-
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="mb-2">Customized <span class="text-danger"></span></label>
+                                        <textarea class="form-control" name="customized" rows="12">{{ old('customized') }}</textarea>
+                                        @if ($errors->has('customized'))
+                                            <span class="text-danger">{{ $errors->first('customized') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
 
                                 <div class="col-md-12">
                                     <hr class="bg-info">

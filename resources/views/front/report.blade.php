@@ -80,15 +80,52 @@
 
                                             <div class="row">
                                                 @if (!empty(json_decode($marketyear, true)))
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-12">
                                                         <div class="card">
-                                                            <div class="card-body">
-                                                                <canvas id="mybarChart" height="300"></canvas>
+
+                                                                <div class="row">
+                                                                    <div class="col-md-8">
+                                                                        <div class="card-body">
+                                                                <canvas id="mybarChart" height="300" class="col-md-10"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="card-body">
+                                                                    <p><a href="{{ route('front.home') }}" class="navbar-brand logodefault">
+                                                                    @if(getCompanyDetail())
+                                                                    <img id="logo" src="{{asset('company_logo')}}/{{getCompanyDetail()->company_logo}}" alt="logo">
+                                                                    @elseif(isset(getCompanyDetail()->company_name))
+                                                                    {{getCompanyDetail()->company_name}}
+                                                                    @endif
+                                                                    </a></p>
+                                                                @if (!empty($reports->getReportCAGR->cagr))
+
+                                                                @if (isset($reports->getReportCAGR->cagr))
+                                                                <div class="title text-center mb-2">
+                                                                    <div class="section-heading">
+                                                                    <h2>{{ $reports->getReportCAGR->cagr }} %</h2>
+                                                                    </div>
+                                                                    <h6 class="text-primary">Current CAGR Report</strong></h6>
+                                                                    <p>@foreach ($marketyear as $markyr)
+                                                                    @if ($loop->first)
+                                                                    {{$markyr}} -
+                                                                    @endif
+                                                                    @if ($loop->last)
+                                                                    {{$markyr}}
+                                                                    @endif
+                                                                    @endforeach</p>
+                                                                </div>
+                                                                </div>
+
+                                                                @endif
+                                                                @endif
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 @endif
-                                                @if (!empty($reports->getReportCAGR->cagr))
+                                                <!-- @if (!empty($reports->getReportCAGR->cagr))
                                                     <div class="col-md-4">
                                                         <div class="card">
                                                             <div class="card-body">
@@ -124,7 +161,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @endif
+                                                @endif -->
 
                                             </div>
 
@@ -431,14 +468,16 @@
                             <article class="card card-style1">
 
                                 <div class="card-body text-center">
-                                    <a class="butn primary mt-2" href="{{route('front.buynow',$reports->id)}}"><span>Buy Report</span></a>
                                     <a class="butn primary mt-2"
                                         href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}"><span>Free
                                             Sample</span></a>
-                                    <a class="butn primary mt-2"
+                                            <a class="butn primary mt-2"
                                         href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'enquiry']) }}"><span>Enquiry</span></a>
                                     <a class="butn primary mt-2"
                                         href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'discount']) }}"><span>Discount</span></a>
+                                    <a class="butn primary mt-2" href="{{route('front.buynow',$reports->id)}}"><span>Buy Report</span></a>
+
+
                                 </div>
                             </article>
                         </div>

@@ -18,7 +18,7 @@
                                     <h1 class="alt-font text-success m-0">{{ $list->heading }}</h1>
                                     <h3 class="text-warning">{{ $list->subheading }}</h3>
                                     <!-- <p class="d-none d-lg-block mb-3 mb-lg-4">We provide best for our client and respect their business design idea.</p> -->
-                                    <p><a href="#!" class="butn medium primary">
+                                    <p><a href="{{ route('front.contact') }}" class="butn medium primary">
                                             <span class="alt-font">Learn More</span><i
                                                 class="fas fa-angle-right text-white ms-2"></i>
                                         </a></p>
