@@ -202,6 +202,37 @@
                                     </div>
                                 </div>
 
+
+                                <div class="col-md-12">
+                                    <hr class="bg-info">
+                                    <p><b>FAQ Section</b></p>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="mb-2">Question<span class="text-danger"></span></label>
+                                                <textarea class="form-control" name="question[]">{{ old('question[]') }}</textarea>
+                                                @if ($errors->has('question[]'))
+                                                    <span class="text-danger">{{ $errors->first('question[]') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="mb-2">Answer<span class="text-danger"></span></label>
+                                                <textarea class="form-control" name="answer[]">{{ old('answer[]') }}</textarea>
+                                                @if ($errors->has('answer[]'))
+                                                    <span class="text-danger">{{ $errors->first('answer[]') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 mt-3">
+                                            <a onclick="addmore()" class="btn btn-success btn-sm mt-3"><i
+                                                    class="fa fa-plus"></i></a>
+                                        </div>
+                                    </div>
+                                    <div id="row"></div>
+                                </div>
+
                                 <div class="col-md-12">
                                     <hr class="bg-info">
                                     <p class="h5"><b>Graphical Section</b></p>
@@ -542,35 +573,7 @@
                                
                                 
 
-                                <div class="col-md-12">
-                                    <hr class="bg-info">
-                                    <p><b>FAQ Section</b></p>
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label class="mb-2">Question<span class="text-danger"></span></label>
-                                                <textarea class="form-control" name="question[]">{{ old('question[]') }}</textarea>
-                                                @if ($errors->has('question[]'))
-                                                    <span class="text-danger">{{ $errors->first('question[]') }}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label class="mb-2">Answer<span class="text-danger"></span></label>
-                                                <textarea class="form-control" name="answer[]">{{ old('answer[]') }}</textarea>
-                                                @if ($errors->has('answer[]'))
-                                                    <span class="text-danger">{{ $errors->first('answer[]') }}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 mt-3">
-                                            <a onclick="addmore()" class="btn btn-success btn-sm mt-3"><i
-                                                    class="fa fa-plus"></i></a>
-                                        </div>
-                                    </div>
-                                    <div id="row"></div>
-                                </div>
+                              
 
                                 
 

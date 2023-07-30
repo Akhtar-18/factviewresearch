@@ -346,11 +346,14 @@ class ReportsController extends Controller
     }
     else
     {
+      if(!empty($request->answer[$key]))
+      {
       $insertFaqData=['report_id'=>$report_id,
                         'question'=>$request->question[$key],
                         'answer'=>$request->answer[$key],
                     ];
       ReportsFaqModel::create($insertFaqData);
+                  }
     }
 
   }
@@ -366,7 +369,10 @@ class ReportsController extends Controller
 ]);
    }else
    {
+    if(!empty($request->cagr))
+      {
     $cagr->update(['cagr'=>$request->cagr]);
+      }
    }
 
 
@@ -384,11 +390,14 @@ class ReportsController extends Controller
     }
     else
     {
+      if(!empty($request->marketyear[$key]))
+      {
       $insertgraph=['report_id'=>$report_id,
                         'marketyear'=>$request->marketyear[$key],
                         'marketvalue'=>$request->marketvalue[$key],
                     ];
       MarketGraphicalModel::create($insertgraph);
+                  }
     }
 
   }
@@ -408,11 +417,14 @@ class ReportsController extends Controller
     }
     else
     {
+      if(!empty($request->segmentvalue[$key]))
+      {
       $insertsegmentData=['report_id'=>$report_id,
       'segmentname'=>$request->segmentname[$key],
       'segmentvalue'=>$request->segmentvalue[$key],
       ];
       SegmentGraphicalModel::create($insertsegmentData);
+    }
     }
 
   }
@@ -431,11 +443,14 @@ class ReportsController extends Controller
     }
     else
     {
+      if(!empty($request->regionvalue[$key]))
+      {
       $insertRegionData=['report_id'=>$report_id,
       'regionname'=>$request->regionname[$key],
       'regionvalue'=>$request->regionvalue[$key],
         ];
         RegionGraphicalModel::create($insertRegionData);
+      }
     }
 
    }
@@ -445,6 +460,7 @@ class ReportsController extends Controller
     {
       if($request->marketshare_id[$key]!='')
       {
+        
         $marketshareData=MarketShareGraphicalModel::find($request->marketshare_id[$key]);
         $insertmarketshareData=['report_id'=>$report_id,
         'marketsharename'=>$request->marketsharename[$key],
@@ -454,11 +470,14 @@ class ReportsController extends Controller
       }
       else
       {
+        if(!empty($request->marketsharevalue[$key]))
+      {
         $insertmarketshareData=['report_id'=>$report_id,
         'marketsharename'=>$request->marketsharename[$key],
         'marketsharevalue'=>$request->marketsharevalue[$key],
         ];
         MarketShareGraphicalModel::create($insertmarketshareData);
+      }
       }
 
     }
