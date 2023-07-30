@@ -160,59 +160,89 @@ class ReportsController extends Controller
           ReportsLicenseModel::create($insertLicenseData);
 
       /*************************Reports FAQ Create ************************/
-      foreach($request->question as $key=> $list)
-      {
-        $insertFaqData=['report_id'=>$report_id,
-                            'question'=>$request->question[$key],
-                            'answer'=>$request->answer[$key],
-                        ];
-          ReportsFaqModel::create($insertFaqData);
-      }
+     
+        foreach($request->question as $key=> $list)
+        {
+          if(!empty($request->question[$key]))
+          {
+            $insertFaqData=['report_id'=>$report_id,
+                              'question'=>$request->question[$key],
+                              'answer'=>$request->answer[$key],
+                          ];
+            ReportsFaqModel::create($insertFaqData);
+          }
+          
+        }
+      
+      
 
       /**************************CAGR Graph Create **********************/
-      CagrModel::create(['report_id'=>$report_id,
-                          'cagr'=>$request->cagr,
-    ]);
+      if(!empty($request->cag))
+      {
+        CagrModel::create(['report_id'=>$report_id,
+        'cagr'=>$request->cagr,]);
+      }
+     
 
       /*************************Reports Marketyear Graph Create ************************/
-      foreach($request->marketyear as $key=> $list)
-      {
-        $insertgraph=['report_id'=>$report_id,
-                            'marketyear'=>$request->marketyear[$key],
-                            'marketvalue'=>$request->marketvalue[$key],
-                        ];
-          MarketGraphicalModel::create($insertgraph);
+      
+        foreach($request->marketyear as $key=> $list)
+        {
+              if(!empty($request->marketyear[$key]))
+          {
+              $insertgraph=['report_id'=>$report_id,
+                                  'marketyear'=>$request->marketyear[$key],
+                                  'marketvalue'=>$request->marketvalue[$key],
+                              ];
+                MarketGraphicalModel::create($insertgraph);
+            }
       }
+      
 
       /*************************Reports Segment Graph Create ************************/
-      foreach($request->segmentname as $key=> $list)
+      
+        foreach($request->segmentname as $key=> $list)
+        {
+          if(!empty($request->segmentname[$key]))
       {
-        $insertsegmentData=['report_id'=>$report_id,
-                            'segmentname'=>$request->segmentname[$key],
-                            'segmentvalue'=>$request->segmentvalue[$key],
-                        ];
-          SegmentGraphicalModel::create($insertsegmentData);
+          $insertsegmentData=['report_id'=>$report_id,
+                              'segmentname'=>$request->segmentname[$key],
+                              'segmentvalue'=>$request->segmentvalue[$key],
+                          ];
+            SegmentGraphicalModel::create($insertsegmentData);
+        }
       }
+      
 
        /*************************Reports Region Graph Create ************************/
-       foreach($request->regionname as $key=> $list)
+       
+          foreach($request->regionname as $key=> $list)
+          {
+            if(!empty($request->regionvalue[$key]))
        {
-         $insertRegionData=['report_id'=>$report_id,
-                             'regionname'=>$request->regionname[$key],
-                             'regionvalue'=>$request->regionvalue[$key],
-                         ];
-           RegionGraphicalModel::create($insertRegionData);
+            $insertRegionData=['report_id'=>$report_id,
+                                'regionname'=>$request->regionname[$key],
+                                'regionvalue'=>$request->regionvalue[$key],
+                            ];
+              RegionGraphicalModel::create($insertRegionData);
+          }
        }
+       
 
         /*************************Reports Market Share Graph Create ************************/
-        foreach($request->marketsharename as $key=> $list)
-        {
-          $insertmarketshareData=['report_id'=>$report_id,
-                              'marketsharename'=>$request->marketsharename[$key],
-                              'marketsharevalue'=>$request->marketsharevalue[$key],
-                          ];
-            MarketShareGraphicalModel::create($insertmarketshareData);
+       
+          foreach($request->marketsharename as $key=> $list)
+          {
+            if(!empty($request->marketsharename[$key]))
+            {
+            $insertmarketshareData=['report_id'=>$report_id,
+                                'marketsharename'=>$request->marketsharename[$key],
+                                'marketsharevalue'=>$request->marketsharevalue[$key],
+                            ];
+              MarketShareGraphicalModel::create($insertmarketshareData);
+          }
         }
+        
       return redirect('/admin/reports')->with('success','Reports created successfully.');
     }
     public function getSlug(Request $request)

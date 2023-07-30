@@ -184,46 +184,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <hr class="bg-info">
-                            <p><b> SEO Section</b></p>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="mb-2">Schema <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="schema" rows="12">@if(isset($report->schema)){{$report->schema}}@endif</textarea>
-                                @if ($errors->has('schema'))
-                                    <span class="text-danger">{{ $errors->first('schema') }}</span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="mb-2">Meta Title <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="meta_title" rows="12">@if(isset($report->meta_title)){{$report->meta_title}}@endif</textarea>
-                                @if ($errors->has('meta_title'))
-                                    <span class="text-danger">{{ $errors->first('meta_title') }}</span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="mb-2">Meta Description <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="meta_des" rows="12">@if(isset($report->meta_des)){{$report->meta_des}}@endif</textarea>
-                                @if ($errors->has('meta_des'))
-                                    <span class="text-danger">{{ $errors->first('meta_des') }}</span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="mb-2">Meta Keywords <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="metal_keywords" rows="12">@if(isset($report->metal_keywords)){{$report->metal_keywords}}@endif</textarea>
-                                @if ($errors->has('metal_keywords'))
-                                    <span class="text-danger">{{ $errors->first('metal_keywords') }}</span>
-                                @endif
-                            </div>
-                        </div>
+                       
                         <div class="col-md-12">
                             <hr class="bg-info">
                             <p><b>License Types</b></p>
@@ -272,37 +233,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12">
-                            <hr class="bg-info">
-                            <p><b>FAQ Section</b> <a onclick="addmore()" class="btn btn-success btn-sm mt-3"><i class="fa fa-plus"></i></a></p>
-                            @foreach($report->getReportFaq as $key=>$list)
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label class="mb-2">Question<span class="text-danger"></span></label>
-                                        <input type="hidden" name="faq_id[]" value="@if(isset($list->id)){{$list->id}}@endif">
-                                        <textarea class="form-control"  name="question[]">@if(isset($list->question)){{$list->question}}@endif</textarea>
-                                        @if ($errors->has('question[]'))
-                                            <span class="text-danger">{{ $errors->first('question[]') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label class="mb-2">Answer<span class="text-danger"></span></label>
-                                        <textarea class="form-control"  name="answer[]">@if(isset($list->answer)){{$list->answer}}@endif</textarea>
-                                        @if ($errors->has('answer[]'))
-                                            <span class="text-danger">{{ $errors->first('answer[]') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-md-2 mt-3">
-                                    <a onclick="addmore()" class="btn btn-success btn-sm mt-3"><i class="fa fa-plus"></i></a>
-                                </div>
-                            </div>
-                            @endforeach
-                            <div id="row"></div>
-                        </div>
+                        
 
                         <div class="col-md-12">
                             <hr class="bg-info">
@@ -707,6 +638,79 @@
                             </div>
                             @endif
 
+                        </div>
+
+                        <div class="col-md-12">
+                            <hr class="bg-info">
+                            <p><b>FAQ Section</b> <a onclick="addmore()" class="btn btn-success btn-sm mt-3"><i class="fa fa-plus"></i></a></p>
+                            @foreach($report->getReportFaq as $key=>$list)
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="mb-2">Question<span class="text-danger"></span></label>
+                                        <input type="hidden" name="faq_id[]" value="@if(isset($list->id)){{$list->id}}@endif">
+                                        <textarea class="form-control"  name="question[]">@if(isset($list->question)){{$list->question}}@endif</textarea>
+                                        @if ($errors->has('question[]'))
+                                            <span class="text-danger">{{ $errors->first('question[]') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="mb-2">Answer<span class="text-danger"></span></label>
+                                        <textarea class="form-control"  name="answer[]">@if(isset($list->answer)){{$list->answer}}@endif</textarea>
+                                        @if ($errors->has('answer[]'))
+                                            <span class="text-danger">{{ $errors->first('answer[]') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-2 mt-3">
+                                    <a onclick="addmore()" class="btn btn-success btn-sm mt-3"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                            @endforeach
+                            <div id="row"></div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <hr class="bg-info">
+                            <p><b> SEO Section</b></p>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="mb-2">Schema <span class="text-danger"></span></label>
+                                <textarea class="form-control"  name="schema" rows="12">@if(isset($report->schema)){{$report->schema}}@endif</textarea>
+                                @if ($errors->has('schema'))
+                                    <span class="text-danger">{{ $errors->first('schema') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="mb-2">Meta Title <span class="text-danger"></span></label>
+                                <textarea class="form-control"  name="meta_title" rows="12">@if(isset($report->meta_title)){{$report->meta_title}}@endif</textarea>
+                                @if ($errors->has('meta_title'))
+                                    <span class="text-danger">{{ $errors->first('meta_title') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="mb-2">Meta Description <span class="text-danger"></span></label>
+                                <textarea class="form-control"  name="meta_des" rows="12">@if(isset($report->meta_des)){{$report->meta_des}}@endif</textarea>
+                                @if ($errors->has('meta_des'))
+                                    <span class="text-danger">{{ $errors->first('meta_des') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="mb-2">Meta Keywords <span class="text-danger"></span></label>
+                                <textarea class="form-control"  name="metal_keywords" rows="12">@if(isset($report->metal_keywords)){{$report->metal_keywords}}@endif</textarea>
+                                @if ($errors->has('metal_keywords'))
+                                    <span class="text-danger">{{ $errors->first('metal_keywords') }}</span>
+                                @endif
+                            </div>
                         </div>
                     </div>
                     <div class="row">

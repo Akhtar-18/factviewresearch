@@ -18,7 +18,7 @@
             </span>
         </a>
 
-        <a class="btn btn-info" href="{{ url('admin/reports/export') }}">Export User Data</a>
+        <a class="btn btn-info" href="{{ url('admin/reports/export') }}">Export Reports Data</a>
         @endcan
     </div>
     <div class="card-body">

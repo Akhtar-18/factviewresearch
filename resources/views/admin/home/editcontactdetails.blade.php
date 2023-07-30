@@ -39,6 +39,8 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="mb-2">Company Logo <span class="text-danger"></span></label>
+                                <br>
+                                @if(isset($contact->company_logo))logo Name({{$contact->company_logo}})@endif
                                 <input type="file" class="form-control"
                                 placeholder="Enter Company Name"
                                 name="company_logo"
@@ -55,7 +57,7 @@
                                 <input type="text" class="form-control"
                                 placeholder="Enter address"
                                 name="address"
-                                value="{{ $contact->company_name }}"
+                                value="{{ $contact->address }}"
                                 required>
                                 @if ($errors->has('address'))
                                     <span class="text-danger">{{ $errors->first('address') }}</span>
