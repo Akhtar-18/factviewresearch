@@ -588,9 +588,9 @@
   </div>
 </div>
 <script>
-    window.onload = function() {
-  jQuery('#exampleModal').modal('show');
-}
+//     window.onload = function() {
+//   jQuery('#exampleModal').modal('show');
+// }
 </script>
 
 
