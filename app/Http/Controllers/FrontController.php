@@ -59,7 +59,7 @@ class FrontController extends Controller
             $data['marketyear'] =  $marketvalue->pluck('marketyear');
             $data['marketvalue'] =  $marketvalue->pluck('marketvalue');
 
-            $regiongraph=RegionGraphicalModel::select(['regionname','regionvalue'])->where('report_id',$data['reports']->id)->limit(5)->get();
+            $regiongraph=RegionGraphicalModel::select(['regionname','regionvalue'])->where('report_id',$data['reports']->id)->limit(8)->get();
             $data['regionname'] =  $regiongraph->pluck('regionname');
             $data['regionvalue'] =  $regiongraph->pluck('regionvalue');
 

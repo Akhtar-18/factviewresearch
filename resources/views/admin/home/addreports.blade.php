@@ -330,6 +330,38 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="mb-2">Year<span class="text-danger"></span></label>
+                                                <input type="text" class="form-control" name="marketyear[]"
+                                                    placeholder="Year">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="mb-2">Percentage<span class="text-danger"></span></label>
+                                                <input type="text" class="form-control" name="marketvalue[]"
+                                                    placeholder="Percentage">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="mb-2">Year<span class="text-danger"></span></label>
+                                                <input type="text" class="form-control" name="marketyear[]"
+                                                    placeholder="Year">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="mb-2">Percentage<span class="text-danger"></span></label>
+                                                <input type="text" class="form-control" name="marketvalue[]"
+                                                    placeholder="Percentage">
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <p><b>Segment Graphs</b></p>
                                     <div class="row">
@@ -484,6 +516,52 @@
                                                     placeholder="Region Percentage">
                                             </div>
                                         </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="mb-2">Region Name<span class="text-danger"></span></label>
+                                                <input type="text" class="form-control" name="regionname[]"
+                                                    placeholder="country Name" value="North America" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="mb-2">Percentage<span class="text-danger"></span></label>
+                                                <input type="text" class="form-control" name="regionvalue[]"
+                                                    placeholder="Region Percentage">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="mb-2">Region Name<span class="text-danger"></span></label>
+                                                <input type="text" class="form-control" name="regionname[]"
+                                                    placeholder="country Name" value="Oceania" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="mb-2">Percentage<span class="text-danger"></span></label>
+                                                <input type="text" class="form-control" name="regionvalue[]"
+                                                    placeholder="Region Percentage">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="mb-2">Region Name<span class="text-danger"></span></label>
+                                                <input type="text" class="form-control" name="regionname[]"
+                                                    placeholder="country Name" value="South America" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="mb-2">Percentage<span class="text-danger"></span></label>
+                                                <input type="text" class="form-control" name="regionvalue[]"
+                                                    placeholder="Region Percentage">
+                                            </div>
+                                        </div>
+                                        
 
                                     </div>
 
