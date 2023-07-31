@@ -22,108 +22,178 @@
     <link href="{{ url('') }}/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script type="text/javascript" src="https://cdn.tiny.cloud/1/f5jfryuw1ddshgifs9gj6b2znjaqh301w3te6fqu2a19jjp3/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <style type="text/css">.tox .tox-statusbar__text-container {display:none !important;}</style>
+    <script type="text/javascript" src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <style type="text/css">
+        .tox .tox-statusbar__text-container {
+            display: none !important;
+        }
+    </style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-<script type="text/javascript">
-    
-const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
-tinymce.init({
-    /*selector: "textarea",
-    plugins: "emoticons hr image link lists charmap table",
-    toolbar: "bold italic underline | bullist numlist | alignleft aligncenter alignright alignjustify",
-    menubar: false*/
-     paste_data_images: true,
-    selector: 'textarea#open-source-plugins',
-  plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons',
-  editimage_cors_hosts: ['picsum.photos'],
-  menubar: 'file edit view insert format tools table help',
-  toolbar: 'undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
-  toolbar_sticky: true,
-  toolbar_sticky_offset: isSmallScreen ? 102 : 108,
-  autosave_ask_before_unload: true,
-  autosave_interval: '30s',
-  autosave_prefix: '{path}{query}-{id}-',
-  autosave_restore_when_empty: false,
-  autosave_retention: '2m',
-  image_advtab: true,
-  link_list: [
-    { title: 'My page 1', value: 'https://www.tiny.cloud' },
-    { title: 'My page 2', value: 'http://www.moxiecode.com' }
-  ],
-  image_list: [
-    { title: 'My page 1', value: 'https://www.tiny.cloud' },
-    { title: 'My page 2', value: 'http://www.moxiecode.com' }
-  ],
-  image_class_list: [
-    { title: 'None', value: '' },
-    { title: 'Some class', value: 'class-name' }
-  ],
-  importcss_append: true,
-  file_picker_callback: (callback, value, meta) => {
-    /* Provide file and text for the link dialog */
-    if (meta.filetype === 'file') {
-      callback('https://www.google.com/logos/google.jpg', { text: 'My text' });
-    }
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars advcode fullscreen image link media template codesample table charmap powerpaste hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+            imagetools_cors_hosts: ['picsum.photos'],
+            menubar: 'file edit view insert format tools table help',
+            toolbar: 'undo redo | bold italic underline strikethrough | styleselect | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl | link image code ',
+            toolbar_sticky: true,
+            powerpaste_allow_local_images: true,
+            powerpaste_word_import: 'prompt',
+            powerpaste_html_import: 'prompt',
+            autosave_ask_before_unload: true,
+            autosave_interval: '30s',
+            autosave_prefix: '{path}{query}-{id}-',
+            autosave_restore_when_empty: false,
+            autosave_retention: '2m',
+            image_advtab: true,
+            importcss_append: true,
+            /* enable title field in the Image dialog*/
+            image_title: true,
+            /* enable automatic uploads of images represented by blob or data URIs*/
+            automatic_uploads: true,
+            /*
+              URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
+              images_upload_url: 'postAcceptor.php',
+              here we add custom filepicker only to Image dialog
+            */
+            file_picker_types: 'image',
+            /* and here's our custom image picker*/
+            file_picker_callback: function(cb, value, meta) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
 
-    /* Provide image and alt text for the image dialog */
-    if (meta.filetype === 'image') {
-      callback('https://www.google.com/logos/google.jpg', { alt: 'My alt text' });
-    }
+                /*
+                  Note: In modern browsers input[type="file"] is functional without
+                  even adding it to the DOM, but that might not be the case in some older
+                  or quirky browsers like IE, so you might want to add it to the DOM
+                  just in case, and visually hide it. And do not forget do remove it
+                  once you do not need it anymore.
+                */
 
-    /* Provide alternative source and posted for the media dialog */
-    if (meta.filetype === 'media') {
-      callback('movie.mp4', { source2: 'alt.ogg', poster: 'https://www.google.com/logos/google.jpg' });
-    }
-  },
-  templates: [
-    { title: 'New Table', description: 'creates a new table', content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>' },
-    { title: 'Starting my story', description: 'A cure for writers block', content: 'Once upon a time...' },
-    { title: 'New list with dates', description: 'New List with dates', content: '<div class="mceTmpl"><span class="cdate">cdate</span><br><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>' }
-  ],
-  template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
-  template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
-  height: 600,
-  image_caption: true,
-  quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
-  noneditable_class: 'mceNonEditable',
-  toolbar_mode: 'sliding',
-  contextmenu: 'link image table',
-  skin: useDarkMode ? 'oxide-dark' : 'oxide',
-  content_css: useDarkMode ? 'dark' : 'default',
-//  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
-});
+                input.onchange = function() {
+                    var file = this.files[0];
+
+                    var reader = new FileReader();
+                    reader.onload = function() {
+                        /*
+                          Note: Now we need to register the blob in TinyMCEs image blob
+                          registry. In the next release this part hopefully won't be
+                          necessary, as we are looking to handle it internally.
+                        */
+                        var id = 'blobid' + (new Date()).getTime();
+                        var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                        var base64 = reader.result.split(',')[1];
+                        var blobInfo = blobCache.create(id, file, base64);
+                        blobCache.add(blobInfo);
+
+                        /* call the callback and populate the Title field with the file name */
+                        cb(blobInfo.blobUri(), {
+                            title: file.name
+                        });
+                    };
+                    reader.readAsDataURL(file);
+                };
+
+                input.click();
+            },
+            height: 600,
+            image_caption: true,
+            quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+            noneditable_noneditable_class: 'mceNonEditable',
+            toolbar_mode: 'sliding',
+            contextmenu: 'link image imagetools table',
+            //content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+        });
+    </script>
+    <style>
+        /* For other boilerplate styles, see: /docs/general-configuration-guide/boilerplate-content-css/ */
+        /*
+* For rendering images inserted using the image plugin.
+* Includes image captions using the HTML5 figure element.
+*/
+
+        figure.image {
+            display: inline-block;
+            border: 1px solid gray;
+            margin: 0 2px 0 1px;
+            background: #f5f2f0;
+        }
+
+        figure.align-left {
+            float: left;
+        }
+
+        figure.align-right {
+            float: right;
+        }
+
+        figure.image img {
+            margin: 8px 8px 0 8px;
+        }
+
+        figure.image figcaption {
+            margin: 6px 8px 6px 8px;
+            text-align: center;
+        }
 
 
-</script>
+        /*
+ Alignment using classes rather than inline styles
+ check out the "formats" option
+*/
 
-<style>
-.tox-notification {
-    display:none !important;
-}
-.preview{
-    width: 150px;
-    margin-left: -35px;
-    color: #fff;
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 4px;
-    text-align: center;
-    background-color: #ff5f7c;
-    cursor: pointer;
-    border: none;
-    padding: 7px;
-    text-transform: uppercase;
-    transition: .3s ease-in-out;
+        img.align-left {
+            float: left;
+        }
 
-}
-.mtl-5{
- margin: 5px;
-}
+        img.align-right {
+            float: right;
+        }
 
-</style>
+        /* Basic styles for Table of Contents plugin (toc) */
+        .mce-toc {
+            border: 1px solid gray;
+        }
+
+        .mce-toc h2 {
+            margin: 4px;
+        }
+
+        .mce-toc li {
+            list-style-type: none;
+        }
+    </style>
+
+
+    <style>
+        .tox-notification {
+            display: none !important;
+        }
+
+        .preview {
+            width: 150px;
+            margin-left: -35px;
+            color: #fff;
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 4px;
+            text-align: center;
+            background-color: #ff5f7c;
+            cursor: pointer;
+            border: none;
+            padding: 7px;
+            text-transform: uppercase;
+            transition: .3s ease-in-out;
+
+        }
+
+        .mtl-5 {
+            margin: 5px;
+        }
+    </style>
 
 </head>
 
@@ -141,10 +211,11 @@ tinymce.init({
                 <div class="sidebar-brand-icon">
                     <!-- <i class="fas fa-laugh-wink"></i> -->
                     <!-- <img src="{{ url('') }}/admin/RMlogo.png" height="40"> -->
-                    @if(getCompanyDetail())
-                    <img src="{{asset('company_logo')}}/{{getCompanyDetail()->company_logo}}" width="150px" height="40">
+                    @if (getCompanyDetail())
+                        <img src="{{ asset('company_logo') }}/{{ getCompanyDetail()->company_logo }}" width="150px"
+                            height="40">
                     @elseif(isset(getCompanyDetail()->company_name))
-                    {{getCompanyDetail()->company_name}}
+                        {{ getCompanyDetail()->company_name }}
                     @endif
                 </div>
                 <!-- <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div> -->
@@ -165,7 +236,7 @@ tinymce.init({
 
             <!-- Heading -->
             <div class="sidebar-heading">
-               CMS
+                CMS
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -177,97 +248,103 @@ tinymce.init({
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        @if(auth()->user()->can('slider-list'))
-                        <a class="collapse-item" href="{{ url('admin/slider')}}">Slider</a>
+                        @if (auth()->user()->can('slider-list'))
+                            <a class="collapse-item" href="{{ url('admin/slider') }}">Slider</a>
                         @endif
-                        @if(auth()->user()->can('aboutus-list'))
-                        <a class="collapse-item" href="{{ url('admin/aboutus')}}">About Us</a>
+                        @if (auth()->user()->can('aboutus-list'))
+                            <a class="collapse-item" href="{{ url('admin/aboutus') }}">About Us</a>
                         @endif
-                        @if(auth()->user()->can('services-list'))
-                        <a class="collapse-item" href="{{ url('admin/services')}}">Services</a>
+                        @if (auth()->user()->can('services-list'))
+                            <a class="collapse-item" href="{{ url('admin/services') }}">Services</a>
                         @endif
-                        @if(auth()->user()->can('contactdetails-list'))
-                        <a class="collapse-item" href="{{ url('admin/contactdetails')}}">Contact Details</a>
+                        @if (auth()->user()->can('contactdetails-list'))
+                            <a class="collapse-item" href="{{ url('admin/contactdetails') }}">Contact Details</a>
                         @endif
-                        @if(auth()->user()->can('whowe-list'))
-                        <a class="collapse-item" href="{{ url('admin/whowe')}}">Who We Are</a>
+                        @if (auth()->user()->can('whowe-list'))
+                            <a class="collapse-item" href="{{ url('admin/whowe') }}">Who We Are</a>
                         @endif
-                        @if(auth()->user()->can('whychoose-list'))
-                        <a class="collapse-item" href="{{ url('admin/whychoose')}}">Why Choose Us</a>
+                        @if (auth()->user()->can('whychoose-list'))
+                            <a class="collapse-item" href="{{ url('admin/whychoose') }}">Why Choose Us</a>
                         @endif
-                        @if(auth()->user()->can('getintouch-list'))
-                        <a class="collapse-item" href="{{ url('admin/getintouch')}}">Get In Touch With Us</a>
+                        @if (auth()->user()->can('getintouch-list'))
+                            <a class="collapse-item" href="{{ url('admin/getintouch') }}">Get In Touch With Us</a>
                         @endif
-                        @if(auth()->user()->can('clients-list'))
-                        <a class="collapse-item" href="{{ url('admin/clients')}}">Clients</a>
+                        @if (auth()->user()->can('clients-list'))
+                            <a class="collapse-item" href="{{ url('admin/clients') }}">Clients</a>
                         @endif
-                        @if(auth()->user()->can('testimonials-list'))
-                        <a class="collapse-item" href="{{ url('admin/testimonials')}}">Testimonials</a>
+                        @if (auth()->user()->can('testimonials-list'))
+                            <a class="collapse-item" href="{{ url('admin/testimonials') }}">Testimonials</a>
                         @endif
-                        @if(auth()->user()->can('careers-list'))
-                        <a class="collapse-item" href="{{ url('admin/careers')}}">Careers</a>
-                        @endif
-                    </div>
-                </div>
-            </li>
-            @if(auth()->user()->can('role-list') || auth()->user()->can('users-list'))
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
-                    aria-expanded="true" aria-controls="collapseUsers">
-                    <i class="fas fa-users"></i>
-                    <span>Users</span>
-                </a>
-                <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Users</h6>
-                        @if(auth()->user()->can('role-list'))
-                        <a class="collapse-item" href="{{ route('roles.index') }}">User Roles/Types</a>
-                        @endif
-                        @if(auth()->user()->can('users-list'))
-                        <a class="collapse-item" href="{{ route('users.index') }}">Users</a>
+                        @if (auth()->user()->can('careers-list'))
+                            <a class="collapse-item" href="{{ url('admin/careers') }}">Careers</a>
                         @endif
                     </div>
                 </div>
             </li>
+            @if (auth()->user()->can('role-list') ||
+                    auth()->user()->can('users-list'))
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+                        aria-expanded="true" aria-controls="collapseUsers">
+                        <i class="fas fa-users"></i>
+                        <span>Users</span>
+                    </a>
+                    <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Users</h6>
+                            @if (auth()->user()->can('role-list'))
+                                <a class="collapse-item" href="{{ route('roles.index') }}">User Roles/Types</a>
+                            @endif
+                            @if (auth()->user()->can('users-list'))
+                                <a class="collapse-item" href="{{ route('users.index') }}">Users</a>
+                            @endif
+                        </div>
+                    </div>
+                </li>
             @endif
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            @if(auth()->user()->can('reportcategory-list') || auth()->user()->can('reportsubcategory-list') ||  auth()->user()->can('reports-list') || auth()->user()->can('reportsbulk-list'))
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Reports</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Reports</h6>
+            @if (auth()->user()->can('reportcategory-list') ||
+                    auth()->user()->can('reportsubcategory-list') ||
+                    auth()->user()->can('reports-list') ||
+                    auth()->user()->can('reportsbulk-list'))
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                        aria-expanded="true" aria-controls="collapseUtilities">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>Reports</span>
+                    </a>
+                    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Reports</h6>
 
-                        @if(auth()->user()->can('reportcategory-list'))
-                        <a class="collapse-item" href="{{ url('admin/reportcategory')}}">Report Category</a>
-                        @endif
-                        {{--@if(auth()->user()->can('reportsubcategory-list'))
-                        <a class="collapse-item" href="{{ route('report.subcategory.index')}}">Report Sub Category</a>
-                        @endif--}}
-                        @if(auth()->user()->can('reports-list'))
-                        <a class="collapse-item" href="{{ url('admin/reports')}}">Reports</a>
-                        @endif
-                        @if(auth()->user()->can('reportsbulk-list'))
-                        <a class="collapse-item" href="{{url('admin/reports/bulk-upload')}}">Bulk Upload</a>
-                        @endif
+                            @if (auth()->user()->can('reportcategory-list'))
+                                <a class="collapse-item" href="{{ url('admin/reportcategory') }}">Report Category</a>
+                            @endif
+                            @if (auth()->user()->can('reportsubcategory-list'))
+                                <a class="collapse-item" href="{{ route('report.subcategory.index') }}">Report Sub
+                                    Category</a>
+                            @endif
+                            @if (auth()->user()->can('reports-list'))
+                                <a class="collapse-item" href="{{ url('admin/reports') }}">Reports</a>
+                            @endif
+                            @if (auth()->user()->can('reportsbulk-list'))
+                                <a class="collapse-item" href="{{ url('admin/reports/bulk-upload') }}">Bulk
+                                    Upload</a>
+                            @endif
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
             @endif
             <!---- Enquiry------>
-            @if(auth()->user()->can('enquiry-list'))
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ url('admin/enquiry') }}">
-                    <i class="fas fa-fw fa-comments"></i>
-                    <span>Enquiries</span></a>
-            </li>
+            @if (auth()->user()->can('enquiry-list'))
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url('admin/enquiry') }}">
+                        <i class="fas fa-fw fa-comments"></i>
+                        <span>Enquiries</span></a>
+                </li>
             @endif
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -277,37 +354,42 @@ tinymce.init({
                 Addons
             </div>
 
-            @if(auth()->user()->can('payment-list'))
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('report.payment')}}">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Payment</span>
-                </a>
-            </li>
+            @if (auth()->user()->can('payment-list'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('report.payment') }}">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Payment</span>
+                    </a>
+                </li>
             @endif
-            @if(auth()->user()->can('blog-list') || auth()->user()->can('adminpressreleases-list') || auth()->user()->can('admincasestudies-list'))
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Media/Insights</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Blog:</h6>
-                        <!-- <a class="collapse-item" href="{{url('admin/blog-category')}}">Blogs Category</a> -->
-                        @if(auth()->user()->can('blog-list'))
-                        <a class="collapse-item" href="{{url('admin/admin-blogs')}}">Blogs</a>
-                        @endif
-                        @if(auth()->user()->can('adminpressreleases-list'))
-                        <a class="collapse-item" href="{{url('admin/admin-press-releases')}}">Press Releases</a>
-                        @endif
-                        @if(auth()->user()->can('admincasestudies-list'))
-                        <a class="collapse-item" href="{{url('admin/admin-case-studies')}}">Case Studies</a>
-                        @endif
+            @if (auth()->user()->can('blog-list') ||
+                    auth()->user()->can('adminpressreleases-list') ||
+                    auth()->user()->can('admincasestudies-list'))
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                        aria-expanded="true" aria-controls="collapsePages">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Media/Insights</span>
+                    </a>
+                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Blog:</h6>
+                            <!-- <a class="collapse-item" href="{{ url('admin/blog-category') }}">Blogs Category</a> -->
+                            @if (auth()->user()->can('blog-list'))
+                                <a class="collapse-item" href="{{ url('admin/admin-blogs') }}">Blogs</a>
+                            @endif
+                            @if (auth()->user()->can('adminpressreleases-list'))
+                                <a class="collapse-item" href="{{ url('admin/admin-press-releases') }}">Press
+                                    Releases</a>
+                            @endif
+                            @if (auth()->user()->can('admincasestudies-list'))
+                                <a class="collapse-item" href="{{ url('admin/admin-case-studies') }}">Case
+                                    Studies</a>
+                            @endif
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
             @endif
             <!-- Nav Item - Charts -->
 
@@ -324,8 +406,8 @@ tinymce.init({
 
             <!-- Sidebar Message -->
             <!-- <div class="sidebar-card d-none d-lg-flex"> -->
-                <!-- <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="..."> -->
-                <!-- <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+            <!-- <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="..."> -->
+            <!-- <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
                 <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a> -->
             <!-- </div> -->
 
@@ -392,11 +474,11 @@ tinymce.init({
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i> -->
-                                <!-- Counter - Alerts -->
-                                <!-- <span class="badge badge-danger badge-counter">3+</span>
+                        <!-- Counter - Alerts -->
+                        <!-- <span class="badge badge-danger badge-counter">3+</span>
                             </a> -->
-                            <!-- Dropdown - Alerts -->
-                            <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                        <!-- Dropdown - Alerts -->
+                        <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Alerts Center
@@ -421,11 +503,11 @@ tinymce.init({
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i> -->
-                                <!-- Counter - Messages -->
-                                <!-- <span class="badge badge-danger badge-counter">7</span>
+                        <!-- Counter - Messages -->
+                        <!-- <span class="badge badge-danger badge-counter">7</span>
                             </a> -->
-                            <!-- Dropdown - Messages -->
-                            <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                        <!-- Dropdown - Messages -->
+                        <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
@@ -464,7 +546,8 @@ tinymce.init({
                                     Profile
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="#" data-toggle="modal"
+                                    data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -487,7 +570,8 @@ tinymce.init({
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                    <p class="mb-0">&copy; Copyright <span class="current-year"></span>. All Rights Reserved.</p>
+                        <p class="mb-0">&copy; Copyright <span class="current-year"></span>. All Rights Reserved.
+                        </p>
                     </div>
                 </div>
             </footer>
@@ -543,31 +627,35 @@ tinymce.init({
 
 
 
-     <!-- Page level plugins -->
-     <script src="{{ url('') }}/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="{{ url('') }}/admin/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="{{ url('') }}/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="{{ url('') }}/admin/js/demo/datatables-demo.js"></script>
 
-    <script>tinymce.init({selector:'textarea'});</script>
-    <!-- <script type="text/javascript">
-tinymce.init({
-    selector: "textarea",
-    plugins: "emoticons hr image link lists charmap table",
-    toolbar: "bold italic underline | bullist numlist | alignleft aligncenter alignright alignjustify",
-    menubar: false
-});
-</script> -->
-<script>
-    $(document).ready(function(){
-   $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-            }
+    <!-- <script>
+        tinymce.init({
+            selector: 'textarea'
         });
-});
-</script>
+    </script> -->
+    <!-- <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea",
+            plugins: "emoticons hr image link lists charmap table",
+            toolbar: "bold italic underline | bullist numlist | alignleft aligncenter alignright alignjustify",
+            menubar: false
+        });
+    </script> -->
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        });
+    </script>
 
 </body>
 
