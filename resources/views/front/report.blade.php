@@ -171,7 +171,7 @@
                                                         </div>
     @endif -->
 
-                            </div>
+                                        </div></div>
 
                             <script>
                                 const barChart = document.getElementById('mybarChart');
