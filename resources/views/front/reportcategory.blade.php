@@ -42,7 +42,7 @@
                                     </h5>
                                 </a>
                                 </div>
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne{{ $key }}"
+                               {{-- <div id="collapseOne" class="collapse show" aria-labelledby="headingOne{{ $key }}"
                                     data-bs-parent="#accordion">
                                     <div class="card-body">
                                         <ul class="list-style-5">
@@ -53,7 +53,7 @@
                                             @endif
                                         </ul>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         @endforeach
                     </div>

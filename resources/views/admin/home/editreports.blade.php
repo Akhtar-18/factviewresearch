@@ -43,7 +43,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                {{--<div class="col-md-3">
                                     <div class="form-group">
                                         <label class="mb-2">Sub Category Name <span class="text-danger">*</span></label>
                                         <input type="hidden" id="subcategory_id"
@@ -57,6 +57,7 @@
                                         @endif
                                     </div>
                                 </div>
+                                --}}
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="mb-2">Heading<span class="text-danger">*</span></label>
@@ -95,7 +96,7 @@
                                         <label class="mb-2">Publish Month <span class="text-danger"></span></label>
                                         <input type="date" class="form-control" placeholder="Enter Publish Month"
                                             name="publish_month"
-                                            value="@if (isset($report->publish_month)) {{ date('Y-m-d', strtotime($report->publish_month)) }} @endif">
+                                            value="@if(isset($report->publish_month)){{ date('Y-m-d',strtotime($report->publish_month)) }} @endif">
                                         @if ($errors->has('publish_month'))
                                             <span class="text-danger">{{ $errors->first('publish_month') }}</span>
                                         @endif

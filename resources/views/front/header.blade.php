@@ -146,16 +146,17 @@
                                                 @if (GetReportMenu())
                                                     @foreach (GetReportMenu() as $cate)
                                                         <li class="col-lg-3">
-                                                            <span
+                                                        <a href="@if(isset($cate->cat_name)){{route('front.reportcategory',strtolower($cate->cat_name))}}@endif"><span
                                                                 class="d-block m-0 mb-lg-3 py-2 py-lg-0 px-1-9 px-lg-0 text-uppercase sub-title">{{ $cate->cat_name }}
-                                                                &raquo;</span>
-                                                            <ul>
+                                                                &raquo;</span></a>
+                                                            
+                                                            {{--<ul>
                                                                 @if ($cate->getSubCategory)
                                                                     @foreach ($cate->getSubCategory as $sub)
                                                                         <li><a href="@if(isset($sub->sub_category)){{ route('front.reportsubcategory',strtolower($sub->sub_category))}}@endif">{{ $sub->sub_category }}</a></li>
                                                                     @endforeach
                                                                 @endif
-                                                            </ul>
+                                                            </ul>--}}
                                                         </li>
                                                     @endforeach
                                                 @endif

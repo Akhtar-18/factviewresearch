@@ -335,6 +335,8 @@ class ReportsController extends Controller
   {
   foreach($request->question as $key=> $list)
   {
+    if(!empty($request->answer[$key]))
+      {
     if($request->faq_id[$key]!='')
     {
       $faqData=ReportsFaqModel::find($request->faq_id[$key]);
@@ -346,14 +348,13 @@ class ReportsController extends Controller
     }
     else
     {
-      if(!empty($request->answer[$key]))
-      {
+      
       $insertFaqData=['report_id'=>$report_id,
                         'question'=>$request->question[$key],
                         'answer'=>$request->answer[$key],
                     ];
       ReportsFaqModel::create($insertFaqData);
-                  }
+      }
     }
 
   }
@@ -379,6 +380,8 @@ class ReportsController extends Controller
   /*************************Reports Marketyear Graph Create ************************/
   foreach($request->marketyear as $key=> $list)
   {
+    if(!empty($request->marketyear[$key]))
+      {
     if($request->market_id[$key]!='')
     {
       $marketdata=MarketGraphicalModel::find($request->market_id[$key]);
@@ -390,14 +393,13 @@ class ReportsController extends Controller
     }
     else
     {
-      if(!empty($request->marketyear[$key]))
-      {
+      
       $insertgraph=['report_id'=>$report_id,
                         'marketyear'=>$request->marketyear[$key],
                         'marketvalue'=>$request->marketvalue[$key],
                     ];
       MarketGraphicalModel::create($insertgraph);
-                  }
+    }
     }
 
   }
@@ -405,6 +407,8 @@ class ReportsController extends Controller
   /*************************Reports Segment Graph Create ************************/
   foreach($request->segmentname as $key=> $list)
   {
+    if(!empty($request->segmentvalue[$key]))
+      {
     if($request->segment_id[$key]!='')
     {
       $segmentData=SegmentGraphicalModel::find($request->segment_id[$key]);
@@ -417,8 +421,7 @@ class ReportsController extends Controller
     }
     else
     {
-      if(!empty($request->segmentvalue[$key]))
-      {
+      
       $insertsegmentData=['report_id'=>$report_id,
       'segmentname'=>$request->segmentname[$key],
       'segmentvalue'=>$request->segmentvalue[$key],
@@ -432,6 +435,8 @@ class ReportsController extends Controller
    /*************************Reports Region Graph Create ************************/
    foreach($request->regionname as $key=> $list)
    {
+    if(!empty($request->regionvalue[$key]))
+      {
     if($request->region_id[$key]!='')
     {
       $regionData=RegionGraphicalModel::find($request->region_id[$key]);
@@ -443,8 +448,7 @@ class ReportsController extends Controller
     }
     else
     {
-      if(!empty($request->regionvalue[$key]))
-      {
+      
       $insertRegionData=['report_id'=>$report_id,
       'regionname'=>$request->regionname[$key],
       'regionvalue'=>$request->regionvalue[$key],
@@ -458,6 +462,8 @@ class ReportsController extends Controller
     /*************************Reports Market Share Graph Create ************************/
     foreach($request->marketsharename as $key=> $list)
     {
+      if(!empty($request->marketsharevalue[$key]))
+      {
       if($request->marketshare_id[$key]!='')
       {
         
@@ -470,8 +476,7 @@ class ReportsController extends Controller
       }
       else
       {
-        if(!empty($request->marketsharevalue[$key]))
-      {
+       
         $insertmarketshareData=['report_id'=>$report_id,
         'marketsharename'=>$request->marketsharename[$key],
         'marketsharevalue'=>$request->marketsharevalue[$key],

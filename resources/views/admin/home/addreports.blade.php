@@ -27,7 +27,7 @@
                                     <div class="form-group">
                                         <label class="mb-2">Category Name <span class="text-danger">*</span></label>
                                         <select class="form-control" name="category_id" id="category_id"
-                                            onchange="getsubcategory()">
+                                            >
                                             <option value=" ">Select Category</option>
                                             @foreach ($category as $list)
                                                 <option value="{{ $list->id }}">{{ $list->cat_name }}</option>
@@ -38,7 +38,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <!-- <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="mb-2">Sub Category Name <span class="text-danger">*</span></label>
                                         <select class="form-control" name="sub_category_id" id="sub_category_id">
@@ -49,7 +49,7 @@
                                             <span class="text-danger">{{ $errors->first('sub_category_id') }}</span>
                                         @endif
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="mb-2">Heading<span class="text-danger">*</span></label>

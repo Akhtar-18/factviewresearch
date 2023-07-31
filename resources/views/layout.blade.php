@@ -248,9 +248,9 @@ tinymce.init({
                         @if(auth()->user()->can('reportcategory-list'))
                         <a class="collapse-item" href="{{ url('admin/reportcategory')}}">Report Category</a>
                         @endif
-                        @if(auth()->user()->can('reportsubcategory-list'))
+                        {{--@if(auth()->user()->can('reportsubcategory-list'))
                         <a class="collapse-item" href="{{ route('report.subcategory.index')}}">Report Sub Category</a>
-                        @endif
+                        @endif--}}
                         @if(auth()->user()->can('reports-list'))
                         <a class="collapse-item" href="{{ url('admin/reports')}}">Reports</a>
                         @endif

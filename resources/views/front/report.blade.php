@@ -15,7 +15,7 @@
                 <div class="col-md-12">
                     <ul class="ps-0">
                         <li><a href="{{ route('front.home') }}">Home</a></li>
-                        <li><a href="{{ route('front.report', ['category' => strtolower($reports->getCategoryName->cat_name), 'subcategory' => strtolower($reports->getSubCategoryName->sub_category), 'id' => $reports->url]) }}">{{ $reports->heading }}</a>
+                        <li><a href="{{ route('front.report', ['id' => $reports->url]) }}">{{ $reports->heading }}</a>
                         </li>
                     </ul>
                 </div>
@@ -37,7 +37,7 @@
                             <div class="col-md-12">
                                 <div class="blog-list-simple-text">
                                     <!-- <span>Business</span> -->
-                                    <h5><a href="{{ route('front.report', ['category' => strtolower($reports->getCategoryName->cat_name), 'subcategory' => strtolower($reports->getSubCategoryName->sub_category), 'id' => $reports->url]) }}" class="text-primary-use">{{ $reports->heading }}</a></h5>
+                                    <h5><a href="{{ route('front.report', ['id' => $reports->url]) }}" class="text-primary-use">{{ $reports->heading }}</a></h5>
                                     <ul class="meta ps-0">
                                         <li>
                                             <i aria-hidden="true" class="fas fa-clock text-primary-new"></i> Published Date:

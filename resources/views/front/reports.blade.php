@@ -47,7 +47,7 @@
                                     data-bs-parent="#accordion">
                                     <div class="card-body">
                                         <ul class="list-style-5">
-                                            @if ($cat->getSubCategory)
+                                            @if (isset($cat->getSubCategory))
                                                 @foreach ($cat->getSubCategory as $sub)
                                                     <li><a
                                                             href="@if (isset($sub->sub_category)) {{ route('front.reportsubcategory', strtolower($sub->sub_category)) }} @endif">{{ $sub->sub_category }}</a>
