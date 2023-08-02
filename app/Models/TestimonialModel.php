@@ -11,5 +11,5 @@ class TestimonialModel extends Model
     use HasFactory,SoftDeletes;
     protected $table="testimonials";
     protected $primaryKey = "id";
-    protected $fillable = ['name','profile','comments'];
+    protected $fillable = ['name','profile','comments','client_image'];
 }

@@ -49,6 +49,18 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="mb-2">Client Image (@if(isset($testimonial->client_image)){{$testimonial->client_image}}@endif)</label>
+                                <input type="file" class="form-control"
+                                placeholder="Enter profile"
+                                name="client_image"
+                                >
+                                @if ($errors->has('client_image'))
+                                    <span class="text-danger">{{ $errors->first('client_image') }}</span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="mb-2">Content</label>

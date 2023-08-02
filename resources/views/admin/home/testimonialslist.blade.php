@@ -26,6 +26,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Profile</th>
+                        <th>Client Image</th>
                         <th>Comments</th>
                         <th>Action</th>
                     </tr>
@@ -34,6 +35,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Profile</th>
+                        <th>Client Image</th>
                         <th>Comments</th>
                         <th>Action</th>
                     </tr>
@@ -53,6 +55,7 @@
         columns: [
             {data: 'name', name: 'name'},
             {data: 'profile', name: 'profile'},
+            {data: 'client_image', name: 'client_image'},
             {data: 'comments', name: 'comments'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]

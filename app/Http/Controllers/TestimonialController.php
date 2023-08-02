@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TestimonialRequest;
 use App\Models\TestimonialModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use Yajra\DataTables\Facades\DataTables;
 
 class TestimonialController extends Controller
@@ -31,6 +32,10 @@ class TestimonialController extends Controller
                     ->addIndexColumn()
                ->addColumn('comments', function($row){
                 $contents = strip_tags($row->comments);
+                return $contents;
+              })
+              ->addColumn('client_image', function($row){
+                $contents = '<img src="'.URL::to('testimonials/client_image/').'/'.$row->client_image.'" width="150">';
                 return $contents;
               })
 
@@ -76,7 +81,7 @@ class TestimonialController extends Controller
      
                             return $btn;
                     })
-                    ->rawColumns(['comments','action'])
+                    ->rawColumns(['client_image','comments','action'])
                     ->make(true);
         }
     }
@@ -89,6 +94,15 @@ class TestimonialController extends Controller
     public function submit(TestimonialRequest $request)
     {
         $request->validated();
+        if ($request->file('client_image'))
+        {
+          $client_image=ImageUpload('testimonials/client_image',$request->file('client_image'));
+        }
+        else
+        {
+          $client_image="";
+        }
+        $input['client_image']=$client_image;
         $input = $request->all();
         TestimonialModel::create($input);
         return redirect('/admin/testimonials')->with('success','Post created successfully.');
@@ -114,7 +128,16 @@ class TestimonialController extends Controller
    {
       $request->validated();
       $input = $request->all();
-      $testimonial=TestimonialModel::find($id);        
+      $testimonial=TestimonialModel::find($id);     
+      if ($request->file('client_image'))
+      {
+        $client_image=ImageUpload('testimonials/client_image',$request->file('client_image'));
+      }
+      else
+      {
+        $client_image=$testimonial->client_image;
+      }
+      $input['client_image']=$client_image;
       $testimonial->update($input);
   
         return redirect('admin/testimonials/')->with('success','Post updated successfully');
