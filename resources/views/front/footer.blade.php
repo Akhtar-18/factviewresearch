@@ -1,4 +1,3 @@
-
 <footer style="background: #2a66b1">
     <div class="container">
         <div class="row mt-n1-9">
