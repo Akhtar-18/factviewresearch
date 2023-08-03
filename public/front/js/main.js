@@ -31,7 +31,7 @@
                       .removeClass("scrollHeader")
                       .addClass("fixedHeader"),
                   o.attr("src", "img/logos/logo-inner.png"),
-                  a.attr("src", "front/img/logos/logo.png"),
+                  a.attr("src", "/front/img/logos/logo.png"),
                   t.attr("src", "img/logos/logo-white.png"),
                   i.attr("src", "img/logos/logo-2-light.png"),
                   r.attr("src", "img/logos/logo-4.png"),
@@ -39,8 +39,8 @@
                 : (g("header")
                       .removeClass("fixedHeader")
                       .addClass("scrollHeader"),
-                  o.attr("src", "front/img/logos/logo.png"),
-                  a.attr("src", "front/img/logos/logo.png"),
+                  o.attr("src", "/front/img/logos/logo.png"),
+                  a.attr("src", "/front/img/logos/logo.png"),
                   t.attr("src", "img/logos/logo-white.png"),
                   i.attr("src", "img/logos/logo-2-dark.png"),
                   r.attr("src", "img/logos/logo-4.png"),
