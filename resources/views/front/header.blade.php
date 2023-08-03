@@ -163,7 +163,7 @@
                                         <!-- menu area -->
                                         <ul class="navbar-nav ms-auto" id="nav" style="display: none;">
                                             <li class="current"><a href="{{ route('front.home') }}">Home</a></li>
-                                            <li><a href="#!">Industries</a>
+                                            <li><a href="javascript: void(0)">Industries</a>
                                                 <ul class="row megamenu">
                                                     @if (GetReportMenu())
                                                         @foreach (GetReportMenu() as $cate)
@@ -185,7 +185,7 @@
                                                     @endif
                                                 </ul>
                                             </li>
-                                            <li><a href="#!">Services</a>
+                                            <li><a href="javascript: void(0)">Services</a>
 
                                                 @if (GetServiceMenu())
                                                     <ul>
@@ -197,7 +197,7 @@
                                                     </ul>
                                                 @endif
                                             </li>
-                                            <li><a href="#!">About Us</a>
+                                            <li><a href="javascript: void(0)">About Us</a>
                                                 <ul>
                                                     <li><a href="{{ route('front.about') }}">About Company</a></li>
                                                     <li><a href="{{ route('front.whowe') }}">Who We Are</a></li>
@@ -207,7 +207,7 @@
                                                     <li><a href="{{ route('front.partners') }}">Partners</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#!">Media/Insights</a>
+                                            <li><a href="javascript: void(0)">Media/Insights</a>
                                                 <ul>
                                                     <li><a href="{{ route('front.blogs') }}">Blogs</a></li>
 
@@ -226,7 +226,7 @@
                                         <!-- atribute navigation -->
                                         <div class="attr-nav">
                                             <ul>
-                                                <li class="search"><a href="#!"><i
+                                                <li class="search"><a href="javascript: void(0)"><i
                                                             class="fas fa-search"></i></a>
                                                 </li>
                                             </ul>

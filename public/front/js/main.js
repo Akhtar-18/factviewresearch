@@ -910,12 +910,10 @@
                     (o = jQuery)(document).ready(function () {
                         null == o(".countdown").countdown
                             ? revslider_showDoubleJqueryError(".countdown")
-                            : o(".countdown")
-                                  .show()
-                                  .countdown({
-                                      date: "01 Nov 2024 00:01:00",
-                                      format: "on",
-                                  });
+                            : o(".countdown").show().countdown({
+                                  date: "01 Nov 2024 00:01:00",
+                                  format: "on",
+                              });
                     }),
                 g(".form_date").datetimepicker({
                     language: "en",

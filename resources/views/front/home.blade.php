@@ -5,7 +5,7 @@
 @section('frontpage')
 
     <!-- REVOLUTION SLIDER
-                        ================================================== -->
+                            ================================================== -->
     <section class="top-position top-position3">
         <div class="row slider-fade">
             <div class="owl-carousel owl-theme w-100">
@@ -33,7 +33,7 @@
     </section>
 
     <!-- ABOUT
-                        ================================================== -->
+                            ================================================== -->
     <section class="md">
         <div class="container">
             <div class="row align-items-center">
@@ -45,7 +45,8 @@
                                     <h2 class="title-style2">{{ $about->heading }}</h2>
                                 </div>
                                 <p>{!! html_entity_decode(wordLimitset($about->content, 500)) !!}</p>
-                                <p><a href="{{ route('front.about') }}" class="btn btn-warning medium"><span>About Company</span></a>
+                                <p><a href="{{ route('front.about') }}" class="butn bg-warning medium"><span>About
+                                            Company</span></a>
                                 </p>
                             @endforeach
                         @endif
@@ -56,19 +57,19 @@
     </section>
 
     <!-- ADVICE
-                        ================================================== -->
+                            ================================================== -->
     <!-- <section class="parallax md" data-overlay-dark="8" data-background="{{ asset('front/img/bg/bg1.jpg') }}">
-        <div class="container text-center">
-            <div class="section-heading half white">
-                <h2>Are you looking for professional advice?</h2>
-                <p>We always try to provide you our best business consulting service.</p>
+            <div class="container text-center">
+                <div class="section-heading half white">
+                    <h2>Are you looking for professional advice?</h2>
+                    <p>We always try to provide you our best business consulting service.</p>
+                </div>
+                <a href="{{ route('front.contact') }}" class="butn primary white-hover"><span>Contact Us</span></a>
             </div>
-            <a href="{{ route('front.contact') }}" class="butn primary white-hover"><span>Contact Us</span></a>
-        </div>
-    </section> -->
+        </section> -->
 
     <!-- SERVICES
-                        ================================================== -->
+                            ================================================== -->
     <section>
         <div class="container">
 
@@ -109,7 +110,7 @@
 
 
     <!-- COUNTER
-                        ================================================== -->
+                            ================================================== -->
     <section class="parallax md" style="background: #2a66b1">
         <div class="container">
             <div class="row mt-n1-9">
@@ -117,7 +118,8 @@
                     <div class="counter-box">
                         <h4 class="countup text-white d-block">1200</h4>
                         <div class="separator-line-horrizontal-medium-light3 bg-white mb-2 mt-3 opacity5 mx-auto"></div>
-                        <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Reports Published Annually
+                        <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Reports Published
+                            Annually
                         </p>
                     </div>
                 </div>
@@ -125,7 +127,8 @@
                     <div class="counter-box">
                         <h4 class="countup text-white d-block">100</h4>
                         <div class="separator-line-horrizontal-medium-light3 bg-white mb-2 mt-3 opacity5 mx-auto"></div>
-                        <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Consulting Projects Per Month</p>
+                        <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Consulting Projects
+                            Per Month</p>
                     </div>
                 </div>
                 <div class="col-6 col-lg-3 mt-1-9">
@@ -139,7 +142,8 @@
                     <div class="counter-box">
                         <h4 class="countup text-white d-block">50</h4>
                         <div class="separator-line-horrizontal-medium-light3 bg-white mb-2 mt-3 opacity5 mx-auto"></div>
-                        <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Subject Matter Expert</p>
+                        <p class="display-27 display-md-24 font-weight-600 text-white m-0 text-center">Subject Matter Expert
+                        </p>
                     </div>
                 </div>
             </div>
@@ -149,7 +153,7 @@
 
 
     <!-- REPORTS
-                        ================================================== -->
+                            ================================================== -->
     <section>
         <div class="container">
             <div class="row">
@@ -196,7 +200,7 @@
     </section>
 
     <!-- SUBSCRIBE
-                        ================================================== -->
+                            ================================================== -->
     <section class="parallax" style="background: #2a66b1">
         <div class="container">
             <div class="section-heading white">
@@ -205,8 +209,7 @@
                 <p class="w-95 w-md-75 w-lg-55 mx-auto">Please subscribe our newsletter for latest industry updates.</p>
             </div>
             <div class="text-center">
-                <form class="quform newsletter-form2 w-sm-85 w-md-65 w-lg-45 w-xl-35 mx-auto"
-                    action="" method="post"
+                <form class="quform newsletter-form2 w-sm-85 w-md-65 w-lg-45 w-xl-35 mx-auto" action="" method="post"
                     enctype="multipart/form-data" onclick="">
 
                     <div class="quform-elements text-center">
@@ -243,7 +246,7 @@
     </section>
 
     <!-- BLOGS
-                        ================================================== -->
+                            ================================================== -->
     <section>
         <div class="container">
 
@@ -295,7 +298,7 @@
 
 
     <!-- Press Releases
-                        ================================================== -->
+                            ================================================== -->
     <section>
         <div class="container">
 
@@ -347,7 +350,7 @@
     </section>
 
     <!-- Case Studies
-                        ================================================== -->
+                            ================================================== -->
     <section>
         <div class="container">
 
