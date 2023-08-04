@@ -16,7 +16,7 @@
 
                 @if (aboutData())
                     @foreach (aboutData() as $about)
-                    <p class="mt-3 display-30">{!! html_entity_decode(wordLimitset($about->content,50)) !!}</p>
+                    <p class="mt-3 display-30">{!! html_entity_decode(strip_tags(wordLimitset($about->content,100))) !!}</p>
                     @endforeach
                 @endif
                 <div class="mt-4 footer-social-icons">
