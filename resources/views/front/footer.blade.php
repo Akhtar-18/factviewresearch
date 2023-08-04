@@ -6,16 +6,17 @@
 
                 <!-- <img alt="footer-logo" src="img/logos/logo-footer.png"> -->
                 <a href="{{ url('/') }}" class="navbar-brand logodefault">
-                    @if(getCompanyDetail())
-                    <img id="logo" src="{{asset('company_logo')}}/{{getCompanyDetail()->company_logo}}" alt="logo">
+                    @if (getCompanyDetail())
+                        <img id="logo" src="{{ asset('company_logo') }}/{{ getCompanyDetail()->company_logo }}"
+                            alt="logo">
                     @elseif(isset(getCompanyDetail()->company_name))
-                    {{getCompanyDetail()->company_name}}
+                        {{ getCompanyDetail()->company_name }}
                     @endif
                 </a>
 
                 @if (aboutData())
                     @foreach (aboutData() as $about)
-                    <p class="mt-3 display-30">{!! html_entity_decode(strip_tags(wordLimitset($about->content,100))) !!}</p>
+                        <p class="mt-3 display-30">{!! html_entity_decode(strip_tags(wordLimitset($about->content, 100))) !!}</p>
                     @endforeach
                 @endif
                 <div class="mt-4 footer-social-icons">
@@ -42,8 +43,8 @@
                             <li><a href="{{ route('front.home') }}">Home</a></li>
                             <li><a href="{{ route('front.about') }}">About Us</a></li>
                             <li><a href="{{ route('front.reports') }}">Reports</a></li>
-                            <li><a href="{{route('front.blogs')}}">Blogs</a></li>
-                            <li><a href="{{route('front.contact')}}">Contact Us</a></li>
+                            <li><a href="{{ route('front.blogs') }}">Blogs</a></li>
+                            <li><a href="{{ route('front.contact') }}">Contact Us</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6 ps-md-0">
