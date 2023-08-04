@@ -49,7 +49,7 @@
     <meta name="google-site-verification" content="ttXl7RH9nKnXlHD17fSjZEaoD-uIiT5OROVTnU4EPG0" />
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4GY78SDX0H"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HES2Q3T6V1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -57,7 +57,7 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-        gtag('config', 'G-4GY78SDX0H');
+        gtag('config', 'G-HES2Q3T6V1');
     </script>
 
 
