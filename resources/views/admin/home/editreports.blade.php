@@ -287,11 +287,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p><b>Market Value Current and Forecast</b></p>
+                                    <p><b>Market Value Current and Forecast</b> <a onclick="addmarketvalue()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a></p>
                                     @if (count($report->getReportmarketgraph) > 0)
                                         @foreach ($report->getReportmarketgraph as $keys => $row)
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label class="mb-2">Year<span
                                                                 class="text-danger"></span></label>
@@ -302,7 +302,7 @@
                                                             value="@if (isset($row->marketyear)) {{ $row->marketyear }} @endif">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label class="mb-2">Percentage<span
                                                                 class="text-danger"></span></label>
@@ -313,130 +313,16 @@
                                                 </div>
                                             </div>
                                         @endforeach
+                                        <div class="row">
+                                            <div class="col-md-12" id="marketvalue">
+                                            
+                                        </div>
+                                        </div>
                                     @else
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <input type="hidden" name="market_id[]" value="">
-                                                    <label class="mb-2">Year<span class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketyear[]"
-                                                        placeholder="Year">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketvalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
+                                            <div class="col-md-12" id="marketvalue">
+                                            
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <input type="hidden" name="market_id[]" value="">
-                                                    <label class="mb-2">Year<span class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketyear[]"
-                                                        placeholder="Year">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketvalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <input type="hidden" name="market_id[]" value="">
-                                                    <label class="mb-2">Year<span class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketyear[]"
-                                                        placeholder="Year">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketvalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <input type="hidden" name="market_id[]" value="">
-                                                    <label class="mb-2">Year<span class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketyear[]"
-                                                        placeholder="Year">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketvalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Year<span class="text-danger"></span></label>
-                                                    <input type="hidden" name="market_id[]" value="">
-                                                    <input type="text" class="form-control" name="marketyear[]"
-                                                        placeholder="Year">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketvalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Year<span class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketyear[]"
-                                                        placeholder="Year">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketvalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Year<span class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketyear[]"
-                                                        placeholder="Year">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketvalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
                                         </div>
                                     @endif
 
@@ -527,22 +413,22 @@
                                     </div>
                                     @endif
                                     <div class="form-group row border" id="appendrow"></div>
-                                    <p><b> Region Wise Graphs</b></p>
+                                    <p><b> Region Wise Graphs</b> <a onclick="addregion()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a></p>
                                     @if (count($report->getReportRegiongraph) > 0)
                                         @foreach ($report->getReportRegiongraph as $keyse => $region)
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label class="mb-2">Region Name<span
                                                                 class="text-danger"></span></label>
                                                         <input type="hidden" name="region_id[]"
                                                             value="@if (isset($region->id)) {{ $region->id }} @endif">
                                                         <input type="text" class="form-control" name="regionname[]"
-                                                            placeholder="country Name" readonly
+                                                            placeholder="country Name"
                                                             value="@if (isset($region->regionname)) {{ $region->regionname }} @endif">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label class="mb-2">Percentage<span
                                                                 class="text-danger"></span></label>
@@ -553,152 +439,23 @@
                                                 </div>
                                             </div>
                                         @endforeach
+                                         <div class="row">
+                                            <div class="col-md-12" id="regions"></div>
+
+                                        </div>
                                     @else
+                                       
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Region Name<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="hidden" name="region_id[]" value="">
-                                                    <input type="text" class="form-control" name="regionname[]"
-                                                        placeholder="country Name" value="Africa" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="regionvalue[]"
-                                                        placeholder="Region Percentage">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Region Name<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="hidden" name="region_id[]" value="">
-                                                    <input type="text" class="form-control" name="regionname[]"
-                                                        placeholder="country Name" value="Asia" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="regionvalue[]"
-                                                        placeholder="Region Percentage">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Region Name<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="hidden" name="region_id[]" value="">
-                                                    <input type="text" class="form-control" name="regionname[]"
-                                                        placeholder="country Name" value="Caribbean" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="regionvalue[]"
-                                                        placeholder="Region Percentage">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Region Name<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="hidden" name="region_id[]" value="">
-                                                    <input type="text" class="form-control" name="regionname[]"
-                                                        placeholder="country Name" value="Central America" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="regionvalue[]"
-                                                        placeholder="Region Percentage">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Region Name<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="hidden" name="region_id[]" value="">
-                                                    <input type="text" class="form-control" name="regionname[]"
-                                                        placeholder="country Name" value="Europe" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="regionvalue[]"
-                                                        placeholder="Region Percentage">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Region Name<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="regionname[]"
-                                                        placeholder="country Name" value="North America" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="regionvalue[]"
-                                                        placeholder="Region Percentage">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Region Name<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="regionname[]"
-                                                        placeholder="country Name" value="Oceania" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="regionvalue[]"
-                                                        placeholder="Region Percentage">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Region Name<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="regionname[]"
-                                                        placeholder="country Name" value="South America" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="regionvalue[]"
-                                                        placeholder="Region Percentage">
-                                                </div>
-                                            </div>
+                                            <div class="col-md-12" id="regions"></div>
 
                                         </div>
                                     @endif
 
-                                    <p><b>Market Share Graphs</b></p>
+                                    <p><b>Market Share Graphs</b> <a onclick="addmarketshare()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a></p>
                                     @if (count($report->getReportmarketsharegraph) > 0)
                                         @foreach ($report->getReportmarketsharegraph as $keyss => $res)
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <div class="form-group">
                                                         <input type="hidden" name="marketshare_id[]"
                                                             value="@if (isset($res->id)) {{ $res->id }} @endif">
@@ -709,7 +466,7 @@
                                                             value="@if (isset($res->marketsharename)) {{ $res->marketsharename }} @endif">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label class="mb-2">Percentage<span
                                                                 class="text-danger"></span></label>
@@ -720,97 +477,13 @@
                                                 </div>
                                             </div>
                                         @endforeach
+                                         <div class="row">
+                                        <div class="col-md-12" id="marketshares"></div>
+                                    </div>
                                     @else
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Market<span class="text-danger"></span></label>
-                                                    <input type="hidden" name="marketshare_id[]" value="">
-                                                    <input type="text" class="form-control" name="marketsharename[]"
-                                                        placeholder="Market">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketsharevalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Market<span class="text-danger"></span></label>
-                                                    <input type="hidden" name="marketshare_id[]" value="">
-                                                    <input type="text" class="form-control" name="marketsharename[]"
-                                                        placeholder="Market">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketsharevalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Market<span class="text-danger"></span></label>
-                                                    <input type="hidden" name="marketshare_id[]" value="">
-                                                    <input type="text" class="form-control" name="marketsharename[]"
-                                                        placeholder="Market">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketsharevalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Market<span class="text-danger"></span></label>
-                                                    <input type="hidden" name="marketshare_id[]" value="">
-                                                    <input type="text" class="form-control" name="marketsharename[]"
-                                                        placeholder="Market">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketsharevalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Market<span class="text-danger"></span></label>
-                                                    <input type="hidden" name="marketshare_id[]" value="">
-                                                    <input type="text" class="form-control" name="marketsharename[]"
-                                                        placeholder="Market">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="marketsharevalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="row">
+                                        <div class="col-md-12" id="marketshares"></div>
+                                    </div>
                                     @endif
 
                                 </div>
@@ -1064,5 +737,96 @@ $('#rows' + ids).remove();
 function removemain(id) {
   $('#main'+id).remove();
 }
+
+
+ var loopmarketvalueCount = 1;
+
+        function addmarketvalue() {
+            var new_item = '<div class="row" id="marketvaluerow' + loopmarketvalueCount + '">\
+        <div class="col-md-5">\
+            <div class="form-group">\
+                <label class="mb-2">Year<span class="text-danger"></span></label>\
+                <input type="hidden" name="market_id[]" value="">\
+                <input type="text" class="form-control" name="marketyear[]" placeholder="Year">\
+            </div>\
+        </div>\
+        <div class="col-md-5">\
+            <div class="form-group">\
+                <label class="mb-2">Percentage<span class="text-danger"></span></label>\
+                <input type="text" class="form-control" name="marketvalue[]" placeholder="Percentage">\
+            </div>\
+        </div>\
+        <div class="col-md-2 mt-3">\
+                <a onclick="addmarketvalue()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
+                <a onclick="removemarketvalue('+loopmarketvalueCount+')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
+        </div>\
+    </div>';
+            $('#marketvalue').append(new_item);
+            loopmarketvalueCount++;
+        }
+
+        function removemarketvalue(ids) {
+            $('#marketvaluerow' + ids).remove();
+        }
+
+
+        var loopregionCount = 1;
+
+        function addregion() {
+            var new_itemr = '<div class="row" id="regionrow' + loopregionCount + '">\
+        <div class="col-md-5">\
+            <div class="form-group">\
+                <label class="mb-2">Region Name<span class="text-danger"></span></label>\
+                 <input type="hidden" name="region_id[]" value="">\
+                <input type="text" class="form-control" name="regionname[]" placeholder="Region Name">\
+            </div>\
+        </div>\
+        <div class="col-md-5">\
+            <div class="form-group">\
+                <label class="mb-2">Percentage<span class="text-danger"></span></label>\
+                <input type="text" class="form-control" name="regionvalue[]" placeholder="Region Percentage">\
+            </div>\
+        </div>\
+        <div class="col-md-2 mt-3">\
+            <a onclick="addregion()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
+            <a onclick="removeregion('+loopregionCount+')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
+        </div>\
+    </div>';
+            $('#regions').append(new_itemr);
+            loopregionCount++;
+        }
+
+        function removeregion(ids) {
+            $('#regionrow' + ids).remove();
+        }
+
+        var loopmarketshareCount = 1;
+
+        function addmarketshare() {
+            var new_items = '<div class="row" id="marketsharerow' + loopmarketshareCount + '">\
+         <div class="col-md-5">\
+                <div class="form-group">\
+                    <label class="mb-2">Market<span class="text-danger"></span></label>\
+                    <input type="hidden" name="marketshare_id[]" value="">\
+                    <input type="text" class="form-control" name="marketsharename[]" placeholder="Market">\
+                </div>\
+            </div>\
+            <div class="col-md-5">\
+                <div class="form-group">\
+                    <label class="mb-2">Percentage<span class="text-danger"></span></label>\
+                    <input type="text" class="form-control" name="marketsharevalue[]" placeholder="Percentage">\
+                </div>\
+            </div>\
+        <div class="col-md-2 mt-3">\
+            <a onclick="addmarketshare()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
+            <a onclick="removemarketshare('+loopmarketshareCount+')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
+        </div>\
+    </div>';
+            $('#marketshares').append(new_items);
+            loopmarketshareCount++;
+        }
+        function removemarketshare(ids) {
+            $('#marketsharerow' + ids).remove();
+        }
 </script>
 @endsection
