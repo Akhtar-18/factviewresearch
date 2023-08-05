@@ -91,7 +91,7 @@ Route::get('/disclaimer', [FrontController::class, 'disclaimer'])->name('front.d
 
 Auth::routes();
 
-Route::get('/adminlogin',[AdminController::class],'login')->name('login');
+//Route::get('/adminlogin',[AdminController::class],'login')->name('login');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function() {

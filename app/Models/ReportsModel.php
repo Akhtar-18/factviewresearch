@@ -70,5 +70,9 @@ class ReportsModel extends Model
         {
             return $this->hasOne(CagrModel::class,'report_id','id')->select(['report_id','id','cagr']);
         }
+        public function getReportTypeSegmentgraph()
+        {
+            return $this->hasMany(SegmentType::class,'report_id','id')->select(['report_id','id','segmenttypename']);
+        }
 }
 

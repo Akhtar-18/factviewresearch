@@ -32,7 +32,7 @@ if (! function_exists('GetSlider')) {
 if (! function_exists('getTestimonial')) {
     function getTestimonial()
     {
-        $getTesminialData = TestimonialModel::select(['name','profile','comments'])->get();
+        $getTesminialData = TestimonialModel::select(['name','profile','comments','client_image'])->get();
         return $getTesminialData;
     }
 }

@@ -14,6 +14,7 @@ use App\Models\ReportsFaqModel;
 use App\Models\ReportsLicenseModel;
 use App\Models\ReportsModel;
 use App\Models\SegmentGraphicalModel;
+use App\Models\SegmentType;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\CagrModel;
@@ -82,28 +83,28 @@ class ReportsController extends Controller
                   $deletebtn='';
                 }
                 $btn = $editbtn.'|'.$deletebtn.'
-        <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <form action="'.url('admin/reports/delete/').'/'.$row->id.'" method="post">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Delete?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <input type="hidden" name="_token" value="'.@csrf_token().'">
-                <div class="modal-body"> Are you sure you want to delete this data?</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-danger" type="submit">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div>';
+                  <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <form action="'.url('admin/reports/delete/').'/'.$row->id.'" method="post">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Ready to Delete?</h5>
+                              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">×</span>
+                              </button>
+                          </div>
+                          <input type="hidden" name="_token" value="'.@csrf_token().'">
+                          <div class="modal-body"> Are you sure you want to delete this data?</div>
+                          <div class="modal-footer">
+                              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                              <button class="btn btn-danger" type="submit">Submit</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>';
 
-                            return $btn;
+                return $btn;
                     })
                     ->rawColumns(['category_id','url','action'])
                     ->make(true);
@@ -127,6 +128,7 @@ class ReportsController extends Controller
         {
           $image="";
         }
+        //return $request->all();
 
         /*************************Reports Create ************************/
         $insertReportData=['category_id'=>$request->category_id,
@@ -201,17 +203,34 @@ class ReportsController extends Controller
 
       /*************************Reports Segment Graph Create ************************/
       
-        foreach($request->segmentname as $key=> $list)
+        foreach($request->segmenttypename as $key=> $list)
         {
-          if(!empty($request->segmentname[$key]))
-      {
-          $insertsegmentData=['report_id'=>$report_id,
-                              'segmentname'=>$request->segmentname[$key],
-                              'segmentvalue'=>$request->segmentvalue[$key],
-                          ];
-            SegmentGraphicalModel::create($insertsegmentData);
+          if(!empty($request->segmenttypename[$key]))
+          {
+            $SegmentTypeInsert=['report_id'=>$report_id,
+            'segmenttypename'=>$request->segmenttypename[$key]
+                ];
+            $segmentData=SegmentType::create($SegmentTypeInsert);
+            $segment_types= $segmentData->id;
+
+
+              foreach($request->segmentname as $keys=>$row)
+              {
+                
+                if(!empty($request->segmentname[$keys]) && $key==$request->product_array_key[$keys])
+                {
+                    $insertsegmentData=['report_id'=>$report_id,
+                                       'segmentname'=>$request->segmentname[$keys],
+                                       'segmentvalue'=>$request->segmentvalue[$keys],
+                                       'segment_types'=>$segment_types,
+                                      ];
+                    SegmentGraphicalModel::create($insertsegmentData);
+                }
+                
+            }
+          }
+          
         }
-      }
       
 
        /*************************Reports Region Graph Create ************************/
@@ -256,7 +275,7 @@ class ReportsController extends Controller
     ->with('getReportFaq')
     ->with('getReportmarketgraph')
     ->with('getReportmarketsharegraph')
-    ->with('getReportsegmentgraph')
+    ->with('getReportTypeSegmentgraph.getReportsSegmentgraph')
     ->with('getReportRegiongraph')
     ->with('getReportCAGR')
     ->find($id);
@@ -269,6 +288,7 @@ class ReportsController extends Controller
       {
         $data['category']=ReportCategoryModel::select(['id','cat_name'])->get();
         $data['report']=$reportcategory;
+        //dd($data['report']);
        return view('admin.home.editreports',$data);
       }
    }
@@ -286,6 +306,8 @@ class ReportsController extends Controller
       $image=$reports->image;
     }
 
+       //echo "<pre>";
+     //return $request->all();
     /*************************Reports Update ************************/
     $insertReportData=['category_id'=>$request->category_id,
                         'sub_category_id'=>$request->sub_category_id,
@@ -405,31 +427,61 @@ class ReportsController extends Controller
   }
 
   /*************************Reports Segment Graph Create ************************/
-  foreach($request->segmentname as $key=> $list)
-  {
-    if(!empty($request->segmentvalue[$key]))
-      {
-    if($request->segment_id[$key]!='')
-    {
-      $segmentData=SegmentGraphicalModel::find($request->segment_id[$key]);
-      $insertsegmentData=['report_id'=>$report_id,
-      'segmentname'=>$request->segmentname[$key],
-      'segmentvalue'=>$request->segmentvalue[$key],
-        ];
-        $segmentData->update($insertsegmentData);
-
-    }
-    else
-    {
+  /*************************Reports Segment Graph Create ************************/
       
-      $insertsegmentData=['report_id'=>$report_id,
-      'segmentname'=>$request->segmentname[$key],
-      'segmentvalue'=>$request->segmentvalue[$key],
-      ];
-      SegmentGraphicalModel::create($insertsegmentData);
-    }
-    }
+  foreach($request->segmenttypename as $key=> $list)
+  {
+    if(!empty($request->segmenttypename[$key]))
+    {
 
+      if($request->segmenttype_id[$key]!='')
+      {
+
+        $dataSegement=SegmentType::find($request->segmenttype_id[$key]);
+        $dataSegement->update(['report_id'=>$report_id,'segmenttypename'=>$request->segmenttypename[$key]]);
+        $segment_types= $request->segmenttype_id[$key];
+      }
+      else
+      {
+        $SegmentTypeInsert=['report_id'=>$report_id,
+        'segmenttypename'=>$request->segmenttypename[$key]
+            ];
+        $segmentData=SegmentType::create($SegmentTypeInsert);
+        $segment_types= $segmentData->id;
+        
+      }
+      
+
+
+        foreach($request->segmentname as $keys=>$row)
+        {
+          
+          if(!empty($request->segmentname[$keys]) && $key==$request->product_array_key[$keys])
+          {
+            if($request->subtyppeof_id[$keys]!='')
+            {
+              $Segmentdatas=SegmentGraphicalModel::find($request->subtyppeof_id[$keys]);
+              $Segmentdatas->update(['report_id'=>$report_id,
+              'segmentname'=>$request->segmentname[$keys],
+              'segmentvalue'=>$request->segmentvalue[$keys],
+              'segment_types'=>$segment_types,
+            ]);
+            }
+            else
+            {
+              $insertsegmentData=['report_id'=>$report_id,
+              'segmentname'=>$request->segmentname[$keys],
+              'segmentvalue'=>$request->segmentvalue[$keys],
+              'segment_types'=>$segment_types,
+            ];
+              SegmentGraphicalModel::create($insertsegmentData);
+            }
+              
+          }
+          
+      }
+    }
+    
   }
 
    /*************************Reports Region Graph Create ************************/

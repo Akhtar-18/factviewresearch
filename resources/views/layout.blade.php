@@ -647,6 +647,8 @@
             menubar: false
         });
     </script> -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $(document).ready(function() {
             $.ajaxSetup({
@@ -654,8 +656,42 @@
                     'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+
+
+
+            
         });
+        $(document).ready(function() {
+  const datePickerInput = $("#datepicker");
+
+  // Function to open the date picker
+  function openDatePicker() {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+    const currentDay = currentDate.getDate();
+
+    // Set the minimum and maximum date for the date picker
+    const minDate = new Date(currentYear - 100, currentMonth, currentDay);
+    const maxDate = new Date(currentYear, currentMonth, currentDay);
+
+    datePickerInput.datepicker({
+      dateFormat: "yy-mm-dd",
+      minDate: minDate,
+      //maxDate: maxDate
+    });
+
+    // Open the date picker when the input is clicked
+    datePickerInput.datepicker("show");
+  }
+
+  // Add event listener to open the date picker when the input is clicked
+  datePickerInput.on("click", openDatePicker);
+});
+
     </script>
+    
 
 </body>
 

@@ -94,9 +94,9 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="mb-2">Publish Month <span class="text-danger"></span></label>
-                                        <input type="date" class="form-control" placeholder="Enter Publish Month"
+                                        <input type="text" class="form-control publishmonth" id="datepicker" placeholder="Enter Publish Month"
                                             name="publish_month"
-                                            value="@if(isset($report->publish_month)){{ date('Y-m-d',strtotime($report->publish_month)) }} @endif">
+                                            value="@if(isset($report->publish_month)){{date('Y-m-d',strtotime($report->publish_month))}} @endif">
                                         @if ($errors->has('publish_month'))
                                             <span class="text-danger">{{ $errors->first('publish_month') }}</span>
                                         @endif
@@ -441,123 +441,92 @@
                                     @endif
 
                                     <p><b>Segment Graphs</b></p>
-                                    @if (count($report->getReportSegmentgraph) > 0)
-                                        @foreach ($report->getReportSegmentgraph as $kess => $res)
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label class="mb-2">Types<span
-                                                                class="text-danger"></span></label>
-                                                        <input type="hidden" name="segment_id[]"
-                                                            value="@if (isset($res->id)) {{ $res->id }} @endif">
-                                                        <input type="text" class="form-control" name="segmentname[]"
-                                                            placeholder="Types"
-                                                            value="@if (isset($res->segmentname)) {{ $res->segmentname }} @endif">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label class="mb-2">Percentage<span
-                                                                class="text-danger"></span></label>
-                                                        <input type="text" class="form-control" name="segmentvalue[]"
-                                                            placeholder="Percentage"
-                                                            value="@if (isset($res->segmentvalue)) {{ $res->segmentvalue }} @endif">
-                                                    </div>
-                                                </div>
+                                    @if (count($report->getReportTypeSegmentgraph) > 0)
+                                    @php $i=0; @endphp
+                                        @foreach ($report->getReportTypeSegmentgraph as $kess => $res)
+                                        <div class="row border">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="mb-2">Types<span class="text-danger"></span></label>
+                                                <input type="hidden" class="form-control" name="segmenttype_id[]"
+                                                    placeholder="Types" value="@if(isset($res->id)){{$res->id}}@endif">
+                                                <input type="text" class="form-control" name="segmenttypename[]"
+                                                    placeholder="Types" value="@if(isset($res->segmenttypename)){{$res->segmenttypename}}@endif">
                                             </div>
+                                        </div>
+                                        <div class="col-md-4 mt-4">
+                                            <a onclick="addrows()" style="width: 70px;" class="btn btn-success text-white mt-2"><i class="fa fa-plus-circle"></i></a>
+                                        </div>
+                                    @foreach($res->getReportsSegmentgraph as $keys=> $subtype)
+                                    <div class="col-md-12">
+                                      <div class="table-responsive">
+                                        <table class="table table-bordered" style="width: 100%;">
+                                          <thead>
+                                            <th>Action</th>
+                                            <th>Sub Type</th>
+                                            <th>Percentage</th>
+                                          </thead>
+                                          <tbody id="new_chq{{$i}}">
+                                            <tr>
+                                              <td><a class="add btn btn-sm btn-success text-white"  onclick="add('{{$i}}')" style="width: 70px;"><i class='fa fa-plus-circle'></i></a>
+                                                <input type="hidden" name="product_array_key[]" class="form-control" value="{{$kess}}">
+                                                <input type="hidden" name="subtyppeof_id[]" class="form-control" value="@if(isset($subtype->id)){{$subtype->id}}@endif">
+                                              </td>
+                                              <td> 
+                                               <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type" value="@if(isset($subtype->segmentname)){{$subtype->segmentname}}@endif">
+                                              </td>
+                                              <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="@if(isset($subtype->segmentvalue)){{$subtype->segmentvalue}}@endif">
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                    
+                                    @endforeach
+                                    </div>
+                                    @php $i++; @endphp
                                         @endforeach
                                     @else
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <input type="hidden" name="segment_id[]" value="">
-                                                    <label class="mb-2">Types<span class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="segmentname[]"
-                                                        placeholder="Types">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="segmentvalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
+                                    <div class="row border">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="mb-2">Types<span class="text-danger"></span></label>
+                                                <input type="text" class="form-control" name="segmenttypename[]"
+                                                    placeholder="Types">
+                                                <input type="hidden" class="form-control" name="segmenttype_id[]" placeholder="Types" value="">
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <input type="hidden" name="segment_id[]" value="">
-                                                    <label class="mb-2">Types<span class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="segmentname[]"
-                                                        placeholder="Types">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="segmentvalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
+                                        <div class="col-md-4 mt-4">
+                                            <a onclick="addrows()" style="width: 70px;" class="btn btn-success text-white mt-2"><i class="fa fa-plus-circle"></i></a>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <input type="hidden" name="segment_id[]" value="">
-                                                    <label class="mb-2">Types<span class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="segmentname[]"
-                                                        placeholder="Types">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="segmentvalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <input type="hidden" name="segment_id[]" value="">
-                                                    <label class="mb-2">Types<span class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="segmentname[]"
-                                                        placeholder="Types">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="segmentvalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <input type="hidden" name="segment_id[]" value="">
-                                                    <label class="mb-2">Types<span class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="segmentname[]"
-                                                        placeholder="Types">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="mb-2">Percentage<span
-                                                            class="text-danger"></span></label>
-                                                    <input type="text" class="form-control" name="segmentvalue[]"
-                                                        placeholder="Percentage">
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <div class="col-md-12">
+                                      <div class="table-responsive">
+                                        <table class="table table-bordered" style="width: 100%;">
+                                          <thead>
+                                            <th>Action</th>
+                                            <th>Sub Type</th>
+                                            <th>Percentage</th>
+                                          </thead>
+                                          <tbody id="new_chq">
+                                            <tr>
+                                              <td><a class="add btn btn-sm btn-success text-white"  onclick="add()" style="width: 70px;"><i class='fa fa-plus-circle'></i></a>
+                                                <input type="hidden" name="product_array_key[]" class="form-control" value="0">
+                                                <input type="hidden" name="subtyppeof_id[]" class="form-control" value="">
+                                              </td>
+                                              <td> 
+                                               <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">
+                                              </td>
+                                              <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                    </div>
                                     @endif
+                                    <div class="form-group row border" id="appendrow"></div>
                                     <p><b> Region Wise Graphs</b></p>
                                     @if (count($report->getReportRegiongraph) > 0)
                                         @foreach ($report->getReportRegiongraph as $keyse => $region)
@@ -989,7 +958,7 @@
                     'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
                 }
             });
-            getsubcategory();
+            //getsubcategory();
 
         });
 
@@ -1013,4 +982,87 @@
             });
         }
     </script>
+@if(isset($i) && $i!='')
+    @php $i=$i;@endphp
+    @else
+    @php $i=0;@endphp
+    @endif
+
+<script>
+    
+    var segementCount = '{{$i}}';
+    //console.log(segementCount);
+  function addrows()
+  {
+    //debugger;
+    var new_item='<div class="col-md-12 mt-3" id="main'+segementCount+'"><div class="row">\
+    <div class="form-group col-md-4">\
+      <label class="mb-2">Types<span class="text-danger"></span></label>\
+      <input type="hidden" class="form-control" name="segmenttype_id[]" placeholder="Types" value="">\
+        <input type="text" class="form-control" name="segmenttypename[]" placeholder="Types">\
+    </div>\
+    <div class="form-group col-md-3" style="margin-top: 3%;">\
+      <a class="add btn btn-sm btn-success text-white" style="width: 70px;" onclick="addrows()"><i class="fa fa-plus-circle"></i></a>&nbsp;<a class="add btn btn-sm btn-danger text-white" onclick="removemain('+segementCount+')" style="width: 70px;"><i class="fa fa-trash"></i></a>\
+    </div>\
+    <div class="col-md-12">\
+      <div class="table-responsive">\
+        <table class="table table-bordered" style="width: 100%;">\
+          <thead>\
+            <th>Action</th>\
+            <th>Sub Types</th>\
+            <th>Persentage</th>\
+          </thead>\
+          <tbody id="new_chq'+segementCount+'">\
+            <tr>\
+              <td><a class="add btn btn-sm btn-success text-white"  onclick="add('+segementCount+')" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>\
+              <input type="hidden" name="product_array_key[]" class="form-control" value="'+segementCount+'">\
+              <input type="hidden" name="subtyppeof_id[]" class="form-control" value="">\
+              </td>\
+             <td>\
+               <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">\
+              </td>\
+              <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">\
+            </td>\
+            </tr>\
+          </tbody>\
+        </table>\
+      </div>\
+    </div></div></div>';
+    $('#appendrow').append(new_item);
+segementCount++;
+}
+
+
+  var loop_product=0;
+function add(idss='') 
+{
+  var pro=(idss)?idss:0;
+var new_input = '<tr id="rows'+loop_product+'">\
+              <td><a class="add btn btn-sm btn-success text-white" style="width: 70px;" onclick="add('+idss+')"><i class="fa fa-plus-circle"></i></a> &nbsp;<input type="hidden" name="product_array_key[]" class="form-control" value="'+pro+'">\
+                <a class="add btn btn-sm btn-danger text-white" onclick="removesub('+loop_product+')" style="width: 70px;"><i class="fa fa-trash"></i></a></td>\
+              <td>\
+              <input type="hidden" name="subtyppeof_id[]" class="form-control" value="">\
+               <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">\
+              </td>\
+              <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">\
+            </td>\
+            </tr>';
+            if(idss)
+            {
+              $('#new_chq'+idss).append(new_input);
+            }
+            else
+            {
+              $('#new_chq').append(new_input);
+            }
+
+            loop_product++;
+}
+function removesub(ids) {
+$('#rows' + ids).remove();
+}
+function removemain(id) {
+  $('#main'+id).remove();
+}
+</script>
 @endsection

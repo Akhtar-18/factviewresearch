@@ -11,5 +11,5 @@ class SegmentGraphicalModel extends Model
     use HasFactory,SoftDeletes;
     protected $table = "segment_graphical";
     protected $primaryKey = "id";
-    protected $fillable = ['report_id', 'segmentname', 'segmentvalue'];
+    protected $fillable = ['report_id', 'segmentname', 'segmentvalue','segment_types'];
 }
