@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <!-- PAGE TITLE
-                    ================================================== -->
+                ================================================== -->
     <section class="page-title-section pt-1-9 pb-1-9"
         style="background: radial-gradient(circle, rgba(32,33,93,1) 0%, rgba(42,102,177,1) 20%, rgba(21,178,75,1) 50%, rgba(248,149,33,1) 80%);">
         <div class="container">
@@ -31,7 +31,7 @@
 
 
     <!-- REPORT DETAILS
-                    ================================================== -->
+                ================================================== -->
     <section class="blogs">
         <div class="container">
             <div class="row">
@@ -74,6 +74,7 @@
                                 <div class="horizontaltab">
                                     <ul class="resp-tabs-list hor_1">
                                         <li>Report Summary</li>
+                                        <li>Table of Contents</li>
                                         <li>Table of Contents</li>
                                         <li>Segmentation</li>
                                         <li>Methodology</li>
@@ -129,56 +130,57 @@
                                                                                     @endforeach
                                                                                 </p>
                                                                             </div>
+                                                                        @endif
+                                                                        @endif
                                                                 </div>
-
-                                                @endif
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                <!-- </div> -->
 
                                 @endif
                                 <!-- @if (!empty($reports->getReportCAGR->cagr))
     <div class="col-md-4">
-                                                                    <div class="card">
-                                                                        <div class="card-body">
-                                                                            <canvas id="mypieChart"></canvas>
-                                                                        </div>
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <canvas id="mypieChart"></canvas>
                                                                     </div>
                                                                 </div>
+                                                            </div>
     @endif
-                                                            @if (!empty(json_decode($segmentname, true)))
+                                                        @if (!empty(json_decode($segmentname, true)))
     <div class="col-md-4">
-                                                                    <div class="card">
-                                                                        <div class="card-body">
-                                                                            <canvas id="mysegmentChart"></canvas>
-                                                                        </div>
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <canvas id="mysegmentChart"></canvas>
                                                                     </div>
                                                                 </div>
+                                                            </div>
     @endif
-                                                            <div class="col-md-12"><br></div>
-                                                            @if (!empty(json_decode($regionname, true)))
+                                                        <div class="col-md-12"><br></div>
+                                                        @if (!empty(json_decode($regionname, true)))
     <div class="col-md-4">
-                                                                    <div class="card">
-                                                                        <div class="card-body">
-                                                                            <canvas id="myregionChart"></canvas>
-                                                                        </div>
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <canvas id="myregionChart"></canvas>
                                                                     </div>
                                                                 </div>
+                                                            </div>
     @endif
-                                                            @if (!empty(json_decode($marketsharename, true)))
+                                                        @if (!empty(json_decode($marketsharename, true)))
     <div class="col-md-4">
-                                                                    <div class="card">
-                                                                        <div class="card-body">
-                                                                            <canvas id="mshareChart"></canvas>
-                                                                        </div>
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <canvas id="mshareChart"></canvas>
                                                                     </div>
                                                                 </div>
+                                                            </div>
     @endif -->
 
                             </div>
                         </div>
+                                </div>
+                                        </div></div>
 
                         <script>
                             const barChart = document.getElementById('mybarChart');
@@ -252,6 +254,34 @@
                                     }
                                 },
                             });
+                                /*const pieChart = document.getElementById('mypieChart');
+                                new Chart(pieChart, {
+                                    type: "pie",
+                                    data: {
+                                        // labels: ["CAGR", "Others"],
+                                        datasets: [{
+                                            data: [
+                                                @if (isset($reports->getReportCAGR->cagr))
+                                                    {{ $reports->getReportCAGR->cagr }}
+                                                @endif
+                                            ],
+                                            backgroundColor: [
+                                                "rgba(255, 99, 132, 0.8)",
+                                                "rgba(54, 162, 235, 0.8)",
+                                                "rgba(255, 206, 86, 0.8)",
+                                                "rgba(75, 192, 192, 0.8)"
+                                            ]
+                                        }]
+                                    },
+                                    options: {
+                                        plugins: {
+                                            title: {
+                                                display: true,
+                                                text: 'CAGR Report (%)'
+                                            }
+                                        }
+                                    },
+                                });
 
                             const segmentChart = document.getElementById('mysegmentChart');
                             new Chart(segmentChart, {
@@ -278,6 +308,31 @@
                                     },
                                 }
                             });
+                                const segmentChart = document.getElementById('mysegmentChart');
+                                new Chart(segmentChart, {
+                                    type: "pie",
+                                    data: {
+                                        labels: {!! json_encode($segmentname) !!},
+                                        datasets: [{
+                                            data: {!! json_encode($segmentvalue) !!},
+                                            backgroundColor: [
+                                                "rgba(28, 51, 65,0.8)",
+                                                "rgba(0, 135, 115,0.8)",
+                                                "rgba(107, 185, 131,0.8)",
+                                                "rgba(242, 190, 84,0.8)",
+                                                "rgba(240, 217, 207,0.8)",
+                                            ]
+                                        }]
+                                    },
+                                    options: {
+                                        plugins: {
+                                            title: {
+                                                display: true,
+                                                text: 'Segmentation Report (%)'
+                                            }
+                                        },
+                                    }
+                                }); */
 
                             const regionChart = document.getElementById('myregionChart');
                             new Chart(regionChart, {
@@ -311,6 +366,39 @@
                                     },
                                 }
                             });
+                                const regionChart = document.getElementById('myregionChart');
+                                debugger;
+                                new Chart(regionChart, {
+                                    type: "pie",
+                                    data: {
+                                        labels: {!! json_encode($regionname) !!},
+                                        datasets: [{
+                                            data: {!! json_encode($regionvalue) !!},
+                                            backgroundColor: [
+                                                "rgba(28, 51, 65,0.8)",
+                                                "rgba(0, 135, 115,0.8)",
+                                                "rgba(107, 185, 131,0.8)",
+                                                "rgba(242, 201, 117,0.8)",
+                                                "rgba(237, 99, 83,0.8)",
+                                                "rgba(242, 190, 84,0.8)",
+                                                "rgba(240, 217, 207,0.8)",
+                                                "rgba(135, 174, 180,0.8)",
+                                                "rgba(21, 62, 92,0.8)",
+                                                "rgba(237, 85, 96,0.8)",
+                                                // "rgba(201, 223, 241,0.8)",
+                                                // "rgba(240, 217, 207,0.9)"
+                                            ]
+                                        }]
+                                    },
+                                    options: {
+                                        plugins: {
+                                            title: {
+                                                display: true,
+                                                text: 'Region-wise Report (%)'
+                                            }
+                                        },
+                                    }
+                                });
 
                             const marketshareChart = document.getElementById('mshareChart');
                             new Chart(marketshareChart, {
@@ -577,23 +665,23 @@
                                         @endforeach
                                     @endif
                                     <!-- <div class="testmonial-single mx-auto w-95 w-lg-85">
-                                                    <p>Exercitation ullamco laboris nisiut aliqu exeaea commo. Duisltrtohg aute
-                                                    irure.</p>
-                                                    <img src="{{ asset('front/img/testmonials/t-2.jpg') }}" class="rounded-circle" alt="...">
-                                                    <div class="d-block vertical-align-middle text-center">
-                                                        <h4>Stepha Kruse</h4>
-                                                        <h6>Design Lead</h6>
-                                                    </div>
+                                                <p>Exercitation ullamco laboris nisiut aliqu exeaea commo. Duisltrtohg aute
+                                                irure.</p>
+                                                <img src="{{ asset('front/img/testmonials/t-2.jpg') }}" class="rounded-circle" alt="...">
+                                                <div class="d-block vertical-align-middle text-center">
+                                                    <h4>Stepha Kruse</h4>
+                                                    <h6>Design Lead</h6>
                                                 </div>
-                                                <div class="testmonial-single mx-auto w-95 w-lg-85">
-                                                    <p>Exercitation ullamco laboris nisiut aliqu exeaea commo. Duisltrtohg aute
-                                                    irure.</p>
-                                                    <img src="{{ asset('front/img/testmonials/t-3.jpg') }}" class="rounded-circle" alt="...">
-                                                    <div class="d-block vertical-align-middle text-center">
-                                                        <h4>Dunican keithly</h4>
-                                                        <h6>Networking Lead</h6>
-                                                    </div>
-                                                </div> -->
+                                            </div>
+                                            <div class="testmonial-single mx-auto w-95 w-lg-85">
+                                                <p>Exercitation ullamco laboris nisiut aliqu exeaea commo. Duisltrtohg aute
+                                                irure.</p>
+                                                <img src="{{ asset('front/img/testmonials/t-3.jpg') }}" class="rounded-circle" alt="...">
+                                                <div class="d-block vertical-align-middle text-center">
+                                                    <h4>Dunican keithly</h4>
+                                                    <h6>Networking Lead</h6>
+                                                </div>
+                                            </div> -->
                                 </div>
                             </div>
                             <!-- start testimonial -->
@@ -649,9 +737,9 @@
                         class="butn primary white-hover"><span>Request a Sample pdf</span></a>
                 </div>
                 <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div> -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div> -->
             </div>
         </div>
     </div>
