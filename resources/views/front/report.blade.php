@@ -75,7 +75,6 @@
                                     <ul class="resp-tabs-list hor_1">
                                         <li>Report Summary</li>
                                         <li>Table of Contents</li>
-                                        <li>Table of Contents</li>
                                         <li>Segmentation</li>
                                         <li>Methodology</li>
                                     </ul>
@@ -130,13 +129,14 @@
                                                                                     @endforeach
                                                                                 </p>
                                                                             </div>
-                                                                        @endif
-                                                                        @endif
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                <!-- </div> -->
+
+                                                @endif
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 @endif
                                 <!-- @if (!empty($reports->getReportCAGR->cagr))
@@ -179,8 +179,6 @@
 
                             </div>
                         </div>
-                                </div>
-                                        </div></div>
 
                         <script>
                             const barChart = document.getElementById('mybarChart');
@@ -254,34 +252,6 @@
                                     }
                                 },
                             });
-                                /*const pieChart = document.getElementById('mypieChart');
-                                new Chart(pieChart, {
-                                    type: "pie",
-                                    data: {
-                                        // labels: ["CAGR", "Others"],
-                                        datasets: [{
-                                            data: [
-                                                @if (isset($reports->getReportCAGR->cagr))
-                                                    {{ $reports->getReportCAGR->cagr }}
-                                                @endif
-                                            ],
-                                            backgroundColor: [
-                                                "rgba(255, 99, 132, 0.8)",
-                                                "rgba(54, 162, 235, 0.8)",
-                                                "rgba(255, 206, 86, 0.8)",
-                                                "rgba(75, 192, 192, 0.8)"
-                                            ]
-                                        }]
-                                    },
-                                    options: {
-                                        plugins: {
-                                            title: {
-                                                display: true,
-                                                text: 'CAGR Report (%)'
-                                            }
-                                        }
-                                    },
-                                });
 
                             const segmentChart = document.getElementById('mysegmentChart');
                             new Chart(segmentChart, {
@@ -308,31 +278,6 @@
                                     },
                                 }
                             });
-                                const segmentChart = document.getElementById('mysegmentChart');
-                                new Chart(segmentChart, {
-                                    type: "pie",
-                                    data: {
-                                        labels: {!! json_encode($segmentname) !!},
-                                        datasets: [{
-                                            data: {!! json_encode($segmentvalue) !!},
-                                            backgroundColor: [
-                                                "rgba(28, 51, 65,0.8)",
-                                                "rgba(0, 135, 115,0.8)",
-                                                "rgba(107, 185, 131,0.8)",
-                                                "rgba(242, 190, 84,0.8)",
-                                                "rgba(240, 217, 207,0.8)",
-                                            ]
-                                        }]
-                                    },
-                                    options: {
-                                        plugins: {
-                                            title: {
-                                                display: true,
-                                                text: 'Segmentation Report (%)'
-                                            }
-                                        },
-                                    }
-                                }); */
 
                             const regionChart = document.getElementById('myregionChart');
                             new Chart(regionChart, {
@@ -366,39 +311,6 @@
                                     },
                                 }
                             });
-                                const regionChart = document.getElementById('myregionChart');
-                                debugger;
-                                new Chart(regionChart, {
-                                    type: "pie",
-                                    data: {
-                                        labels: {!! json_encode($regionname) !!},
-                                        datasets: [{
-                                            data: {!! json_encode($regionvalue) !!},
-                                            backgroundColor: [
-                                                "rgba(28, 51, 65,0.8)",
-                                                "rgba(0, 135, 115,0.8)",
-                                                "rgba(107, 185, 131,0.8)",
-                                                "rgba(242, 201, 117,0.8)",
-                                                "rgba(237, 99, 83,0.8)",
-                                                "rgba(242, 190, 84,0.8)",
-                                                "rgba(240, 217, 207,0.8)",
-                                                "rgba(135, 174, 180,0.8)",
-                                                "rgba(21, 62, 92,0.8)",
-                                                "rgba(237, 85, 96,0.8)",
-                                                // "rgba(201, 223, 241,0.8)",
-                                                // "rgba(240, 217, 207,0.9)"
-                                            ]
-                                        }]
-                                    },
-                                    options: {
-                                        plugins: {
-                                            title: {
-                                                display: true,
-                                                text: 'Region-wise Report (%)'
-                                            }
-                                        },
-                                    }
-                                });
 
                             const marketshareChart = document.getElementById('mshareChart');
                             new Chart(marketshareChart, {
