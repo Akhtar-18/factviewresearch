@@ -224,7 +224,7 @@
                                     <!-- atribute navigation -->
                                     <div class="attr-nav">
                                         <ul>
-                                            <li class="search"><a href="#!"><i class="fas fa-search"></i></a>
+                                            <li class="search"><a href=""><i class="fas fa-search"></i></a>
                                             </li>
                                         </ul>
                                     </div>

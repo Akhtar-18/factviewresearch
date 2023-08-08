@@ -590,6 +590,14 @@ h6 a,
 
 section {
     /*padding: 120px 0;*/
+    padding: 20px 0 20px 0;
+    overflow: hidden;
+    background: #fff;
+    position: relative
+}
+
+section-new {
+    /*padding: 120px 0;*/
     padding: 70px 0 20px 0;
     overflow: hidden;
     background: #fff;
@@ -2449,7 +2457,8 @@ section.md {
 
 .pt-1-9,
 .py-1-9 {
-    padding-top: 1.9rem
+    /*padding-top: 1.9rem*/
+    padding-top: 0.5rem
 }
 
 .pt-2-0,
@@ -2614,7 +2623,8 @@ section.md {
 
 .pb-1-9,
 .py-1-9 {
-    padding-bottom: 1.9rem
+    /*padding-bottom: 1.9rem*/
+    padding-bottom: 0.5rem
 }
 
 .pb-2-0,
@@ -18169,8 +18179,12 @@ section.md {
 @media (max-width: 1199px) {
     section {
         /*padding: 90px 0*/
-        padding: 70px 0 20px 0
+        padding: 20px 0 20px 0
+    }
 
+    section-new {
+        /*padding: 90px 0*/
+        padding: 70px 0 20px 0
     }
 
     section.md {
@@ -18276,6 +18290,11 @@ section.md {
     }
 
     section {
+        /*padding: 70px 0*/
+        padding: 20px 0 20px 0
+    }
+
+    section-new {
         /*padding: 70px 0*/
         padding: 70px 0 20px 0
     }

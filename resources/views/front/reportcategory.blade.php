@@ -3,9 +3,9 @@
 @section('frontpage')
 
     <!-- PAGE TITLE
-                ==========================      ======================== -->
-    <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7"
-        data-background="{{ asset('front/img/bg/bg5.jpg') }}">
+                    ==========================      ======================== -->
+    <section class="page-title-section pt-1-9 pb-1-9"
+        style="background: radial-gradient(circle, rgba(32,33,93,1) 0%, rgba(42,102,177,1) 20%, rgba(21,178,75,1) 50%, rgba(248,149,33,1) 80%);">
         <div class="container">
 
             <div class="row">
@@ -13,7 +13,8 @@
                     <ul class="ps-0">
                         <ul class="ps-0">
                             <li><a href="{{ route('front.home') }}">Home</a></li>
-                            <li><a href="#">Report Category</a></li>
+                            <li><a href="{{ route('front.reportcategory', ['id' => $category]) }}"
+                                    class="text-white">{{ strtoupper($category) }}</a></li>
                         </ul>
                     </ul>
                 </div>
@@ -23,7 +24,7 @@
     </section>
 
     <!-- ALL REPORTS
-                ================================================== -->
+                    ================================================== -->
     <section>
         <div class="container">
             <div class="row">
@@ -35,20 +36,21 @@
                         @foreach ($ReportCategory as $key => $cat)
                             <div class="card">
                                 <div class="card-header" id="headingOne{{ $key }}">
-                                <a href="{{route('front.reportcategory',strtolower($cat->cat_name))}}"><h5 class="mb-0">
-                                        <button class="btn btn-link" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne{{ $key }}" aria-expanded="true"
-                                            aria-controls="collapseOne{{ $key }}">{{ $cat->cat_name }}</button>
-                                    </h5>
-                                </a>
+                                    <a href="{{ route('front.reportcategory', strtolower($cat->cat_name)) }}">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" data-bs-toggle="collapse"
+                                                data-bs-target="#collapseOne{{ $key }}" aria-expanded="true"
+                                                aria-controls="collapseOne{{ $key }}">{{ $cat->cat_name }}</button>
+                                        </h5>
+                                    </a>
                                 </div>
-                               {{-- <div id="collapseOne" class="collapse show" aria-labelledby="headingOne{{ $key }}"
+                                {{-- <div id="collapseOne" class="collapse show" aria-labelledby="headingOne{{ $key }}"
                                     data-bs-parent="#accordion">
                                     <div class="card-body">
                                         <ul class="list-style-5">
                                             @if ($cat->getSubCategory)
                                                 @foreach ($cat->getSubCategory as $sub)
-                                                    <li><a href="@if(isset($sub->sub_category)){{ route('front.reportsubcategory',strtolower($sub->sub_category))}}@endif">{{ $sub->sub_category }}</a></li>
+                                                    <li><a href="@if (isset($sub->sub_category)){{ route('front.reportsubcategory',strtolower($sub->sub_category))}}@endif">{{ $sub->sub_category }}</a></li>
                                                 @endforeach
                                             @endif
                                         </ul>
@@ -119,10 +121,10 @@
                 event.preventDefault();
                 var page = $(this).attr('href').split('page=')[1];
                 var category = $('#category').val();
-                fetchcategory_data(page,category);
+                fetchcategory_data(page, category);
             });
 
-            function fetchcategory_data(page,category) {
+            function fetchcategory_data(page, category) {
                 $.ajax({
                     url: "fetchcategory_data/" + category + "?page=" + page,
                     success: function(data) {

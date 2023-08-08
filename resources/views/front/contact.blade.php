@@ -5,7 +5,7 @@
 @section('frontpage')
 
     <!-- PAGE TITLE
-                    ================================================== -->
+                        ================================================== -->
     <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7"
         data-background="{{ asset('front/img/bg/bg5.jpg') }}">
         <div class="container">
@@ -27,14 +27,14 @@
 
 
     <!-- CONTACT
-                    ================================================== -->
+                        ================================================== -->
     <section class="md">
         <div class="container">
             <div class="row">
                 <!-- contact form -->
                 <div class="col-lg-6 mb-1-9 mb-lg-0">
                     <div class="section-heading left">
-                        <h3>Let's talk about your business</h3>
+                        <h3>Let's connect with us</h3>
                     </div>
                     <div class="contact-form-box">
                         <div class="alert alert-danger print-error-msg" style="display:none">
@@ -103,16 +103,18 @@
                                     <div class="col-md-12">
                                         <div class="quform-element">
                                             <div class="form-group mt-4 mb-4">
-                                            <div class="captcha">
-                                                <span>{!! captcha_img() !!}</span>
-                                                <button type="button" class="btn btn-danger" class="reload" id="reload">
-                                                    &#x21bb;
-                                                </button>
+                                                <div class="captcha">
+                                                    <span>{!! captcha_img() !!}</span>
+                                                    <button type="button" class="btn btn-danger" class="reload"
+                                                        id="reload">
+                                                        &#x21bb;
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
-                                        </div>
+                                            <div class="form-group mb-4">
+                                                <input id="captcha" type="text" class="form-control"
+                                                    placeholder="Enter Captcha" name="captcha">
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- End Captcha element -->
@@ -142,10 +144,8 @@
                             <div class="col-12">
                                 <div class="contact-info-section mt-0 pt-0">
 
-                                    <h4>Get in Touch</h4>
-                                    <p>Tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                                        aute irure dolor in reprehenderit in voluptate velit esse consequat.</p>
+                                    <h4>Get in Touch With Us</h4>
+                                    <p>Please connect with us and solve your queries.</p>
 
                                 </div>
                             </div>
@@ -163,8 +163,8 @@
                                         </li>
                                         <li class="mb-2">
                                             <p><i class="fas fa-phone text-center"></i> <strong>Phone:</strong>
-                                                @if (isset($contactData->contact_no))
-                                                    {{ $contactData->contact_no }}
+                                                @if (isset($contactData->no_prefix) && isset($contactData->contact_no))
+                                                    {{ $contactData->no_prefix }}{{ $contactData->contact_no }}
                                                 @endif
                                             </p>
                                         </li>
@@ -180,7 +180,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <!-- <div class="col-12">
                                 <div class="contact-info-section border-none pb-0 mb-0">
 
                                     <h4>Business Hours</h4>
@@ -191,7 +191,7 @@
                                     </ul>
 
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>
@@ -202,7 +202,7 @@
     </section>
 
     <!-- MAP
-                    ================================================== -->
+                        ================================================== -->
     <iframe class="map"
         src="https://maps.google.com/maps?q=london&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" scrolling="no"
         marginheight="0" marginwidth="0"></iframe>
@@ -249,15 +249,15 @@
         }
     </script>
 
-<script type="text/javascript">
-    $('#reload').click(function () {
-        $.ajax({
-            type: 'GET',
-            url: 'reload-captcha',
-            success: function (data) {
-                $(".captcha span").html(data.captcha);
-            }
+    <script type="text/javascript">
+        $('#reload').click(function() {
+            $.ajax({
+                type: 'GET',
+                url: 'reload-captcha',
+                success: function(data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
         });
-    });
-</script>
+    </script>
 @endsection

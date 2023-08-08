@@ -41,11 +41,11 @@ class FrontController extends Controller
         return view('front.home',$data);
     }
 
-    public function report($id,Request $request)
+    public function report($id, Request $request)
     {
-        $data['reports']=ReportsModel::with(['getReportLicenses','getReportFaq','getReportmarketgraph','getReportmarketsharegraph','getReportSegmentgraph','getReportRegiongraph','getSubCategoryName','getReportCAGR'])->where('url',$id)->first();
+        $data['reports']=ReportsModel::with(['getReportLicenses','getReportFaq','getReportmarketgraph','getReportmarketsharegraph','getReportSegmentgraph','getReportRegiongraph','getCategoryName','getSubCategoryName','getReportCAGR'])->where('url',$id)->first();
         $data['whyusData']=WhyChooseUsModel::select(['heading','content'])->get();
-        $data['contactData']=ContactDetailsModel::select(['contact_no','email_address','facebook','twitter','instagram','linkedin'])->get();
+        $data['contactData']=ContactDetailsModel::select(['no_prefix','contact_no','email_address','facebook','twitter','instagram','linkedin'])->get();
         if($data['reports']->id)
         {
             $marketshare=MarketShareGraphicalModel::select(['marketsharename','marketsharevalue'])
@@ -236,7 +236,7 @@ class FrontController extends Controller
 
     public function contact()
     {
-        $data['contactData']=ContactDetailsModel::select(['address','contact_no','email_address'])->first();
+        $data['contactData']=ContactDetailsModel::select(['address','no_prefix','contact_no','email_address'])->first();
         return view('front.contact',$data);
     }
     public function services()

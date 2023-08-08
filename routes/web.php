@@ -40,21 +40,21 @@ Route::match(['GET','POST'],'/enquiry/{id}/{type}', [FrontController::class, 'en
 Route::get('/all-reports', [FrontController::class, 'reports'])->name('front.reports');
 Route::get('/fetch_datas', [FrontController::class, 'fetch_datas'])->name('front.fetch_datas');
 
-Route::get('/reportcategory/{id}', [FrontController::class, 'reportcategory'])->name('front.reportcategory');
-Route::get('/reportcategory/fetchcategory_data/{id}', [FrontController::class, 'fetchcategory_data'])->name('front.fetchcategory_data');
+Route::get('/report-category/{id}', [FrontController::class, 'reportcategory'])->name('front.reportcategory');
+Route::get('/report-category/fetchcategory_data/{id}', [FrontController::class, 'fetchcategory_data'])->name('front.fetchcategory_data');
 
 
 Route::get('/reportsubcategory/{id}', [FrontController::class, 'reportsubcategory'])->name('front.reportsubcategory');
 Route::get('/reportsubcategory/fetchsubcategory_data/{id}', [FrontController::class, 'fetchsubcategory_data'])->name('front.fetchsubcategory_data');
 
 Route::get('/about', [FrontController::class, 'about'])->name('front.about');
-Route::get('/whowe', [FrontController::class, 'whowe'])->name('front.whowe');
-Route::get('/whyus', [FrontController::class, 'whyus'])->name('front.whyus');
+Route::get('/who-we-are', [FrontController::class, 'whowe'])->name('front.whowe');
+Route::get('/why-chooose-us', [FrontController::class, 'whyus'])->name('front.whyus');
 Route::get('/partners', [FrontController::class, 'partners'])->name('front.partners');
 Route::get('/testimonials', [FrontController::class, 'testimonials'])->name('front.testimonials');
 Route::get('/services', [FrontController::class, 'services'])->name('front.services');
 Route::get('/service/{id}', [FrontController::class, 'service'])->name('front.service-single');
-Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');
+Route::get('/contact-us', [FrontController::class, 'contact'])->name('front.contact');
 Route::get('/form', [FrontController::class, 'form'])->name('front.form');
 Route::post('/submit-enquiry', [FrontController::class, 'storeenquiry'])->name('submit.enquiry');
 Route::post('/submit-contact-enquiry', [FrontController::class, 'storecontact'])->name('submit.contact_enquiry');

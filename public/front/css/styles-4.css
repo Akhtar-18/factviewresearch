@@ -318,7 +318,8 @@ a:active {
     display: inline-block;
     white-space: nowrap;
     border: none;
-    cursor: pointer
+    cursor: pointer;
+    width: 250px;
 }
 
 .butn span {
@@ -642,7 +643,9 @@ a:active {
     }
 
     .butn.medium {
-        padding: 8px 18px
+        /*padding: 8px 18px*/
+        padding: 10px 10px !important;
+        width: fit-content;
     }
 
     .btn-style2 {
@@ -685,7 +688,9 @@ a:active {
     }
 
     .butn.medium {
-        padding: 6px 16px
+        /*padding: 6px 16px*/
+        padding: 10px 10px !important;
+    width: fit-content;
     }
 
     .btn-style2 {
@@ -1898,7 +1903,7 @@ h6.title-style2.white {
 
 .page-title-section ul {
     margin-bottom: 0;
-    margin-top: 15px;
+    /*margin-top: 15px;*/
     text-align: left
 }
 
@@ -1956,9 +1961,9 @@ h6.title-style2.white {
         line-height: 36px
     }
 
-    .page-title-section ul {
+    /*.page-title-section ul {
         margin-top: 5px
-    }
+    }*/
 }
 
 .page-title-section2 {
@@ -2292,7 +2297,8 @@ h6.title-style2.white {
     }
 
     .owl-carousel .caption h3 {
-        letter-spacing: 1px
+        letter-spacing: 1px;
+        font-size: 15px;
     }
 }
 
@@ -9432,8 +9438,6 @@ h2.resp-accordion.resp-tab-active {
 
 .side-bar .widget {
     margin-bottom: 30px;
-    border-style: groove;
-    border-color: #20215d;
 }
 
 .side-bar .widget:last-child {
@@ -10479,7 +10483,7 @@ footer h3:after {
 
 .footer-social-icons ul li a {
    /*color: #939393;*/
-    color: #15b24b;
+    color: #20215d;
     display: block;
     font-size: 15px;
     height: 35px;

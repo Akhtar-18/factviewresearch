@@ -1,13 +1,13 @@
  @if (count($reports) > 0)
      @foreach ($reports as $list)
-         <article class=blog-list-simple>
+         <article class="blog-list-simple">
              <div class="row">
                  <div class="col-md-12">
                      <div class="blog-list-simple-text">
                          <!-- <span>Business</span> -->
-                         <h3><a
+                         <h5><a
                                  href="{{ route('front.report', ['id' => $list->url]) }}">{{ $list->heading }}</a>
-                         </h3>
+                         </h5>
                          <ul class="meta ps-0">
                              <li>
                                  <i aria-hidden="true" class="fas fa-clock text-success"></i> Published Date:
@@ -49,7 +49,7 @@
          </div>
      </div>
  @else
-     <article class=blog-list-simple>
+     <article class="blog-list-simple">
          <div class="row">
              <div class="col-md-12">
                  <div class="blog-list-simple-text text-center">

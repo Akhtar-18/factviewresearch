@@ -3,9 +3,9 @@
 @section('frontpage')
 
     <!-- PAGE TITLE
-                    ==========================      ======================== -->
-    <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7"
-        data-background="{{ asset('front/img/bg/bg5.jpg') }}">
+                        ==========================      ======================== -->
+    <section class="page-title-section pt-1-9 pb-1-9"
+        style="background: radial-gradient(circle, rgba(32,33,93,1) 0%, rgba(42,102,177,1) 20%, rgba(21,178,75,1) 50%, rgba(248,149,33,1) 80%);">
         <div class="container">
 
             <div class="row">
@@ -23,7 +23,7 @@
     </section>
 
     <!-- ALL REPORTS
-                    ================================================== -->
+                        ================================================== -->
     <section>
         <div class="container">
             <div class="row">
