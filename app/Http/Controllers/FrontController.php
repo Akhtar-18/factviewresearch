@@ -49,21 +49,21 @@ class FrontController extends Controller
         if($data['reports']->id)
         {
             $marketshare=MarketShareGraphicalModel::select(['marketsharename','marketsharevalue'])
-            ->where('report_id',$data['reports']->id)->limit(5)->get();
+            ->where('report_id',$data['reports']->id)->limit(10)->get();
             $data['marketsharename'] =  $marketshare->pluck('marketsharename');
             $data['marketsharevalue'] =  $marketshare->pluck('marketsharevalue');
 
 
             $marketvalue=MarketGraphicalModel::select(['marketyear','marketvalue'])
-            ->where('report_id',$data['reports']->id)->limit(7)->get();
+            ->where('report_id',$data['reports']->id)->limit(10)->get();
             $data['marketyear'] =  $marketvalue->pluck('marketyear');
             $data['marketvalue'] =  $marketvalue->pluck('marketvalue');
 
-            $regiongraph=RegionGraphicalModel::select(['regionname','regionvalue'])->where('report_id',$data['reports']->id)->limit(8)->get();
+            $regiongraph=RegionGraphicalModel::select(['regionname','regionvalue'])->where('report_id',$data['reports']->id)->limit(10)->get();
             $data['regionname'] =  $regiongraph->pluck('regionname');
             $data['regionvalue'] =  $regiongraph->pluck('regionvalue');
 
-            $segmentgraph=SegmentGraphicalModel::select(['segmentname','segmentvalue'])->where('report_id',$data['reports']->id)->limit(5)->get();
+            $segmentgraph=SegmentGraphicalModel::select(['segmentname','segmentvalue'])->where('report_id',$data['reports']->id)->limit(10)->get();
             $data['segmentname'] =  $segmentgraph->pluck('segmentname');
             $data['segmentvalue'] =  $segmentgraph->pluck('segmentvalue');
         }

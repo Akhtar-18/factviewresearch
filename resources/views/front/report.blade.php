@@ -68,7 +68,7 @@
                                 <div class="horizontaltab">
                                     <ul class="resp-tabs-list hor_1">
                                         <li>Report Summary</li>
-                                        <li>Table of Comments</li>
+                                        <li>Table of Contents</li>
                                         <li>Segmentation</li>
                                         <li>Methodology</li>
                                     </ul>
@@ -102,7 +102,7 @@
                                                                                 {{ getCompanyDetail()->company_name }}
                                                                             @endif
                                                                         </a></p>
-                                                                    @if (!empty($reports->getReportCAGR->cagr))
+                                                                        @if (!empty($reports->getReportCAGR->cagr))
 
                                                                         @if (isset($reports->getReportCAGR->cagr))
                                                                             <div class="title text-center mb-2">
@@ -123,26 +123,39 @@
                                                                                     @endforeach
                                                                                 </p>
                                                                             </div>
+                                                                        @endif
+                                                                        @endif
                                                                 </div>
-
-                                                @endif
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                <!-- </div> -->
 
                                 @endif
-                                <!-- @if (!empty($reports->getReportCAGR->cagr))
-    <div class="col-md-4">
+                                <div class="col-md-12"><br></div>
+                                <div class="row">
+                                                    @if (!empty(json_decode($regionname, true)))
+                                                        <div class="col-md-4">
                                                             <div class="card">
                                                                 <div class="card-body">
-                                                                    <canvas id="mypieChart"></canvas>
+                                                                    <canvas id="myregionChart"></canvas>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    @if (!empty(json_decode($marketsharename, true)))
+                                                    <div class="col-md-4">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <canvas id="mshareChart"></canvas>
                                                                 </div>
                                                             </div>
                                                         </div>
     @endif
-                                                    @if (!empty(json_decode($segmentname, true)))
+                               
+    
+                            
+                                                    <!-- @if (!empty(json_decode($segmentname, true)))
     <div class="col-md-4">
                                                             <div class="card">
                                                                 <div class="card-body">
@@ -170,7 +183,7 @@
                                                             </div>
                                                         </div>
     @endif -->
-
+                                </div>
                                         </div></div>
 
                             <script>
@@ -217,7 +230,7 @@
                                     }
                                 });
 
-                                const pieChart = document.getElementById('mypieChart');
+                                /*const pieChart = document.getElementById('mypieChart');
                                 new Chart(pieChart, {
                                     type: "pie",
                                     data: {
@@ -270,9 +283,10 @@
                                             }
                                         },
                                     }
-                                });
+                                }); */
 
                                 const regionChart = document.getElementById('myregionChart');
+                                debugger;
                                 new Chart(regionChart, {
                                     type: "pie",
                                     data: {
@@ -285,11 +299,11 @@
                                                 "rgba(107, 185, 131,0.8)",
                                                 "rgba(242, 201, 117,0.8)",
                                                 "rgba(237, 99, 83,0.8)",
-                                                // "rgba(242, 190, 84,0.8)",
-                                                // "rgba(240, 217, 207,0.8)",
-                                                // "rgba(135, 174, 180,0.8)",
-                                                // "rgba(21, 62, 92,0.8)",
-                                                // "rgba(237, 85, 96,0.8)",
+                                                "rgba(242, 190, 84,0.8)",
+                                                "rgba(240, 217, 207,0.8)",
+                                                "rgba(135, 174, 180,0.8)",
+                                                "rgba(21, 62, 92,0.8)",
+                                                "rgba(237, 85, 96,0.8)",
                                                 // "rgba(201, 223, 241,0.8)",
                                                 // "rgba(240, 217, 207,0.9)"
                                             ]
