@@ -94,15 +94,13 @@ class TestimonialController extends Controller
     public function submit(TestimonialRequest $request)
     {
         $request->validated();
-        if ($request->file('client_image'))
-        {
-          $client_image=ImageUpload('testimonials/client_image',$request->file('client_image'));
+        if ($image = $request->file('client_image')) {
+            $destinationPath = public_path('/').'/testimonials/client_image';
+            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $postImage);
+            $input['client_image'] = "$postImage";
         }
-        else
-        {
-          $client_image="";
-        }
-        $input['client_image']=$client_image;
+        //$input['client_image']=$client_image;
         $input = $request->all();
         TestimonialModel::create($input);
         return redirect('/admin/testimonials')->with('success','Post created successfully.');

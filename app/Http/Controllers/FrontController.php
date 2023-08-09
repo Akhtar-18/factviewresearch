@@ -19,6 +19,7 @@ use App\Models\ReportPayment;
 use App\Models\ReportsModel;
 use App\Models\ReportSubCategoryModel;
 use App\Models\SegmentGraphicalModel;
+use App\Models\SegmentType;
 use App\Models\ServicesModel;
 use App\Models\TestimonialModel;
 use App\Models\WhoWeModel;
@@ -63,9 +64,8 @@ class FrontController extends Controller
             $data['regionname'] =  $regiongraph->pluck('regionname');
             $data['regionvalue'] =  $regiongraph->pluck('regionvalue');
 
-            $segmentgraph=SegmentGraphicalModel::select(['segmentname','segmentvalue'])->where('report_id',$data['reports']->id)->limit(10)->get();
-            $data['segmentname'] =  $segmentgraph->pluck('segmentname');
-            $data['segmentvalue'] =  $segmentgraph->pluck('segmentvalue');
+            $SegmentType=SegmentType::select(['id','report_id','segmenttypename'])->where('report_id',$data['reports']->id)->limit(10)->get();
+            $data['SegmentType']=$SegmentType;
         }
 
 

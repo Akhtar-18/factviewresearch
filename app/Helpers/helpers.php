@@ -5,6 +5,7 @@ use App\Models\ClientsModel;
 use App\Models\ContactDetailsModel;
 use App\Models\HomeSliderModel;
 use App\Models\ReportCategoryModel;
+use App\Models\SegmentGraphicalModel;
 use App\Models\ServicesModel;
 use App\Models\TestimonialModel;
 use Spatie\Permission\Models\Permission;
@@ -102,6 +103,14 @@ if (! function_exists('wordLimitset')) {
     {
         $limit=Str::words($description, $limits, '...');
         return $limit;
+    }
+}
+
+if (! function_exists('getSementGraph')) {
+    function getSementGraph($segement_id)
+    {
+        $Segment=SegmentGraphicalModel::where('segment_types',$segement_id)->select(['segmentname','segmentvalue'])->get();
+        return $Segment;
     }
 }
 

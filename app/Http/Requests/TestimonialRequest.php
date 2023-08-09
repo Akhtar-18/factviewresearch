@@ -25,7 +25,8 @@ class TestimonialRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'profile'=>'required'
+            'profile'=>'required',
+            'client_image'=>'required'
         ];
     }
 }

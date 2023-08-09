@@ -12,11 +12,6 @@
                         <div class="item"><img alt="partner-image" src="{{ asset('clients/images/') }}/{{$client->image}}"></div>
                         @endforeach
                         @endif
-                        <!-- <div class="item"><img alt="partner-image" src="{{ asset('front/img/partners/client-02.png') }}"></div>
-                        <div class="item"><img alt="partner-image" src="{{ asset('front/img/partners/client-03.png') }}"></div>
-                        <div class="item"><img alt="partner-image" src="{{ asset('front/img/partners/client-04.png') }}"></div>
-                        <div class="item"><img alt="partner-image" src="{{ asset('front/img/partners/client-05.png') }}"></div>
-                        <div class="item"><img alt="partner-image" src="{{ asset('front/img/partners/client-06.png') }}"></div> -->
                     </div>
                 </div>
             </div>
