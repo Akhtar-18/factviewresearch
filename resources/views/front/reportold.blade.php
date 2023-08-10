@@ -86,50 +86,55 @@
 
                                             <div class="row">
                                                 @if (!empty(json_decode($marketyear, true)))
-                                                <div class="col-md-8">
-                                                    <div class="card-body">
-                                                        <canvas id="mybarChart" height="300"></canvas>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="card-body">
-                                                        <p><a href="{{ route('front.home') }}"
-                                                            class="navbar-brand logodefault">
-                                                            @if (getCompanyDetail())
-                                                            <img id="logo"
-                                                            src="{{ asset('company_logo') }}/{{ getCompanyDetail()->company_logo }}"
-                                                            alt="logo">
-                                                            @elseif(isset(getCompanyDetail()->company_name))
-                                                            {{ getCompanyDetail()->company_name }}
-                                                            @endif
-                                                        </a></p>
-                                                        @if (!empty($reports->getReportCAGR->cagr))
-                                                        @if (isset($reports->getReportCAGR->cagr))
-                                                        <div class="title text-center mb-2">
-                                                            <div class="section-heading">
-                                                                <h2>{{ $reports->getReportCAGR->cagr }}
-                                                                %</h2>
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-body">
+                                                                <canvas id="mybarChart" height="300"
+                                                                class="col-md-10"></canvas>
                                                             </div>
-                                                            <h6 class="text-primary">Current CAGR
-                                                            Report</strong></h6>
-                                                            <p>
-                                                                @foreach ($marketyear as $markyr)
-                                                                @if ($loop->first)
-                                                                {{ $markyr }} -
-                                                                @endif
-                                                                @if ($loop->last)
-                                                                {{ $markyr }}
-                                                                @endif
-                                                                @endforeach
-                                                            </p>
                                                         </div>
-                                                        @endif
-                                                        @endif
-                                                    </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-body">
+                                                                <p><a href="{{ route('front.home') }}"
+                                                                    class="navbar-brand logodefault">
+                                                                    @if (getCompanyDetail())
+                                                                    <img id="logo"
+                                                                    src="{{ asset('company_logo') }}/{{ getCompanyDetail()->company_logo }}"
+                                                                    alt="logo">
+                                                                    @elseif(isset(getCompanyDetail()->company_name))
+                                                                    {{ getCompanyDetail()->company_name }}
+                                                                    @endif
+                                                                </a></p>
+                                                                @if (!empty($reports->getReportCAGR->cagr))
 
-                                                            
+                                                                @if (isset($reports->getReportCAGR->cagr))
+                                                                <div class="title text-center mb-2">
+                                                                    <div class="section-heading">
+                                                                        <h2>{{ $reports->getReportCAGR->cagr }}
+                                                                        %</h2>
+                                                                    </div>
+                                                                    <h6 class="text-primary">Current CAGR
+                                                                    Report</strong></h6>
+                                                                    <p>
+                                                                        @foreach ($marketyear as $markyr)
+                                                                        @if ($loop->first)
+                                                                        {{ $markyr }} -
+                                                                        @endif
+                                                                        @if ($loop->last)
+                                                                        {{ $markyr }}
+                                                                        @endif
+                                                                        @endforeach
+                                                                    </p>
+                                                                </div>
+                                                                @endif
+                                                                    @endif
+                                                            </div>
+
+                                                                   
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                @endif
                                                 <!-- Segment Graph -->
                                                 @if(count($SegmentType)>0)
                                                 @foreach($SegmentType as $segements)
@@ -200,9 +205,151 @@
                                                 @endif
 
                                             </div>
-                                        </div>
+
+                                            @endif
+
+</div>
+</div>
+
+<script>
+    const barChart = document.getElementById('mybarChart');
+    new Chart(barChart, {
+        type: "bar",
+        data: {
+            labels: {!! json_encode($marketyear) !!},
+            datasets: [{
+                label: "Market Value Current and Forecast",
+                data: {!! json_encode($marketvalue) !!},
+                backgroundColor: [
+                    "rgba(28, 51, 65,0.8)",
+                    "rgba(0, 135, 115,0.8)",
+                    "rgba(107, 185, 131,0.8)",
+                    "rgba(242, 201, 117,0.8)",
+                    "rgba(237, 99, 83,0.8)",
+                    "rgba(242, 190, 84,0.8)",
+                    "rgba(240, 217, 207,0.8)",
+                    ]
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Market Value Current and Forecast (%)',
+                }
+            },
+            scales: {
+                xAxes: [{
+                    barPercentage: 0.5,
+                    categoryPercentage: 1
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: !1
+                    }
+                }]
+            },
+            legend: {
+                display: !1
+            }
+        }
+    });
+
+    const pieChart = document.getElementById('mypieChart');
+    new Chart(pieChart, {
+        type: "pie",
+        data: {
+// labels: ["CAGR", "Others"],
+            datasets: [{
+                data: [
+                    @if (isset($reports->getReportCAGR->cagr))
+                    {{ $reports->getReportCAGR->cagr }}
+                    @endif
+                    ],
+                backgroundColor: [
+                    "rgba(255, 99, 132, 0.8)",
+                    "rgba(54, 162, 235, 0.8)",
+                    "rgba(255, 206, 86, 0.8)",
+                    "rgba(75, 192, 192, 0.8)"
+                    ]
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'CAGR Report (%)'
+                }
+            }
+        },
+    });
 
 
+    const regionChart = document.getElementById('myregionChart');
+    new Chart(regionChart, {
+        type: "pie",
+        data: {
+            labels: {!! json_encode($regionname) !!},
+            datasets: [{
+                data: {!! json_encode($regionvalue) !!},
+                backgroundColor: [
+                    "rgba(28, 51, 65,0.8)",
+                    "rgba(0, 135, 115,0.8)",
+                    "rgba(107, 185, 131,0.8)",
+                    "rgba(242, 201, 117,0.8)",
+                    "rgba(237, 99, 83,0.8)",
+                     "rgba(242, 190, 84,0.8)",
+                     "rgba(240, 217, 207,0.8)",
+                     "rgba(135, 174, 180,0.8)",
+                     "rgba(21, 62, 92,0.8)",
+                     "rgba(237, 85, 96,0.8)",
+                    // "rgba(201, 223, 241,0.8)",
+                    // "rgba(240, 217, 207,0.9)"
+                    ]
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Region-wise Report (%)'
+                }
+            },
+        }
+    });
+
+    const marketshareChart = document.getElementById('mshareChart');
+    new Chart(marketshareChart, {
+        type: "doughnut",
+        data: {
+            labels: {!! json_encode($marketsharename) !!},
+            datasets: [{
+                data: {!! json_encode($marketsharevalue) !!},
+                backgroundColor: [
+                    "rgba(28, 51, 65,0.8)",
+                    "rgba(0, 135, 115,0.8)",
+                    "rgba(107, 185, 131,0.8)",
+                    "rgba(242, 201, 117,0.8)",
+                    "rgba(237, 99, 83,0.8)",
+                    "rgba(242, 190, 84,0.8)",
+                     "rgba(240, 217, 207,0.8)",
+                     "rgba(135, 174, 180,0.8)",
+                     "rgba(21, 62, 92,0.8)",
+                     "rgba(237, 85, 96,0.8)",
+                    ]
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Market Share Report (%)'
+                }
+            },
+        }
+
+    });
+</script>
 
 <div>
     @if (isset($reports->toc))
@@ -511,145 +658,5 @@
 
 <?php //include("footer.php");
 ?>
-
-<script>
-    const barChart = document.getElementById('mybarChart');
-    new Chart(barChart, {
-        type: "bar",
-        data: {
-            labels: {!! json_encode($marketyear) !!},
-            datasets: [{
-                label: "Market Value Current and Forecast",
-                data: {!! json_encode($marketvalue) !!},
-                backgroundColor: [
-                    "rgba(28, 51, 65,0.8)",
-                    "rgba(0, 135, 115,0.8)",
-                    "rgba(107, 185, 131,0.8)",
-                    "rgba(242, 201, 117,0.8)",
-                    "rgba(237, 99, 83,0.8)",
-                    "rgba(242, 190, 84,0.8)",
-                    "rgba(240, 217, 207,0.8)",
-                    ]
-            }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Market Value Current and Forecast (%)',
-                }
-            },
-            scales: {
-                xAxes: [{
-                    barPercentage: 0.5,
-                    categoryPercentage: 1
-                }],
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: !1
-                    }
-                }]
-            },
-            legend: {
-                display: !1
-            }
-        }
-    });
-
-    const pieChart = document.getElementById('mypieChart');
-    new Chart(pieChart, {
-        type: "pie",
-        data: {
-// labels: ["CAGR", "Others"],
-            datasets: [{
-                data: [
-                    @if (isset($reports->getReportCAGR->cagr))
-                    {{ $reports->getReportCAGR->cagr }}
-                    @endif
-                    ],
-                backgroundColor: [
-                    "rgba(255, 99, 132, 0.8)",
-                    "rgba(54, 162, 235, 0.8)",
-                    "rgba(255, 206, 86, 0.8)",
-                    "rgba(75, 192, 192, 0.8)"
-                    ]
-            }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'CAGR Report (%)'
-                }
-            }
-        },
-    });
-
-
-    const regionChart = document.getElementById('myregionChart');
-    new Chart(regionChart, {
-        type: "pie",
-        data: {
-            labels: {!! json_encode($regionname) !!},
-            datasets: [{
-                data: {!! json_encode($regionvalue) !!},
-                backgroundColor: [
-                    "rgba(28, 51, 65,0.8)",
-                    "rgba(0, 135, 115,0.8)",
-                    "rgba(107, 185, 131,0.8)",
-                    "rgba(242, 201, 117,0.8)",
-                    "rgba(237, 99, 83,0.8)",
-                     "rgba(242, 190, 84,0.8)",
-                     "rgba(240, 217, 207,0.8)",
-                     "rgba(135, 174, 180,0.8)",
-                     "rgba(21, 62, 92,0.8)",
-                     "rgba(237, 85, 96,0.8)",
-                    // "rgba(201, 223, 241,0.8)",
-                    // "rgba(240, 217, 207,0.9)"
-                    ]
-            }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Region-wise Report (%)'
-                }
-            },
-        }
-    });
-
-    const marketshareChart = document.getElementById('mshareChart');
-    new Chart(marketshareChart, {
-        type: "doughnut",
-        data: {
-            labels: {!! json_encode($marketsharename) !!},
-            datasets: [{
-                data: {!! json_encode($marketsharevalue) !!},
-                backgroundColor: [
-                    "rgba(28, 51, 65,0.8)",
-                    "rgba(0, 135, 115,0.8)",
-                    "rgba(107, 185, 131,0.8)",
-                    "rgba(242, 201, 117,0.8)",
-                    "rgba(237, 99, 83,0.8)",
-                    "rgba(242, 190, 84,0.8)",
-                     "rgba(240, 217, 207,0.8)",
-                     "rgba(135, 174, 180,0.8)",
-                     "rgba(21, 62, 92,0.8)",
-                     "rgba(237, 85, 96,0.8)",
-                    ]
-            }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Market Share Report (%)'
-                }
-            },
-        }
-
-    });
-</script>
 
 @endsection
