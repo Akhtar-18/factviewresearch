@@ -44,6 +44,10 @@
         li.pagination .active a {
             background-color: #212529 !important;
         }
+        .testmonial-single p:before
+        {
+            display: none !important;
+        }
     </style>
 
     <meta name="google-site-verification" content="ttXl7RH9nKnXlHD17fSjZEaoD-uIiT5OROVTnU4EPG0" />

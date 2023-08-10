@@ -400,6 +400,8 @@ class ReportsController extends Controller
 
 
   /*************************Reports Marketyear Graph Create ************************/
+  if(isset($request->marketyear))
+  {
   foreach($request->marketyear as $key=> $list)
   {
     if(!empty($request->marketyear[$key]))
@@ -425,6 +427,7 @@ class ReportsController extends Controller
     }
 
   }
+}
 
   /*************************Reports Segment Graph Create ************************/
   /*************************Reports Segment Graph Create ************************/
@@ -485,59 +488,67 @@ class ReportsController extends Controller
   }
 
    /*************************Reports Region Graph Create ************************/
-   foreach($request->regionname as $key=> $list)
+   if(isset($request->regionname))
    {
-    if(!empty($request->regionvalue[$key]))
-      {
-    if($request->region_id[$key]!='')
+    foreach($request->regionname as $key=> $list)
     {
-      $regionData=RegionGraphicalModel::find($request->region_id[$key]);
-      $insertRegionData=['report_id'=>$report_id,
-      'regionname'=>$request->regionname[$key],
-      'regionvalue'=>$request->regionvalue[$key],
-        ];
-        $regionData->update($insertRegionData);
+     if(!empty($request->regionvalue[$key]))
+       {
+     if($request->region_id[$key]!='')
+     {
+       $regionData=RegionGraphicalModel::find($request->region_id[$key]);
+       $insertRegionData=['report_id'=>$report_id,
+       'regionname'=>$request->regionname[$key],
+       'regionvalue'=>$request->regionvalue[$key],
+         ];
+         $regionData->update($insertRegionData);
+     }
+     else
+     {
+       
+       $insertRegionData=['report_id'=>$report_id,
+       'regionname'=>$request->regionname[$key],
+       'regionvalue'=>$request->regionvalue[$key],
+         ];
+         RegionGraphicalModel::create($insertRegionData);
+       }
+     }
+ 
     }
-    else
-    {
-      
-      $insertRegionData=['report_id'=>$report_id,
-      'regionname'=>$request->regionname[$key],
-      'regionvalue'=>$request->regionvalue[$key],
-        ];
-        RegionGraphicalModel::create($insertRegionData);
-      }
-    }
-
    }
+   
 
     /*************************Reports Market Share Graph Create ************************/
-    foreach($request->marketsharename as $key=> $list)
+    if(isset($request->marketsharename))
     {
-      if(!empty($request->marketsharevalue[$key]))
+      foreach($request->marketsharename as $key=> $list)
       {
-      if($request->marketshare_id[$key]!='')
-      {
-        
-        $marketshareData=MarketShareGraphicalModel::find($request->marketshare_id[$key]);
-        $insertmarketshareData=['report_id'=>$report_id,
-        'marketsharename'=>$request->marketsharename[$key],
-        'marketsharevalue'=>$request->marketsharevalue[$key],
-        ];
-        $marketshareData->update($insertmarketshareData);
+        if(!empty($request->marketsharevalue[$key]))
+        {
+        if($request->marketshare_id[$key]!='')
+        {
+          
+          $marketshareData=MarketShareGraphicalModel::find($request->marketshare_id[$key]);
+          $insertmarketshareData=['report_id'=>$report_id,
+          'marketsharename'=>$request->marketsharename[$key],
+          'marketsharevalue'=>$request->marketsharevalue[$key],
+          ];
+          $marketshareData->update($insertmarketshareData);
+        }
+        else
+        {
+         
+          $insertmarketshareData=['report_id'=>$report_id,
+          'marketsharename'=>$request->marketsharename[$key],
+          'marketsharevalue'=>$request->marketsharevalue[$key],
+          ];
+          MarketShareGraphicalModel::create($insertmarketshareData);
+        }
+        }
+  
       }
-      else
-      {
-       
-        $insertmarketshareData=['report_id'=>$report_id,
-        'marketsharename'=>$request->marketsharename[$key],
-        'marketsharevalue'=>$request->marketsharevalue[$key],
-        ];
-        MarketShareGraphicalModel::create($insertmarketshareData);
-      }
-      }
-
     }
+    
   return redirect('/admin/reports')->with('success','Reports Update successfully.');
    }
   public function delete($id)

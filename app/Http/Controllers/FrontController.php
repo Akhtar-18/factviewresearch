@@ -47,7 +47,8 @@ class FrontController extends Controller
         $data['reports']=ReportsModel::with(['getReportLicenses','getReportFaq','getReportmarketgraph','getReportmarketsharegraph','getReportSegmentgraph','getReportRegiongraph','getCategoryName','getSubCategoryName','getReportCAGR'])->where('url',$id)->first();
         $data['whyusData']=WhyChooseUsModel::select(['heading','content'])->get();
         $data['contactData']=ContactDetailsModel::select(['no_prefix','contact_no','email_address','facebook','twitter','instagram','linkedin'])->get();
-        if($data['reports']->id)
+        
+        if(isset($data['reports']->id))
         {
             $marketshare=MarketShareGraphicalModel::select(['marketsharename','marketsharevalue'])
             ->where('report_id',$data['reports']->id)->limit(10)->get();
@@ -66,11 +67,13 @@ class FrontController extends Controller
 
             $SegmentType=SegmentType::select(['id','report_id','segmenttypename'])->where('report_id',$data['reports']->id)->limit(10)->get();
             $data['SegmentType']=$SegmentType;
+            return view('front.report',$data);
         }
-
-
-
-        return view('front.report',$data);
+        else
+        {
+            return view('errors.404');
+        }
+        
     }
     public function reports(Request $request)
     {
@@ -474,5 +477,9 @@ class FrontController extends Controller
     public function disclaimer()
     {
         return view('front.disclaimer');
+    }
+    public function pagenotfound()
+    {
+        return view('errors.404');
     }
 }
