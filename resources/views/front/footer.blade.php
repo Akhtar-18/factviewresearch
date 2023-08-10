@@ -161,7 +161,7 @@
 
 <!-- all js include end -->
 
-<!--<script>
+<script>
     $(document).ready(function() {
         $('body').bind('cut copy', function(e) {
             e.preventDefault();
@@ -170,7 +170,7 @@
             return false;
         });
     });
-</script> -->
+</script>
 
 
 </body>
