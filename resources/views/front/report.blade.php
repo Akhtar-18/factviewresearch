@@ -134,7 +134,11 @@
                                                 @if (count($SegmentType) > 0)
                                                     @foreach ($SegmentType as $segements)
                                                         <div class="col-md-4">
+<<<<<<< HEAD
                                                             @php $SegmentGraph = getSementGraph($segements->id);
+=======
+                                                            @php$SegmentGraph = getSementGraph($segements->id);
+>>>>>>> 000236f75f5f9503ad828f42cfbc0202f81bfae4
                                                                 $segmentname = $SegmentGraph->pluck('segmentname');
                                                                 $segmentvalue = $SegmentGraph->pluck('segmentvalue');
                                                             @endphp
