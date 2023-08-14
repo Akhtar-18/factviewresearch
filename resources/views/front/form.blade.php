@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- PAGE TITLE
-            ================================================== -->
+                ================================================== -->
     <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7"
         data-background="{{ asset('front/img/bg/bg5.jpg') }}">
         <div class="container">
@@ -15,19 +15,20 @@
                 <div class="col-md-12">
                     <h1>
                         @if ($type == 'request')
-                        {{ 'REQUEST SAMPLE' }}
-                    @elseif($type == 'enquiry')
-                        {{ 'ENQUIRY BEFORE BUYING' }}
-                    @elseif($type == 'discount')
-                        {{ 'ASK FOR DISCOUNT' }}
-                    @endif
+                            {{ 'REQUEST SAMPLE' }}
+                        @elseif($type == 'enquiry')
+                            {{ 'ENQUIRY BEFORE BUYING' }}
+                        @elseif($type == 'discount')
+                            {{ 'ASK FOR DISCOUNT' }}
+                        @endif
                     </h1>
                 </div>
                 <div class="col-md-12">
                     <ul class="ps-0">
                         <li><a href="{{ route('front.home') }}">Home</a></li>
                         @if ($type == 'request')
-                            <li><a href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}">{{ 'REQUEST SAMPLE' }}</a>
+                            <li><a
+                                    href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}">{{ 'REQUEST SAMPLE' }}</a>
                             </li>
                         @elseif($type == 'enquiry')
                             <li><a
@@ -48,7 +49,7 @@
 
 
     <!-- CONTACT
-            ================================================== -->
+                ================================================== -->
     <section class="md">
         <div class="container">
             <div class="row">
@@ -216,23 +217,25 @@
                                     <div class="col-md-4">
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
-                                            <div class="captcha">
-                                                <span>{!! captcha_img() !!}</span>
-                                                <a type="button" class="btn btn-danger" class="reload" id="reload">
-                                                    &#x21bb;
-</a>
-                                            </div>
+                                                <div class="captcha">
+                                                    <span>{!! captcha_img() !!}</span>
+                                                    <a type="button" class="btn btn-danger" class="reload"
+                                                        id="reload">
+                                                        &#x21bb;
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
-                                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                                                <input id="captcha" type="text" class="form-control"
+                                                    placeholder="Enter Captcha" name="captcha">
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <!-- Begin Submit button -->
                                     <div class="col-md-12 text-center">
                                         <div class="quform-submit-inner">
@@ -341,14 +344,14 @@
 
             e.preventDefault();
             var ButtonText = $(this).find('button[type="button"]').html();
-       /*$(this).find('button').prop('disabled', true);
-       $(this).find('button').html('Loading ...');*/
-       $(this).find('.btn-submit').prop('disabled', true);
-       $(this).find('.btn-submit').html('Loading ...');
+            /*$(this).find('button').prop('disabled', true);
+            $(this).find('button').html('Loading ...');*/
+            $(this).find('.btn-submit').prop('disabled', true);
+            $(this).find('.btn-submit').html('Loading ...');
 
-       
-       $(this).find('button[type="button"]').prop('disabled', true);
-       $(this).find('button[type="button"]').html('Loading ...');
+
+            $(this).find('button[type="button"]').prop('disabled', true);
+            $(this).find('button[type="button"]').html('Loading ...');
 
             $.ajax({
                 type: 'POST',
@@ -356,7 +359,7 @@
                 data: $('#contactUsForm').serialize(),
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
-                        window.location.href="{{url('thankyou')}}/"+data.id;
+                        window.location.href = "{{ url('thankyou') }}/" + data.id;
                     } else {
                         printErrorMsg(data.error);
                     }
@@ -373,15 +376,15 @@
             });
         }
 
-          $('#reload').click(function () {
-        $.ajax({
-            type: 'GET',
-            url: '{{route("reload-from-captcha")}}',
-            success: function (data) {
-                $(".captcha span").html(data.captcha);
-            }
+        $('#reload').click(function() {
+            $.ajax({
+                type: 'GET',
+                url: '{{ route('reload-from-captcha') }}',
+                success: function(data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
         });
-    });
     </script>
 
 @endsection

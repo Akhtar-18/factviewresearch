@@ -14,63 +14,55 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class MarketValues implements ToCollection,WithChunkReading , ShouldQueue,WithHeadingRow
+class MarketValues implements ToCollection, WithChunkReading, ShouldQueue, WithHeadingRow
 {
     /**
-    * @param Collection $row
-    */
+     * @param Collection $row
+     */
     public function collection(Collection $rows)
     {
-        foreach ($rows as $row)
-        {
+        foreach ($rows as $row) {
 
-            $dataReport=ReportsModel::where('heading',$row['heading'])->first();
+            $dataReport = ReportsModel::where('heading', $row['heading'])->first();
 
-            $report_id=$dataReport->id;
-            if(isset($report_id))
-            {
+            $report_id = $dataReport->id;
+            if (isset($report_id)) {
                 MarketGraphicalModel::create([
                     'report_id' => $report_id,
                     'marketyear' => $row['market_year'],
                     'marketvalue' => $row['market_value'],
                 ]);
-                if(isset($row['segment']))
-                {
-                    SegmentGraphicalModel::create([
-                        'report_id' => $report_id,
-                        'segmentname' => $row['segment'],
-                        'segmentvalue' => $row['segment_value'],
-                    ]);
-                }
-                if(isset($row['market_share']))
-                {
+                // if(isset($row['segment']))
+                // {
+                //     SegmentGraphicalModel::create([
+                //         'report_id' => $report_id,
+                //         'segmentname' => $row['segment'],
+                //         'segmentvalue' => $row['segment_value'],
+                //     ]);
+                // }
+                if (isset($row['market_share'])) {
                     MarketShareGraphicalModel::create([
                         'report_id' => $report_id,
                         'marketsharename' => $row['market_share'],
                         'marketsharevalue' => $row['market_share_value'],
                     ]);
                 }
-                if(isset($row['region']))
-                {
+                if (isset($row['region'])) {
                     RegionGraphicalModel::create([
                         'report_id' => $report_id,
                         'regionname' => $row['region'],
                         'regionvalue' => $row['region_value'],
                     ]);
                 }
-                if(isset($row['cagr']))
-                {
-                    $getcagr=CagrModel::where('report_id',$report_id)->first();
-                    if($getcagr)
-                    {
-                        $getcagr->update(['cagr'=>$row['cagr']]);
-                    }
-                    else
-                    {
+                if (isset($row['cagr'])) {
+                    $getcagr = CagrModel::where('report_id', $report_id)->first();
+                    if ($getcagr) {
+                        $getcagr->update(['cagr' => $row['cagr']]);
+                    } else {
                         CagrModel::create([
                             'report_id' => $report_id,
                             'cagr' => $row['cagr'],
-                    ]);
+                        ]);
                     }
                 }
 

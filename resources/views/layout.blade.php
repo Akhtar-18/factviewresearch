@@ -11,6 +11,11 @@
 
     <title>@yield('title')</title>
 
+     <!-- favicon -->
+     <link rel="shortcut icon" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
+     <link rel="apple-touch-icon" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
+     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
+     <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('front/img/logos/fvr-114-114.png') }}">
 
     <link href="{{ url('') }}/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -323,7 +328,7 @@
                             @if (auth()->user()->can('reportcategory-list'))
                                 <a class="collapse-item" href="{{ url('admin/reportcategory') }}">Report Category</a>
                             @endif
-                           {{-- @if (auth()->user()->can('reportsubcategory-list'))
+                            {{-- @if (auth()->user()->can('reportsubcategory-list'))
                                 <a class="collapse-item" href="{{ route('report.subcategory.index') }}">Report Sub
                                     Category</a>
                             @endif --}}
@@ -648,7 +653,7 @@
         });
     </script> -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $(document).ready(function() {
             $.ajaxSetup({
@@ -660,38 +665,37 @@
 
 
 
-            
+
         });
         $(document).ready(function() {
-  const datePickerInput = $("#datepicker");
+            const datePickerInput = $("#datepicker");
 
-  // Function to open the date picker
-  function openDatePicker() {
-    const currentDate = new Date();
-    const currentYear = currentDate.getFullYear();
-    const currentMonth = currentDate.getMonth();
-    const currentDay = currentDate.getDate();
+            // Function to open the date picker
+            function openDatePicker() {
+                const currentDate = new Date();
+                const currentYear = currentDate.getFullYear();
+                const currentMonth = currentDate.getMonth();
+                const currentDay = currentDate.getDate();
 
-    // Set the minimum and maximum date for the date picker
-    const minDate = new Date(currentYear - 100, currentMonth, currentDay);
-    const maxDate = new Date(currentYear, currentMonth, currentDay);
+                // Set the minimum and maximum date for the date picker
+                const minDate = new Date(currentYear - 100, currentMonth, currentDay);
+                const maxDate = new Date(currentYear, currentMonth, currentDay);
 
-    datePickerInput.datepicker({
-      dateFormat: "yy-mm-dd",
-      minDate: minDate,
-      //maxDate: maxDate
-    });
+                datePickerInput.datepicker({
+                    dateFormat: "yy-mm-dd",
+                    minDate: minDate,
+                    //maxDate: maxDate
+                });
 
-    // Open the date picker when the input is clicked
-    datePickerInput.datepicker("show");
-  }
+                // Open the date picker when the input is clicked
+                datePickerInput.datepicker("show");
+            }
 
-  // Add event listener to open the date picker when the input is clicked
-  datePickerInput.on("click", openDatePicker);
-});
-
+            // Add event listener to open the date picker when the input is clicked
+            datePickerInput.on("click", openDatePicker);
+        });
     </script>
-    
+
 
 </body>
 

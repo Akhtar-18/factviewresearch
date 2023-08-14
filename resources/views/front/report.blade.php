@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <!-- PAGE TITLE
-        ================================================== -->
+                        ================================================== -->
     <section class="page-title-section pt-1-9 pb-1-9"
         style="background: radial-gradient(circle, rgba(32,33,93,1) 0%, rgba(42,102,177,1) 20%, rgba(21,178,75,1) 50%, rgba(248,149,33,1) 80%);">
         <div class="container">
@@ -31,7 +31,7 @@
 
 
     <!-- REPORT DETAILS
-        ================================================== -->
+                        ================================================== -->
     <section class="blogs">
         <div class="container">
             <div class="row">
@@ -77,6 +77,9 @@
                                         <li>Table of Contents</li>
                                         <li>Segmentation</li>
                                         <li>Methodology</li>
+                                        <a class="butn bg-danger"
+                                            href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}"><span>Download
+                                                Sample PDF</span></a>
                                     </ul>
                                     <div class="resp-tabs-container hor_1">
                                         <div>
@@ -132,20 +135,20 @@
                                                 @endif
                                                 <!-- Segment Graph -->
                                                 @if (count($SegmentType) > 0)
-                                                    @foreach ($SegmentType as $segements)
+                                                    @foreach ($SegmentType as $segments)
                                                         <div class="col-md-4">
-                                                            @php $SegmentGraph = getSementGraph($segements->id);
+                                                            @php $SegmentGraph = getSementGraph($segments->id);
                                                                 $segmentname = $SegmentGraph->pluck('segmentname');
                                                                 $segmentvalue = $SegmentGraph->pluck('segmentvalue');
                                                             @endphp
                                                             <div class="card">
                                                                 <div class="card-body">
                                                                     <canvas
-                                                                        id="mysegmentChart{{ $segements->id }}"></canvas>
+                                                                        id="mysegmentChart{{ $segments->id }}"></canvas>
                                                                 </div>
                                                             </div>
                                                             <script>
-                                                                var segmentChart = document.getElementById('mysegmentChart{{ $segements->id }}');
+                                                                var segmentChart = document.getElementById('mysegmentChart{{ $segments->id }}');
                                                                 new Chart(segmentChart, {
                                                                     type: "pie",
                                                                     data: {
@@ -170,7 +173,7 @@
                                                                         plugins: {
                                                                             title: {
                                                                                 display: true,
-                                                                                text: '{{ $segements->segmenttypename }} Segmentation  (%)'
+                                                                                text: '{{ $segments->segmenttypename }} Segmentation  (%)'
                                                                             }
                                                                         },
                                                                     }
@@ -337,7 +340,7 @@
                                                     data-html="true" title="Report access for unlimited users"></i></p>
                                         </label>
                                     </div>
-                                    <div class="form-check col-md-6">
+                                    <div class="col-md-12">
                                         <a class="butn primary"
                                             href="{{ route('front.buynow', $reports->id) }}"><span>Buy
                                                 Now</span></a>
@@ -365,6 +368,7 @@
                                 </div>
                             </article>
                         </div>
+
                         <div class="widget">
                             <article class="card card-style1">
                                 <div class="card-header bg-primary text-white">
@@ -416,6 +420,7 @@
                                 </div>
                             </article>
                         </div>
+
                         <div class="widget">
                             <article class="card card-style1">
                                 <div class="card-header bg-primary text-white">
@@ -452,6 +457,7 @@
                                 </div>
                             </article>
                         </div>
+
                         <div class="widget">
 
                             <article class="card card-style1">
@@ -509,9 +515,9 @@
                         class="butn primary white-hover"><span>Request a Sample pdf</span></a>
                 </div>
                 <!-- <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-    <button type="button" class="btn btn-primary">Save changes</button>
-    </div> -->
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    </div> -->
             </div>
         </div>
     </div>

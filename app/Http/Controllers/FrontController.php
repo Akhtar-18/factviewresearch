@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\AdminReportEnquir;
+use App\Mail\AdminReportEnquiry;
 use App\Mail\MyReportEnquiry;
 use App\Models\AboutUsModel;
 use App\Models\Blog;
@@ -27,6 +27,7 @@ use App\Models\WhyChooseUsModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 
 class FrontController extends Controller
 {
@@ -47,7 +48,7 @@ class FrontController extends Controller
         $data['reports']=ReportsModel::with(['getReportLicenses','getReportFaq','getReportmarketgraph','getReportmarketsharegraph','getReportSegmentgraph','getReportRegiongraph','getCategoryName','getSubCategoryName','getReportCAGR'])->where('url',$id)->first();
         $data['whyusData']=WhyChooseUsModel::select(['heading','content'])->get();
         $data['contactData']=ContactDetailsModel::select(['no_prefix','contact_no','email_address','facebook','twitter','instagram','linkedin'])->get();
-        
+
         if(isset($data['reports']->id))
         {
             $marketshare=MarketShareGraphicalModel::select(['marketsharename','marketsharevalue'])
@@ -73,7 +74,7 @@ class FrontController extends Controller
         {
             return view('errors.404');
         }
-        
+
     }
     public function reports(Request $request)
     {
@@ -288,23 +289,34 @@ class FrontController extends Controller
 
         }
 
-
+        //$reportData=ReportsModel::find($request->report_id);
+        $reportData=ReportsModel::select(['heading', 'url'])->find($request->report_id);
         $type = $request->types;
         $name = $request->name;
+        $reportName=$reportData->heading;
+        $reportUrl = URL::to('report/').'/'.$reportData->url;
+        $email = $request->email;
+        $country = $request->country;
+        $contact_no = $request->contact_no;
+        $organizations = $request->organizations;
+        $others= $request->others;
         $input=$request->all();
+
         ReportEnquiryModel::create($input);
 
 
 
-        $email = 'minhaj.khan@researchforetell.com';
+        //$email = 'minhaj.khan@researchforetell.com';
+        $useremail = $request->email;
+        $adminemail = 'minhaj.khan@researchforetell.com';
 
-        Mail::to($email)->send(new MyReportEnquiry($type,$name));
-        Mail::to($email)->send(new AdminReportEnquir($type,$name));
+        Mail::to($useremail)->send(new MyReportEnquiry($type,$name,$reportName));
+        Mail::to($adminemail)->send(new AdminReportEnquiry($type,$name, $reportName, $reportUrl, $email,$country, $contact_no, $organizations, $others));
         return response()->json([ 'success'=> 'Form is successfully submitted!',
                                 'id'=>$request->report_id]);
     }
 
-    function enquerythankyou($id)
+    function enquirythankyou($id)
     {
         $reports=ReportsModel::latest('id')
              ->select(['id','heading'])->find($id);
@@ -454,7 +466,7 @@ class FrontController extends Controller
         // $email = 'minhaj.khan@researchforetell.com';
 
         // Mail::to($email)->send(new MyReportEnquiry($type,$name));
-        // Mail::to($email)->send(new AdminReportEnquir($type,$name));
+        // Mail::to($email)->send(new AdminReportEnquiry($type,$name));
         return response()->json([ 'success'=> 'Form is successfully submitted!',
                                 'id'=>$request->report_id]);
     }

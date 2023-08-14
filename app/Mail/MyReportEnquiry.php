@@ -20,23 +20,33 @@ class MyReportEnquiry extends Mailable
      */
     public $types;
     public $name;
-    public function __construct($types,$name)
+    public $reportName;
+    public function __construct($types, $name, $reportName)
     {
-        $this->types=$types;
-        $this->name=$name;
+        $this->types = $types;
+        $this->name = $name;
+        $this->reportName = $reportName;
     }
 
 
-    
 
-   
+
+
     public function build()
     {
-        $data['type']=$this->types;
-        $data['name']=$this->name;
-        return $this->subject('Enquiry Submitted')
-                    ->view('emails.enquiry',$data);
+        $data['type'] = $this->types;
+        if ($data['type'] == 'request') {
+            $data['type'] = 'REQUEST SAMPLE';
+        } elseif ($data['type'] == 'enquiry') {
+            $data['type'] = 'ENQUIRY BEFORE BUYING';
+        } elseif ($data['type'] == 'discount') {
+            $data['type'] = 'ASK FOR DISCOUNT';
+        }
+        $data['name'] = $this->name;
+        $data['reportName'] = $this->reportName;
+        return $this->subject('FactViewResearch | Thank you for your interest.')
+            ->view('emails.enquiry', $data);
     }
 
-   
+
 }

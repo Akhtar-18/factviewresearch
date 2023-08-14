@@ -26,8 +26,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="mb-2">Category Name <span class="text-danger">*</span></label>
-                                        <select class="form-control" name="category_id" id="category_id"
-                                            >
+                                        <select class="form-control" name="category_id" id="category_id">
                                             <option value=" ">Select Category</option>
                                             @foreach ($category as $list)
                                                 <option value="{{ $list->id }}">{{ $list->cat_name }}</option>
@@ -39,17 +38,17 @@
                                     </div>
                                 </div>
                                 <!-- <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label class="mb-2">Sub Category Name <span class="text-danger">*</span></label>
-                                        <select class="form-control" name="sub_category_id" id="sub_category_id">
-                                            <option value=" ">Select Sub Category</option>
+                                        <div class="form-group">
+                                            <label class="mb-2">Sub Category Name <span class="text-danger">*</span></label>
+                                            <select class="form-control" name="sub_category_id" id="sub_category_id">
+                                                <option value=" ">Select Sub Category</option>
 
-                                        </select>
-                                        @if ($errors->has('sub_category_id'))
-                                            <span class="text-danger">{{ $errors->first('sub_category_id') }}</span>
-                                        @endif
-                                    </div>
-                                </div> -->
+                                            </select>
+                                            @if ($errors->has('sub_category_id'))
+    <span class="text-danger">{{ $errors->first('sub_category_id') }}</span>
+    @endif
+                                        </div>
+                                    </div> -->
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="mb-2">Heading<span class="text-danger">*</span></label>
@@ -129,7 +128,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="mb-2">Table of Contents <span class="text-danger"></span></label>
-                                        <textarea class="form-control"  name="toc" rows="20">{{ old('toc') }}</textarea>
+                                        <textarea class="form-control" name="toc" rows="20">{{ old('toc') }}</textarea>
                                         @if ($errors->has('toc'))
                                             <span class="text-danger">{{ $errors->first('toc') }}</span>
                                         @endif
@@ -139,7 +138,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="mb-2">Segmentation <span class="text-danger"></span></label>
-                                        <textarea class="form-control"  name="segment" rows="12"></textarea>
+                                        <textarea class="form-control" name="segment" rows="12"></textarea>
                                         @if ($errors->has('segment'))
                                             <span class="text-danger">{{ $errors->first('segment') }}</span>
                                         @endif
@@ -149,7 +148,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="mb-2">Methodology <span class="text-danger"></span></label>
-                                        <textarea class="form-control"  name="methodology" rows="12"></textarea>
+                                        <textarea class="form-control" name="methodology" rows="12"></textarea>
                                         @if ($errors->has('methodology'))
                                             <span class="text-danger">{{ $errors->first('methodology') }}</span>
                                         @endif
@@ -241,7 +240,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p><b>Market Value Current and Forecast</b> <a onclick="addmarketvalue()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a></p>
+                                    <p><b>Market Value Current and Forecast</b> <a onclick="addmarketvalue()"
+                                            class="btn btn-success mt-3" style="width: 70px;"><i
+                                                class="fa fa-plus-circle"></i></a></p>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -258,12 +259,12 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12" id="marketvalue">
-                                            
+
                                         </div>
                                     </div>
 
-                                    <p><b>Segment Graphs</b>  
-                                        
+                                    <p><b>Segment Graphs</b>
+
                                     </p>
                                     <div class="row border">
                                         <div class="col-md-4">
@@ -274,34 +275,43 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-4">
-                                            <a onclick="addrows()" style="width: 70px;" class="btn btn-success text-white mt-2"><i class="fa fa-plus-circle"></i></a>
+                                            <a onclick="addrows()" style="width: 70px;"
+                                                class="btn btn-success text-white mt-2"><i
+                                                    class="fa fa-plus-circle"></i></a>
                                         </div>
                                         <div class="col-md-12">
-                                      <div class="table-responsive">
-                                        <table class="table table-bordered" style="width: 100%;">
-                                          <thead>
-                                            <th>Action</th>
-                                            <th>Sub Type</th>
-                                            <th>Percentage</th>
-                                          </thead>
-                                          <tbody id="new_chq">
-                                            <tr>
-                                              <td><a class="add btn btn-sm btn-success text-white"  onclick="add()" style="width: 70px;"><i class='fa fa-plus-circle'></i></a>
-                                                <input type="hidden" name="product_array_key[]" class="form-control" value="0">
-                                              </td>
-                                              <td> 
-                                               <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">
-                                              </td>
-                                              <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">
-                                              </td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
-                                      </div>
-                                    </div>
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" style="width: 100%;">
+                                                    <thead>
+                                                        <th>Action</th>
+                                                        <th>Sub Type</th>
+                                                        <th>Percentage</th>
+                                                    </thead>
+                                                    <tbody id="new_chq">
+                                                        <tr>
+                                                            <td><a class="add btn btn-sm btn-success text-white"
+                                                                    onclick="add()" style="width: 70px;"><i
+                                                                        class='fa fa-plus-circle'></i></a>
+                                                                <input type="hidden" name="product_array_key[]"
+                                                                    class="form-control" value="0">
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" name="segmentname[]"
+                                                                    class="form-control" placeholder="Sub Type">
+                                                            </td>
+                                                            <td><input type="text" class="form-control"
+                                                                    name="segmentvalue[]" placeholder="Percentage"
+                                                                    value="">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group row border" id="appendrow"></div>
-                                    <p><b> Region Wise Graphs</b> <a onclick="addregion()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a></p>
+                                    <p><b> Region Wise Graphs</b> <a onclick="addregion()" class="btn btn-success mt-3"
+                                            style="width: 70px;"><i class="fa fa-plus-circle"></i></a></p>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -318,10 +328,12 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12" id="regions"></div>
-                                </div>
+                                    </div>
 
 
-                                    <p><b>Market Share Graphs</b> <a onclick="addmarketshare()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a></p>
+                                    <p><b>Market Share Graphs</b> <a onclick="addmarketshare()"
+                                            class="btn btn-success mt-3" style="width: 70px;"><i
+                                                class="fa fa-plus-circle"></i></a></p>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -339,8 +351,8 @@
                                         </div>
                                         <div class="col-md-12" id="marketshares"></div>
                                     </div>
-                                    
-                                    
+
+
 
                                 </div>
 
@@ -408,100 +420,103 @@
         </div>
 
     </div>
-<script>
-    var segementCount = 1;
-  function addrows()
-  {
-    //debugger;
-    var new_item='<div class="col-md-12 mt-3" id="main'+segementCount+'"><div class="row">\
-    <div class="form-group col-md-4">\
-      <label class="mb-2">Types<span class="text-danger"></span></label>\
-        <input type="text" class="form-control" name="segmenttypename[]" placeholder="Types">\
-    </div>\
-    <div class="form-group col-md-3" style="margin-top: 3%;">\
-      <a class="add btn btn-sm btn-success text-white" style="width: 70px;" onclick="addrows()"><i class="fa fa-plus-circle"></i></a>&nbsp;<a class="add btn btn-sm btn-danger text-white" onclick="removemain('+segementCount+')" style="width: 70px;"><i class="fa fa-trash"></i></a>\
-    </div>\
-    <div class="col-md-12">\
-      <div class="table-responsive">\
-        <table class="table table-bordered" style="width: 100%;">\
-          <thead>\
-            <th>Action</th>\
-            <th>Sub Types</th>\
-            <th>Persentage</th>\
-          </thead>\
-          <tbody id="new_chq'+segementCount+'">\
-            <tr>\
-              <td><a class="add btn btn-sm btn-success text-white"  onclick="add('+segementCount+')" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>\
-              <input type="hidden" name="product_array_key[]" class="form-control" value="'+segementCount+'">\
-              </td>\
-             <td>\
-               <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">\
-              </td>\
-              <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">\
-            </td>\
-            </tr>\
-          </tbody>\
-        </table>\
-      </div>\
-    </div></div></div>';
-    $('#appendrow').append(new_item);
-segementCount++;
-}
+    <script>
+        var segmentCount = 1;
+
+        function addrows() {
+            //debugger;
+            var new_item = '<div class="col-md-12 mt-3" id="main' + segmentCount +
+                '"><div class="row">\
+        <div class="form-group col-md-4">\
+          <label class="mb-2">Types<span class="text-danger"></span></label>\
+            <input type="text" class="form-control" name="segmenttypename[]" placeholder="Types">\
+        </div>\
+        <div class="form-group col-md-3" style="margin-top: 3%;">\
+          <a class="add btn btn-sm btn-success text-white" style="width: 70px;" onclick="addrows()"><i class="fa fa-plus-circle"></i></a>&nbsp;<a class="add btn btn-sm btn-danger text-white" onclick="removemain(' +
+                segmentCount + ')" style="width: 70px;"><i class="fa fa-trash"></i></a>\
+        </div>\
+        <div class="col-md-12">\
+          <div class="table-responsive">\
+            <table class="table table-bordered" style="width: 100%;">\
+              <thead>\
+                <th>Action</th>\
+                <th>Sub Types</th>\
+                <th>Persentage</th>\
+              </thead>\
+              <tbody id="new_chq' + segmentCount + '">\
+                <tr>\
+                  <td><a class="add btn btn-sm btn-success text-white"  onclick="add(' + segmentCount + ')" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>\
+                  <input type="hidden" name="product_array_key[]" class="form-control" value="' + segmentCount + '">\
+                  </td>\
+                 <td>\
+                   <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">\
+                  </td>\
+                  <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">\
+                </td>\
+                </tr>\
+              </tbody>\
+            </table>\
+          </div>\
+        </div></div></div>';
+            $('#appendrow').append(new_item);
+            segmentCount++;
+        }
 
 
-  var loop_product=0;
-function add(idss='') 
-{
-  var pro=(idss)?idss:0;
-var new_input = '<tr id="rows'+loop_product+'">\
-              <td><a class="add btn btn-sm btn-success text-white" style="width: 70px;" onclick="add('+idss+')"><i class="fa fa-plus-circle"></i></a> &nbsp;<input type="hidden" name="product_array_key[]" class="form-control" value="'+pro+'">\
-      <a class="add btn btn-sm btn-danger text-white" onclick="removesub('+loop_product+')" style="width: 70px;"><i class="fa fa-trash"></i></a></td>\
-              <td>\
-               <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">\
-              </td>\
-              <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">\
-            </td>\
-            </tr>';
-            if(idss)
-            {
-              $('#new_chq'+idss).append(new_input);
-            }
-            else
-            {
-              $('#new_chq').append(new_input);
+        var loop_product = 0;
+
+        function add(idss = '') {
+            var pro = (idss) ? idss : 0;
+            var new_input = '<tr id="rows' + loop_product + '">\
+                  <td><a class="add btn btn-sm btn-success text-white" style="width: 70px;" onclick="add(' + idss +
+                ')"><i class="fa fa-plus-circle"></i></a> &nbsp;<input type="hidden" name="product_array_key[]" class="form-control" value="' +
+                pro + '">\
+          <a class="add btn btn-sm btn-danger text-white" onclick="removesub(' + loop_product + ')" style="width: 70px;"><i class="fa fa-trash"></i></a></td>\
+                  <td>\
+                   <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">\
+                  </td>\
+                  <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">\
+                </td>\
+                </tr>';
+            if (idss) {
+                $('#new_chq' + idss).append(new_input);
+            } else {
+                $('#new_chq').append(new_input);
             }
 
             loop_product++;
-}
-function removesub(ids) {
-$('#rows' + ids).remove();
-}
-function removemain(id) {
-  $('#main'+id).remove();
-}
-</script>
+        }
+
+        function removesub(ids) {
+            $('#rows' + ids).remove();
+        }
+
+        function removemain(id) {
+            $('#main' + id).remove();
+        }
+    </script>
     <script>
         var loopCount = 1;
 
         function addmore() {
             var new_item = '<div class="row" id="row' + loopCount + '">\
-        <div class="col-md-5">\
-            <div class="form-group">\
-                    <label class="mb-2">Question<span class="text-danger"></span></label>\
-                    <textarea class="form-control"  name="question[]"></textarea>\
+            <div class="col-md-5">\
+                <div class="form-group">\
+                        <label class="mb-2">Question<span class="text-danger"></span></label>\
+                        <textarea class="form-control"  name="question[]"></textarea>\
+                </div>\
             </div>\
-        </div>\
-        <div class="col-md-5">\
-            <div class="form-group">\
-                    <label class="mb-2">Answer<span class="text-danger"></span></label>\
-                    <textarea class="form-control"  name="answer[]"></textarea>\
+            <div class="col-md-5">\
+                <div class="form-group">\
+                        <label class="mb-2">Answer<span class="text-danger"></span></label>\
+                        <textarea class="form-control"  name="answer[]"></textarea>\
+                </div>\
             </div>\
-        </div>\
-        <div class="col-md-2 mt-3">\
-                <a onclick="addmore()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
-                <a onclick="remove(' + loopCount + ')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
-        </div>\
-    </div>';
+            <div class="col-md-2 mt-3">\
+                    <a onclick="addmore()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
+                    <a onclick="remove(' + loopCount + ')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
+            </div>\
+        </div>';
             $('#row').append(new_item);
             loopCount++;
             tinymce.init({
@@ -548,28 +563,28 @@ function removemain(id) {
                 }
             });
         }
-        
+
         var loopmarketvalueCount = 1;
 
         function addmarketvalue() {
             var new_item = '<div class="row" id="marketvaluerow' + loopmarketvalueCount + '">\
-        <div class="col-md-5">\
-            <div class="form-group">\
-                <label class="mb-2">Year<span class="text-danger"></span></label>\
-                <input type="text" class="form-control" name="marketyear[]" placeholder="Year">\
+            <div class="col-md-5">\
+                <div class="form-group">\
+                    <label class="mb-2">Year<span class="text-danger"></span></label>\
+                    <input type="text" class="form-control" name="marketyear[]" placeholder="Year">\
+                </div>\
             </div>\
-        </div>\
-        <div class="col-md-5">\
-            <div class="form-group">\
-                <label class="mb-2">Percentage<span class="text-danger"></span></label>\
-                <input type="text" class="form-control" name="marketvalue[]" placeholder="Percentage">\
+            <div class="col-md-5">\
+                <div class="form-group">\
+                    <label class="mb-2">Percentage<span class="text-danger"></span></label>\
+                    <input type="text" class="form-control" name="marketvalue[]" placeholder="Percentage">\
+                </div>\
             </div>\
-        </div>\
-        <div class="col-md-2 mt-3">\
-                <a onclick="addmarketvalue()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
-                <a onclick="removemarketvalue('+loopmarketvalueCount+')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
-        </div>\
-    </div>';
+            <div class="col-md-2 mt-3">\
+                    <a onclick="addmarketvalue()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
+                    <a onclick="removemarketvalue(' + loopmarketvalueCount + ')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
+            </div>\
+        </div>';
             $('#marketvalue').append(new_item);
             loopmarketvalueCount++;
         }
@@ -583,23 +598,23 @@ function removemain(id) {
 
         function addregion() {
             var new_itemr = '<div class="row" id="regionrow' + loopregionCount + '">\
-        <div class="col-md-5">\
-            <div class="form-group">\
-                <label class="mb-2">Region Name<span class="text-danger"></span></label>\
-                <input type="text" class="form-control" name="regionname[]" placeholder="Region Name">\
+            <div class="col-md-5">\
+                <div class="form-group">\
+                    <label class="mb-2">Region Name<span class="text-danger"></span></label>\
+                    <input type="text" class="form-control" name="regionname[]" placeholder="Region Name">\
+                </div>\
             </div>\
-        </div>\
-        <div class="col-md-5">\
-            <div class="form-group">\
-                <label class="mb-2">Percentage<span class="text-danger"></span></label>\
-                <input type="text" class="form-control" name="regionvalue[]" placeholder="Region Percentage">\
+            <div class="col-md-5">\
+                <div class="form-group">\
+                    <label class="mb-2">Percentage<span class="text-danger"></span></label>\
+                    <input type="text" class="form-control" name="regionvalue[]" placeholder="Region Percentage">\
+                </div>\
             </div>\
-        </div>\
-        <div class="col-md-2 mt-3">\
-            <a onclick="addregion()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
-            <a onclick="removeregion('+loopregionCount+')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
-        </div>\
-    </div>';
+            <div class="col-md-2 mt-3">\
+                <a onclick="addregion()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
+                <a onclick="removeregion(' + loopregionCount + ')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
+            </div>\
+        </div>';
             $('#regions').append(new_itemr);
             loopregionCount++;
         }
@@ -612,31 +627,29 @@ function removemain(id) {
 
         function addmarketshare() {
             var new_items = '<div class="row" id="marketsharerow' + loopmarketshareCount + '">\
-         <div class="col-md-5">\
-                <div class="form-group">\
-                    <label class="mb-2">Market<span class="text-danger"></span></label>\
-                    <input type="text" class="form-control" name="marketsharename[]" placeholder="Market">\
+             <div class="col-md-5">\
+                    <div class="form-group">\
+                        <label class="mb-2">Market<span class="text-danger"></span></label>\
+                        <input type="text" class="form-control" name="marketsharename[]" placeholder="Market">\
+                    </div>\
                 </div>\
-            </div>\
-            <div class="col-md-5">\
-                <div class="form-group">\
-                    <label class="mb-2">Percentage<span class="text-danger"></span></label>\
-                    <input type="text" class="form-control" name="marketsharevalue[]" placeholder="Percentage">\
+                <div class="col-md-5">\
+                    <div class="form-group">\
+                        <label class="mb-2">Percentage<span class="text-danger"></span></label>\
+                        <input type="text" class="form-control" name="marketsharevalue[]" placeholder="Percentage">\
+                    </div>\
                 </div>\
+            <div class="col-md-2 mt-3">\
+                <a onclick="addmarketshare()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
+                <a onclick="removemarketshare(' + loopmarketshareCount + ')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
             </div>\
-        <div class="col-md-2 mt-3">\
-            <a onclick="addmarketshare()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
-            <a onclick="removemarketshare('+loopmarketshareCount+')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
-        </div>\
-    </div>';
+        </div>';
             $('#marketshares').append(new_items);
             loopmarketshareCount++;
         }
+
         function removemarketshare(ids) {
             $('#marketsharerow' + ids).remove();
         }
-
-
-         
     </script>
 @endsection

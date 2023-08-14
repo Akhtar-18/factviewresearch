@@ -9,7 +9,10 @@
     <meta name="author" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="keywords" content="" />
+    <meta name="keywords"
+        content="Market research, Data analysis, Fact-finding, Research studies, Statistical
+    analysis, Research reports, Data-driven insights, Research methodologies, Data visualization,
+    Survey analysis" />
     <meta name="description" content="" />
 
     <!-- title  -->
@@ -44,8 +47,8 @@
         li.pagination .active a {
             background-color: #212529 !important;
         }
-        .testmonial-single p:before
-        {
+
+        .testmonial-single p:before {
             display: none !important;
         }
     </style>
