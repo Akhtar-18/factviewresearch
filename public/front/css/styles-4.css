@@ -319,7 +319,7 @@ a:active {
     white-space: nowrap;
     border: none;
     cursor: pointer;
-    width: 250px;
+    /*width: 150px;*/
 }
 
 .butn span {
@@ -690,7 +690,7 @@ a:active {
     .butn.medium {
         /*padding: 6px 16px*/
         padding: 10px 10px !important;
-    width: fit-content;
+        width: fit-content;
     }
 
     .btn-style2 {
@@ -10482,7 +10482,7 @@ footer h3:after {
 }
 
 .footer-social-icons ul li a {
-   /*color: #939393;*/
+    /*color: #939393;*/
     color: #20215d;
     display: block;
     font-size: 15px;
@@ -11073,4 +11073,3 @@ footer h3.footer-title-style7:before {
         position: relative
     }
 }
-

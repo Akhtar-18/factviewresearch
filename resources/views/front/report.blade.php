@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <!-- PAGE TITLE
-                        ================================================== -->
+                            ================================================== -->
     <section class="page-title-section pt-1-9 pb-1-9"
         style="background: radial-gradient(circle, rgba(32,33,93,1) 0%, rgba(42,102,177,1) 20%, rgba(21,178,75,1) 50%, rgba(248,149,33,1) 80%);">
         <div class="container">
@@ -31,7 +31,7 @@
 
 
     <!-- REPORT DETAILS
-                        ================================================== -->
+                            ================================================== -->
     <section class="blogs">
         <div class="container">
             <div class="row">
@@ -77,9 +77,11 @@
                                         <li>Table of Contents</li>
                                         <li>Segmentation</li>
                                         <li>Methodology</li>
-                                        <a class="butn bg-danger"
-                                            href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}"><span>Download
-                                                Sample PDF</span></a>
+                                        <!--<li style=
+                                                "border: none !important;
+                                                border-top: none; !important;
+                                                border-radius: 5px"
+                                                class="bg-danger text-white"><a href="" class="text-white">PDF</a></li> -->
                                     </ul>
                                     <div class="resp-tabs-container hor_1">
                                         <div>
@@ -353,14 +355,14 @@
                             <article class="card card-style1">
 
                                 <div class="card-body text-center">
-                                    <a class="butn bg-danger m-2"
+                                    <a class="butn bg-danger m-2" style="width:150px"
                                         href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}"><span>Free
                                             Sample</span></a>
-                                    <a class="butn bg-warning m-2"
+                                    <a class="butn bg-warning m-2" style="width:150px"
                                         href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'enquiry']) }}"><span>Enquiry</span></a>
-                                    <a class="butn bg-success m-2"
+                                    <a class="butn bg-success m-2" style="width:150px"
                                         href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'discount']) }}"><span>Discount</span></a>
-                                    <a class="butn bg-info m-2"
+                                    <a class="butn bg-info m-2" style="width:150px"
                                         href="{{ route('front.buynow', $reports->id) }}"><span>Buy
                                             Report</span></a>
 
@@ -515,9 +517,9 @@
                         class="butn primary white-hover"><span>Request a Sample pdf</span></a>
                 </div>
                 <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    </div> -->
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div> -->
             </div>
         </div>
     </div>
