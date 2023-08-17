@@ -365,6 +365,65 @@
                                 </div>
                             </article>
                         </div>
+
+                        <div class="widget">
+                            <article class="card card-style1">
+                                <div class="card-header bg-primary text-white">
+                                    Testimonials
+                                </div>
+                                <div class="card-body">
+
+                                    <!-- testimonial -->
+                                    <div class="bg-light p-4 border-radius-5 mb-1-9">
+                                        <div class="testimonial-style6 owl-carousel owl-theme">
+                                            @if (getTestimonial())
+                                                @foreach (getTestimonial() as $testimonial)
+                                                    <div class="testmonial-single mx-auto w-95 w-lg-85">
+                                                        <p>{!! html_entity_decode($testimonial->content) !!}</p>
+                                                        <img src="{{ asset('testimonials/client_image/') }}/{{ $testimonial->client_image }}"
+                                                            class="rounded-circle" alt="...">
+                                                        <div class="d-block vertical-align-middle text-center">
+                                                            <h4>{{ $testimonial->heading }}</h4>
+                                                            <!-- <h6>Networking Lead</h6> -->
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <!-- start testimonial -->
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="widget">
+
+                            <article class="card card-style1">
+                                <div class="card-header bg-primary text-white">
+                                    Clients
+                                </div>
+                                <div class="card-body">
+
+                                    <!-- testimonial -->
+                                    <section class="bg-light box-hover">
+                                        <div class="container">
+                                            <div class="position-relative">
+                                                <div class="owl-carousel owl-theme clients" id="clients">
+                                                    @if (getClient())
+                                                        @foreach (getClient() as $client)
+                                                            <div class="item"><img alt="partner-image"
+                                                                    src="{{ asset('clients/images/') }}/{{ $client->image }}">
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- start testimonial -->
+                                </div>
+                            </article>
+                        </div>
                         <div class="widget">
                             <article class="card card-style1">
                                 <div class="card-header bg-primary text-white">
@@ -372,10 +431,10 @@
                                 </div>
                                 <div class="card-body text-center">
                                     <i class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary mb-3"></i>
-                                    <h5 class="text-primary font-weight-600 mb-1 h4">How can we help?</h5>
+                                    <h5 class="text-primary text-left font-weight-600 mb-1">How can we help?</h5>
                                     <p class="text-primary font-weight-500 display-30">Let's get in touch!!</p>
-                                    <ul class="text-center p-0 m-0 list-unstyled">
-                                        <li class="text-primary mb-1"><i class="fa fa-phone me-2"></i><a
+                                    <ul class="text-left p-0 m-0 list-unstyled">
+                                        <li class="text-primary"><i class="fa fa-phone"></i><a
                                                 href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
                                                 class="text-primary">
                                                 @if (getCompanyDetail())
@@ -413,63 +472,6 @@
                                         </li>
                                     </ul>
 
-                                </div>
-                            </article>
-                        </div>
-                        <div class="widget">
-                            <article class="card card-style1">
-                                <div class="card-header bg-primary text-white">
-                                    Testimonials
-                                </div>
-                                <div class="card-body">
-
-                                    <!-- testimonial -->
-                                    <div class="bg-light p-4 border-radius-5 mb-1-9">
-                                        <div class="testimonial-style6 owl-carousel owl-theme">
-                                            @if (getTestimonial())
-                                                @foreach (getTestimonial() as $testimonial)
-                                                    <div class="testmonial-single mx-auto w-95 w-lg-85">
-                                                        <p>{!! html_entity_decode($testimonial->content) !!}</p>
-                                                        <img src="{{ asset('testimonials/client_image/') }}/{{ $testimonial->client_image }}"
-                                                            class="rounded-circle" alt="...">
-                                                        <div class="d-block vertical-align-middle text-center">
-                                                            <h4>{{ $testimonial->heading }}</h4>
-                                                            <!-- <h6>Networking Lead</h6> -->
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <!-- start testimonial -->
-                                </div>
-                            </article>
-                        </div>
-                        <div class="widget">
-
-                            <article class="card card-style1">
-                                <div class="card-header bg-primary text-white">
-                                    Clients
-                                </div>
-                                <div class="card-body">
-
-                                    <!-- testimonial -->
-                                    <section class="bg-light box-hover">
-                                        <div class="container">
-                                            <div class="position-relative">
-                                                <div class="owl-carousel owl-theme clients" id="clients">
-                                                    @if (getClient())
-                                                        @foreach (getClient() as $client)
-                                                            <div class="item"><img alt="partner-image"
-                                                                    src="{{ asset('clients/images/') }}/{{ $client->image }}">
-                                                            </div>
-                                                        @endforeach
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <!-- start testimonial -->
                                 </div>
                             </article>
                         </div>

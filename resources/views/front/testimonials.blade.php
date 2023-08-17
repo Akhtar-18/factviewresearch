@@ -1,11 +1,11 @@
 <?php //include("header.php");
 ?>
 @extends('front.layout')
-@section('title', 'Clients Tetimonials')
+@section('title', 'Clients Testimonials')
 @section('frontpage')
 
     <!-- PAGE TITLE
-            ================================================== -->
+                ================================================== -->
     <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7"
         data-background="{{ asset('front/img/bg/bg5.jpg') }}">
         <div class="container">

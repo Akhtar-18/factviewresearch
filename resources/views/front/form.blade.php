@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- PAGE TITLE
-                ================================================== -->
+                    ================================================== -->
     <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7"
         data-background="{{ asset('front/img/bg/bg5.jpg') }}">
         <div class="container">
@@ -48,8 +48,10 @@
     </section>
 
 
+
+
     <!-- CONTACT
-                ================================================== -->
+                    ================================================== -->
     <section class="md">
         <div class="container">
             <div class="row">
@@ -66,6 +68,22 @@
                             @endif
                         </h3>
                     </div>
+
+                    <section class="bg-light box-hover p-2-8">
+
+                        <div class="position-relative">
+                            <div class="owl-carousel owl-theme clients" id="clients">
+                                @if (getClient())
+                                    @foreach (getClient() as $client)
+                                        <div class="item"><img alt="partner-image"
+                                                src="{{ asset('clients/images/') }}/{{ $client->image }}"></div>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+
+                    </section>
+
                     <div class="title text-center mb-2">
                         <h5 class="text-center">
                             @if (isset($reports->heading))
@@ -74,7 +92,7 @@
                         </h5>
                     </div>
                     <div class="col-md-12"><br /></div>
-                    <div class="contact-form-box">
+                    <div class="contact-form-box mt-2">
                         <div class="alert alert-danger print-error-msg" style="display:none">
                             <ul></ul>
                         </div>
@@ -255,7 +273,7 @@
 
                 <!-- contact detail -->
                 <div class="col-lg-4">
-                    <div class="contact-info-box ps-lg-1-9">
+                    <div class="side-bar">
                         <div class="widget">
 
                             <article class="card card-style1">
@@ -321,14 +339,138 @@
                             </article>
 
                         </div>
+
+
+
+
+
+                        <div class="widget">
+                            <article class="card card-style1">
+                                <div class="card-header bg-primary text-white">
+                                    Testimonials
+                                </div>
+                                <div class="card-body">
+
+                                    <!-- start testimonials -->
+
+
+                                    <div class="bg-light p-4 border-radius-5 mb-1-9">
+                                        <div class="container">
+                                            <div class="position-relative">
+                                                <div class="owl-carousel owl-theme">
+                                                    @if (getTestimonial())
+                                                        @foreach (getTestimonial() as $testimonial)
+                                                            <div class="testmonial-single mx-auto w-95 w-lg-65">
+                                                                <p class="text-primary">{!! html_entity_decode($testimonial->comments) !!}</p>
+                                                                <img src="{{ asset('testimonials/client_image/') }}/{{ $testimonial->client_image }}"
+                                                                    class="rounded-circle" style="width: 300px;"
+                                                                    alt="...">
+                                                                <h4 class="pt-4 text-primary">{{ $testimonial->name }}
+                                                                </h4>
+                                                                <h6 class="mb-1-9">{{ $testimonial->profile }}</h6>
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- end testimonials -->
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- <div class="widget">
+
+                                <article class="card card-style1">
+                                    <div class="card-header bg-primary text-white">
+                                        Clients
+                                    </div>
+                                    <div class="card-body">
+
+
+                                        <div class="bg-light p-4 border-radius-5 mb-1-9">
+                                            <div class="container">
+
+                                                <div class="position-relative">
+                                                    <div class="owl-carousel owl-theme">
+                                                        @if (getClient())
+                                                            @foreach (getClient() as $client)
+    <div class="item"><img alt="partner-image"
+                                                                        src="{{ asset('clients/images/') }}/{{ $client->image }}">
+                                                                </div>
+    @endforeach
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </article>
+                            </div> -->
+
+                        <div class="widget">
+                            <article class="card card-style1">
+                                <div class="card-header bg-primary text-white">
+                                    Get In Touch With Us
+                                </div>
+                                <div class="card-body text-center">
+                                    <i class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary mb-3"></i>
+                                    <h5 class="text-primary text-left font-weight-600 mb-1">How can we help?</h5>
+                                    <p class="text-primary font-weight-500 display-30">Let's get in touch!!</p>
+                                    <ul class="text-left p-0 m-0 list-unstyled">
+                                        <li class="text-primary"><i class="fa fa-phone"></i><a
+                                                href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
+                                                class="text-primary">
+                                                @if (getCompanyDetail())
+                                                    {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
+                                                @endif
+
+                                            </a></li>
+                                        <li class="text-primary"><i class="fa fa-envelope-open me-2"></i><a
+                                                href="mailto:@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif"
+                                                class="text-primary">
+                                                @if (getCompanyDetail())
+                                                    {{ getCompanyDetail()->email_address }}
+                                                @endif
+                                            </a></li>
+                                    </ul>
+                                    <br />
+                                    <h6 class="text-primary page-title-section">Follow Us</h6>
+
+                                    <ul class="social-listing ps-0 display-30">
+                                        <li><a
+                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i
+                                                    class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li><a
+                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif"><i
+                                                    class="fab fa-twitter"></i></a>
+                                        </li>
+                                        <li><a
+                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif"><i
+                                                    class="fab fa-instagram"></i></a>
+                                        </li>
+                                        <li><a
+                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"><i
+                                                    class="fab fa-linkedin-in"></i></a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </article>
+                        </div>
+
                     </div>
                 </div>
                 <!-- end contact detail -->
             </div>
         </div>
     </section>
-    @include('front.testimonial-section')
-    @include('front.client-section')
+    {{-- @include('front.testimonial-section') --}}
+    {{-- @include('front.client-section') --}}
 
 
     <script type="text/javascript">

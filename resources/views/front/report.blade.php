@@ -374,58 +374,6 @@
                         <div class="widget">
                             <article class="card card-style1">
                                 <div class="card-header bg-primary text-white">
-                                    Get In Touch With Us
-                                </div>
-                                <div class="card-body text-center">
-                                    <i class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary mb-3"></i>
-                                    <h5 class="text-primary font-weight-600 mb-1 h4">How can we help?</h5>
-                                    <p class="text-primary font-weight-500 display-30">Let's get in touch!!</p>
-                                    <ul class="text-center p-0 m-0 list-unstyled">
-                                        <li class="text-primary mb-1"><i class="fa fa-phone me-2"></i><a
-                                                href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
-                                                class="text-primary">
-                                                @if (getCompanyDetail())
-                                                    {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
-                                                @endif
-
-                                            </a></li>
-                                        <li class="text-primary"><i class="fa fa-envelope-open me-2"></i><a
-                                                href="mailto:@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif"
-                                                class="text-primary">
-                                                @if (getCompanyDetail())
-                                                    {{ getCompanyDetail()->email_address }}
-                                                @endif
-                                            </a></li>
-                                    </ul>
-                                    <br />
-                                    <h6 class="text-primary page-title-section">Follow Us</h6>
-
-                                    <ul class="social-listing ps-0 display-30">
-                                        <li><a
-                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                        </li>
-                                        <li><a
-                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif"><i
-                                                    class="fab fa-twitter"></i></a>
-                                        </li>
-                                        <li><a
-                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif"><i
-                                                    class="fab fa-instagram"></i></a>
-                                        </li>
-                                        <li><a
-                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="widget">
-                            <article class="card card-style1">
-                                <div class="card-header bg-primary text-white">
                                     Testimonials
                                 </div>
                                 <div class="card-body">
@@ -486,6 +434,58 @@
                                         </div>
                                     </div>
                                     <!-- end clients -->
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="widget">
+                            <article class="card card-style1">
+                                <div class="card-header bg-primary text-white">
+                                    Get In Touch With Us
+                                </div>
+                                <div class="card-body text-center">
+                                    <i class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary mb-3"></i>
+                                    <h5 class="text-primary text-left font-weight-600 mb-1">How can we help?</h5>
+                                    <p class="text-primary font-weight-500 display-30">Let's get in touch!!</p>
+                                    <ul class="text-left p-0 m-0 list-unstyled">
+                                        <li class="text-primary"><i class="fa fa-phone"></i><a
+                                                href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
+                                                class="text-primary">
+                                                @if (getCompanyDetail())
+                                                    {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
+                                                @endif
+
+                                            </a></li>
+                                        <li class="text-primary"><i class="fa fa-envelope-open me-2"></i><a
+                                                href="mailto:@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif"
+                                                class="text-primary">
+                                                @if (getCompanyDetail())
+                                                    {{ getCompanyDetail()->email_address }}
+                                                @endif
+                                            </a></li>
+                                    </ul>
+                                    <br />
+                                    <h6 class="text-primary page-title-section">Follow Us</h6>
+
+                                    <ul class="social-listing ps-0 display-30">
+                                        <li><a
+                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i
+                                                    class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li><a
+                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif"><i
+                                                    class="fab fa-twitter"></i></a>
+                                        </li>
+                                        <li><a
+                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif"><i
+                                                    class="fab fa-instagram"></i></a>
+                                        </li>
+                                        <li><a
+                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"><i
+                                                    class="fab fa-linkedin-in"></i></a>
+                                        </li>
+                                    </ul>
+
                                 </div>
                             </article>
                         </div>

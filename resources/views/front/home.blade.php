@@ -90,7 +90,7 @@
                                             <h3 class="h5 mb-0 mt-2 w-100">{{ $service->heading }}</h3>
                                         </div>
 
-                                        <p class="w-95">{!! html_entity_decode(wordLimitset($service->content, 100)) !!}</p>
+                                        <p class="w-95">{!! html_entity_decode(wordLimitset($service->content, 20)) !!}</p>
                                         <div class="border-top border-color-light-black pt-3">
                                             <a href="{{ route('front.service-single', $service->id) }}"
                                                 class="font-weight-700">Read More...</a>
@@ -285,7 +285,7 @@
                                             </span>
                                         </div>
                                         <div class="separator-line-horrizontal-full bg-medium-gray my-3 my-lg-4"></div>
-                                        <p>{!! html_entity_decode(wordLimitset($blog->description, 80)) !!} </p>
+                                        <p>{!! html_entity_decode(wordLimitset($blog->description, 20)) !!} </p>
                                         <a href="{{ route('front.blog', $blog->url) }}"
                                             class="btn-style4 btn-small min-width-auto"><span>Read more</span></a>
                                     </div>
@@ -338,7 +338,7 @@
                                             </span>
                                         </div>
                                         <div class="separator-line-horrizontal-full bg-medium-gray my-3 my-lg-4"></div>
-                                        <p>{!! html_entity_decode(wordLimitset($pres->description, 80)) !!} </p>
+                                        <p>{!! html_entity_decode(wordLimitset($pres->description, 20)) !!} </p>
                                         <a href="{{ route('front.press', $pres->url) }}"
                                             class="btn-style4 btn-small min-width-auto"><span>Read more</span></a>
                                     </div>
@@ -390,7 +390,7 @@
                                             </span>
                                         </div>
                                         <div class="separator-line-horrizontal-full bg-medium-gray my-3 my-lg-4"></div>
-                                        <p>{!! html_entity_decode(wordLimitset($case->description, 80)) !!} </p>
+                                        <p>{!! html_entity_decode(wordLimitset($case->description, 20)) !!} </p>
                                         <a href="{{ route('front.case-study', $case->url) }}"
                                             class="btn-style4 btn-small min-width-auto"><span>Read more</span></a>
                                     </div>
