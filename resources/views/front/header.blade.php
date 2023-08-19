@@ -13,10 +13,13 @@
         content="Market research, Data analysis, Fact-finding, Research studies, Statistical
     analysis, Research reports, Data-driven insights, Research methodologies, Data visualization,
     Survey analysis" />
-    <meta name="description" content="" />
+    <meta name="description"
+        content="Unlock valuable insights through data-driven Market Research. Expert Fact-
+    Finding, Research Studies, and Statistical Analysis. Explore our Research Reports and Data
+    Visualization methodologies" />
 
     <!-- title  -->
-    <title>FactViewResearch</title>
+    <title>Market Research, Data Analysis, Fact-Finding | FactView Research</title>
 
     <!-- favicon -->
     <link rel="shortcut icon" href="{{ asset('front/img/logos/fvr-72-72.png') }}">

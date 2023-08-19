@@ -2033,7 +2033,8 @@ h6.title-style2.white {
 
 @media screen and (max-width: 991px) {
     .page-title-section2 {
-        padding: 148px 0 75px
+        /*padding: 148px 0 75px*/
+        padding: 0px 0 0px
     }
 
     .page-title-section2 h1 {
@@ -6194,7 +6195,7 @@ h6.title-style2.white {
 .card-style1 .card-body ul li i {
     color: #20215d;
     font-size: 14px;
-    font-weight: 500;
+    /*font-weight: 500;*/
     margin-right: 10px
 }
 

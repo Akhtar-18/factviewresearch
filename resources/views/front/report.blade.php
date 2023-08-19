@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <!-- PAGE TITLE
-                            ================================================== -->
+                                ================================================== -->
     <section class="page-title-section pt-1-9 pb-1-9"
         style="background: radial-gradient(circle, rgba(32,33,93,1) 0%, rgba(42,102,177,1) 20%, rgba(21,178,75,1) 50%, rgba(248,149,33,1) 80%);">
         <div class="container">
@@ -31,7 +31,7 @@
 
 
     <!-- REPORT DETAILS
-                            ================================================== -->
+                                ================================================== -->
     <section class="blogs">
         <div class="container">
             <div class="row">
@@ -72,16 +72,19 @@
 
                             <div class="col-12">
                                 <div class="horizontaltab">
+                                    <div class="col-md-12 mt-2 mb-2 d-lg-none text-center">
+                                        <a class="btn btn-danger"
+                                            href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}"><span>Download
+                                                Sample</span></a>
+                                    </div>
                                     <ul class="resp-tabs-list hor_1">
                                         <li>Report Summary</li>
                                         <li>Table of Contents</li>
                                         <li>Segmentation</li>
                                         <li>Methodology</li>
-                                        <!--<li style=
-                                                "border: none !important;
-                                                border-top: none; !important;
-                                                border-radius: 5px"
-                                                class="bg-danger text-white"><a href="" class="text-white">PDF</a></li> -->
+                                        <li class="bg-danger text-white d-xl-inline-block d-md-none d-none"><a
+                                                href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}"
+                                                class="text-white">Download Sample</a></li>
                                     </ul>
                                     <div class="resp-tabs-container hor_1">
                                         <div>
@@ -208,23 +211,24 @@
                                             </div>
                                         </div>
 
-
-
                                         <div>
                                             @if (isset($reports->toc))
                                                 {!! html_entity_decode($reports->toc) !!}
                                             @endif
                                         </div>
+
                                         <div>
                                             @if (isset($reports->segment))
                                                 {!! html_entity_decode($reports->segment) !!}
                                             @endif
                                         </div>
+
                                         <div>
                                             @if (isset($reports->methodology))
                                                 {!! html_entity_decode($reports->methodology) !!}
                                             @endif
                                         </div>
+
                                     </div>
                                 </div>
 
@@ -517,9 +521,9 @@
                         class="butn primary white-hover"><span>Request a Sample pdf</span></a>
                 </div>
                 <!-- <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                        </div> -->
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            </div> -->
             </div>
         </div>
     </div>
