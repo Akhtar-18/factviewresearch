@@ -55,7 +55,7 @@
             display: none !important;
         }
     </style>
-
+<style>#google_translate_element,.skiptranslate{display:none;}body{top:0!important;}</style>
     <meta name="google-site-verification" content="ttXl7RH9nKnXlHD17fSjZEaoD-uIiT5OROVTnU4EPG0" />
 
     <!-- Google tag (gtag.js) -->
@@ -69,12 +69,28 @@
         gtag('js', new Date());
         gtag('config', 'G-HES2Q3T6V1');
     </script>
-
+    <!-- <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    var userLang = navigator.language || navigator.userLanguage; // Get the user's browser language
+    console.log(userLang);
+    new google.translate.TranslateElement({pageLanguage: userLang, includedLanguages: userLang, layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+  }
+  //googleTranslateElementInit();
+</script> -->
+<!-- <div id="google_translate_element"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+    var userLang = navigator.language || navigator.userLanguage; // Get the user's browser language
+    console.log(userLang);
+  new google.translate.TranslateElement({pageLanguage: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
 
 </head>
 
 <body>
-
+<div id="google_translate_element"></div>
     <!-- PAGE LOADING
     ================================================== -->
     <!-- <div id="preloader"></div> -->

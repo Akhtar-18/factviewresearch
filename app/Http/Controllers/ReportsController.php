@@ -22,6 +22,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ExportReport;
 use App\Imports\ReportContentImport;
 use App\Imports\SegmentImport;
+use App\Models\TblSummary;
 use Illuminate\Support\Facades\URL;
 
 class ReportsController extends Controller
@@ -162,6 +163,21 @@ class ReportsController extends Controller
             }
 
         }
+        // summary table
+        if($request->sheading)
+        {
+            foreach ($request->sheading as $key => $list) {
+                if (!empty($request->sheading[$key])) {
+                    $insertTblSummaryData = [
+                        'report_id' => $report_id,
+                        'heading' => $request->sheading[$key],
+                        'details' => $request->sdetails[$key],
+                    ];
+                    TblSummary::create($insertTblSummaryData);
+                }
+    
+            }
+        }
 
 
 
@@ -261,6 +277,7 @@ class ReportsController extends Controller
             ->with('getReportTypeSegmentgraph.getReportsSegmentgraph')
             ->with('getReportRegiongraph')
             ->with('getReportCAGR')
+            ->with('getReportTblSummary')
             ->find($id);
         if ($reportcategory == '') {
             return redirect('admin/reportcategory/')
@@ -355,6 +372,33 @@ class ReportsController extends Controller
             }
         }
 
+       /*************************tbl summary ***************************/ 
+       //dd($request->sid);
+       if ($request->sheading) {
+        foreach ($request->sheading as $key => $list) {
+            if (!empty($request->sdetails[$key])) {
+                if ($request->sid[$key] != '') {
+                    $faqData = TblSummary::find($request->sid[$key]);
+                    $insertTblSummaryData = [
+                        'report_id' => $report_id,
+                        'heading' => $request->sheading[$key],
+                        'details' => $request->sdetails[$key],
+                    ];
+                    $faqData->update($insertTblSummaryData);
+                } else {
+
+                    $insertTblSummaryData = [
+                        'report_id' => $report_id,
+                        'heading' => $request->sheading[$key],
+                        'details' => $request->sdetails[$key],
+                    ];
+                    TblSummary::create($insertTblSummaryData);
+                }
+            }
+
+        }
+    } 
+
 
         /**************************CAGR Graph Update **********************/
         $cagr = CagrModel::find($request->cagr_id);
@@ -417,31 +461,34 @@ class ReportsController extends Controller
                 }
 
 
+                if($request->segmentname)
+                {
+                    foreach ($request->segmentname as $keys => $row) {
 
-                foreach ($request->segmentname as $keys => $row) {
-
-                    if (!empty($request->segmentname[$keys]) && $key == $request->product_array_key[$keys]) {
-                        if ($request->subtyppeof_id[$keys] != '') {
-                            $Segmentdatas = SegmentGraphicalModel::find($request->subtyppeof_id[$keys]);
-                            $Segmentdatas->update([
-                                'report_id' => $report_id,
-                                'segmentname' => $request->segmentname[$keys],
-                                'segmentvalue' => $request->segmentvalue[$keys],
-                                'segment_types' => $segment_types,
-                            ]);
-                        } else {
-                            $insertsegmentData = [
-                                'report_id' => $report_id,
-                                'segmentname' => $request->segmentname[$keys],
-                                'segmentvalue' => $request->segmentvalue[$keys],
-                                'segment_types' => $segment_types,
-                            ];
-                            SegmentGraphicalModel::create($insertsegmentData);
+                        if (!empty($request->segmentname[$keys]) && $key == $request->product_array_key[$keys]) {
+                            if ($request->subtyppeof_id[$keys] != '') {
+                                $Segmentdatas = SegmentGraphicalModel::find($request->subtyppeof_id[$keys]);
+                                $Segmentdatas->update([
+                                    'report_id' => $report_id,
+                                    'segmentname' => $request->segmentname[$keys],
+                                    'segmentvalue' => $request->segmentvalue[$keys],
+                                    'segment_types' => $segment_types,
+                                ]);
+                            } else {
+                                $insertsegmentData = [
+                                    'report_id' => $report_id,
+                                    'segmentname' => $request->segmentname[$keys],
+                                    'segmentvalue' => $request->segmentvalue[$keys],
+                                    'segment_types' => $segment_types,
+                                ];
+                                SegmentGraphicalModel::create($insertsegmentData);
+                            }
+    
                         }
-
+    
                     }
-
                 }
+                
             }
 
         }

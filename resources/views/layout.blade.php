@@ -283,6 +283,7 @@
                         @if (auth()->user()->can('careers-list'))
                             <a class="collapse-item" href="{{ url('admin/careers') }}">Careers</a>
                         @endif
+                        <a class="collapse-item" href="{{ url('admin/audio-video') }}">Audio & Video</a>
                     </div>
                 </div>
             </li>

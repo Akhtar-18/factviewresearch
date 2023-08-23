@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductController;
 
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AudioVideoController;
 use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CareersController;
@@ -29,6 +30,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WhyChooseUsController;
 use App\Http\Controllers\WhoWeAreController;
 use App\Http\Controllers\ReportSubCategoryController;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -320,6 +322,19 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/', [OrderHistoryController::class, 'index'])->name('report.payment');
             Route::get('/list', [OrderHistoryController::class, 'list'])->name('report.payment.list');
         });
+
+        
+         /***********************Audio Video Route *****************/
+         Route::group(['prefix'=>'audio-video'],function(){
+            Route::get('/',[AudioVideoController::class,'index'])->name('report.audio-video.index');
+            Route::get('/list',[AudioVideoController::class,'list']);
+            Route::get('/add',[AudioVideoController::class,'add'])->name('admin.audio-video.add');
+            Route::post('/submit',[AudioVideoController::class,'submit']);
+            Route::get('/edit/{id}',[AudioVideoController::class,'edit']);
+            Route::match(['GET','POST'],'/update/{id}',[AudioVideoController::class,'update']);
+            Route::match(['GET','POST'],'/delete/{id}',[AudioVideoController::class,'delete']);
+        });
+
 
     });
 });

@@ -137,6 +137,66 @@
                                         @endif
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    @if(count($report->getReportTblSummary)>0)
+                                    @foreach($report->getReportTblSummary as $key=> $tblSummary)
+                                    <div class="row" id="rowsummary{{$key}}">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="mb-2">Heading<span class="text-danger"></span></label>
+                                                <input type="hidden" name="sid[]" class="form-control" id="sid{{$key}}" value="{{$tblSummary->id}}">
+                                                <input type="text" name="sheading[]" class="form-control" value="{{$tblSummary->heading}}">
+                                                @if ($errors->has('sheading[]'))
+                                                    <span class="text-danger">{{ $errors->first('sheading[]') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="mb-2">Details<span class="text-danger"></span></label>
+                                                <input type="text" class="form-control" name="sdetails[]" value="{{$tblSummary->details}}">
+                                                @if ($errors->has('sdetails[]'))
+                                                    <span class="text-danger">{{ $errors->first('sdetails[]') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 mt-3">
+                                            <a onclick="addmoresummary()" class="btn btn-success mt-3" style="width: 70px;"><i
+                                                    class="fa fa-plus-circle"></i></a>
+                                                    <a onclick="removesummary('{{$key}}')" class="btn btn-danger mt-3" style="width: 70px;">
+                                                    <i class="fa fa-trash"></i></a>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    @else
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="mb-2">Heading<span class="text-danger"></span></label>
+                                                <input type="hidden" name="sid[]" class="form-control" id="" value="">
+                                                <input type="text" name="sheading[]" class="form-control">
+                                                @if ($errors->has('sheading[]'))
+                                                    <span class="text-danger">{{ $errors->first('sheading[]') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="mb-2">Details<span class="text-danger"></span></label>
+                                                <input type="text" class="form-control" name="sdetails[]">
+                                                @if ($errors->has('sdetails[]'))
+                                                    <span class="text-danger">{{ $errors->first('sdetails[]') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 mt-3">
+                                            <a onclick="addmoresummary()" class="btn btn-success mt-3" style="width: 70px;"><i
+                                                    class="fa fa-plus-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    <div id="rows"></div>
+                                </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -861,5 +921,39 @@
         function removemarketshare(ids) {
             $('#marketsharerow' + ids).remove();
         }
+    </script>
+
+
+
+<script>
+          var loopCountSummary = 10;
+
+function addmoresummary() {
+    var new_item = '<div class="row" id="rowsummary' + loopCountSummary + '">\
+    <div class="col-md-5">\
+        <div class="form-group">\
+                <label class="mb-2">Heading<span class="text-danger"></span></label>\
+                <input type="hidden" name="sid[]" class="form-control" value="">\
+                <input type="text" class="form-control"  name="sheading[]">\
+        </div>\
+    </div>\
+    <div class="col-md-5">\
+        <div class="form-group">\
+                <label class="mb-2">Details<span class="text-danger"></span></label>\
+                <input type="text" class="form-control"  name="sdetails[]">\
+        </div>\
+    </div>\
+    <div class="col-md-2 mt-3">\
+            <a onclick="addmoresummary()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
+            <a onclick="removesummary(' + loopCountSummary + ')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
+    </div>\
+</div>';
+    $('#rows').append(new_item);
+    loopCountSummary++;
+}
+
+function removesummary(ids) {
+    $('#rowsummary' + ids).remove();
+}
     </script>
 @endsection

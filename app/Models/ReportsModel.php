@@ -74,5 +74,9 @@ class ReportsModel extends Model
         {
             return $this->hasMany(SegmentType::class,'report_id','id')->select(['report_id','id','segmenttypename']);
         }
+        public function getReportTblSummary()
+        {
+            return $this->hasMany(TblSummary::class,'report_id','id')->select(['report_id','id','heading','details'])->limit(10);
+        }
 }
 

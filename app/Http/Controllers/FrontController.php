@@ -45,7 +45,7 @@ class FrontController extends Controller
 
     public function report($id, Request $request)
     {
-        $data['reports']=ReportsModel::with(['getReportLicenses','getReportFaq','getReportmarketgraph','getReportmarketsharegraph','getReportSegmentgraph','getReportRegiongraph','getCategoryName','getSubCategoryName','getReportCAGR'])->where('url',$id)->first();
+        $data['reports']=ReportsModel::with(['getReportLicenses','getReportFaq','getReportmarketgraph','getReportmarketsharegraph','getReportSegmentgraph','getReportRegiongraph','getCategoryName','getSubCategoryName','getReportCAGR','getReportTblSummary'])->where('url',$id)->first();
         $data['whyusData']=WhyChooseUsModel::select(['heading','content'])->get();
         $data['contactData']=ContactDetailsModel::select(['no_prefix','contact_no','email_address','facebook','twitter','instagram','linkedin'])->get();
 
