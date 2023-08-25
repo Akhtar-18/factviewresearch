@@ -7394,7 +7394,7 @@ ul.resp-tabs-list {
     font-weight: 600;
     display: inline-block;
     /*padding: 13px 15px;*/
-    padding: 10px;
+    padding: 10px !important;
     margin: 0 4px 0 0;
     list-style: none;
     cursor: pointer
@@ -7427,7 +7427,7 @@ ul.resp-tabs-list {
     border-color: #20215d !important;
     margin-bottom: -1px;
     /*padding: 12px 14px 14px 14px;*/
-    padding: 20px;
+    padding: 20px !important;
     border-top: 4px solid #20215d !important;
     border-bottom: 0px #fff solid;
     border-bottom: none;
