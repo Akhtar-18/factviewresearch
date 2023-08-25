@@ -7391,7 +7391,7 @@ ul.resp-tabs-list {
 }
 
 .resp-tabs-list li {
-    font-weight: 600;
+    /*font-weight: 600;*/
     display: inline-block;
     padding: 13px 15px;
     margin: 0 4px 0 0;
@@ -7425,7 +7425,8 @@ ul.resp-tabs-list {
     border-bottom: none;
     border-color: #20215d !important;
     margin-bottom: -1px;
-    padding: 12px 14px 14px 14px;
+    /*padding: 12px 14px 14px 14px;*/
+    padding: 20px;
     border-top: 4px solid #20215d !important;
     border-bottom: 0px #fff solid;
     border-bottom: none;
@@ -7679,6 +7680,7 @@ h2.resp-accordion.resp-tab-active {
     .tab-style6 .resp-tabs-list li {
         padding: 0 12px 15px 13px
     }
+
 }
 
 @media screen and (max-width: 767px) {

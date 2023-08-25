@@ -314,36 +314,36 @@
                                         <input class="form-check-input" type="radio" name="flexRadioDefault"
                                             id="flexRadioDefault1" checked>
                                         <label class="form-check-label" for="flexRadioDefault1">
-                                            <h6>$ @if (isset($reports->getReportLicenses->single_user))
+                                            <p style="font-size: 14px;">$ @if (isset($reports->getReportLicenses->single_user))
                                                     {{ $reports->getReportLicenses->single_user }}
                                                 @endif
                                                 - Single User <i class="fa fa-info-circle" data-toggle="tooltip"
                                                     data-html="true" title="Report access for Single User only"></i>
-                                            </h6>
+                                            </p>
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="flexRadioDefault"
                                             id="flexRadioDefault2">
                                         <label class="form-check-label" for="flexRadioDefault2">
-                                            <h6>$ @if (isset($reports->getReportLicenses->multi_user))
+                                            <p style="font-size: 14px;">$ @if (isset($reports->getReportLicenses->multi_user))
                                                     {{ $reports->getReportLicenses->multi_user }}
                                                 @endif
                                                 - Multi User <i class="fa fa-info-circle" data-toggle="tooltip"
                                                     data-html="true" title="Report access for six users"></i>
-                                            </h6>
+                                            </p>
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="flexRadioDefault"
                                             id="flexRadioDefault3">
                                         <label class="form-check-label" for="flexRadioDefault3">
-                                            <h6>$ @if (isset($reports->getReportLicenses->enterprise_user))
+                                            <p style="font-size: 14px;">$ @if (isset($reports->getReportLicenses->enterprise_user))
                                                     {{ $reports->getReportLicenses->enterprise_user }}
                                                 @endif
                                                 - Enterprise User <i class="fa fa-info-circle" data-toggle="tooltip"
                                                     data-html="true" title="Report access for unlimited users"></i>
-                                            </h6>
+                                            </p>
                                         </label>
                                     </div>
                                     <div class="col-md-12 text-center">
