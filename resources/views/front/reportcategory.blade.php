@@ -78,26 +78,26 @@
                                 Get In Touch With Us
                             </div>
                             <div class="card-body">
-                                <p class="text-center"><i class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary"></i></p>
+                                <!--<p class="text-center"><i class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary"></i></p>
                                 <h5 class="text-primary text-center font-weight-600 mb-1">How can we help?</h5>
-                                <p class="text-primary text-center font-weight-500 display-30">Let's get in touch!!</p>
+                                <p class="text-primary text-center font-weight-500 display-30">Let's get in touch!!</p> -->
                                 <p class="text-center text-primary"><i class="fa fa-phone"></i><br/><a
-                                            href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
-                                            class="text-primary">
-                                            @if (getCompanyDetail())
-                                                {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
-                                            @endif
+                                    href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
+                                    class="text-primary">
+                                    @if (getCompanyDetail())
+                                        {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
+                                    @endif
 
-                                        </a></p>
-                                        <p class="text-center text-primary"><i class="fa fa-envelope-open me-2"></i><br/><a
-                                            href="mailto:@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif"
-                                            class="text-primary">
-                                            @if (getCompanyDetail())
-                                                {{ getCompanyDetail()->email_address }}
-                                            @endif
-                                        </a></p>
-                                <br />
-                                <h6 class="text-primary text-center page-title-section">Follow Us</h6>
+                                </a></p>
+                                <p class="text-center text-primary"><i class="fa fa-envelope-open me-2"></i><br/><a
+                                    href="mailto:@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif"
+                                    class="text-primary">
+                                    @if (getCompanyDetail())
+                                        {{ getCompanyDetail()->email_address }}
+                                    @endif
+                                </a></p>
+
+                                <!--<h6 class="text-primary text-center page-title-section">Follow Us</h6>
 
                                 <ul class="social-listing text-center ps-0 display-30">
                                     <li><a
@@ -116,7 +116,7 @@
                                             href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"><i
                                                 class="fab fa-linkedin-in"></i></a>
                                     </li>
-                                </ul>
+                                </ul>-->
 
                             </div>
                         </article>

@@ -54,7 +54,7 @@ Route::get('/about', [FrontController::class, 'about'])->name('front.about');
 Route::get('/who-we-are', [FrontController::class, 'whowe'])->name('front.whowe');
 Route::get('/why-chooose-us', [FrontController::class, 'whyus'])->name('front.whyus');
 Route::get('/partners', [FrontController::class, 'partners'])->name('front.partners');
-Route::get('/testimonials', [FrontController::class, 'testimonials'])->name('front.testimonials');
+Route::get('/clienttestimonials', [FrontController::class, 'testimonials'])->name('front.testimonials');
 Route::get('/services', [FrontController::class, 'services'])->name('front.services');
 Route::get('/service/{id}', [FrontController::class, 'service'])->name('front.service-single');
 Route::get('/contact-us', [FrontController::class, 'contact'])->name('front.contact');
@@ -323,7 +323,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/list', [OrderHistoryController::class, 'list'])->name('report.payment.list');
         });
 
-        
+
          /***********************Audio Video Route *****************/
          Route::group(['prefix'=>'audio-video'],function(){
             Route::get('/',[AudioVideoController::class,'index'])->name('report.audio-video.index');

@@ -43,7 +43,7 @@
                             <div class="col-md-12">
                                 <div class="blog-list-simple-text">
                                     <!-- <span>Business</span> -->
-                                    <h5 class="text-primary">{{ $reports->heading }}</h5>
+                                    <h6 class="text-primary">{{ $reports->heading }}</h6>
                                     <ul class="meta ps-0">
                                         <li>
                                             <i aria-hidden="true" class="fas fa-clock text-primary-new"></i> Published Date:
@@ -466,7 +466,7 @@
                                                     {{ getCompanyDetail()->email_address }}
                                                 @endif
                                             </a></p>
-                                    <br />
+                                    
                                     <!-- <h6 class="text-primary text-center page-title-section">Follow Us</h6>
 
                                     <ul class="social-listing text-center ps-0 display-30">

@@ -5,9 +5,9 @@
                  <div class="col-md-12">
                      <div class="blog-list-simple-text">
                          <!-- <span>Business</span> -->
-                         <h5><a
+                         <h6><a
                                  href="{{ route('front.report', ['id' => $list->url]) }}">{{ $list->heading }}</a>
-                         </h5>
+                         </h6>
                          <ul class="meta ps-0">
                              <li>
                                  <i aria-hidden="true" class="fas fa-clock text-success"></i> Published Date:
