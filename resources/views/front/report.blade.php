@@ -93,29 +93,6 @@
                                             </p>
 
                                             <div class="row">
-                                            @if(count($reports->getReportTblSummary)>0)
-                                                <div class="col-md-12 mt-3">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-bordered border-dark">
-                                                            <thead>
-                                                                <tr style="background-color: #4472c4;color:#fff;width: 24%;">
-                                                                    <th style="width: 24%">Report Components</th>
-                                                                    <th>Details</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                @foreach($reports->getReportTblSummary as $tbl)
-                                                                <tr>
-                                                                    <td>{{$tbl->heading}}</td>
-                                                                    <td>{{$tbl->details}}</td>
-                                                                </tr>
-                                                                @endforeach
-                                                            </tbody>
-
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                                @endif
                                                 @if (!empty(json_decode($marketyear, true)))
                                                     <div class="col-md-8">
                                                         <div class="card-body">
@@ -408,13 +385,13 @@
                                     <!-- start testimonials -->
 
 
-                                    <div class="bg-light p-4 border-radius-5 mb-1-9">
+                                    <!--<div class="bg-light p-4 border-radius-5 mb-1-9">
                                         <div class="container">
-                                            <div class="position-relative">
-                                                <div class="owl-carousel owl-theme">
+                                            <div class="position-relative">-->
+                                                <div class="owl-carousel owl-theme w-100">
                                                     @if (getTestimonial())
                                                         @foreach (getTestimonial() as $testimonial)
-                                                            <div class="testmonial-single mx-auto w-95 w-lg-65">
+                                                            <div class="testmonial-single">
                                                                 <p class="text-primary">{!! html_entity_decode($testimonial->comments) !!}</p>
                                                                 <img src="{{ asset('testimonials/client_image/') }}/{{ $testimonial->client_image }}"
                                                                     class="rounded-circle" style="width: 300px;"
@@ -426,9 +403,9 @@
                                                         @endforeach
                                                     @endif
                                                 </div>
-                                            </div>
+                                            <!--</div>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <!-- end testimonials -->
                                 </div>
@@ -703,38 +680,6 @@
             }
 
         });
-    </script>
-
-
-
-
- <!-- Modal -->
- <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title" id="exampleModalLabel">Looking for Solution...</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h4>What are you looking for?</h4>
-                    <p>We are here for all solutions..</p>
-                    <a href="{{ route('front.contact') }}" class="butn primary white-hover"><span>Speak to
-                            Anlayst</span></a>
-                    <a href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}"
-                        class="butn primary white-hover"><span>Request a Sample pdf</span></a>
-                </div>
-                <!-- <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div> -->
-            </div>
-        </div>
-    </div>
-    <script>
-            window.onload = function() {
-          //jQuery('#exampleModal').modal('show');
-        }
     </script>
 
 @endsection

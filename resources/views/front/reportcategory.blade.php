@@ -29,7 +29,20 @@
         <div class="container">
             <div class="row">
 
-                <!-- product grid left panel -->
+
+
+                <!-- left panel section -->
+                <input type="hidden" id="category" value="{{ $category }}">
+                <div class="col-lg-9 ps-lg-1-9" id="lists">
+                    <div class="section-heading">
+                        <h2 class="title-style2 text-center">{{ strtoupper($category) }}</h2>
+                    </div>
+                    @include('front.ajaxreport')
+
+                </div>
+                <!-- end left panel section -->
+
+                <!-- product grid right panel -->
                 <div class="col-lg-3">
 
                     <div id="accordion" class="accordion-style2 mb-4">
@@ -111,18 +124,7 @@
                         </article>
                     </div>
                 </div>
-                <!-- end product grid left panel -->
-
-                <!-- right panel section -->
-                <input type="hidden" id="category" value="{{ $category }}">
-                <div class="col-lg-9 ps-lg-1-9" id="lists">
-                    <div class="section-heading">
-                        <h2 class="title-style2 text-center">{{ strtoupper($category) }}</h2>
-                    </div>
-                    @include('front.ajaxreport')
-
-                </div>
-                <!-- end right panel section -->
+                <!-- end product grid right panel -->
 
             </div>
         </div>
