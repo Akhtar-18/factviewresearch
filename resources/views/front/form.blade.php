@@ -354,16 +354,16 @@
                                     <!-- start testimonials -->
 
 
-                                    <div class="bg-light p-4 border-radius-5 mb-1-9">
+                                    <!--<div class="bg-light p-4 border-radius-5 mb-1-9">
                                         <div class="container">
-                                            <div class="position-relative">
-                                                <div class="owl-carousel owl-theme">
+                                            <div class="position-relative">-->
+                                                <div class="owl-carousel owl-theme w-100">
                                                     @if (getTestimonial())
                                                         @foreach (getTestimonial() as $testimonial)
-                                                            <div class="testmonial-single mx-auto w-95 w-lg-65">
+                                                            <div class="testmonial-single">
                                                                 <p class="text-primary">{!! html_entity_decode($testimonial->comments) !!}</p>
                                                                 <img src="{{ asset('testimonials/client_image/') }}/{{ $testimonial->client_image }}"
-                                                                    class="rounded-circle" style="width: 300px;"
+                                                                    class="rounded-circle" style="width:100px;"
                                                                     alt="...">
                                                                 <h4 class="pt-4 text-primary">{{ $testimonial->name }}
                                                                 </h4>
@@ -372,9 +372,9 @@
                                                         @endforeach
                                                     @endif
                                                 </div>
-                                            </div>
+                                            <!--</div>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <!-- end testimonials -->
                                 </div>
