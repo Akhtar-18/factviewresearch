@@ -28,7 +28,16 @@
         <div class="container">
             <div class="row">
 
-                <!-- product grid left panel -->
+
+
+                <!-- left panel section -->
+                <div class="col-lg-9 ps-lg-1-9" id="lists">
+                    @include('front.ajaxreport')
+
+                </div>
+                <!-- end left panel section -->
+
+                <!-- product grid right panel -->
                 <div class="col-lg-3">
 
                     <div id="accordion" class="accordion-style2 mb-4">
@@ -66,47 +75,51 @@
                                 Get In Touch With Us
                             </div>
                             <div class="card-body">
-                                <!-- help -->
-                                <div class="bg-img cover-background theme-overlay border-radius-5 mb-1-9"
-                                    data-overlay-dark="8" data-background="{{ asset('front/img/bg/bg2.jpg') }}">
-                                    <div class="position-relative z-index-9 text-center px-1-9 py-1-9 py-lg-6">
-                                        <i
-                                            class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-white mb-3"></i>
-                                        <h5 class="text-white font-weight-600 mb-1 h4">How can we help?</h5>
-                                        <p class="text-white font-weight-500 display-30">Let's get in touch!!</p>
-                                        <div class="bg-white separator-line-horrizontal-full opacity3 mb-3"></div>
-                                        <ul class="text-center p-0 m-0 list-unstyled">
-                                            <li class="text-white mb-1"><i class="fa fa-phone text-white me-2"></i><a
-                                                    href="tel:@if (isset($contactData->contact_no)) {{ $contactData->contact_no }} @endif"
-                                                    class="text-white">
-                                                    @if (isset($contactData->contact_no))
-                                                        {{ $contactData->contact_no }}
-                                                    @endif
-                                                </a></li>
-                                            <li class="text-white"><i class="fa fa-envelope-open text-white me-2"></i><a
-                                                    href="mailto:@if (isset($contactData->email_address)) {{ $contactData->email_address }} @endif"
-                                                    class="text-white">
-                                                    @if (isset($contactData->email_address))
-                                                        {{ $contactData->email_address }}
-                                                    @endif
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- end help -->
+                                <p class="text-center"><i class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary"></i></p>
+                                <h5 class="text-primary text-center font-weight-600 mb-1">How can we help?</h5>
+                                <p class="text-primary text-center font-weight-500 display-30">Let's get in touch!!</p>
+                                <p class="text-center text-primary"><i class="fa fa-phone"></i><br/><a
+                                            href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
+                                            class="text-primary">
+                                            @if (getCompanyDetail())
+                                                {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
+                                            @endif
+
+                                        </a></p>
+                                        <p class="text-center text-primary"><i class="fa fa-envelope-open me-2"></i><br/><a
+                                            href="mailto:@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif"
+                                            class="text-primary">
+                                            @if (getCompanyDetail())
+                                                {{ getCompanyDetail()->email_address }}
+                                            @endif
+                                        </a></p>
+                                <br />
+                                <h6 class="text-primary text-center page-title-section">Follow Us</h6>
+
+                                <ul class="social-listing text-center ps-0 display-30">
+                                    <li><a
+                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i
+                                                class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li><a
+                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif"><i
+                                                class="fab fa-twitter"></i></a>
+                                    </li>
+                                    <li><a
+                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif"><i
+                                                class="fab fa-instagram"></i></a>
+                                    </li>
+                                    <li><a
+                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"><i
+                                                class="fab fa-linkedin-in"></i></a>
+                                    </li>
+                                </ul>
+
                             </div>
                         </article>
                     </div>
                 </div>
-                <!-- end product grid left panel -->
-
-                <!-- right panel section -->
-                <div class="col-lg-9 ps-lg-1-9" id="lists">
-                    @include('front.ajaxreport')
-
-                </div>
-                <!-- end right panel section -->
+                <!-- end product grid right panel -->
 
             </div>
         </div>

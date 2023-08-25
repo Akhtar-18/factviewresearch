@@ -75,7 +75,7 @@
                                 class="fas fa-mobile-alt text-primary-new"></i></span>
                         <span class="d-inline-block w-85 vertical-align-top ps-2 display-30">
                             @if (getCompanyDetail())
-                                {{ getCompanyDetail()->contact_no }}
+                            {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
                             @endif
                         </span>
                     </li>

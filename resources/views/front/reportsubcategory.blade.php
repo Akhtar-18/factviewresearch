@@ -65,31 +65,29 @@
                             <div class="card-header bg-primary text-white">
                                 Get In Touch With Us
                             </div>
-                            <div class="card-body text-center">
-                                <i class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary mb-3"></i>
-                                <h5 class="text-primary text-left font-weight-600 mb-1">How can we help?</h5>
-                                <p class="text-primary font-weight-500 display-30">Let's get in touch!!</p>
-                                <ul class="text-left p-0 m-0 list-unstyled">
-                                    <li class="text-primary"><i class="fa fa-phone"></i><a
+                            <div class="card-body">
+                                <p class="text-center"><i class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary"></i></p>
+                                <h5 class="text-primary text-center font-weight-600 mb-1">How can we help?</h5>
+                                <p class="text-primary text-center font-weight-500 display-30">Let's get in touch!!</p>
+                                <p class="text-center text-primary"><i class="fa fa-phone"></i><br/><a
                                             href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
                                             class="text-primary">
                                             @if (getCompanyDetail())
                                                 {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
                                             @endif
 
-                                        </a></li>
-                                    <li class="text-primary"><i class="fa fa-envelope-open me-2"></i><a
+                                        </a></p>
+                                        <p class="text-center text-primary"><i class="fa fa-envelope-open me-2"></i><br/><a
                                             href="mailto:@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif"
                                             class="text-primary">
                                             @if (getCompanyDetail())
                                                 {{ getCompanyDetail()->email_address }}
                                             @endif
-                                        </a></li>
-                                </ul>
+                                        </a></p>
                                 <br />
-                                <h6 class="text-primary page-title-section">Follow Us</h6>
+                                <h6 class="text-primary text-center page-title-section">Follow Us</h6>
 
-                                <ul class="social-listing ps-0 display-30">
+                                <ul class="social-listing text-center ps-0 display-30">
                                     <li><a
                                             href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i
                                                 class="fab fa-facebook-f"></i></a>
