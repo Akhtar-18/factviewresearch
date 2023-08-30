@@ -308,7 +308,7 @@ class FrontController extends Controller
 
         //$email = 'minhaj.khan@researchforetell.com';
         $useremail = $request->email;
-        $adminemail = 'minhaj.khan@researchforetell.com';
+        $adminemail = 'minhaj.khan@factviewresearch.com';
 
         Mail::to($useremail)->send(new MyReportEnquiry($type,$name,$reportName));
         Mail::to($adminemail)->send(new AdminReportEnquiry($type,$name, $reportName, $reportUrl, $email,$country, $contact_no, $organizations, $others));

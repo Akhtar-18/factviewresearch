@@ -7,9 +7,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <!-- PAGE TITLE
-                                ================================================== -->
-    <section class="page-title-section pt-1-9 pb-1-9"
-        style="background: radial-gradient(circle, rgba(32,33,93,1) 0%, rgba(42,102,177,1) 20%, rgba(21,178,75,1) 50%, rgba(248,149,33,1) 80%);">
+                                    ================================================== -->
+    <section class="page-title-section pt-1-9 pb-1-9" style="background: #2a66b1">
         <div class="container">
 
             <div class="row">
@@ -19,9 +18,9 @@
                         <li><a
                                 href="{{ route('front.reportcategory', ['id' => strtolower($reports->getCategoryName->cat_name)]) }}">{{ $reports->getCategoryName->cat_name }}</a>
                         </li>
-                        <li><a href="{{ route('front.report', ['id' => $reports->url]) }}"
+                        <!--<li><a href="{{ route('front.report', ['id' => $reports->url]) }}"
                                 class="text-white">{{ $reports->heading }}</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -31,7 +30,7 @@
 
 
     <!-- REPORT DETAILS
-                                ================================================== -->
+                                    ================================================== -->
     <section class="blogs">
         <div class="container">
             <div class="row">
@@ -93,6 +92,31 @@
                                             </p>
 
                                             <div class="row">
+                                                @if (count($reports->getReportTblSummary) > 0)
+                                                    <div class="col-md-12 mt-3">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered border-dark">
+                                                                <thead>
+                                                                    <tr
+                                                                        style="background-color: #4472c4;color:#fff;width: 24%;">
+                                                                        <th style="width: 24%">Report Components</th>
+                                                                        <th>Details</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @foreach ($reports->getReportTblSummary as $tbl)
+                                                                        <tr>
+                                                                            <td>{{ $tbl->heading }}</td>
+                                                                            <td>{{ $tbl->details }}</td>
+                                                                        </tr>
+                                                                    @endforeach
+                                                                </tbody>
+
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                @endif
+
                                                 @if (!empty(json_decode($marketyear, true)))
                                                     <div class="col-md-8">
                                                         <div class="card-body">
@@ -386,26 +410,25 @@
 
 
                                     <!--<div class="bg-light p-4 border-radius-5 mb-1-9">
-                                        <div class="container">
-                                            <div class="position-relative">-->
-                                                <div class="owl-carousel owl-theme w-100">
-                                                    @if (getTestimonial())
-                                                        @foreach (getTestimonial() as $testimonial)
-                                                            <div class="testmonial-single">
-                                                                <p class="text-primary">{!! html_entity_decode($testimonial->comments) !!}</p>
-                                                                <img src="{{ asset('testimonials/client_image/') }}/{{ $testimonial->client_image }}"
-                                                                    class="rounded-circle" style="width:100px;"
-                                                                    alt="...">
-                                                                <h4 class="pt-4 text-primary">{{ $testimonial->name }}
-                                                                </h4>
-                                                                <h6 class="mb-1-9">{{ $testimonial->profile }}</h6>
-                                                            </div>
-                                                        @endforeach
-                                                    @endif
+                                            <div class="container">
+                                                <div class="position-relative">-->
+                                    <div class="owl-carousel owl-theme w-100">
+                                        @if (getTestimonial())
+                                            @foreach (getTestimonial() as $testimonial)
+                                                <div class="testmonial-single">
+                                                    <p class="text-primary">{!! html_entity_decode($testimonial->comments) !!}</p>
+                                                    <img src="{{ asset('testimonials/client_image/') }}/{{ $testimonial->client_image }}"
+                                                        class="rounded-circle" style="width:100px;" alt="...">
+                                                    <h4 class="pt-4 text-primary">{{ $testimonial->name }}
+                                                    </h4>
+                                                    <h6 class="mb-1-9">{{ $testimonial->profile }}</h6>
                                                 </div>
-                                            <!--</div>
-                                        </div>
-                                    </div> -->
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                    <!--</div>
+                                            </div>
+                                        </div> -->
 
                                     <!-- end testimonials -->
                                 </div>
@@ -449,44 +472,44 @@
                                 </div>
                                 <div class="card-body">
                                     <!--<p class="text-center"><i class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary"></i></p>
-                                    <h5 class="text-primary text-center font-weight-600 mb-1">How can we help?</h5>
-                                    <p class="text-primary text-center font-weight-500 display-30">Let's get in touch!!</p>-->
-                                    <p class="text-center text-primary"><i class="fa fa-phone"></i><br/><a
-                                                href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
-                                                class="text-primary">
-                                                @if (getCompanyDetail())
-                                                    {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
-                                                @endif
+                                        <h5 class="text-primary text-center font-weight-600 mb-1">How can we help?</h5>
+                                        <p class="text-primary text-center font-weight-500 display-30">Let's get in touch!!</p>-->
+                                    <p class="text-center text-primary"><i class="fa fa-phone"></i><br /><a
+                                            href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
+                                            class="text-primary">
+                                            @if (getCompanyDetail())
+                                                {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
+                                            @endif
 
-                                            </a></p>
-                                            <p class="text-center text-primary"><i class="fa fa-envelope-open me-2"></i><br/><a
-                                                href="mailto:@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif"
-                                                class="text-primary">
-                                                @if (getCompanyDetail())
-                                                    {{ getCompanyDetail()->email_address }}
-                                                @endif
-                                            </a></p>
-                                    
+                                        </a></p>
+                                    <p class="text-center text-primary"><i class="fa fa-envelope-open me-2"></i><br /><a
+                                            href="mailto:@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif"
+                                            class="text-primary">
+                                            @if (getCompanyDetail())
+                                                {{ getCompanyDetail()->email_address }}
+                                            @endif
+                                        </a></p>
+
                                     <!-- <h6 class="text-primary text-center page-title-section">Follow Us</h6>
 
-                                    <ul class="social-listing text-center ps-0 display-30">
-                                        <li><a
-                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                        </li>
-                                        <li><a
-                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif"><i
-                                                    class="fab fa-twitter"></i></a>
-                                        </li>
-                                        <li><a
-                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif"><i
-                                                    class="fab fa-instagram"></i></a>
-                                        </li>
-                                        <li><a
-                                                href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                        </li>
-                                    </ul> -->
+                                        <ul class="social-listing text-center ps-0 display-30">
+                                            <li><a
+                                                    href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i
+                                                        class="fab fa-facebook-f"></i></a>
+                                            </li>
+                                            <li><a
+                                                    href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif"><i
+                                                        class="fab fa-twitter"></i></a>
+                                            </li>
+                                            <li><a
+                                                    href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif"><i
+                                                        class="fab fa-instagram"></i></a>
+                                            </li>
+                                            <li><a
+                                                    href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"><i
+                                                        class="fab fa-linkedin-in"></i></a>
+                                            </li>
+                                        </ul> -->
 
                                 </div>
                             </article>
@@ -519,17 +542,17 @@
                         class="butn primary white-hover"><span>Request a Sample pdf</span></a>
                 </div>
                 <!-- <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                            </div> -->
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                                </div> -->
             </div>
         </div>
     </div>
 
     <script>
-        //     window.onload = function() {
-        //   jQuery('#exampleModal').modal('show');
-        // }
+           //  window.onload = function() {
+           //jQuery('#exampleModal').modal('show');
+         //}
     </script>
     <script>
         $(document).ready(function() {
