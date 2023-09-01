@@ -8,19 +8,18 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <!-- PAGE TITLE
                                     ================================================== -->
-    <section class="page-title-section pt-1-9 pb-1-9" style="background: #2a66b1">
+    <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
         <div class="container">
 
             <div class="row">
                 <div class="col-md-12">
                     <ul class="ps-0">
                         <li><a href="{{ route('front.home') }}">Home</a></li>
-                        <li><a
-                                href="{{ route('front.reportcategory', ['id' => strtolower($reports->getCategoryName->cat_name)]) }}">{{ $reports->getCategoryName->cat_name }}</a>
+                        <li><a href="{{ route('front.reportcategory', ['id' => strtolower($reports->getCategoryName->cat_name)]) }}">{{ $reports->getCategoryName->cat_name }}</a>
                         </li>
-                        <!--<li><a href="{{ route('front.report', ['id' => $reports->url]) }}"
-                                class="text-white">{{ $reports->heading }}</a>
-                        </li> -->
+                        <li><a href="{{ route('front.report', ['id' => $reports->url]) }}"
+                                class="text-white">{!! html_entity_decode(wordLimitset($reports->heading, 5)) !!}</a>
+                        </li>
                     </ul>
                 </div>
             </div>
