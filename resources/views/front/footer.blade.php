@@ -75,7 +75,7 @@
                                 class="fas fa-mobile-alt text-primary-new"></i></span>
                         <span class="d-inline-block w-85 vertical-align-top ps-2 display-30">
                             @if (getCompanyDetail())
-                            {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
+                                {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
                             @endif
                         </span>
                     </li>
@@ -172,17 +172,21 @@
     });
 </script> -->
 
-<!-- <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5fa658658e1c140c2abba444/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script> -->
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+    (function() {
+        var s1 = document.createElement("script"),
+            s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/64f61afda91e863a5c119a1a/1h9glislg';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
+</script>
+<!--End of Tawk.to Script-->
 
 
 </body>
