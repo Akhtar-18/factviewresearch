@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use Yajra\DataTables\Facades\DataTables;
 
 class BlogController extends Controller
@@ -20,11 +21,21 @@ class BlogController extends Controller
             $data = Blog::select(['id','heading','url'])->latest('id');
             return DataTables::of($data)
                     ->addIndexColumn()
+                    ->addColumn('url', function ($row) {
+                        if (isset($row->url)) {
+                            $contents = URL::to('blog/') . '/' . $row->url;
+                            $url = '<a  href="' . $contents . '">' . $contents . '</a>';
+                        } else {
+                            $url = '';
+                        }
+
+                        return $url;
+                    })
               ->addColumn('action', function($row){
-                
+
                   $editbtn='<a  href="'.url('admin/admin-blogs/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
                   $deletebtn='<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#DeleteModal'.$row->id.'"><i class="fa fa-trash"></i></a>';
-               
+
                 $btn = $editbtn.'|'.$deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -49,7 +60,7 @@ class BlogController extends Controller
 
                             return $btn;
                     })
-                    ->rawColumns(['action'])
+                    ->rawColumns(['url','action'])
                     ->make(true);
         }
     }
@@ -102,7 +113,7 @@ class BlogController extends Controller
             'url'=>'required'
     ]);
 
-    
+
 
       $input = $request->all();
       $blog=Blog::find($id);

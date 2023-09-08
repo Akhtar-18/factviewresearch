@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CaseStudy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use Yajra\DataTables\Facades\DataTables;
 
 class CaseStudyController extends Controller
@@ -20,6 +21,16 @@ class CaseStudyController extends Controller
             $data = CaseStudy::select(['id','heading','url'])->latest('id');
             return DataTables::of($data)
                     ->addIndexColumn()
+                    ->addColumn('url', function ($row) {
+                        if (isset($row->url)) {
+                            $contents = URL::to('case-study/') . '/' . $row->url;
+                            $url = '<a  href="' . $contents . '">' . $contents . '</a>';
+                        } else {
+                            $url = '';
+                        }
+
+                        return $url;
+                    })
               ->addColumn('action', function($row){
 
                   $editbtn='<a  href="'.url('admin/admin-case-studies/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
@@ -49,7 +60,7 @@ class CaseStudyController extends Controller
 
                             return $btn;
                     })
-                    ->rawColumns(['action'])
+                    ->rawColumns(['url','action'])
                     ->make(true);
         }
     }

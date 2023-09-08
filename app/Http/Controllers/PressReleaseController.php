@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PressRelease;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use Yajra\DataTables\Facades\DataTables;
 
 class PressReleaseController extends Controller
@@ -20,11 +21,21 @@ class PressReleaseController extends Controller
             $data = PressRelease::select(['id','heading','url'])->latest('id');
             return DataTables::of($data)
                     ->addIndexColumn()
+                    ->addColumn('url', function ($row) {
+                        if (isset($row->url)) {
+                            $contents = URL::to('press-release/') . '/' . $row->url;
+                            $url = '<a  href="' . $contents . '">' . $contents . '</a>';
+                        } else {
+                            $url = '';
+                        }
+
+                        return $url;
+                    })
               ->addColumn('action', function($row){
-                
+
                   $editbtn='<a  href="'.url('admin/admin-press-releases/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
                   $deletebtn='<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#DeleteModal'.$row->id.'"><i class="fa fa-trash"></i></a>';
-               
+
                 $btn = $editbtn.'|'.$deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -49,7 +60,7 @@ class PressReleaseController extends Controller
 
                             return $btn;
                     })
-                    ->rawColumns(['action'])
+                    ->rawColumns(['url','action'])
                     ->make(true);
         }
     }
@@ -102,7 +113,7 @@ class PressReleaseController extends Controller
             'url'=>'required'
     ]);
 
-    
+
 
       $input = $request->all();
       $blog=PressRelease::find($id);
