@@ -188,6 +188,27 @@
 </script>
 <!--End of Tawk.to Script-->
 
+<script type="text/javascript">
+    var usrlang = navigator.language ||
+        navigator.userLanguage;
+    console.log(
+        "User's preferred language is: " +
+        usrlang);
+
+    function googleTranslateElementInit() {
+        setCookie('googtrans', '/en/' + usrlang, 1);
+        new google.translate.TranslateElement({
+            pageLanguage: 'ES',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+    }
+
+    function setCookie(key, value, expiry) {
+        var expires = new Date();
+        expires.setTime(expires.getTime() + (expiry 24 60 60 1000));
+        document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+    }
+</script>
 
 </body>
 
