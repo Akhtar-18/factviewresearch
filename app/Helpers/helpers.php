@@ -114,6 +114,24 @@ if (!function_exists('getSementGraph')) {
     }
 }
 
+    if (!function_exists('gerenaretslug')) 
+    {
+        function gerenaretslug($param)
+        {
+            $url = \Str::slug($param);
+            return $url;
+        }
+    }
+
+    if (!function_exists('removeslug')) 
+    {
+        function removeslug($param)
+        {
+            $url =  str_replace("-"," ",$param);;
+            return $url;
+        }
+    }
+
 if (!function_exists('getCountry')) {
     function getCountry()
     {

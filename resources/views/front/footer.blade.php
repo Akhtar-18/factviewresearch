@@ -188,7 +188,7 @@
 </script>
 <!--End of Tawk.to Script-->
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     var usrlang = navigator.language ||
         navigator.userLanguage;
     console.log(
@@ -208,7 +208,7 @@
         expires.setTime(expires.getTime() + (expiry  24  60  60  1000));
         document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
     }
-</script>
+</script> -->
 
 </body>
 

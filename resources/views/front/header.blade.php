@@ -69,6 +69,24 @@
         gtag('js', new Date());
         gtag('config', 'G-HES2Q3T6V1');
     </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+        var usrlang = navigator.language 
+                || navigator.userLanguage;
+        console.log(
+            "User's preferred language is: "
+            + usrlang);
+        function googleTranslateElementInit() {
+            setCookie('googtrans', '/en/'+usrlang, 1);
+            new google.translate.TranslateElement({ pageLanguage: 'ES', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+        }
+        function setCookie(key, value, expiry) {
+            var expires = new Date();
+            expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
+            document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+        }
+    </script>
     <!-- <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">
   function googleTranslateElementInit() {
@@ -193,7 +211,7 @@ function googleTranslateElementInit() {
                                                     @foreach (GetReportMenu() as $cate)
                                                         <li class="col-lg-3">
                                                             <a
-                                                                href="@if (isset($cate->cat_name)) {{ route('front.reportcategory', strtolower($cate->cat_name)) }} @endif"><span
+                                                                href="@if (isset($cate->cat_name)) {{ route('front.reportcategory', gerenaretslug(strtolower($cate->cat_name))) }} @endif"><span
                                                                     class="d-block m-0 mb-lg-3 py-2 py-lg-0 px-1-9 px-lg-0 text-uppercase sub-title">{{ $cate->cat_name }}
                                                                     &raquo;</span></a>
 

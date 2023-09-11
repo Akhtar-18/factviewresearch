@@ -145,7 +145,7 @@
                                             <div class="form-group">
                                                 <label class="mb-2">Heading<span class="text-danger"></span></label>
                                                 <input type="hidden" name="sid[]" class="form-control" id="sid{{$key}}" value="{{$tblSummary->id}}">
-                                                <input type="text" name="sheading[]" class="form-control" value="{{$tblSummary->heading}}">
+                                                <textarea type="text" name="sheading[]" class="form-control">{{$tblSummary->heading}}</textarea>
                                                 @if ($errors->has('sheading[]'))
                                                     <span class="text-danger">{{ $errors->first('sheading[]') }}</span>
                                                 @endif
@@ -154,7 +154,7 @@
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="mb-2">Details<span class="text-danger"></span></label>
-                                                <input type="text" class="form-control" name="sdetails[]" value="{{$tblSummary->details}}">
+                                                <textarea type="text" class="form-control" name="sdetails[]">{{$tblSummary->details}}</textarea>
                                                 @if ($errors->has('sdetails[]'))
                                                     <span class="text-danger">{{ $errors->first('sdetails[]') }}</span>
                                                 @endif
@@ -174,7 +174,7 @@
                                             <div class="form-group">
                                                 <label class="mb-2">Heading<span class="text-danger"></span></label>
                                                 <input type="hidden" name="sid[]" class="form-control" id="" value="">
-                                                <input type="text" name="sheading[]" class="form-control">
+                                                <textarea type="text" name="sheading[]" class="form-control"></textarea>
                                                 @if ($errors->has('sheading[]'))
                                                     <span class="text-danger">{{ $errors->first('sheading[]') }}</span>
                                                 @endif
@@ -183,7 +183,7 @@
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="mb-2">Details<span class="text-danger"></span></label>
-                                                <input type="text" class="form-control" name="sdetails[]">
+                                                <textarea type="text" class="form-control" name="sdetails[]"></textarea>
                                                 @if ($errors->has('sdetails[]'))
                                                     <span class="text-danger">{{ $errors->first('sdetails[]') }}</span>
                                                 @endif
@@ -934,13 +934,13 @@ function addmoresummary() {
         <div class="form-group">\
                 <label class="mb-2">Heading<span class="text-danger"></span></label>\
                 <input type="hidden" name="sid[]" class="form-control" value="">\
-                <input type="text" class="form-control"  name="sheading[]">\
+                <textarea type="text" class="form-control"  name="sheading[]"></textarea>\
         </div>\
     </div>\
     <div class="col-md-5">\
         <div class="form-group">\
                 <label class="mb-2">Details<span class="text-danger"></span></label>\
-                <input type="text" class="form-control"  name="sdetails[]">\
+                <textarea type="text" class="form-control"  name="sdetails[]"></textarea>\
         </div>\
     </div>\
     <div class="col-md-2 mt-3">\
@@ -950,6 +950,9 @@ function addmoresummary() {
 </div>';
     $('#rows').append(new_item);
     loopCountSummary++;
+    tinymce.init({
+                selector: 'textarea'
+            });
 }
 
 function removesummary(ids) {

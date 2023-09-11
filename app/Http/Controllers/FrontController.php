@@ -98,7 +98,7 @@ class FrontController extends Controller
 
     public function reportcategory($id,Request $request)
     {
-        $category=ReportCategoryModel::where('cat_name',$id)->first();
+        $category=ReportCategoryModel::where('cat_name',removeslug($id))->first();
         if(isset($category))
         {
             $data['reports']=ReportsModel::latest('id')->with(['getSubCategoryName','getCategoryName'])
@@ -113,7 +113,7 @@ class FrontController extends Controller
         $data['ReportCategory']=ReportCategoryModel::with('getSubCategory')->select(['id','cat_name'])->get();
 
         $data['contactData']=ContactDetailsModel::select(['contact_no','email_address'])->first();
-        $data['category']=$id;
+        $data['category']=removeslug($id);
         return view('front.reportcategory',$data);
     }
 
@@ -126,7 +126,7 @@ class FrontController extends Controller
                 $category=ReportCategoryModel::where('cat_name',$id)->first();
                 $reports=ReportsModel::latest('id')
                 ->with(['getSubCategoryName','getCategoryName'])
-                ->where('category_id',$category->id)
+                ->where('category_id',removeslug($category->id))
                 ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
                 ->orderBy('id','desc')
                 ->paginate(10);

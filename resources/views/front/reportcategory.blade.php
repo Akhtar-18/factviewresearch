@@ -49,7 +49,7 @@
                         @foreach ($ReportCategory as $key => $cat)
                             <div class="card">
                                 <div class="card-header" id="headingOne{{ $key }}">
-                                    <a href="{{ route('front.reportcategory', strtolower($cat->cat_name)) }}">
+                                    <a href="{{ route('front.reportcategory', gerenaretslug(strtolower($cat->cat_name))) }}">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link" data-bs-toggle="collapse"
                                                 data-bs-target="#collapseOne{{ $key }}" aria-expanded="true"
@@ -63,7 +63,7 @@
                                         <ul class="list-style-5">
                                             @if ($cat->getSubCategory)
                                                 @foreach ($cat->getSubCategory as $sub)
-                                                    <li><a href="@if (isset($sub->sub_category)){{ route('front.reportsubcategory',strtolower($sub->sub_category))}}@endif">{{ $sub->sub_category }}</a></li>
+                                                    <li><a href="@if (isset($sub->sub_category)){{ route('front.reportsubcategory',gerenaretslug(strtolower($sub->sub_category)))}}@endif">{{ $sub->sub_category }}</a></li>
                                                 @endforeach
                                             @endif
                                         </ul>
