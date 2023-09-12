@@ -105,8 +105,8 @@
                                                                 <tbody>
                                                                     @foreach ($reports->getReportTblSummary as $tbl)
                                                                         <tr>
-                                                                            <td>{{ $tbl->heading }}</td>
-                                                                            <td>{{ $tbl->details }}</td>
+                                                                            <td><b>{{ $tbl->heading }}</b></td>
+                                                                            <td>{!! html_entity_decode($tbl->details) !!}</td>
                                                                         </tr>
                                                                     @endforeach
                                                                 </tbody>
