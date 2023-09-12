@@ -129,7 +129,7 @@
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="mb-2">Heading<span class="text-danger"></span></label>
-                                                <textarea type="text" name="sheading[]" class="form-control"></textarea>
+                                                <input type="text" name="sheading[]" class="form-control">
                                                 @if ($errors->has('sheading[]'))
                                                     <span class="text-danger">{{ $errors->first('sheading[]') }}</span>
                                                 @endif
@@ -686,7 +686,7 @@ function addmoresummary() {
     <div class="col-md-5">\
         <div class="form-group">\
                 <label class="mb-2">Heading<span class="text-danger"></span></label>\
-                <textarea type="text" class="form-control"  name="sheading[]"></textarea>\
+                <input type="text" class="form-control"  name="sheading[]">\
         </div>\
     </div>\
     <div class="col-md-5">\
@@ -703,8 +703,80 @@ function addmoresummary() {
     $('#rows').append(new_item);
     loopCountSummary++;
     tinymce.init({
-                selector: 'textarea'
-            });
+            selector: 'textarea',
+            plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars advcode fullscreen image link media template codesample table charmap powerpaste hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+            imagetools_cors_hosts: ['picsum.photos'],
+            menubar: 'file edit view insert format tools table help',
+            toolbar: 'undo redo | bold italic underline strikethrough | styleselect | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl | link image code ',
+            toolbar_sticky: true,
+            powerpaste_allow_local_images: true,
+            powerpaste_word_import: 'prompt',
+            powerpaste_html_import: 'prompt',
+            autosave_ask_before_unload: true,
+            autosave_interval: '30s',
+            autosave_prefix: '{path}{query}-{id}-',
+            autosave_restore_when_empty: false,
+            autosave_retention: '2m',
+            image_advtab: true,
+            importcss_append: true,
+            /* enable title field in the Image dialog*/
+            image_title: true,
+            /* enable automatic uploads of images represented by blob or data URIs*/
+            automatic_uploads: true,
+            /*
+              URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
+              images_upload_url: 'postAcceptor.php',
+              here we add custom filepicker only to Image dialog
+            */
+            file_picker_types: 'image',
+            /* and here's our custom image picker*/
+            file_picker_callback: function(cb, value, meta) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+
+                /*
+                  Note: In modern browsers input[type="file"] is functional without
+                  even adding it to the DOM, but that might not be the case in some older
+                  or quirky browsers like IE, so you might want to add it to the DOM
+                  just in case, and visually hide it. And do not forget do remove it
+                  once you do not need it anymore.
+                */
+
+                input.onchange = function() {
+                    var file = this.files[0];
+
+                    var reader = new FileReader();
+                    reader.onload = function() {
+                        /*
+                          Note: Now we need to register the blob in TinyMCEs image blob
+                          registry. In the next release this part hopefully won't be
+                          necessary, as we are looking to handle it internally.
+                        */
+                        var id = 'blobid' + (new Date()).getTime();
+                        var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                        var base64 = reader.result.split(',')[1];
+                        var blobInfo = blobCache.create(id, file, base64);
+                        blobCache.add(blobInfo);
+
+                        /* call the callback and populate the Title field with the file name */
+                        cb(blobInfo.blobUri(), {
+                            title: file.name
+                        });
+                    };
+                    reader.readAsDataURL(file);
+                };
+
+                input.click();
+            },
+            height: 200,
+            image_caption: true,
+            quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+            noneditable_noneditable_class: 'mceNonEditable',
+            toolbar_mode: 'sliding',
+            contextmenu: 'link image imagetools table',
+            //content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+        });
 }
 
 function removesummary(ids) {
