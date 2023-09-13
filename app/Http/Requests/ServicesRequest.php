@@ -25,6 +25,7 @@ class ServicesRequest extends FormRequest
     {
         return [
             'heading'=>'required',
+            'slug'=>'required|unique:services',
             'content'=>'required'
         ];
     }

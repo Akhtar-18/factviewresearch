@@ -245,12 +245,12 @@ class FrontController extends Controller
     }
     public function services()
     {
-        $data['services']=ServicesModel::select(['id','heading','content'])->latest('id')->get();
+        $data['services']=ServicesModel::select(['id','heading','content','slug'])->latest('id')->get();
         return view('front.services',$data);
     }
     public function service($id,Request $request)
     {
-        $data['services']=ServicesModel::select(['id','heading','content'])->where('id',$id)->first();
+        $data['services']=ServicesModel::select(['id','heading','content'])->where('slug',$id)->first();
         return view('front.service-single',$data);
     }
 

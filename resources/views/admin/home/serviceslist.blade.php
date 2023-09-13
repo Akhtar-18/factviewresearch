@@ -25,6 +25,7 @@
                 <thead>
                     <tr>
                         <th>Heading </th>
+                        <th>Url</th>
                         <th>Content</th>
                         <th>Action</th>
                     </tr>
@@ -32,6 +33,7 @@
                 <tfoot>
                     <tr>
                         <th>Heading </th>
+                        <th>Url</th>
                         <th>Content</th>
                         <th>Action</th>
                     </tr>
@@ -50,6 +52,7 @@
         ajax: "{{ url('admin/services/list') }}",
         columns: [
             {data: 'heading', name: 'heading'},
+            {data: 'slug', name: 'slug'},
             {data: 'content', name: 'content'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]

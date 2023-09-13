@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ServicesRequest;
 use App\Models\ServicesModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use Yajra\DataTables\Facades\DataTables;
 
 class ServicesController extends Controller
@@ -28,6 +29,18 @@ class ServicesController extends Controller
             $data = ServicesModel::select('*')->orderBy('id','desc');
             return DataTables::of($data)
                     ->addIndexColumn()
+
+                  ->addColumn('slug', function ($row) {
+                      if (isset($row->slug)) {
+                          $contents = URL::to('service/') . '/' . $row->slug;
+                          $slug = '<a  href="' . $contents . '">' . $contents . '</a>';
+                      } else {
+                          $slug = '';
+                      }
+
+                      return $slug;
+                  })
+
                ->addColumn('content', function($row){
                 $contents = strip_tags($row->content);
                 return $contents;
@@ -75,7 +88,7 @@ class ServicesController extends Controller
      
                             return $btn;
                     })
-                    ->rawColumns(['content','action'])
+                    ->rawColumns(['slug','content','action'])
                     ->make(true);
         }
     }
@@ -109,9 +122,9 @@ class ServicesController extends Controller
       }
    }
 
-   public function update($id,ServicesRequest $request)
+   public function update($id,Request $request)
    {
-      $request->validated();
+      //$request->validated();
       $input = $request->all();
       $service=ServicesModel::find($id);        
       $service->update($input);

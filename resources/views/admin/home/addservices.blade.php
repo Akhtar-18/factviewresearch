@@ -30,14 +30,29 @@
                                 placeholder="Enter heading"
                                 name="heading"
                                 value="{{ old('heading') }}"
-                                required>
+                                id="heading"
+                                required  onkeyup="getSlug()">
                                 @if ($errors->has('heading'))
                                     <span class="text-danger">{{ $errors->first('heading') }}</span>
                                 @endif
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="mb-2">Url <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control"
+                                placeholder="Enter Url"
+                                name="slug"
+                                id="slug"
+                                value="{{ old('url') }}"
+                                required>
+                                @if ($errors->has('url'))
+                                    <span class="text-danger">{{ $errors->first('url') }}</span>
+                                @endif
+                            </div>
+                        </div>
 
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="mb-2">Content</label>
                                 <textarea class="form-control" rows="12" name="content">{{ old('content') }}</textarea>
@@ -57,4 +72,24 @@
 </div>
 
 </div>
+
+<script>
+function getSlug()
+    {
+        let heading=$('#heading').val();
+
+        $.ajax({
+            type: "POST",
+            url: "{{ url('admin/reports/getSlug') }}",
+            data: {heading:heading},
+            success: function (data) {
+                $('#slug').val(data);
+            },
+            error: function (data) {
+                //console.log(data);
+            }
+        });
+    }
+
+</script>
 @endsection

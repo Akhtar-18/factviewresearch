@@ -233,7 +233,7 @@ function googleTranslateElementInit() {
                                                 <ul>
                                                     @foreach (GetServiceMenu() as $service)
                                                         <li><a
-                                                                href="{{ route('front.service-single', $service->id) }}">{{ $service->heading }}</a>
+                                                                href="{{ route('front.service-single', $service->slug) }}">{{ $service->heading }}</a>
                                                         </li>
                                                     @endforeach
                                                 </ul>

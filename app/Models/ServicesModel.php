@@ -11,5 +11,5 @@ class ServicesModel extends Model
     use HasFactory,SoftDeletes;
     protected $table="services";
     protected $primaryKey = "id";
-    protected $fillable = ['heading','content'];
+    protected $fillable = ['heading','content','slug'];
 }

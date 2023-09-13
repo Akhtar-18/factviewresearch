@@ -57,7 +57,7 @@ if (!function_exists('GetReportMenu')) {
 if (!function_exists('GetServiceMenu')) {
     function GetServiceMenu()
     {
-        $getServiceMenuData = ServicesModel::select(['id', 'heading'])->get();
+        $getServiceMenuData = ServicesModel::select(['id', 'heading','slug'])->get();
         return $getServiceMenuData;
     }
 }
