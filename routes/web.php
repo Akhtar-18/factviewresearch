@@ -56,7 +56,7 @@ Route::get('/why-chooose-us', [FrontController::class, 'whyus'])->name('front.wh
 Route::get('/partners', [FrontController::class, 'partners'])->name('front.partners');
 Route::get('/clienttestimonials', [FrontController::class, 'testimonials'])->name('front.testimonials');
 Route::get('/services', [FrontController::class, 'services'])->name('front.services');
-Route::get('/service/{id}', [FrontController::class, 'service'])->name('front.service-single');
+Route::get('/services/{id}', [FrontController::class, 'service'])->name('front.service-single');
 Route::get('/contact-us', [FrontController::class, 'contact'])->name('front.contact');
 Route::get('/form', [FrontController::class, 'form'])->name('front.form');
 Route::post('/submit-enquiry', [FrontController::class, 'storeenquiry'])->name('submit.enquiry');
