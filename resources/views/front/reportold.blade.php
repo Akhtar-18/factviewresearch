@@ -1,5 +1,4 @@
-<?php //include("header.php");
-?>
+
 @extends('front.layout')
 @section('title', 'Report')
 @section('frontpage')
@@ -521,8 +520,7 @@
         });
     </script>
 
-    <?php //include("footer.php");
-    ?>
+
 
     <script>
         const barChart = document.getElementById('mybarChart');

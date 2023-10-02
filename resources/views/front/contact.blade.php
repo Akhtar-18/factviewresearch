@@ -1,19 +1,13 @@
-<?php //include("header.php");
-?>
 @extends('front.layout')
 @section('title', 'Contact Us')
 @section('frontpage')
 
     <!-- PAGE TITLE
-                        ================================================== -->
-    <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7"
-        data-background="{{ asset('front/img/bg/bg5.jpg') }}">
+                            ================================================== -->
+    <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
         <div class="container">
 
             <div class="row">
-                <div class="col-md-12">
-                    <h1>Contact Us</h1>
-                </div>
                 <div class="col-md-12">
                     <ul class="ps-0">
                         <li><a href="{{ route('front.home') }}">Home</a></li>
@@ -27,10 +21,15 @@
 
 
     <!-- CONTACT
-                        ================================================== -->
+                            ================================================== -->
     <section class="md">
         <div class="container">
             <div class="row">
+                <div class="col-md-12 text-center">
+                    <br />
+                    <h1 class="text-primary">Contact Us</h1>
+                    <br />
+                </div>
                 <!-- contact form -->
                 <div class="col-lg-6 mb-1-9 mb-lg-0">
                     <div class="section-heading left">
@@ -181,17 +180,17 @@
                                 </div>
                             </div>
                             <!-- <div class="col-12">
-                                <div class="contact-info-section border-none pb-0 mb-0">
+                                    <div class="contact-info-section border-none pb-0 mb-0">
 
-                                    <h4>Business Hours</h4>
-                                    <ul class="list-style-2">
-                                        <li>Monday - Friday - 9am to 5pm</li>
-                                        <li>Saturday - 9am to 2pm</li>
-                                        <li>Sunday - Closed</li>
-                                    </ul>
+                                        <h4>Business Hours</h4>
+                                        <ul class="list-style-2">
+                                            <li>Monday - Friday - 9am to 5pm</li>
+                                            <li>Saturday - 9am to 2pm</li>
+                                            <li>Sunday - Closed</li>
+                                        </ul>
 
-                                </div>
-                            </div> -->
+                                    </div>
+                                </div> -->
 
                         </div>
                     </div>
@@ -202,7 +201,7 @@
     </section>
 
     <!-- MAP
-                        ================================================== -->
+                            ================================================== -->
     <iframe class="map"
         src="https://maps.google.com/maps?q=london&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" scrolling="no"
         marginheight="0" marginwidth="0"></iframe>

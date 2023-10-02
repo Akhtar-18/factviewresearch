@@ -1,27 +1,19 @@
-<?php //include("header.php");
-?>
 @extends('front.layout')
 @section('title', 'Buy Now')
 @section('frontpage')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- PAGE TITLE
-            ================================================== -->
-    <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7"
-        data-background="{{ asset('front/img/bg/bg5.jpg') }}">
+                    ================================================== -->
+    <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
         <div class="container">
 
             <div class="row">
                 <div class="col-md-12">
-                    <h1>
-                    PURCHASE
-                    </h1>
-                </div>
-                <div class="col-md-12">
                     <ul class="ps-0">
                         <li><a href="{{ route('front.home') }}">Home</a></li>
                         <li><a href="#">{{ $reports->heading }}</a>
-                            </li>
+                        </li>
 
 
                     </ul>
@@ -33,15 +25,22 @@
 
 
     <!-- CONTACT
-            ================================================== -->
+                    ================================================== -->
     <section class="md">
         <div class="container">
             <div class="row">
+                <div class="col-md-12 text-center">
+                    <br />
+                    <h1 class="text-primary">
+                        PURCHASE
+                    </h1>
+                    <br />
+                </div>
                 <!-- contact form -->
                 <div class="col-lg-8 mb-1-9 mb-lg-0">
                     <div class="section-heading center">
                         <h3>
-                        PURCHASE
+                            PURCHASE
                         </h3>
                     </div>
                     <div class="title text-center mb-2">
@@ -79,9 +78,9 @@
                                     <div class="col-md-6">
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
-                                            <label>Company Name:</label>
-                                                <input class="form-control" id="name" type="text" name="company_name"
-                                                    placeholder="Enter Company Name" required />
+                                                <label>Company Name:</label>
+                                                <input class="form-control" id="name" type="text"
+                                                    name="company_name" placeholder="Enter Company Name" required />
 
                                             </div>
                                         </div>
@@ -90,7 +89,7 @@
                                     <div class="col-md-6">
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
-                                            <label>Job Title:</label>
+                                                <label>Job Title:</label>
                                                 <input class="form-control" id="name" type="text" name="job_title"
                                                     placeholder="Job Title" required />
 
@@ -102,8 +101,8 @@
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
                                                 <label>Country:</label>
-                                                <select class="form-control" id="country" type="text" name="country_name"
-                                                    placeholder="Select Country" required>
+                                                <select class="form-control" id="country" type="text"
+                                                    name="country_name" placeholder="Select Country" required>
                                                     <option value="">Select Country</option>
                                                     @if (getCountry())
                                                         @foreach (getCountry() as $country)
@@ -139,7 +138,7 @@
                                     <div class="col-md-6">
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
-                                            <label>City:</label>
+                                                <label>City:</label>
                                                 <input class="form-control" id="name" type="text" name="city_name"
                                                     placeholder="City name" required />
 
@@ -151,7 +150,7 @@
                                     <div class="col-md-6">
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
-                                            <label>Zip Code:</label>
+                                                <label>Zip Code:</label>
                                                 <input class="form-control" id="name" type="text" name="zip_code"
                                                     placeholder="Zip Code" required />
 
@@ -175,8 +174,8 @@
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
                                                 <label>Contact No:</label>
-                                                <input class="form-control" id="contact_no" type="number" name="contact"
-                                                    placeholder="Enter Contact No" required />
+                                                <input class="form-control" id="contact_no" type="number"
+                                                    name="contact" placeholder="Enter Contact No" required />
                                             </div>
                                         </div>
                                     </div>
@@ -189,9 +188,16 @@
                                                     placeholder="Select State" required>
                                                     <option value="">Select License Type</option>
                                                     @if ($reports->getReportLicenses)
-                                                    <option value="{{ $reports->getReportLicenses->single_user}}">{{ 'Single User' }}($ {{$reports->getReportLicenses->single_user}})</option>
-                                                    <option value="{{ $reports->getReportLicenses->multi_user}}">{{ 'Multi User' }}($ {{$reports->getReportLicenses->multi_user}})</option>
-                                                    <option value="{{ $reports->getReportLicenses->enterprise_user}}">{{ 'EnterPrise User' }}($ {{$reports->getReportLicenses->enterprise_user}})</option>
+                                                        <option value="{{ $reports->getReportLicenses->single_user }}">
+                                                            {{ 'Single User' }}($
+                                                            {{ $reports->getReportLicenses->single_user }})</option>
+                                                        <option value="{{ $reports->getReportLicenses->multi_user }}">
+                                                            {{ 'Multi User' }}($
+                                                            {{ $reports->getReportLicenses->multi_user }})</option>
+                                                        <option
+                                                            value="{{ $reports->getReportLicenses->enterprise_user }}">
+                                                            {{ 'EnterPrise User' }}($
+                                                            {{ $reports->getReportLicenses->enterprise_user }})</option>
                                                     @endif
                                                 </select>
                                             </div>
@@ -212,8 +218,7 @@
                                         <div class="quform-element form-group">
                                             <div class="quform-input">
                                                 <label>Address :</label>
-                                                    <textarea class="form-control h-100" id="message" name="address" rows="6"
-                                                    placeholder="Address" required></textarea>
+                                                <textarea class="form-control h-100" id="message" name="address" rows="6" placeholder="Address" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -330,14 +335,14 @@
 
             e.preventDefault();
             var ButtonText = $(this).find('button[type="button"]').html();
-       $(this).find('button').prop('disabled', true);
-       $(this).find('button').html('Loading ...');
-    //    $(this).find('.btn-submit').prop('disabled', true);
-    //    $(this).find('.btn-submit').html('Loading ...');
+            $(this).find('button').prop('disabled', true);
+            $(this).find('button').html('Loading ...');
+            //    $(this).find('.btn-submit').prop('disabled', true);
+            //    $(this).find('.btn-submit').html('Loading ...');
 
 
-    //    $(this).find('button[type="button"]').prop('disabled', true);
-    //    $(this).find('button[type="button"]').html('Loading ...');
+            //    $(this).find('button[type="button"]').prop('disabled', true);
+            //    $(this).find('button[type="button"]').html('Loading ...');
 
             $.ajax({
                 type: 'POST',
@@ -345,7 +350,7 @@
                 data: $('#contactUsForm').serialize(),
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
-                        window.location.href="{{url('thankyou')}}/"+data.id;
+                        window.location.href = "{{ url('thankyou') }}/" + data.id;
                     } else {
                         printErrorMsg(data.error);
                     }
@@ -361,7 +366,6 @@
                 $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
             });
         }
-
     </script>
 
 @endsection

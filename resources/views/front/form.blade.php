@@ -1,42 +1,29 @@
-<?php //include("header.php");
-?>
 @extends('front.layout')
 @section('title', 'Form Enquiry')
 @section('frontpage')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- PAGE TITLE
-                    ================================================== -->
-    <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7"
-        data-background="{{ asset('front/img/bg/bg5.jpg') }}">
+                            ================================================== -->
+    <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
         <div class="container">
 
             <div class="row">
-                <div class="col-md-12">
-                    <h1>
-                        @if ($type == 'request')
-                            {{ 'REQUEST SAMPLE' }}
-                        @elseif($type == 'enquiry')
-                            {{ 'ENQUIRY BEFORE BUYING' }}
-                        @elseif($type == 'discount')
-                            {{ 'ASK FOR DISCOUNT' }}
-                        @endif
-                    </h1>
-                </div>
+
                 <div class="col-md-12">
                     <ul class="ps-0">
                         <li><a href="{{ route('front.home') }}">Home</a></li>
                         @if ($type == 'request')
-                            <li><a
-                                    href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}">{{ 'REQUEST SAMPLE' }}</a>
+                            <li><a href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}"
+                                    class="text-white">{{ 'REQUEST SAMPLE' }}</a>
                             </li>
                         @elseif($type == 'enquiry')
-                            <li><a
-                                    href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'enquiry']) }}">{{ 'ENQUIRY BEFORE BUYING' }}</a>
+                            <li><a href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'enquiry']) }}"
+                                    class="text-white">{{ 'ENQUIRY BEFORE BUYING' }}</a>
                             </li>
                         @elseif($type == 'discount')
-                            <li><a
-                                    href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'discount']) }}">{{ 'ASK FOR DISCOUNT' }}</a>
+                            <li><a href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'discount']) }}"
+                                    class="text-white">{{ 'ASK FOR DISCOUNT' }}</a>
                             </li>
                         @endif
 
@@ -51,10 +38,11 @@
 
 
     <!-- CONTACT
-                    ================================================== -->
+                            ================================================== -->
     <section class="md">
         <div class="container">
             <div class="row">
+
                 <!-- contact form -->
                 <div class="col-lg-8 mb-1-9 mb-lg-0">
                     <div class="section-heading center">
@@ -355,26 +343,25 @@
 
 
                                     <!--<div class="bg-light p-4 border-radius-5 mb-1-9">
-                                        <div class="container">
-                                            <div class="position-relative">-->
-                                                <div class="owl-carousel owl-theme w-100">
-                                                    @if (getTestimonial())
-                                                        @foreach (getTestimonial() as $testimonial)
-                                                            <div class="testmonial-single">
-                                                                <p class="text-primary">{!! html_entity_decode($testimonial->comments) !!}</p>
-                                                                <img src="{{ asset('testimonials/client_image/') }}/{{ $testimonial->client_image }}"
-                                                                    class="rounded-circle" style="width:100px;"
-                                                                    alt="...">
-                                                                <h4 class="pt-4 text-primary">{{ $testimonial->name }}
-                                                                </h4>
-                                                                <h6 class="mb-1-9">{{ $testimonial->profile }}</h6>
-                                                            </div>
-                                                        @endforeach
-                                                    @endif
+                                                <div class="container">
+                                                    <div class="position-relative">-->
+                                    <div class="owl-carousel owl-theme w-100">
+                                        @if (getTestimonial())
+                                            @foreach (getTestimonial() as $testimonial)
+                                                <div class="testmonial-single">
+                                                    <p class="text-primary">{!! html_entity_decode($testimonial->comments) !!}</p>
+                                                    <img src="{{ asset('testimonials/client_image/') }}/{{ $testimonial->client_image }}"
+                                                        class="rounded-circle" style="width:100px;" alt="...">
+                                                    <h4 class="pt-4 text-primary">{{ $testimonial->name }}
+                                                    </h4>
+                                                    <h6 class="mb-1-9">{{ $testimonial->profile }}</h6>
                                                 </div>
-                                            <!--</div>
-                                        </div>
-                                    </div> -->
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                    <!--</div>
+                                                </div>
+                                            </div> -->
 
                                     <!-- end testimonials -->
                                 </div>
@@ -383,33 +370,33 @@
 
                         <!-- <div class="widget">
 
-                                <article class="card card-style1">
-                                    <div class="card-header bg-primary text-white">
-                                        Clients
-                                    </div>
-                                    <div class="card-body">
+                                        <article class="card card-style1">
+                                            <div class="card-header bg-primary text-white">
+                                                Clients
+                                            </div>
+                                            <div class="card-body">
 
 
-                                        <div class="bg-light p-4 border-radius-5 mb-1-9">
-                                            <div class="container">
+                                                <div class="bg-light p-4 border-radius-5 mb-1-9">
+                                                    <div class="container">
 
-                                                <div class="position-relative">
-                                                    <div class="owl-carousel owl-theme">
-                                                        @if (getClient())
-                                                            @foreach (getClient() as $client)
+                                                        <div class="position-relative">
+                                                            <div class="owl-carousel owl-theme">
+                                                                @if (getClient())
+                                                                    @foreach (getClient() as $client)
     <div class="item"><img alt="partner-image"
-                                                                        src="{{ asset('clients/images/') }}/{{ $client->image }}">
-                                                                </div>
+                                                                                src="{{ asset('clients/images/') }}/{{ $client->image }}">
+                                                                        </div>
     @endforeach
-                                                        @endif
+                                                                @endif
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                </article>
-                            </div> -->
+                                            </div>
+                                        </article>
+                                    </div> -->
 
                         <div class="widget">
                             <article class="card card-style1">
@@ -417,24 +404,26 @@
                                     Get In Touch With Us
                                 </div>
                                 <div class="card-body">
-                                    <p class="text-center"><i class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary"></i></p>
+                                    <p class="text-center"><i
+                                            class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary"></i>
+                                    </p>
                                     <h5 class="text-primary text-center font-weight-600 mb-1">How can we help?</h5>
                                     <p class="text-primary text-center font-weight-500 display-30">Let's get in touch!!</p>
-                                    <p class="text-center text-primary"><i class="fa fa-phone"></i><br/><a
-                                                href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
-                                                class="text-primary">
-                                                @if (getCompanyDetail())
-                                                    {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
-                                                @endif
+                                    <p class="text-center text-primary"><i class="fa fa-phone"></i><br /><a
+                                            href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
+                                            class="text-primary">
+                                            @if (getCompanyDetail())
+                                                {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
+                                            @endif
 
-                                            </a></p>
-                                            <p class="text-center text-primary"><i class="fa fa-envelope-open me-2"></i><br/><a
-                                                href="mailto:@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif"
-                                                class="text-primary">
-                                                @if (getCompanyDetail())
-                                                    {{ getCompanyDetail()->email_address }}
-                                                @endif
-                                            </a></p>
+                                        </a></p>
+                                    <p class="text-center text-primary"><i class="fa fa-envelope-open me-2"></i><br /><a
+                                            href="mailto:@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif"
+                                            class="text-primary">
+                                            @if (getCompanyDetail())
+                                                {{ getCompanyDetail()->email_address }}
+                                            @endif
+                                        </a></p>
                                     <br />
                                     <h6 class="text-primary text-center page-title-section">Follow Us</h6>
 

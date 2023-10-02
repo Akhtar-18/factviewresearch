@@ -5,8 +5,7 @@
                 <div class="col-md-12">
                     <div class="blog-list-simple-text">
                         <!-- <span>Business</span> -->
-                        <p><a
-                                href="{{ route('front.report', ['id' => $list->url]) }}">{{ $list->heading }}</a>
+                        <p><a href="{{ route('front.report', ['id' => $list->url]) }}">{{ $list->heading }}</a>
                         </p>
                         <ul class="meta ps-0">
                             <li>
@@ -28,8 +27,7 @@
                             </li>
                         </ul>
                         <p>{!! html_entity_decode(wordLimit($list->description)) !!}.
-                        <div class="text-start mt-2"><a
-                                href="{{ route('front.report', ['id' => $list->url]) }}"
+                        <div class="text-start mt-2"><a href="{{ route('front.report', ['id' => $list->url]) }}"
                                 class="btn btn-warning text-white"><span>Read
                                     More</span></a></div>
                     </div>

@@ -40,6 +40,14 @@
         <title>Market Research Reports | Industry Research Reports</title>
     @endif
 
+    @if ($route == 'front.reports')
+        <meta name="keywords" content="Reports, market research reports, market reports, industry research" />
+        <meta name="description" content="FactView Research has a repository of reports dealing in various segments" />
+
+        <!-- title  -->
+        <title>Market Research Reports | Industry Research Reports</title>
+    @endif
+
     @if ($route == 'front.about')
         <meta name="keywords"
             content="FactView research, market reports, industry reports, market services, market research firm" />
@@ -56,7 +64,7 @@
             content="FactView Research is a prominent market research firm that offers comprehensive and advanced insights to various industries" />
 
         <!-- title  -->
-        <title>Who we are | FactView Research</title>
+        <title>Who We Are | FactView Research</title>
     @endif
 
     @if ($route == 'front.whyus')
@@ -117,6 +125,16 @@
 
         <!-- title  -->
         <title>Contact Us</title>
+    @endif
+
+
+    @if ($route == 'front.services')
+        <meta name="keywords" content="Services, market services, market research services" />
+        <meta name="description"
+            content="FactView provides a vast variety of industry services which will help clients conquer the market" />
+
+        <!-- title  -->
+        <title>Market Research Services, Competitive Services</title>
     @endif
 
     <!-- favicon -->

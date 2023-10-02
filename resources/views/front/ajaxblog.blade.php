@@ -18,17 +18,17 @@
                     </div>
                 </article>
             </div>
-            @endforeach
-            @endif
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <!-- pager -->
-                <div class="text-center mt-1-9 mt-lg-6">
-                    <div class="pagination text-small text-uppercase text-extra-dark-gray">
-                    {{ $blogs->onEachSide(0)->render('front.pagination') }}
-                    </div>
-                </div>
-                <!-- end pager -->
+        @endforeach
+    @endif
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <!-- pager -->
+        <div class="text-center mt-1-9 mt-lg-6">
+            <div class="pagination text-small text-uppercase text-extra-dark-gray">
+                {{ $blogs->onEachSide(0)->render('front.pagination') }}
             </div>
         </div>
+        <!-- end pager -->
+    </div>
+</div>

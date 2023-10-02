@@ -1,11 +1,10 @@
 @extends('front.layout')
-@section('title', 'All Reports')
+@section('title', 'Market Research Reports | Industry Research Reports')
 @section('frontpage')
 
     <!-- PAGE TITLE
-                        ==========================      ======================== -->
-    <section class="page-title-section pt-1-9 pb-1-9"
-        style="background: radial-gradient(circle, rgba(32,33,93,1) 0%, rgba(42,102,177,1) 20%, rgba(21,178,75,1) 50%, rgba(248,149,33,1) 80%);">
+                                ==========================      ======================== -->
+    <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
         <div class="container">
 
             <div class="row">
@@ -13,7 +12,7 @@
                     <ul class="ps-0">
                         <ul class="ps-0">
                             <li><a href="{{ route('front.home') }}">Home</a></li>
-                            <li><a href="{{ route('front.reports') }}">All Reports</a></li>
+                            <li><a href="{{ route('front.reports') }}" class="text-white">Reports</a></li>
                         </ul>
                     </ul>
                 </div>
@@ -23,12 +22,15 @@
     </section>
 
     <!-- ALL REPORTS
-                        ================================================== -->
+                                ================================================== -->
     <section>
         <div class="container">
             <div class="row">
-
-
+                <div class="col-md-12 text-center">
+                    <br />
+                    <h1 class="text-primary">Market Research Reports | Industry Research Reports</h1>
+                    <br />
+                </div>
 
                 <!-- left panel section -->
                 <div class="col-lg-9 ps-lg-1-9" id="lists">
@@ -75,24 +77,25 @@
                                 Get In Touch With Us
                             </div>
                             <div class="card-body">
-                                <p class="text-center"><i class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary"></i></p>
+                                <p class="text-center"><i
+                                        class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary"></i></p>
                                 <h5 class="text-primary text-center font-weight-600 mb-1">How can we help?</h5>
                                 <p class="text-primary text-center font-weight-500 display-30">Let's get in touch!!</p>
-                                <p class="text-center text-primary"><i class="fa fa-phone"></i><br/><a
-                                            href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
-                                            class="text-primary">
-                                            @if (getCompanyDetail())
-                                                {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
-                                            @endif
+                                <p class="text-center text-primary"><i class="fa fa-phone"></i><br /><a
+                                        href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
+                                        class="text-primary">
+                                        @if (getCompanyDetail())
+                                            {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
+                                        @endif
 
-                                        </a></p>
-                                        <p class="text-center text-primary"><i class="fa fa-envelope-open me-2"></i><br/><a
-                                            href="mailto:@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif"
-                                            class="text-primary">
-                                            @if (getCompanyDetail())
-                                                {{ getCompanyDetail()->email_address }}
-                                            @endif
-                                        </a></p>
+                                    </a></p>
+                                <p class="text-center text-primary"><i class="fa fa-envelope-open me-2"></i><br /><a
+                                        href="mailto:@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif"
+                                        class="text-primary">
+                                        @if (getCompanyDetail())
+                                            {{ getCompanyDetail()->email_address }}
+                                        @endif
+                                    </a></p>
                                 <br />
                                 <h6 class="text-primary text-center page-title-section">Follow Us</h6>
 

@@ -1,5 +1,5 @@
 @extends('front.layout')
-@section('title', 'Thank Your')
+@section('title', 'Thank You')
 @section('frontpage')
 
 

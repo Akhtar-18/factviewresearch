@@ -1,11 +1,10 @@
-<?php //include("header.php");
-?>
 @extends('front.layout')
-@section('title', 'Home')
+@section('title', 'Market Research Reports, Industry Reports, Market Research, Data Analysis, Fact-Finding | FactView
+    Research')
 @section('frontpage')
 
     <!-- REVOLUTION SLIDER
-                                ================================================== -->
+                                    ================================================== -->
     <section-new class="top-position top-position3">
         <div class="row slider-fade">
             <div class="owl-carousel owl-theme w-100">
@@ -15,8 +14,8 @@
                             data-background="{{ asset('images') }}/{{ $list->slider_image }}">
                             <div class="h-100 d-table caption position-relative">
                                 <div class="overflow-hidden d-table-cell align-middle h-100">
-                                    <h1 class="alt-font text-success m-0">{{ $list->heading }}</h1>
-                                    <h3 class="text-warning">{{ $list->subheading }}</h3>
+                                    <h2 class="alt-font text-success m-0">{{ $list->heading }}</h2>
+                                    <h5 class="text-warning">{{ $list->subheading }}</h5>
                                     <!-- <p class="d-none d-lg-block mb-3 mb-lg-4">We provide best for our client and respect their business design idea.</p> -->
                                     <p><a href="{{ route('front.contact') }}" class="butn medium primary">
                                             <span class="alt-font">Learn More</span><i
@@ -33,7 +32,7 @@
         </section>
 
         <!-- ABOUT
-                                ================================================== -->
+                                    ================================================== -->
         <section class="md">
             <div class="container">
                 <div class="row align-items-center">
@@ -57,19 +56,19 @@
         </section>
 
         <!-- ADVICE
-                                ================================================== -->
+                                    ================================================== -->
         <!-- <section class="parallax md" data-overlay-dark="8" data-background="{{ asset('front/img/bg/bg1.jpg') }}">
-                <div class="container text-center">
-                    <div class="section-heading half white">
-                        <h2>Are you looking for professional advice?</h2>
-                        <p>We always try to provide you our best business consulting service.</p>
+                    <div class="container text-center">
+                        <div class="section-heading half white">
+                            <h2>Are you looking for professional advice?</h2>
+                            <p>We always try to provide you our best business consulting service.</p>
+                        </div>
+                        <a href="{{ route('front.contact') }}" class="butn primary white-hover"><span>Contact Us</span></a>
                     </div>
-                    <a href="{{ route('front.contact') }}" class="butn primary white-hover"><span>Contact Us</span></a>
-                </div>
-            </section> -->
+                </section> -->
 
         <!-- SERVICES
-                                ================================================== -->
+                                    ================================================== -->
         <section>
             <div class="container">
 
@@ -110,7 +109,7 @@
 
 
         <!-- COUNTER
-                                ================================================== -->
+                                    ================================================== -->
         <section class="parallax md" style="background: #2a66b1">
             <div class="container">
                 <div class="row mt-n1-9">
@@ -156,7 +155,7 @@
 
 
         <!-- REPORTS
-                                ================================================== -->
+                                    ================================================== -->
         <section>
             <div class="container">
                 <div class="row">
@@ -203,7 +202,7 @@
         </section>
 
         <!-- SUBSCRIBE
-                                ================================================== -->
+                                    ================================================== -->
         <section class="parallax" style="background: #2a66b1">
             <div class="container">
                 <div class="section-heading white">
@@ -249,7 +248,7 @@
         </section>
 
         <!-- BLOGS
-                                ================================================== -->
+                                    ================================================== -->
         <section>
             <div class="container">
 
@@ -301,7 +300,7 @@
 
 
         <!-- Press Releases
-                                ================================================== -->
+                                    ================================================== -->
         <section>
             <div class="container">
 
@@ -353,7 +352,7 @@
         </section>
 
         <!-- Case Studies
-                                ================================================== -->
+                                    ================================================== -->
         <section>
             <div class="container">
 

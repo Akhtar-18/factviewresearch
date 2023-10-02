@@ -1,23 +1,17 @@
-<?php //include("header.php");
-?>
 @extends('front.layout')
 @section('title', 'Privacy Policy')
 @section('frontpage')
 
     <!-- PAGE TITLE
-                ================================================== -->
-    <section class="page-title-section2 bg-img cover-background" data-overlay-dark="7"
-        data-background="{{ asset('front/img/bg/bg5.jpg') }}">
+                        ================================================== -->
+    <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
         <div class="container">
 
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Privacy Policy</h1>
-                </div>
-                <div class="col-md-12">
                     <ul class="ps-0">
                         <li><a href="{{ route('front.home') }}">Home</a></li>
-                        <li><a href="{{ route('front.privacy-policy') }}">Privacy Policy</a></li>
+                        <li><a href="{{ route('front.privacy-policy') }}" class="text-white">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -26,7 +20,7 @@
     </section>
 
     <!-- ABOUT
-                ================================================== -->
+                        ================================================== -->
     <section class="md">
         <div class="container">
 
