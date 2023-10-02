@@ -169,7 +169,7 @@
                                         </li>
                                         <li>
                                             <p><i class="far fa-envelope text-center"></i> <strong>Email:</strong> <a
-                                                    href="#!">
+                                                    href="">
                                                     @if (isset($contactData->email_address))
                                                         {{ $contactData->email_address }}
                                                     @endif

@@ -312,7 +312,7 @@
                                     {!! html_entity_decode($reports->customized) !!}
                                 @endif
                                 <div class="text-center">
-                                    <a class="btn btn-success mt-2" href="#!"><span>Request for
+                                    <a class="btn btn-success mt-2" href=""><span>Request for
                                             Customization</span></a>
                                 </div>
                             </div>

@@ -36,7 +36,7 @@
                     <div class="posts">
                         <div class="post">
                             <div class="post-img">
-                                <a href="#!" class="w-100">
+                                <a href="" class="w-100">
                                     <img src="{{ asset('press-releases') }}/{{ $press->image }}"
                                         alt="@if (isset($press->image_alt)) {{ $press->image_alt }} @endif">
                                 </a>
@@ -48,28 +48,28 @@
                                     </div>
                                     <ul class="meta ps-0">
                                         <!-- <li>
-                                                        <a href="#!">
+                                                        <a href="">
                                                             <i class="fa fa-user" aria-hidden="true"></i> Admin
                                                         </a>
                                                     </li> -->
                                         <!-- <li>
-                                                        <a href="#!">
+                                                        <a href="">
                                                             <i class="fa fa-folder-open" aria-hidden="true"></i> Designin
                                                         </a>
                                                     </li> -->
                                         <li>
-                                            <a href="#!">
+                                            <a href="">
                                                 <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                                                 {{ date('D M Y', strtotime($press->created_at)) }}
                                             </a>
                                         </li>
                                         <!-- <li>
-                                                        <a href="#!">
+                                                        <a href="">
                                                             <i class="fa fa-tags" aria-hidden="true"></i> Blog
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="#!">
+                                                        <a href="">
                                                             <i class="fa fa-comments" aria-hidden="true"></i> 0 Comments
                                                         </a>
                                                     </li> -->
@@ -81,11 +81,11 @@
                                 <div class="share-post">
                                     <span>Share Post</span>
                                     <ul class="ps-0 mb-0">
-                                        <li><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#!"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#!"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#!"><i class="fab fa-youtube"></i></a></li>
-                                        <li><a href="#!"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href=""><i class="fab fa-youtube"></i></a></li>
+                                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
