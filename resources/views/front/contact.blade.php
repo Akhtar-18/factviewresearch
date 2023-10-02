@@ -11,7 +11,7 @@
                 <div class="col-md-12">
                     <ul class="ps-0">
                         <li><a href="{{ route('front.home') }}">Home</a></li>
-                        <li><a href="{{ route('front.contact') }}">Contact Us</a></li>
+                        <li><a href="{{ route('front.contact') }}"class="text-white">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
