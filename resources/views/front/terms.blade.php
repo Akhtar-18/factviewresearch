@@ -28,7 +28,7 @@
                 <h1>Terms And Conditions Policy - FactView Research</h1>
                 <br /><br />
                 <p>Date: 20 July, 2023</p><br />
-                <p>1. Introduction:
+                <p>1. Introduction:</p>
 
                 <p>Welcome to FactView Research ("we," "our," or "us"). By accessing or using our website,
                     factviewresearch.com, and our market research services, you agree to abide by the following Terms and
