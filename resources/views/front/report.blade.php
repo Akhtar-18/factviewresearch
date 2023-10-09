@@ -1,11 +1,22 @@
 @extends('front.layout')
 @section('title', 'Report')
+
+
+
 @section('frontpage')
+
+@section('reportmetasection')
+
+    <meta name="keywords" content="{!! html_entity_decode($reports->metal_keywords) !!}" />
+    <meta name="description" content="{!! html_entity_decode($reports->meta_des) !!}" />
+
+    <!-- title  -->
+    <title>{!! html_entity_decode($reports->meta_title) !!}</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <!-- PAGE TITLE
-                                        ================================================== -->
+                                            ================================================== -->
     <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
         <div class="container">
 
@@ -28,7 +39,7 @@
 
 
     <!-- REPORT DETAILS
-                                        ================================================== -->
+                                            ================================================== -->
     <section class="blogs">
         <div class="container">
             <div class="row">
@@ -408,8 +419,8 @@
 
 
                                     <!--<div class="bg-light p-4 border-radius-5 mb-1-9">
-                                                <div class="container">
-                                                    <div class="position-relative">-->
+                                                    <div class="container">
+                                                        <div class="position-relative">-->
                                     <div class="owl-carousel owl-theme w-100">
                                         @if (getTestimonial())
                                             @foreach (getTestimonial() as $testimonial)
@@ -425,8 +436,8 @@
                                         @endif
                                     </div>
                                     <!--</div>
-                                                </div>
-                                            </div> -->
+                                                    </div>
+                                                </div> -->
 
                                     <!-- end testimonials -->
                                 </div>
@@ -470,8 +481,8 @@
                                 </div>
                                 <div class="card-body">
                                     <!--<p class="text-center"><i class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary"></i></p>
-                                            <h5 class="text-primary text-center font-weight-600 mb-1">How can we help?</h5>
-                                            <p class="text-primary text-center font-weight-500 display-30">Let's get in touch!!</p>-->
+                                                <h5 class="text-primary text-center font-weight-600 mb-1">How can we help?</h5>
+                                                <p class="text-primary text-center font-weight-500 display-30">Let's get in touch!!</p>-->
                                     <p class="text-center text-primary"><i class="fa fa-phone"></i><br /><a
                                             href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
                                             class="text-primary">
@@ -490,24 +501,24 @@
 
                                     <!-- <h6 class="text-primary text-center page-title-section">Follow Us</h6>
 
-                                            <ul class="social-listing text-center ps-0 display-30">
-                                                <li><a
-                                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i
-                                                            class="fab fa-facebook-f"></i></a>
-                                                </li>
-                                                <li><a
-                                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif"><i
-                                                            class="fab fa-twitter"></i></a>
-                                                </li>
-                                                <li><a
-                                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif"><i
-                                                            class="fab fa-instagram"></i></a>
-                                                </li>
-                                                <li><a
-                                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"><i
-                                                            class="fab fa-linkedin-in"></i></a>
-                                                </li>
-                                            </ul> -->
+                                                <ul class="social-listing text-center ps-0 display-30">
+                                                    <li><a
+                                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i
+                                                                class="fab fa-facebook-f"></i></a>
+                                                    </li>
+                                                    <li><a
+                                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif"><i
+                                                                class="fab fa-twitter"></i></a>
+                                                    </li>
+                                                    <li><a
+                                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif"><i
+                                                                class="fab fa-instagram"></i></a>
+                                                    </li>
+                                                    <li><a
+                                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"><i
+                                                                class="fab fa-linkedin-in"></i></a>
+                                                    </li>
+                                                </ul> -->
 
                                 </div>
                             </article>
@@ -540,9 +551,9 @@
                         class="butn primary white-hover"><span>Request a Sample pdf</span></a>
                 </div>
                 <!-- <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div> -->
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div> -->
             </div>
         </div>
     </div>

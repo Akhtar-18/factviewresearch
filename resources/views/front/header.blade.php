@@ -136,6 +136,9 @@
         <!-- title  -->
         <title>Market Research Services, Competitive Services</title>
     @endif
+    @if ($route == 'front.report')
+        @yield('reportmetasection')
+    @endif
 
     <!-- favicon -->
     <link rel="shortcut icon" href="{{ asset('front/img/logos/fvr-72-72.png') }}">

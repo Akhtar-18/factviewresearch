@@ -138,62 +138,72 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    @if(count($report->getReportTblSummary)>0)
-                                    @foreach($report->getReportTblSummary as $key=> $tblSummary)
-                                    <div class="row" id="rowsummary{{$key}}">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label class="mb-2">Heading<span class="text-danger"></span></label>
-                                                <input type="hidden" name="sid[]" class="form-control" id="sid{{$key}}" value="{{$tblSummary->id}}">
-                                                <input type="text" name="sheading[]" class="form-control" value="{{$tblSummary->heading}}">
-                                                @if ($errors->has('sheading[]'))
-                                                    <span class="text-danger">{{ $errors->first('sheading[]') }}</span>
-                                                @endif
+                                    @if (count($report->getReportTblSummary) > 0)
+                                        @foreach ($report->getReportTblSummary as $key => $tblSummary)
+                                            <div class="row" id="rowsummary{{ $key }}">
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label class="mb-2">Heading<span
+                                                                class="text-danger"></span></label>
+                                                        <input type="hidden" name="sid[]" class="form-control"
+                                                            id="sid{{ $key }}" value="{{ $tblSummary->id }}">
+                                                        <input type="text" name="sheading[]" class="form-control"
+                                                            value="{{ $tblSummary->heading }}">
+                                                        @if ($errors->has('sheading[]'))
+                                                            <span
+                                                                class="text-danger">{{ $errors->first('sheading[]') }}</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label class="mb-2">Details<span
+                                                                class="text-danger"></span></label>
+                                                        <textarea type="text" class="form-control" name="sdetails[]">{{ $tblSummary->details }}</textarea>
+                                                        @if ($errors->has('sdetails[]'))
+                                                            <span
+                                                                class="text-danger">{{ $errors->first('sdetails[]') }}</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 mt-3">
+                                                    <a onclick="addmoresummary()" class="btn btn-success mt-3"
+                                                        style="width: 70px;"><i class="fa fa-plus-circle"></i></a>
+                                                    <a onclick="removesummary('{{ $key }}')"
+                                                        class="btn btn-danger mt-3" style="width: 70px;">
+                                                        <i class="fa fa-trash"></i></a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label class="mb-2">Details<span class="text-danger"></span></label>
-                                                <textarea type="text" class="form-control" name="sdetails[]">{{$tblSummary->details}}</textarea>
-                                                @if ($errors->has('sdetails[]'))
-                                                    <span class="text-danger">{{ $errors->first('sdetails[]') }}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 mt-3">
-                                            <a onclick="addmoresummary()" class="btn btn-success mt-3" style="width: 70px;"><i
-                                                    class="fa fa-plus-circle"></i></a>
-                                                    <a onclick="removesummary('{{$key}}')" class="btn btn-danger mt-3" style="width: 70px;">
-                                                    <i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </div>
-                                    @endforeach
+                                        @endforeach
                                     @else
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label class="mb-2">Heading<span class="text-danger"></span></label>
-                                                <input type="hidden" name="sid[]" class="form-control" id="" value="">
-                                                <input type="text" name="sheading[]" class="form-control">
-                                                @if ($errors->has('sheading[]'))
-                                                    <span class="text-danger">{{ $errors->first('sheading[]') }}</span>
-                                                @endif
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label class="mb-2">Heading<span class="text-danger"></span></label>
+                                                    <input type="hidden" name="sid[]" class="form-control"
+                                                        id="" value="">
+                                                    <input type="text" name="sheading[]" class="form-control">
+                                                    @if ($errors->has('sheading[]'))
+                                                        <span
+                                                            class="text-danger">{{ $errors->first('sheading[]') }}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label class="mb-2">Details<span class="text-danger"></span></label>
+                                                    <textarea type="text" class="form-control" name="sdetails[]"></textarea>
+                                                    @if ($errors->has('sdetails[]'))
+                                                        <span
+                                                            class="text-danger">{{ $errors->first('sdetails[]') }}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 mt-3">
+                                                <a onclick="addmoresummary()" class="btn btn-success mt-3"
+                                                    style="width: 70px;"><i class="fa fa-plus-circle"></i></a>
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label class="mb-2">Details<span class="text-danger"></span></label>
-                                                <textarea type="text" class="form-control" name="sdetails[]"></textarea>
-                                                @if ($errors->has('sdetails[]'))
-                                                    <span class="text-danger">{{ $errors->first('sdetails[]') }}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 mt-3">
-                                            <a onclick="addmoresummary()" class="btn btn-success mt-3" style="width: 70px;"><i
-                                                    class="fa fa-plus-circle"></i></a>
-                                        </div>
-                                    </div>
                                     @endif
                                     <div id="rows"></div>
                                 </div>
@@ -600,11 +610,8 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="mb-2">Schema <span class="text-danger"></span></label>
-                                        <textarea class="form-control" name="schema" rows="12">
-@if (isset($report->schema))
-{{ $report->schema }}
-@endif
-</textarea>
+                                        <input class="form-control" name="schema"
+                                            value="@if (isset($report->schema)) {{ $report->schema }} @endif" />
                                         @if ($errors->has('schema'))
                                             <span class="text-danger">{{ $errors->first('schema') }}</span>
                                         @endif
@@ -613,11 +620,8 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="mb-2">Meta Title <span class="text-danger"></span></label>
-                                        <textarea class="form-control" name="meta_title" rows="12">
-@if (isset($report->meta_title))
-{{ $report->meta_title }}
-@endif
-</textarea>
+                                        <input class="form-control" name="meta_title"
+                                            value="@if (isset($report->meta_title)) {{ $report->meta_title }} @endif" />
                                         @if ($errors->has('meta_title'))
                                             <span class="text-danger">{{ $errors->first('meta_title') }}</span>
                                         @endif
@@ -626,11 +630,8 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="mb-2">Meta Description <span class="text-danger"></span></label>
-                                        <textarea class="form-control" name="meta_des" rows="12">
-@if (isset($report->meta_des))
-{{ $report->meta_des }}
-@endif
-</textarea>
+                                        <input class="form-control" name="meta_des"
+                                            value="@if (isset($report->meta_des)) {{ $report->meta_des }} @endif" />
                                         @if ($errors->has('meta_des'))
                                             <span class="text-danger">{{ $errors->first('meta_des') }}</span>
                                         @endif
@@ -639,11 +640,8 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="mb-2">Meta Keywords <span class="text-danger"></span></label>
-                                        <textarea class="form-control" name="metal_keywords" rows="12">
-@if (isset($report->metal_keywords))
-{{ $report->metal_keywords }}
-@endif
-</textarea>
+                                        <input class="form-control" name="metal_keywords"
+                                            value="@if (isset($report->metal_keywords)) {{ $report->metal_keywords }} @endif" />
                                         @if ($errors->has('metal_keywords'))
                                             <span class="text-danger">{{ $errors->first('metal_keywords') }}</span>
                                         @endif
@@ -669,24 +667,24 @@
 
         function addmore() {
             var new_item = '<div class="row" id="row' + loopCount + '">\
-            <div class="col-md-5">\
-                <div class="form-group">\
-                        <label class="mb-2">Question<span class="text-danger"></span></label>\
-                        <input type="hidden" name="faq_id[]" value="">\
-                        <textarea class="form-control"  name="question[]"></textarea>\
-                </div>\
-            </div>\
-            <div class="col-md-5">\
-                <div class="form-group">\
-                        <label class="mb-2">Answer<span class="text-danger"></span></label>\
-                        <textarea class="form-control"  name="answer[]"></textarea>\
-                </div>\
-            </div>\
-            <div class="col-md-2 mt-3">\
-                    <a onclick="addmore()" class="btn btn-success btn-sm mt-3"><i class="fa fa-plus"></i></a>&nbsp;\
-                    <a onclick="remove(' + loopCount + ')" class="btn btn-danger btn-sm mt-3"><i class="fa fa-trash"></i></a>\
-            </div>\
-        </div>';
+                    <div class="col-md-5">\
+                        <div class="form-group">\
+                                <label class="mb-2">Question<span class="text-danger"></span></label>\
+                                <input type="hidden" name="faq_id[]" value="">\
+                                <textarea class="form-control"  name="question[]"></textarea>\
+                        </div>\
+                    </div>\
+                    <div class="col-md-5">\
+                        <div class="form-group">\
+                                <label class="mb-2">Answer<span class="text-danger"></span></label>\
+                                <textarea class="form-control"  name="answer[]"></textarea>\
+                        </div>\
+                    </div>\
+                    <div class="col-md-2 mt-3">\
+                            <a onclick="addmore()" class="btn btn-success btn-sm mt-3"><i class="fa fa-plus"></i></a>&nbsp;\
+                            <a onclick="remove(' + loopCount + ')" class="btn btn-danger btn-sm mt-3"><i class="fa fa-trash"></i></a>\
+                    </div>\
+                </div>';
             $('#row').append(new_item);
             loopCount++;
             tinymce.init({
@@ -759,39 +757,39 @@
             //debugger;
             var new_item = '<div class="col-md-12 mt-3" id="main' + segmentCount +
                 '"><div class="row">\
-        <div class="form-group col-md-4">\
-          <label class="mb-2">Types<span class="text-danger"></span></label>\
-          <input type="hidden" class="form-control" name="segmenttype_id[]" placeholder="Types" value="">\
-            <input type="text" class="form-control" name="segmenttypename[]" placeholder="Types">\
-        </div>\
-        <div class="form-group col-md-3" style="margin-top: 3%;">\
-          <a class="add btn btn-sm btn-success text-white" style="width: 70px;" onclick="addrows()"><i class="fa fa-plus-circle"></i></a>&nbsp;<a class="add btn btn-sm btn-danger text-white" onclick="removemain(' +
+                <div class="form-group col-md-4">\
+                  <label class="mb-2">Types<span class="text-danger"></span></label>\
+                  <input type="hidden" class="form-control" name="segmenttype_id[]" placeholder="Types" value="">\
+                    <input type="text" class="form-control" name="segmenttypename[]" placeholder="Types">\
+                </div>\
+                <div class="form-group col-md-3" style="margin-top: 3%;">\
+                  <a class="add btn btn-sm btn-success text-white" style="width: 70px;" onclick="addrows()"><i class="fa fa-plus-circle"></i></a>&nbsp;<a class="add btn btn-sm btn-danger text-white" onclick="removemain(' +
                 segmentCount + ')" style="width: 70px;"><i class="fa fa-trash"></i></a>\
-        </div>\
-        <div class="col-md-12">\
-          <div class="table-responsive">\
-            <table class="table table-bordered" style="width: 100%;">\
-              <thead>\
-                <th>Action</th>\
-                <th>Sub Types</th>\
-                <th>Persentage</th>\
-              </thead>\
-              <tbody id="new_chq' + segmentCount + '">\
-                <tr>\
-                  <td><a class="add btn btn-sm btn-success text-white"  onclick="add(' + segmentCount + ')" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>\
-                  <input type="hidden" name="product_array_key[]" class="form-control" value="' + segmentCount + '">\
-                  <input type="hidden" name="subtyppeof_id[]" class="form-control" value="">\
-                  </td>\
-                 <td>\
-                   <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">\
-                  </td>\
-                  <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">\
-                </td>\
-                </tr>\
-              </tbody>\
-            </table>\
-          </div>\
-        </div></div></div>';
+                </div>\
+                <div class="col-md-12">\
+                  <div class="table-responsive">\
+                    <table class="table table-bordered" style="width: 100%;">\
+                      <thead>\
+                        <th>Action</th>\
+                        <th>Sub Types</th>\
+                        <th>Persentage</th>\
+                      </thead>\
+                      <tbody id="new_chq' + segmentCount + '">\
+                        <tr>\
+                          <td><a class="add btn btn-sm btn-success text-white"  onclick="add(' + segmentCount + ')" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>\
+                          <input type="hidden" name="product_array_key[]" class="form-control" value="' + segmentCount + '">\
+                          <input type="hidden" name="subtyppeof_id[]" class="form-control" value="">\
+                          </td>\
+                         <td>\
+                           <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">\
+                          </td>\
+                          <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">\
+                        </td>\
+                        </tr>\
+                      </tbody>\
+                    </table>\
+                  </div>\
+                </div></div></div>';
             $('#appendrow').append(new_item);
             segmentCount++;
         }
@@ -802,17 +800,17 @@
         function add(idss = '') {
             var pro = (idss) ? idss : 0;
             var new_input = '<tr id="rows' + loop_product + '">\
-                  <td><a class="add btn btn-sm btn-success text-white" style="width: 70px;" onclick="add(' + idss +
+                          <td><a class="add btn btn-sm btn-success text-white" style="width: 70px;" onclick="add(' + idss +
                 ')"><i class="fa fa-plus-circle"></i></a> &nbsp;<input type="hidden" name="product_array_key[]" class="form-control" value="' +
                 pro + '">\
-                    <a class="add btn btn-sm btn-danger text-white" onclick="removesub(' + loop_product + ')" style="width: 70px;"><i class="fa fa-trash"></i></a></td>\
-                  <td>\
-                  <input type="hidden" name="subtyppeof_id[]" class="form-control" value="">\
-                   <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">\
-                  </td>\
-                  <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">\
-                </td>\
-                </tr>';
+                            <a class="add btn btn-sm btn-danger text-white" onclick="removesub(' + loop_product + ')" style="width: 70px;"><i class="fa fa-trash"></i></a></td>\
+                          <td>\
+                          <input type="hidden" name="subtyppeof_id[]" class="form-control" value="">\
+                           <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">\
+                          </td>\
+                          <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">\
+                        </td>\
+                        </tr>';
             if (idss) {
                 $('#new_chq' + idss).append(new_input);
             } else {
@@ -835,24 +833,24 @@
 
         function addmarketvalue() {
             var new_item = '<div class="row" id="marketvaluerow' + loopmarketvalueCount + '">\
-            <div class="col-md-5">\
-                <div class="form-group">\
-                    <label class="mb-2">Year<span class="text-danger"></span></label>\
-                    <input type="hidden" name="market_id[]" value="">\
-                    <input type="text" class="form-control" name="marketyear[]" placeholder="Year">\
-                </div>\
-            </div>\
-            <div class="col-md-5">\
-                <div class="form-group">\
-                    <label class="mb-2">Percentage<span class="text-danger"></span></label>\
-                    <input type="text" class="form-control" name="marketvalue[]" placeholder="Percentage">\
-                </div>\
-            </div>\
-            <div class="col-md-2 mt-3">\
-                    <a onclick="addmarketvalue()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
-                    <a onclick="removemarketvalue(' + loopmarketvalueCount + ')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
-            </div>\
-        </div>';
+                    <div class="col-md-5">\
+                        <div class="form-group">\
+                            <label class="mb-2">Year<span class="text-danger"></span></label>\
+                            <input type="hidden" name="market_id[]" value="">\
+                            <input type="text" class="form-control" name="marketyear[]" placeholder="Year">\
+                        </div>\
+                    </div>\
+                    <div class="col-md-5">\
+                        <div class="form-group">\
+                            <label class="mb-2">Percentage<span class="text-danger"></span></label>\
+                            <input type="text" class="form-control" name="marketvalue[]" placeholder="Percentage">\
+                        </div>\
+                    </div>\
+                    <div class="col-md-2 mt-3">\
+                            <a onclick="addmarketvalue()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
+                            <a onclick="removemarketvalue(' + loopmarketvalueCount + ')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
+                    </div>\
+                </div>';
             $('#marketvalue').append(new_item);
             loopmarketvalueCount++;
         }
@@ -866,24 +864,24 @@
 
         function addregion() {
             var new_itemr = '<div class="row" id="regionrow' + loopregionCount + '">\
-            <div class="col-md-5">\
-                <div class="form-group">\
-                    <label class="mb-2">Region Name<span class="text-danger"></span></label>\
-                     <input type="hidden" name="region_id[]" value="">\
-                    <input type="text" class="form-control" name="regionname[]" placeholder="Region Name">\
-                </div>\
-            </div>\
-            <div class="col-md-5">\
-                <div class="form-group">\
-                    <label class="mb-2">Percentage<span class="text-danger"></span></label>\
-                    <input type="text" class="form-control" name="regionvalue[]" placeholder="Region Percentage">\
-                </div>\
-            </div>\
-            <div class="col-md-2 mt-3">\
-                <a onclick="addregion()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
-                <a onclick="removeregion(' + loopregionCount + ')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
-            </div>\
-        </div>';
+                    <div class="col-md-5">\
+                        <div class="form-group">\
+                            <label class="mb-2">Region Name<span class="text-danger"></span></label>\
+                             <input type="hidden" name="region_id[]" value="">\
+                            <input type="text" class="form-control" name="regionname[]" placeholder="Region Name">\
+                        </div>\
+                    </div>\
+                    <div class="col-md-5">\
+                        <div class="form-group">\
+                            <label class="mb-2">Percentage<span class="text-danger"></span></label>\
+                            <input type="text" class="form-control" name="regionvalue[]" placeholder="Region Percentage">\
+                        </div>\
+                    </div>\
+                    <div class="col-md-2 mt-3">\
+                        <a onclick="addregion()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
+                        <a onclick="removeregion(' + loopregionCount + ')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
+                    </div>\
+                </div>';
             $('#regions').append(new_itemr);
             loopregionCount++;
         }
@@ -896,24 +894,24 @@
 
         function addmarketshare() {
             var new_items = '<div class="row" id="marketsharerow' + loopmarketshareCount + '">\
-             <div class="col-md-5">\
-                    <div class="form-group">\
-                        <label class="mb-2">Market<span class="text-danger"></span></label>\
-                        <input type="hidden" name="marketshare_id[]" value="">\
-                        <input type="text" class="form-control" name="marketsharename[]" placeholder="Market">\
+                     <div class="col-md-5">\
+                            <div class="form-group">\
+                                <label class="mb-2">Market<span class="text-danger"></span></label>\
+                                <input type="hidden" name="marketshare_id[]" value="">\
+                                <input type="text" class="form-control" name="marketsharename[]" placeholder="Market">\
+                            </div>\
+                        </div>\
+                        <div class="col-md-5">\
+                            <div class="form-group">\
+                                <label class="mb-2">Percentage<span class="text-danger"></span></label>\
+                                <input type="text" class="form-control" name="marketsharevalue[]" placeholder="Percentage">\
+                            </div>\
+                        </div>\
+                    <div class="col-md-2 mt-3">\
+                        <a onclick="addmarketshare()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
+                        <a onclick="removemarketshare(' + loopmarketshareCount + ')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
                     </div>\
-                </div>\
-                <div class="col-md-5">\
-                    <div class="form-group">\
-                        <label class="mb-2">Percentage<span class="text-danger"></span></label>\
-                        <input type="text" class="form-control" name="marketsharevalue[]" placeholder="Percentage">\
-                    </div>\
-                </div>\
-            <div class="col-md-2 mt-3">\
-                <a onclick="addmarketshare()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
-                <a onclick="removemarketshare(' + loopmarketshareCount + ')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
-            </div>\
-        </div>';
+                </div>';
             $('#marketshares').append(new_items);
             loopmarketshareCount++;
         }
@@ -925,110 +923,110 @@
 
 
 
-<script>
-          var loopCountSummary = 10;
+    <script>
+        var loopCountSummary = 10;
 
-function addmoresummary() {
-    var new_item = '<div class="row" id="rowsummary' + loopCountSummary + '">\
-    <div class="col-md-5">\
-        <div class="form-group">\
-                <label class="mb-2">Heading<span class="text-danger"></span></label>\
-                <input type="hidden" name="sid[]" class="form-control" value="">\
-                <input type="text" class="form-control"  name="sheading[]">\
-        </div>\
-    </div>\
-    <div class="col-md-5">\
-        <div class="form-group">\
-                <label class="mb-2">Details<span class="text-danger"></span></label>\
-                <textarea type="text" class="form-control"  name="sdetails[]"></textarea>\
-        </div>\
-    </div>\
-    <div class="col-md-2 mt-3">\
-            <a onclick="addmoresummary()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
-            <a onclick="removesummary(' + loopCountSummary + ')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
-    </div>\
-</div>';
-    $('#rows').append(new_item);
-    loopCountSummary++;
-    tinymce.init({
-            selector: 'textarea',
-            plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars advcode fullscreen image link media template codesample table charmap powerpaste hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
-            imagetools_cors_hosts: ['picsum.photos'],
-            menubar: 'file edit view insert format tools table help',
-            toolbar: 'undo redo | bold italic underline strikethrough | styleselect | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl | link image code ',
-            toolbar_sticky: true,
-            powerpaste_allow_local_images: true,
-            powerpaste_word_import: 'prompt',
-            powerpaste_html_import: 'prompt',
-            autosave_ask_before_unload: true,
-            autosave_interval: '30s',
-            autosave_prefix: '{path}{query}-{id}-',
-            autosave_restore_when_empty: false,
-            autosave_retention: '2m',
-            image_advtab: true,
-            importcss_append: true,
-            /* enable title field in the Image dialog*/
-            image_title: true,
-            /* enable automatic uploads of images represented by blob or data URIs*/
-            automatic_uploads: true,
-            /*
-              URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
-              images_upload_url: 'postAcceptor.php',
-              here we add custom filepicker only to Image dialog
-            */
-            file_picker_types: 'image',
-            /* and here's our custom image picker*/
-            file_picker_callback: function(cb, value, meta) {
-                var input = document.createElement('input');
-                input.setAttribute('type', 'file');
-                input.setAttribute('accept', 'image/*');
-
+        function addmoresummary() {
+            var new_item = '<div class="row" id="rowsummary' + loopCountSummary + '">\
+            <div class="col-md-5">\
+                <div class="form-group">\
+                        <label class="mb-2">Heading<span class="text-danger"></span></label>\
+                        <input type="hidden" name="sid[]" class="form-control" value="">\
+                        <input type="text" class="form-control"  name="sheading[]">\
+                </div>\
+            </div>\
+            <div class="col-md-5">\
+                <div class="form-group">\
+                        <label class="mb-2">Details<span class="text-danger"></span></label>\
+                        <textarea type="text" class="form-control"  name="sdetails[]"></textarea>\
+                </div>\
+            </div>\
+            <div class="col-md-2 mt-3">\
+                    <a onclick="addmoresummary()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
+                    <a onclick="removesummary(' + loopCountSummary + ')" class="btn btn-danger mt-3" style="width: 70px;"><i class="fa fa-trash"></i></a>\
+            </div>\
+        </div>';
+            $('#rows').append(new_item);
+            loopCountSummary++;
+            tinymce.init({
+                selector: 'textarea',
+                plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars advcode fullscreen image link media template codesample table charmap powerpaste hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+                imagetools_cors_hosts: ['picsum.photos'],
+                menubar: 'file edit view insert format tools table help',
+                toolbar: 'undo redo | bold italic underline strikethrough | styleselect | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl | link image code ',
+                toolbar_sticky: true,
+                powerpaste_allow_local_images: true,
+                powerpaste_word_import: 'prompt',
+                powerpaste_html_import: 'prompt',
+                autosave_ask_before_unload: true,
+                autosave_interval: '30s',
+                autosave_prefix: '{path}{query}-{id}-',
+                autosave_restore_when_empty: false,
+                autosave_retention: '2m',
+                image_advtab: true,
+                importcss_append: true,
+                /* enable title field in the Image dialog*/
+                image_title: true,
+                /* enable automatic uploads of images represented by blob or data URIs*/
+                automatic_uploads: true,
                 /*
-                  Note: In modern browsers input[type="file"] is functional without
-                  even adding it to the DOM, but that might not be the case in some older
-                  or quirky browsers like IE, so you might want to add it to the DOM
-                  just in case, and visually hide it. And do not forget do remove it
-                  once you do not need it anymore.
+                  URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
+                  images_upload_url: 'postAcceptor.php',
+                  here we add custom filepicker only to Image dialog
                 */
+                file_picker_types: 'image',
+                /* and here's our custom image picker*/
+                file_picker_callback: function(cb, value, meta) {
+                    var input = document.createElement('input');
+                    input.setAttribute('type', 'file');
+                    input.setAttribute('accept', 'image/*');
 
-                input.onchange = function() {
-                    var file = this.files[0];
+                    /*
+                      Note: In modern browsers input[type="file"] is functional without
+                      even adding it to the DOM, but that might not be the case in some older
+                      or quirky browsers like IE, so you might want to add it to the DOM
+                      just in case, and visually hide it. And do not forget do remove it
+                      once you do not need it anymore.
+                    */
 
-                    var reader = new FileReader();
-                    reader.onload = function() {
-                        /*
-                          Note: Now we need to register the blob in TinyMCEs image blob
-                          registry. In the next release this part hopefully won't be
-                          necessary, as we are looking to handle it internally.
-                        */
-                        var id = 'blobid' + (new Date()).getTime();
-                        var blobCache = tinymce.activeEditor.editorUpload.blobCache;
-                        var base64 = reader.result.split(',')[1];
-                        var blobInfo = blobCache.create(id, file, base64);
-                        blobCache.add(blobInfo);
+                    input.onchange = function() {
+                        var file = this.files[0];
 
-                        /* call the callback and populate the Title field with the file name */
-                        cb(blobInfo.blobUri(), {
-                            title: file.name
-                        });
+                        var reader = new FileReader();
+                        reader.onload = function() {
+                            /*
+                              Note: Now we need to register the blob in TinyMCEs image blob
+                              registry. In the next release this part hopefully won't be
+                              necessary, as we are looking to handle it internally.
+                            */
+                            var id = 'blobid' + (new Date()).getTime();
+                            var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                            var base64 = reader.result.split(',')[1];
+                            var blobInfo = blobCache.create(id, file, base64);
+                            blobCache.add(blobInfo);
+
+                            /* call the callback and populate the Title field with the file name */
+                            cb(blobInfo.blobUri(), {
+                                title: file.name
+                            });
+                        };
+                        reader.readAsDataURL(file);
                     };
-                    reader.readAsDataURL(file);
-                };
 
-                input.click();
-            },
-            height: 200,
-            image_caption: true,
-            quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
-            noneditable_noneditable_class: 'mceNonEditable',
-            toolbar_mode: 'sliding',
-            contextmenu: 'link image imagetools table',
-            //content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-        });
-}
+                    input.click();
+                },
+                height: 200,
+                image_caption: true,
+                quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+                noneditable_noneditable_class: 'mceNonEditable',
+                toolbar_mode: 'sliding',
+                contextmenu: 'link image imagetools table',
+                //content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+            });
+        }
 
-function removesummary(ids) {
-    $('#rowsummary' + ids).remove();
-}
+        function removesummary(ids) {
+            $('#rowsummary' + ids).remove();
+        }
     </script>
 @endsection
