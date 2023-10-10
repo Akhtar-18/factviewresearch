@@ -11,7 +11,7 @@ class ReportsModel extends Model
     use HasFactory,SoftDeletes;
     protected $table="reports";
     protected $primaryKey = "id";
-    protected $fillable = ['category_id',
+    protected $fillable =   ['category_id',
                             'sub_category_id',
                                 'heading',
                                 'url',
@@ -28,7 +28,8 @@ class ReportsModel extends Model
                                 'schema',
                                 'meta_title',
                                 'meta_des',
-                                'metal_keywords'
+                                'metal_keywords',
+                                'h1_column'
                             ];
         public function getCategoryName()
         {

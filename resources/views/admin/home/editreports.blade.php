@@ -607,6 +607,17 @@
                                     <hr class="bg-info">
                                     <p><b> SEO Section</b></p>
                                 </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="mb-2">Heading H1 <span class="text-danger"></span></label>
+                                        <input class="form-control" name="h1_column" value="@if (isset($report->h1_column)) {{ $report->h1_column }} @endif" />
+                                        @if ($errors->has('h1_column'))
+                                            <span class="text-danger">{{ $errors->first('h1_column') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="mb-2">Schema <span class="text-danger"></span></label>

@@ -398,6 +398,15 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label class="mb-2">Heading H1 <span class="text-danger"></span></label>
+                                        <input class="form-control" name="h1_column" value="{{ old('h1_column') }}" />
+                                        @if ($errors->has('h1_column'))
+                                            <span class="text-danger">{{ $errors->first('h1_column') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         <label class="mb-2">Schema <span class="text-danger"></span></label>
                                         <input class="form-control" name="schema" value="{{ old('schema') }}" />
                                         @if ($errors->has('schema'))

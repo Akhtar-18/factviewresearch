@@ -134,6 +134,7 @@ class ReportsController extends Controller
             'methodology' => $request->methodology,
             'schema' => $request->schema,
             'meta_title' => $request->meta_title,
+            'h1_column'   => $request->h1_column,
             'meta_des' => $request->meta_des,
             'metal_keywords' => $request->metal_keywords,
         ];
@@ -318,6 +319,7 @@ class ReportsController extends Controller
             'segment' => $request->segment,
             'methodology' => $request->methodology,
             'schema' => $request->schema,
+            'h1_column'   => $request->h1_column,
             'meta_title' => $request->meta_title,
             'meta_des' => $request->meta_des,
             'metal_keywords' => $request->metal_keywords,

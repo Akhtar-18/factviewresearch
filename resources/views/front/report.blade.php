@@ -1,10 +1,6 @@
 @extends('front.layout')
 @section('title', 'Report')
-
-
-
 @section('frontpage')
-
 @section('reportmetasection')
 
     <meta name="keywords" content="{!! html_entity_decode($reports->metal_keywords) !!}" />
@@ -51,6 +47,7 @@
                             <div class="col-md-12">
                                 <div class="blog-list-simple-text">
                                     <!-- <span>Business</span> -->
+                                    <h1 class="d-none">{{$reports->h1_column}}</h1>
                                     <h6 class="text-primary">{{ $reports->heading }}</h6>
                                     <ul class="meta ps-0">
                                         <li>
