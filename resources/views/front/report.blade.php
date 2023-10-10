@@ -47,7 +47,7 @@
                             <div class="col-md-12">
                                 <div class="blog-list-simple-text">
                                     <!-- <span>Business</span> -->
-                                    <h1 class="d-none">{{$reports->h1_column}}</h1>
+                                    <h1 class="d-none">{{$reports->h1_column??''}}</h1>
                                     <h6 class="text-primary">{{ $reports->heading }}</h6>
                                     <ul class="meta ps-0">
                                         <li>
