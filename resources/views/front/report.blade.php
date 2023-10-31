@@ -3,11 +3,11 @@
 @section('frontpage')
 @section('reportmetasection')
 
-    <meta name="keywords" content="{!! html_entity_decode($reports->metal_keywords) !!}" />
-    <meta name="description" content="{!! html_entity_decode($reports->meta_des) !!}" />
+    <meta name="keywords" content="{{ strip_tags($reports->metal_keywords) }}" />
+    <meta name="description" content="{{ strip_tags($reports->meta_des) }}" />
 
     <!-- title  -->
-    <title>{!! html_entity_decode($reports->meta_title) !!}</title>
+    <title>{{ strip_tags($reports->meta_title) }}</title>
     @endsection
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
