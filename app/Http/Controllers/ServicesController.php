@@ -32,7 +32,7 @@ class ServicesController extends Controller
 
                   ->addColumn('slug', function ($row) {
                       if (isset($row->slug)) {
-                          $contents = URL::to('service/') . '/' . $row->slug;
+                          $contents = URL::to('services/') . '/' . $row->slug;
                           $slug = '<a  href="' . $contents . '">' . $contents . '</a>';
                       } else {
                           $slug = '';
