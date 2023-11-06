@@ -163,11 +163,14 @@
 
 <script>
     $(document).ready(function() {
-        $('body').bind('cut copy', function(e) {
+        /*$('body').bind('cut copy', function(e) {
             e.preventDefault();
         });
         $("body").on("contextmenu", function(e) {
             return false;
+        });*/
+        $("body").on("cut copy", function(e) {
+            e.preventDefault();
         });
     });
 </script>
@@ -205,7 +208,7 @@
 
     function setCookie(key, value, expiry) {
         var expires = new Date();
-        expires.setTime(expires.getTime() + (expiry  24  60  60  1000));
+        expires.setTime(expires.getTime() + (expiry 24 60 60 1000));
         document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
     }
 </script> -->

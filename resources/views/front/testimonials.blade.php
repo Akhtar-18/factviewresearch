@@ -28,7 +28,7 @@
             </div>
         </div>
     </section>
-    <section class="parallax box-hover" data-overlay-dark="8" data-background="{{ asset('front/img/bg/bg8.jpg') }}">
+    <section class="parallax box-hover">
         <div class="container">
             <div class="position-relative">
                 <div class="owl-carousel owl-theme">

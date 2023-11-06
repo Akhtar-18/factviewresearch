@@ -321,7 +321,7 @@
                                     {!! html_entity_decode($reports->customized) !!}
                                 @endif
                                 <div class="text-center">
-                                    <a class="btn btn-success mt-2" href=""><span>Request for
+                                    <a class="btn btn-success mt-2" href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'enquiry']) }}"><span>Request for
                                             Customization</span></a>
                                 </div>
                             </div>
@@ -390,16 +390,23 @@
                             <article class="card card-style1">
 
                                 <div class="card-body text-center">
-                                    <a class="butn bg-danger m-2" style="width:150px"
+                                    <a class="btn btn-danger m-2 text-white" style="width:150px"
+                                        href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}"><span>Free
+                                            Sample</span></a>
+                                    <a class="btn btn-warning m-2 text-white" style="width:150px"
+                                        href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'enquiry']) }}"><span>Enquiry</span></a>
+                                    <a class="btn btn-success m-2 text-white" style="width:150px"
+                                        href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'discount']) }}"><span>Discount</span></a>
+                                    <!-- <a class="butn bg-danger m-2" style="width:150px"
                                         href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}"><span>Free
                                             Sample</span></a>
                                     <a class="butn bg-warning m-2" style="width:150px"
                                         href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'enquiry']) }}"><span>Enquiry</span></a>
                                     <a class="butn bg-success m-2" style="width:150px"
-                                        href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'discount']) }}"><span>Discount</span></a>
-                                    <a class="butn bg-info m-2" style="width:150px"
+                                        href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'discount']) }}"><span>Discount</span></a>-->
+                                    <!-- <a class="butn bg-info m-2" style="width:150px"
                                         href="{{ route('front.buynow', $reports->id) }}"><span>Buy
-                                            Report</span></a>
+                                            Report</span></a> -->
 
 
                                 </div>

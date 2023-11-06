@@ -1,9 +1,9 @@
 <!-- TESTIMONIAL
         ================================================== -->
-<section class="parallax box-hover" data-overlay-dark="8" data-background="{{ asset('front/img/bg/bg8.jpg') }}">
+<section class="parallax box-hover">
     <div class="container">
         <div class="section-heading">
-            <h2 class="text-white">Testimonials</h2>
+            <h2>Testimonials</h2>
         </div>
         <div class="position-relative">
             <div class="owl-carousel owl-theme">

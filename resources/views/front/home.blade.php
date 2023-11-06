@@ -173,10 +173,12 @@
                                 <article class="card card-style2 box-shadow-none">
                                     <div class="border border-width-2 border-color-extra-light-gray p-1-9">
                                         <h3 class="h5 mb-3"><a href="{{ route('front.report', ['id' => $report->url]) }}"
-                                                class="post-title d-block">{{ $report->heading }}</a></h3>
+                                                class="post-title d-block">{!! html_entity_decode(wordLimitset($report->heading, 10)) !!}</a></h3>
                                         <div class="author">
                                             <span class="text-uppercase display-30 d-inline-block">Published Date:
                                                 {{ date('M, Y', strtotime($report->publish_month)) }} </span>
+                                        </div>
+                                        <div class="author">
                                             <span class="text-uppercase display-30 d-inline-block">Pages:
                                                 {{ $report->pages }}</span>
                                         </div>
@@ -203,7 +205,7 @@
 
         <!-- SUBSCRIBE
                                     ================================================== -->
-        <section class="parallax" style="background: #2a66b1">
+        <!-- <section class="parallax" style="background: #2a66b1">
             <div class="container">
                 <div class="section-heading white">
                     <span>News Letter</span>
@@ -218,7 +220,7 @@
 
                             <div class="row">
 
-                                <!-- Begin Text input element -->
+
                                 <div class="col-md-12">
                                     <div class="quform-element form-group mb-0">
                                         <div class="quform-input">
@@ -227,16 +229,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Text input element -->
 
-                                <!-- Begin Submit button -->
                                 <div class="col-md-12">
                                     <div class="quform-submit-inner">
                                         <button class="butn primary" type="submit"><span>Subscribe</span></button>
                                     </div>
                                     <div class="quform-loading-wrap"><span class="quform-loading"></span></div>
                                 </div>
-                                <!-- End Submit button -->
+
 
                             </div>
 
@@ -245,7 +245,7 @@
                     </form>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- BLOGS
                                     ================================================== -->
@@ -269,10 +269,7 @@
                                             <img src="{{ asset('blogs') }}/{{ $blog->image }}"
                                                 alt="{{ $blog->image_alt }}">
                                         </a>
-                                        <div class="position-absolute position-right position-bottom"><a
-                                                href="{{ route('front.blog', $blog->url) }}"
-                                                class="text-uppercase display-32 alt-font py-2 px-3 d-inline-block bg-black text-white">Redesign</a>
-                                        </div>
+
                                     </div>
                                     <div class="border border-width-2 border-color-extra-light-gray p-1-9">
                                         <h3 class="h5 mb-3"><a href="{{ route('front.blog', $blog->url) }}"
@@ -322,10 +319,7 @@
                                             <img src="{{ asset('press-releases') }}/{{ $pres->image }}"
                                                 alt="{{ $pres->image_alt }}">
                                         </a>
-                                        <div class="position-absolute position-right position-bottom"><a
-                                                href="{{ route('front.press', $pres->url) }}"
-                                                class="text-uppercase display-32 alt-font py-2 px-3 d-inline-block bg-black text-white">Redesign</a>
-                                        </div>
+
                                     </div>
                                     <div class="border border-width-2 border-color-extra-light-gray p-1-9">
                                         <h3 class="h5 mb-3"><a href="{{ route('front.press', $pres->url) }}"
@@ -374,10 +368,7 @@
                                             <img src="{{ asset('case-studies') }}/{{ $case->image }}"
                                                 alt="{{ $case->image_alt }}">
                                         </a>
-                                        <div class="position-absolute position-right position-bottom"><a
-                                                href="{{ route('front.case-study', $case->url) }}"
-                                                class="text-uppercase display-32 alt-font py-2 px-3 d-inline-block bg-black text-white">Redesign</a>
-                                        </div>
+
                                     </div>
                                     <div class="border border-width-2 border-color-extra-light-gray p-1-9">
                                         <h3 class="h5 mb-3"><a href="{{ route('front.case-study', $case->url) }}"

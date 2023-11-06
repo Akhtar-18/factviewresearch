@@ -277,11 +277,11 @@
                                             {{ getCompanyDetail()->email_address }}
                                         @endif
                                     </li>
-                                    <li><i class="fas fa-map-marker-alt"></i>
+                                    <!-- <li><i class="fas fa-map-marker-alt"></i>
                                         @if (getCompanyDetail())
                                             {{ getCompanyDetail()->address }}
                                         @endif
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
