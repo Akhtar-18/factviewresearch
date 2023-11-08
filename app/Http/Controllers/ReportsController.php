@@ -36,7 +36,7 @@ class ReportsController extends Controller
     public function list(Request $request)
     {
         if ($request->ajax()) {
-            $data = ReportsModel::with(['getCategoryName', 'getSubCategoryName'])->select(['id', 'category_id', 'sub_category_id', 'heading', 'url', 'pages', 'publish_month'])->orderBy('id', 'desc');
+            $data = ReportsModel::with(['getCategoryName', 'getSubCategoryName'])->select(['id', 'category_id', 'sub_category_id', 'heading', 'url', 'pages', 'publish_month','status'])->orderBy('id', 'desc');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('category_id', function ($row) {
@@ -60,10 +60,26 @@ class ReportsController extends Controller
                     return $url;
                 })
 
-
+                ->addColumn('status',function($row)
+                {
+                    if($row->status==1)
+                    {
+                        $activetitle="Active";
+                        $btn="btn-success";
+                        $statuss=0;
+                    }
+                    else
+                    {
+                        $activetitle="Deactive";
+                        $btn="btn-danger";
+                        $statuss=1;
+                    }
+                    $status='<a class="btn '.$btn.' changeStatusCustom" data-id="'.$row->id.'" data-status="'.$statuss.'" data-url="'.route('change-report-status').'">'.$activetitle.'</a>';
+                    return $status;
+                })
                 ->addColumn('action', function ($row) {
                     if (auth()->user()->can('reports-edit')) {
-                        $editbtn = '<a  href="' . url('admin/reports/edit/' . $row->id) . '" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
+                        $editbtn = '<a  href="' . url('admin/reports/edit/' . $row->id) . '" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;';
                     } else {
                         $editbtn = '';
                     }
@@ -96,7 +112,7 @@ class ReportsController extends Controller
 
                     return $btn;
                 })
-                ->rawColumns(['category_id', 'url', 'action'])
+                ->rawColumns(['category_id', 'url','status', 'action'])
                 ->make(true);
         }
     }
@@ -608,5 +624,34 @@ class ReportsController extends Controller
     public function export(Request $request)
     {
         return Excel::download(new ExportReport, 'reports.csv');
+    }
+    
+
+    public function changestatus(Request $request)
+    {
+        if ($request->ajax())
+        {
+            $data = array('status' => $request->status );
+            $Update = ReportsModel::where('id', '=', $request->id)->update($data);
+ 
+            if($Update){
+                return response()->json([
+                    'success'=>true,
+                    'message'=>['Report status successfully change'],
+                    'data'=>[
+                        'reload'=>true,
+                    ]
+                ]);
+            }
+            else{
+                return response()->json([
+                    'success'=>false,
+                    'message'=>['Error for change status'],
+                    'data'=>[
+                        'redirect'=>'',
+                    ]
+                ]);
+            }
+        }
     }
 }

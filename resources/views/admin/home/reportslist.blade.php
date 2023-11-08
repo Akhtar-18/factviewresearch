@@ -30,7 +30,8 @@
                         <th>Url</th>
                         <th>Pages</th>
                         <th>Publish Month</th>
-                        <th>Action</th>
+                        <th>Status</th>
+                        <th style="width: 10%;">Action</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -39,6 +40,7 @@
                         <th>Url</th>
                         <th>Pages</th>
                         <th>Publish Month</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
@@ -60,10 +62,78 @@
             {data: 'url', name: 'url'},
             {data: 'pages', name: 'pages'},
             {data: 'publish_month', name: 'publish_month'},
+            {data: 'status', name: 'status'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ],
     });
 
   });
+
+   /*********change status**********/
+   $("body").on("click",'.changeStatusCustom', function(event){
+        dataString       = {"id":$(this).data('id'),"status":$(this).data('status')};  
+        var UrlValue     = $(this).data('url');
+        var status       = $(this).data('status');
+        var changeStatus = $(this);
+        var btn = $(this);
+
+        Swal.fire({
+            title: 'Are you sure you want to change status?',
+            icon: 'warning',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url     : UrlValue,
+                    method  : 'post',
+                    data    :dataString,
+                    headers:
+                    {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    beforeSend: function( xhr ) {
+                        // xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+                    },
+                    success : function(response){
+                        if(response.success){
+                            // var ErroMsg = $(this).printErrorMsg(response.message);
+                            // $(this).Toastshow('success',response.message);
+
+                            window.location.reload();
+                        } else {
+                            // var ErroMsg = $(this).printErrorMsg(response.message);
+                            if (ErroMsg === '') {
+                                ErroMsg = "Something went wrong!";
+                            }
+                            // $(this).Toastshow('error',ErroMsg);
+
+                            if (status == 1) {
+                                window.location.reload();
+                            } else {
+                                window.location.reload();
+                            }
+                        }
+                    },
+                    error: function (data) {
+                        console.log("error ",data);
+
+                        if (status == 1) {
+                            window.location.reload();
+                        } else {
+                            window.location.reload();
+                        }
+                    }   
+                });
+            }
+            else if (result.isDenied) {
+                $('#search').trigger('change');
+            }
+            //return false;
+        });
+    //return false;
+    });
 </script>
 @endsection

@@ -25,6 +25,7 @@ use App\Models\TestimonialModel;
 use App\Models\WhoWeModel;
 use App\Models\WhyChooseUsModel;
 use Illuminate\Http\Request;
+use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
@@ -34,7 +35,7 @@ class FrontController extends Controller
     public function home()
     {
         $data['aboutData']=AboutUsModel::select(['heading','content'])->get();
-        $data['reportsData']=ReportsModel::with(['getCategoryName','getSubCategoryName'])->select(['id','category_id','sub_category_id','heading','url','pages','publish_month','description'])->limit(6)->get();
+        $data['reportsData']=ReportsModel::with(['getCategoryName','getSubCategoryName'])->select(['id','category_id','sub_category_id','heading','url','pages','publish_month','description'])->where('status','1')->limit(6)->get();
         $data['contactData']=ContactDetailsModel::select(['company_name','address','contact_no','email_address','facebook','twitter','instagram','linkedin'])->get();
         $data['services']=ServicesModel::select(['id','heading','content'])->latest('id')->limit(6)->get();
         $data['blogs']=Blog::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->limit(3)->get();
@@ -45,7 +46,7 @@ class FrontController extends Controller
 
     public function report($id, Request $request)
     {
-        $data['reports']=ReportsModel::with(['getReportLicenses','getReportFaq','getReportmarketgraph','getReportmarketsharegraph','getReportSegmentgraph','getReportRegiongraph','getCategoryName','getSubCategoryName','getReportCAGR','getReportTblSummary'])->where('url',$id)->first();
+        $data['reports']=ReportsModel::with(['getReportLicenses','getReportFaq','getReportmarketgraph','getReportmarketsharegraph','getReportSegmentgraph','getReportRegiongraph','getCategoryName','getSubCategoryName','getReportCAGR','getReportTblSummary'])->where('status','1')->where('url',$id)->first();
         $data['whyusData']=WhyChooseUsModel::select(['heading','content'])->get();
         $data['contactData']=ContactDetailsModel::select(['no_prefix','contact_no','email_address','facebook','twitter','instagram','linkedin'])->get();
 
@@ -83,11 +84,13 @@ class FrontController extends Controller
             $data['reports']=ReportsModel::latest('id')->with(['getSubCategoryName','getCategoryName'])
             ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
             ->where('heading', 'like', '%' . $request->search . '%')
+            ->where('status','1')
             ->orderBy('id','desc')->paginate(10);
         }
         else
         {
-            $data['reports']=ReportsModel::latest('id')->with(['getSubCategoryName','getCategoryName'])->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])->orderBy('id','desc')->paginate(10);
+            $data['reports']=ReportsModel::latest('id')->with(['getSubCategoryName','getCategoryName'])->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
+            ->where('status','1')->orderBy('id','desc')->paginate(10);
         }
         $data['ReportCategory']=ReportCategoryModel::with('getSubCategory')->select(['id','cat_name'])->get();
 
@@ -104,11 +107,13 @@ class FrontController extends Controller
             $data['reports']=ReportsModel::latest('id')->with(['getSubCategoryName','getCategoryName'])
             ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
             ->where('category_id',$category->id)
+            ->where('status','1')
             ->orderBy('id','desc')->paginate(10);
         }
         else
         {
-            $data['reports']=ReportsModel::latest('id')->with(['getSubCategoryName','getCategoryName'])->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])->orderBy('id','desc')->paginate(10);
+            $data['reports']=ReportsModel::latest('id')->with(['getSubCategoryName','getCategoryName'])->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
+            ->where('status','1')->orderBy('id','desc')->paginate(10);
         }
         $data['ReportCategory']=ReportCategoryModel::with('getSubCategory')->select(['id','cat_name'])->get();
 
@@ -126,7 +131,9 @@ class FrontController extends Controller
                 $category=ReportCategoryModel::where('cat_name',$id)->first();
                 $reports=ReportsModel::latest('id')
                 ->with(['getSubCategoryName','getCategoryName'])
+                ->where('status','1')
                 ->where('category_id',removeslug($category->id))
+
                 ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
                 ->orderBy('id','desc')
                 ->paginate(10);
@@ -135,6 +142,7 @@ class FrontController extends Controller
             {
                 $reports=ReportsModel::latest('id')
              ->with(['getSubCategoryName','getCategoryName'])
+             ->where('status','1')
              ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
              ->orderBy('id','desc')
              ->paginate(10);
@@ -151,6 +159,7 @@ class FrontController extends Controller
         {
             $data['reports']=ReportsModel::latest('id')
         ->with(['getSubCategoryName','getCategoryName'])
+        ->where('status','1')
         ->where('sub_category_id',$subcategory->id)
         ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
         ->orderBy('id','desc')
@@ -159,6 +168,7 @@ class FrontController extends Controller
         else
         {
             $data['reports']=ReportsModel::latest('id')
+            ->where('status','1')
             ->with(['getSubCategoryName','getCategoryName'])
             ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
             ->orderBy('id','desc')
@@ -182,6 +192,7 @@ class FrontController extends Controller
                 $subcategory=ReportSubCategoryModel::where('sub_category',$id)->first();
                 $reports=ReportsModel::latest('id')
                 ->with(['getSubCategoryName','getCategoryName'])
+                ->where('status','1')
                 ->where('sub_category_id',$subcategory->id)
                 ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
                 ->orderBy('id','desc')
@@ -190,6 +201,7 @@ class FrontController extends Controller
             else
             {
                 $reports=ReportsModel::latest('id')
+                ->where('status','1')
              ->with(['getSubCategoryName','getCategoryName'])
              ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
              ->orderBy('id','desc')
@@ -205,6 +217,7 @@ class FrontController extends Controller
         if($request->ajax())
         {
             $reports=ReportsModel::latest('id')
+            ->where('status','1')
              ->with(['getSubCategoryName','getCategoryName'])
              ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
              ->orderBy('id','desc')
@@ -496,4 +509,92 @@ class FrontController extends Controller
     {
         return view('errors.404');
     }
+
+
+
+    public function processPaypal(Request $request){
+
+        $input=$request->all();
+        $report_id=ReportPayment::create($input);
+
+        $provider = new PayPalClient;
+        $provider->setApiCredentials(config('paypal'));
+        $paypalToken = $provider->getAccessToken();
+ 
+        $response = $provider->createOrder([
+         "intent" => "CAPTURE",
+         "application_context" =>[
+             "return_url" => route('processSuccess',$report_id->id),
+             "cancel_url" => route('processCancel',$report_id->id),
+             
+         ],
+         "purchase_units" =>[
+             0 => [
+                 "amount" => [
+                     "currency_code" => "USD",
+                     "value" => $request->lisence_amount, 
+                 ]
+             ]
+         ]
+                 ]);
+         if(isset($response['id']) && $response['id']!=NULL)
+         {
+              foreach($response['links'] as $links)
+              {
+                 if($links['rel'] == 'approve')
+                 {
+                     return redirect()->away($links['href']);
+                 }
+              }
+              return redirect()->route('createpaypal')
+              ->with('error','Something went wrong');
+         }
+         else
+         {
+             return redirect()->route('createpaypal')
+              ->with('error',$response['message']??'Something went wrong');
+         }    
+     }
+ 
+     public function processSuccess($id,Request $request)
+     {
+         $provider = new PayPalClient;
+         $provider->setApiCredentials(config('paypal'));
+         $provider->getAccessToken();
+ 
+         $response = $provider->capturePaymentOrder($request['token']);
+         if(isset($response['status']) && $response['status']== 'COMPLETED')
+         {
+            $reports=ReportPayment::find($id);
+            $reports->update(['status'=>'1']);
+              return redirect()->route('payment-success',$id);
+         }
+         else
+         {
+            $reports=ReportPayment::find($id);
+            $data['status']=0;
+            $reports->update($data);
+             return redirect()->route('processCancel',$id);
+         } 
+ 
+ 
+     }
+ 
+     public function processCancel($id,Request $request)
+     {
+        $payment=ReportPayment::find($id);
+        $reports=ReportsModel::latest('id')
+        ->select(['id','heading'])->find($payment->report_id);
+   return view('front.payment-cancel',compact('reports'));
+ 
+     }
+     public function paymentSuccess($id,Request $request)
+     {
+         
+        $payment=ReportPayment::find($id);
+        $reports=ReportsModel::latest('id')
+        ->select(['id','heading'])->find($payment->report_id);
+   return view('front.payment-success',compact('reports'));
+ 
+     }
 }

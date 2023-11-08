@@ -91,6 +91,12 @@ Route::get('/refund', [FrontController::class, 'refund'])->name('front.refund');
 Route::get('/terms', [FrontController::class, 'terms'])->name('front.terms');
 Route::get('/disclaimer', [FrontController::class, 'disclaimer'])->name('front.disclaimer');
 
+Route::get('createpaypal',[FrontController::class,'createpaypal'])->name('createpaypal');
+Route::any('processPaypal',[FrontController::class,'processPaypal'])->name('processPaypal');
+Route::get('processSuccess/{id}',[FrontController::class,'processSuccess'])->name('processSuccess');
+Route::get('payment-success/{id}',[FrontController::class,'paymentSuccess'])->name('payment-success');
+Route::get('processCancel/{id}',[FrontController::class,'processCancel'])->name('processCancel');
+
 
 Auth::routes();
 
@@ -247,6 +253,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/edit/{id}', [ReportsController::class, 'edit']);
             Route::match(['GET', 'POST'], '/update/{id}', [ReportsController::class, 'update']);
             Route::match(['GET', 'POST'], '/delete/{id}', [ReportsController::class, 'delete']);
+            Route::match(['GET', 'POST'], '/change-status', [ReportsController::class, 'changestatus'])->name('change-report-status');
             Route::get('/export', [ReportsController::class, 'export']);
 
             Route::get('bulk-upload', [ReportsController::class, 'bulkUpload']);

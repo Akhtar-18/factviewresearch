@@ -56,7 +56,7 @@
                             <ul></ul>
                         </div>
 
-                        <form class="contact" name="contactUsForm" id="contactUsForm" enctype="multipart/form-data"
+                        <form class="contact" id="contactUsForm"  name="contactUsForm" enctype="multipart/form-data"
                             method="POST">
                             <div class="quform-elements">
                                 <div class="row">
@@ -230,7 +230,7 @@
                                     <!-- Begin Submit button -->
                                     <div class="col-md-12 text-center">
                                         <div class="quform-submit-inner">
-                                            <button class="butn btn-submit" type="button"><span>Submit</span></button>
+                                            <button class="butn btn-submit" type="submit"><span>Submit</span></button>
                                         </div>
                                         <div class="quform-loading-wrap text-start"><span class="quform-loading"></span>
                                         </div>
@@ -337,12 +337,6 @@
             var ButtonText = $(this).find('button[type="button"]').html();
             $(this).find('button').prop('disabled', true);
             $(this).find('button').html('Loading ...');
-            //    $(this).find('.btn-submit').prop('disabled', true);
-            //    $(this).find('.btn-submit').html('Loading ...');
-
-
-            //    $(this).find('button[type="button"]').prop('disabled', true);
-            //    $(this).find('button[type="button"]').html('Loading ...');
 
             $.ajax({
                 type: 'POST',

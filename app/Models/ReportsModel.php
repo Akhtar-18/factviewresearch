@@ -29,7 +29,8 @@ class ReportsModel extends Model
                                 'meta_title',
                                 'meta_des',
                                 'metal_keywords',
-                                'h1_column'
+                                'h1_column',
+                                'status',
                             ];
         public function getCategoryName()
         {
