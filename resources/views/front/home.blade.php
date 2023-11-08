@@ -91,7 +91,7 @@
 
                                         <p class="w-95">{!! html_entity_decode(wordLimitset($service->content, 20)) !!}</p>
                                         <div class="border-top border-color-light-black pt-3">
-                                            <a href="{{ route('front.service-single', $service->id) }}"
+                                            <a href="{{ route('front.service-single',$service->slug) }}"
                                                 class="font-weight-700">Read More...</a>
                                         </div>
                                     </div>

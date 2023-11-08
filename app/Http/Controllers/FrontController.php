@@ -37,7 +37,7 @@ class FrontController extends Controller
         $data['aboutData']=AboutUsModel::select(['heading','content'])->get();
         $data['reportsData']=ReportsModel::with(['getCategoryName','getSubCategoryName'])->select(['id','category_id','sub_category_id','heading','url','pages','publish_month','description'])->where('status','1')->limit(6)->get();
         $data['contactData']=ContactDetailsModel::select(['company_name','address','contact_no','email_address','facebook','twitter','instagram','linkedin'])->get();
-        $data['services']=ServicesModel::select(['id','heading','content'])->latest('id')->limit(6)->get();
+        $data['services']=ServicesModel::select(['id','heading','content','slug'])->latest('id')->limit(6)->get();
         $data['blogs']=Blog::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->limit(3)->get();
         $data['press']=PressRelease::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->limit(3)->get();
         $data['casses']=CaseStudy::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->limit(3)->get();
