@@ -4,7 +4,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- PAGE TITLE
-                            ================================================== -->
+                                ================================================== -->
     <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
         <div class="container">
 
@@ -38,7 +38,7 @@
 
 
     <!-- CONTACT
-                            ================================================== -->
+                                ================================================== -->
     <section class="md">
         <div class="container">
             <div class="row">
@@ -56,21 +56,6 @@
                             @endif
                         </h3>
                     </div>
-
-                    <section class="bg-light box-hover p-2-8">
-
-                        <div class="position-relative">
-                            <div class="owl-carousel owl-theme clients" id="clients">
-                                @if (getClient())
-                                    @foreach (getClient() as $client)
-                                        <div class="item"><img alt="partner-image"
-                                                src="{{ asset('clients/images/') }}/{{ $client->image }}"></div>
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div>
-
-                    </section>
 
                     <div class="title text-center mb-2">
                         <h5 class="text-center">
@@ -256,6 +241,25 @@
                             </div>
                         </form>
                     </div>
+                    <section class="bg-light box-hover">
+                        <div class="container">
+                            <br /><br />
+                            <div class="section-heading">
+                                <h2>Our Clients</h2>
+                            </div>
+                            <div class="position-relative">
+                                <div class="owl-carousel owl-theme clients" id="clients">
+                                    @if (getClient())
+                                        @foreach (getClient() as $client)
+                                            <div class="item"><img alt="partner-image"
+                                                    src="{{ asset('clients/images/') }}/{{ $client->image }}"
+                                                    width="50%"></div>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
                 <!-- end contact form  -->
 
@@ -343,8 +347,8 @@
 
 
                                     <!--<div class="bg-light p-4 border-radius-5 mb-1-9">
-                                                <div class="container">
-                                                    <div class="position-relative">-->
+                                                    <div class="container">
+                                                        <div class="position-relative">-->
                                     <div class="owl-carousel owl-theme w-100">
                                         @if (getTestimonial())
                                             @foreach (getTestimonial() as $testimonial)
@@ -360,8 +364,8 @@
                                         @endif
                                     </div>
                                     <!--</div>
-                                                </div>
-                                            </div> -->
+                                                    </div>
+                                                </div> -->
 
                                     <!-- end testimonials -->
                                 </div>
@@ -370,33 +374,33 @@
 
                         <!-- <div class="widget">
 
-                                        <article class="card card-style1">
-                                            <div class="card-header bg-primary text-white">
-                                                Clients
-                                            </div>
-                                            <div class="card-body">
+                                            <article class="card card-style1">
+                                                <div class="card-header bg-primary text-white">
+                                                    Clients
+                                                </div>
+                                                <div class="card-body">
 
 
-                                                <div class="bg-light p-4 border-radius-5 mb-1-9">
-                                                    <div class="container">
+                                                    <div class="bg-light p-4 border-radius-5 mb-1-9">
+                                                        <div class="container">
 
-                                                        <div class="position-relative">
-                                                            <div class="owl-carousel owl-theme">
-                                                                @if (getClient())
-                                                                    @foreach (getClient() as $client)
+                                                            <div class="position-relative">
+                                                                <div class="owl-carousel owl-theme">
+                                                                    @if (getClient())
+                                                                        @foreach (getClient() as $client)
     <div class="item"><img alt="partner-image"
-                                                                                src="{{ asset('clients/images/') }}/{{ $client->image }}">
-                                                                        </div>
+                                                                                    src="{{ asset('clients/images/') }}/{{ $client->image }}">
+                                                                            </div>
     @endforeach
-                                                                @endif
+                                                                    @endif
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                            </div>
-                                        </article>
-                                    </div> -->
+                                                </div>
+                                            </article>
+                                        </div> -->
 
                         <div class="widget">
                             <article class="card card-style1">
@@ -424,7 +428,6 @@
                                                 {{ getCompanyDetail()->email_address }}
                                             @endif
                                         </a></p>
-                                    <br />
                                     <h6 class="text-primary text-center page-title-section">Follow Us</h6>
 
                                     <ul class="social-listing text-center ps-0 display-30">

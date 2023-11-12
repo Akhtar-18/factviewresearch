@@ -1,10 +1,11 @@
 @extends('front.layout')
-@section('title', 'Market Research Reports, Industry Reports, Market Research, Data Analysis, Fact-Finding | FactView
+@section('title',
+    'Market Research Reports, Industry Reports, Market Research, Data Analysis, Fact-Finding | FactView
     Research')
 @section('frontpage')
 
     <!-- REVOLUTION SLIDER
-                                    ================================================== -->
+                                        ================================================== -->
     <section-new class="top-position top-position3">
         <div class="row slider-fade">
             <div class="owl-carousel owl-theme w-100">
@@ -32,7 +33,7 @@
         </section>
 
         <!-- ABOUT
-                                    ================================================== -->
+                                        ================================================== -->
         <section class="md">
             <div class="container">
                 <div class="row align-items-center">
@@ -56,19 +57,19 @@
         </section>
 
         <!-- ADVICE
-                                    ================================================== -->
+                                        ================================================== -->
         <!-- <section class="parallax md" data-overlay-dark="8" data-background="{{ asset('front/img/bg/bg1.jpg') }}">
-                    <div class="container text-center">
-                        <div class="section-heading half white">
-                            <h2>Are you looking for professional advice?</h2>
-                            <p>We always try to provide you our best business consulting service.</p>
+                        <div class="container text-center">
+                            <div class="section-heading half white">
+                                <h2>Are you looking for professional advice?</h2>
+                                <p>We always try to provide you our best business consulting service.</p>
+                            </div>
+                            <a href="{{ route('front.contact') }}" class="butn primary white-hover"><span>Contact Us</span></a>
                         </div>
-                        <a href="{{ route('front.contact') }}" class="butn primary white-hover"><span>Contact Us</span></a>
-                    </div>
-                </section> -->
+                    </section> -->
 
         <!-- SERVICES
-                                    ================================================== -->
+                                        ================================================== -->
         <section>
             <div class="container">
 
@@ -91,7 +92,7 @@
 
                                         <p class="w-95">{!! html_entity_decode(wordLimitset($service->content, 20)) !!}</p>
                                         <div class="border-top border-color-light-black pt-3">
-                                            <a href="{{ route('front.service-single',$service->slug) }}"
+                                            <a href="{{ route('front.service-single', $service->slug) }}"
                                                 class="font-weight-700">Read More...</a>
                                         </div>
                                     </div>
@@ -109,7 +110,7 @@
 
 
         <!-- COUNTER
-                                    ================================================== -->
+                                        ================================================== -->
         <section class="parallax md" style="background: #2a66b1">
             <div class="container">
                 <div class="row mt-n1-9">
@@ -155,7 +156,7 @@
 
 
         <!-- REPORTS
-                                    ================================================== -->
+                                        ================================================== -->
         <section>
             <div class="container">
                 <div class="row">
@@ -196,59 +197,58 @@
                 </div>
                 <div class="row align-items-center">
                     <div class="col-md-12 mt-1-9 text-center">
-                        <a href="{{ route('front.reports') }}" class="btn-style4 btn-small"><span>Read More
-                                Reports</span></a>
+                        <a href="{{ route('front.reports') }}" class="btn btn-dark"><span>Read More Reports</span></a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- SUBSCRIBE
-                                    ================================================== -->
+                                        ================================================== -->
         <!-- <section class="parallax" style="background: #2a66b1">
-            <div class="container">
-                <div class="section-heading white">
-                    <span>News Letter</span>
-                    <h2>Stay informed</h2>
-                    <p class="w-95 w-md-75 w-lg-55 mx-auto">Please subscribe our newsletter for latest industry updates.</p>
-                </div>
-                <div class="text-center">
-                    <form class="quform newsletter-form2 w-sm-85 w-md-65 w-lg-45 w-xl-35 mx-auto" action=""
-                        method="post" enctype="multipart/form-data" onclick="">
+                <div class="container">
+                    <div class="section-heading white">
+                        <span>News Letter</span>
+                        <h2>Stay informed</h2>
+                        <p class="w-95 w-md-75 w-lg-55 mx-auto">Please subscribe our newsletter for latest industry updates.</p>
+                    </div>
+                    <div class="text-center">
+                        <form class="quform newsletter-form2 w-sm-85 w-md-65 w-lg-45 w-xl-35 mx-auto" action=""
+                            method="post" enctype="multipart/form-data" onclick="">
 
-                        <div class="quform-elements text-center">
+                            <div class="quform-elements text-center">
 
-                            <div class="row">
+                                <div class="row">
 
 
-                                <div class="col-md-12">
-                                    <div class="quform-element form-group mb-0">
-                                        <div class="quform-input">
-                                            <input class="form-control" id="email_address" type="email"
-                                                name="email_address" placeholder="Subscribe with us">
+                                    <div class="col-md-12">
+                                        <div class="quform-element form-group mb-0">
+                                            <div class="quform-input">
+                                                <input class="form-control" id="email_address" type="email"
+                                                    name="email_address" placeholder="Subscribe with us">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-md-12">
-                                    <div class="quform-submit-inner">
-                                        <button class="butn primary" type="submit"><span>Subscribe</span></button>
+                                    <div class="col-md-12">
+                                        <div class="quform-submit-inner">
+                                            <button class="butn primary" type="submit"><span>Subscribe</span></button>
+                                        </div>
+                                        <div class="quform-loading-wrap"><span class="quform-loading"></span></div>
                                     </div>
-                                    <div class="quform-loading-wrap"><span class="quform-loading"></span></div>
-                                </div>
 
+
+                                </div>
 
                             </div>
 
-                        </div>
-
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </section> -->
+            </section> -->
 
         <!-- BLOGS
-                                    ================================================== -->
+                                        ================================================== -->
         <section>
             <div class="container">
 
@@ -291,13 +291,18 @@
                     @endif
 
                 </div>
+                <div class="row align-items-center">
+                    <div class="col-md-12 mt-1-9 text-center">
+                        <a href="{{ route('front.blogs') }}" class="btn btn-dark"><span>Read More Blogs</span></a>
+                    </div>
+                </div>
 
             </div>
         </section>
 
 
         <!-- Press Releases
-                                    ================================================== -->
+                                        ================================================== -->
         <section>
             <div class="container">
 
@@ -341,12 +346,17 @@
                     @endif
 
                 </div>
-
+                <div class="row align-items-center">
+                    <div class="col-md-12 mt-1-9 text-center">
+                        <a href="{{ route('front.press-releases') }}" class="btn btn-dark"><span>Read More Press
+                                Releases</span></a>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Case Studies
-                                    ================================================== -->
+                                        ================================================== -->
         <section>
             <div class="container">
 
@@ -389,6 +399,13 @@
                         @endforeach
                     @endif
 
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-md-12 mt-1-9 text-center">
+                        <a href="{{ route('front.case-studies') }}" class="btn btn-dark"><span>Read More Case
+                                Studies</span></a>
+                    </div>
                 </div>
 
             </div>
