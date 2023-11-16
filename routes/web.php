@@ -31,7 +31,9 @@ use App\Http\Controllers\WhyChooseUsController;
 use App\Http\Controllers\WhoWeAreController;
 use App\Http\Controllers\ReportSubCategoryController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\RobotsController;
 
+Route::get('robots.txt', [RobotsController::class, 'index']);
 
 
 //Website Routes
@@ -91,11 +93,11 @@ Route::get('/refund', [FrontController::class, 'refund'])->name('front.refund');
 Route::get('/terms', [FrontController::class, 'terms'])->name('front.terms');
 Route::get('/disclaimer', [FrontController::class, 'disclaimer'])->name('front.disclaimer');
 
-Route::get('createpaypal',[FrontController::class,'createpaypal'])->name('createpaypal');
-Route::any('processPaypal',[FrontController::class,'processPaypal'])->name('processPaypal');
-Route::get('processSuccess/{id}',[FrontController::class,'processSuccess'])->name('processSuccess');
-Route::get('payment-success/{id}',[FrontController::class,'paymentSuccess'])->name('payment-success');
-Route::get('processCancel/{id}',[FrontController::class,'processCancel'])->name('processCancel');
+Route::get('createpaypal', [FrontController::class, 'createpaypal'])->name('createpaypal');
+Route::any('processPaypal', [FrontController::class, 'processPaypal'])->name('processPaypal');
+Route::get('processSuccess/{id}', [FrontController::class, 'processSuccess'])->name('processSuccess');
+Route::get('payment-success/{id}', [FrontController::class, 'paymentSuccess'])->name('payment-success');
+Route::get('processCancel/{id}', [FrontController::class, 'processCancel'])->name('processCancel');
 
 
 Auth::routes();
@@ -331,15 +333,15 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
 
-         /***********************Audio Video Route *****************/
-         Route::group(['prefix'=>'audio-video'],function(){
-            Route::get('/',[AudioVideoController::class,'index'])->name('report.audio-video.index');
-            Route::get('/list',[AudioVideoController::class,'list']);
-            Route::get('/add',[AudioVideoController::class,'add'])->name('admin.audio-video.add');
-            Route::post('/submit',[AudioVideoController::class,'submit']);
-            Route::get('/edit/{id}',[AudioVideoController::class,'edit']);
-            Route::match(['GET','POST'],'/update/{id}',[AudioVideoController::class,'update']);
-            Route::match(['GET','POST'],'/delete/{id}',[AudioVideoController::class,'delete']);
+        /***********************Audio Video Route *****************/
+        Route::group(['prefix' => 'audio-video'], function () {
+            Route::get('/', [AudioVideoController::class, 'index'])->name('report.audio-video.index');
+            Route::get('/list', [AudioVideoController::class, 'list']);
+            Route::get('/add', [AudioVideoController::class, 'add'])->name('admin.audio-video.add');
+            Route::post('/submit', [AudioVideoController::class, 'submit']);
+            Route::get('/edit/{id}', [AudioVideoController::class, 'edit']);
+            Route::match(['GET', 'POST'], '/update/{id}', [AudioVideoController::class, 'update']);
+            Route::match(['GET', 'POST'], '/delete/{id}', [AudioVideoController::class, 'delete']);
         });
 
 
