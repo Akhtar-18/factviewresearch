@@ -32,8 +32,10 @@ use App\Http\Controllers\WhoWeAreController;
 use App\Http\Controllers\ReportSubCategoryController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RobotsController;
+use App\Http\Controllers\SitemapController;
 
 Route::get('robots.txt', [RobotsController::class, 'index']);
+Route::get('sitemap.xml', [SitemapController::class, 'generate']);
 
 
 //Website Routes

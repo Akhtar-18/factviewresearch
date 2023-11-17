@@ -9,24 +9,12 @@ class RobotsController extends Controller
 {
     public function index()
     {
-        $content = $this->generateRobotsContent();
+        $content = "User-agent: *
+        \nDisallow: /private/
+        \nAllow: /public/
+        \nSitemap: https://factviewresearch.com/sitemap.xml"; // Default robots.txt content
+
         return response($content)->header('Content-Type', 'text/plain');
-    }
-
-    private function generateRobotsContent()
-    {
-        // Your dynamic logic to generate content
-        $disallowPrivate = true;
-
-        $robotsContent = "User-agent: *\n";
-
-        if ($disallowPrivate) {
-            $robotsContent .= "Disallow: /private/\n";
-        }
-
-        // Add more rules as needed
-
-        return $robotsContent;
     }
 }
 ?>
