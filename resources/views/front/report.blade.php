@@ -10,8 +10,8 @@
     <title>{{ strip_tags($reports->meta_title) }}</title>
 @endsection
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <!-- PAGE TITLE
                                             ================================================== -->
 <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
@@ -190,9 +190,9 @@
                                             @if (count($SegmentType) > 0)
                                                 @foreach ($SegmentType as $segments)
                                                     <div class="col-md-4">
-                                                        @php$SegmentGraph = getSementGraph($segments->id);
-                                                            $segmentname = $SegmentGraph->pluck('segmentname');
-                                                            $segmentvalue = $SegmentGraph->pluck('segmentvalue');
+                                                        @php $SegmentGraph = getSementGraph($segments->id);
+                                                             $segmentname = $SegmentGraph->pluck('segmentname');
+                                                             $segmentvalue = $SegmentGraph->pluck('segmentvalue');
                                                         @endphp
                                                         <div class="card">
                                                             <div class="card-body">
@@ -201,40 +201,36 @@
                                                             </div>
                                                         </div>
                                                         <script>
-                                                            var segmentChart = document.getElementById('mysegmentChart{{ $segments->id }}');
-                                                            new Chart(segmentChart, {
-                                                                type: "pie",
-                                                                data: {
-                                                                    labels: {
-                                                                        !!json_encode($segmentname) !!
+                                                           var segmentChart = document.getElementById('mysegmentChart{{ $segments->id }}');
+                                                                new Chart(segmentChart, {
+                                                                    type: "pie",
+                                                                    data: {
+                                                                        labels: {!! json_encode($segmentname) !!},
+                                                                        datasets: [{
+                                                                            data: {!! json_encode($segmentvalue) !!},
+                                                                            backgroundColor: [
+                                                                                "rgba(28, 51, 65,0.8)",
+                                                                                "rgba(0, 135, 115,0.8)",
+                                                                                "rgba(107, 185, 131,0.8)",
+                                                                                "rgba(242, 190, 84,0.8)",
+                                                                                "rgba(240, 217, 207,0.8)",
+                                                                                "rgba(28, 51, 65,0.8)",
+                                                                                "rgba(0, 135, 115,0.8)",
+                                                                                "rgba(107, 185, 131,0.8)",
+                                                                                "rgba(242, 190, 84,0.8)",
+                                                                                "rgba(240, 217, 207,0.8)",
+                                                                            ]
+                                                                        }]
                                                                     },
-                                                                    datasets: [{
-                                                                        data: {
-                                                                            !!json_encode($segmentvalue) !!
+                                                                    options: {
+                                                                        plugins: {
+                                                                            title: {
+                                                                                display: true,
+                                                                                text: '{{ $segments->segmenttypename }} Segmentation  (%)'
+                                                                            }
                                                                         },
-                                                                        backgroundColor: [
-                                                                            "rgba(28, 51, 65,0.8)",
-                                                                            "rgba(0, 135, 115,0.8)",
-                                                                            "rgba(107, 185, 131,0.8)",
-                                                                            "rgba(242, 190, 84,0.8)",
-                                                                            "rgba(240, 217, 207,0.8)",
-                                                                            "rgba(28, 51, 65,0.8)",
-                                                                            "rgba(0, 135, 115,0.8)",
-                                                                            "rgba(107, 185, 131,0.8)",
-                                                                            "rgba(242, 190, 84,0.8)",
-                                                                            "rgba(240, 217, 207,0.8)",
-                                                                        ]
-                                                                    }]
-                                                                },
-                                                                options: {
-                                                                    plugins: {
-                                                                        title: {
-                                                                            display: true,
-                                                                            text: '{{ $segments->segmenttypename }} Segmentation  (%)'
-                                                                        }
-                                                                    },
-                                                                }
-                                                            });
+                                                                    }
+                                                                });
                                                         </script>
                                                     </div>
                                                 @endforeach
@@ -592,158 +588,142 @@
 
 <script>
     const barChart = document.getElementById('mybarChart');
-    new Chart(barChart, {
-        type: "bar",
-        data: {
-            labels: {
-                !!json_encode($marketyear) !!
-            },
-            datasets: [{
-                label: "Market Value Current and Forecast",
-                data: {
-                    !!json_encode($marketvalue) !!
-                },
-                backgroundColor: [
-                    "rgba(28, 51, 65,0.8)",
-                    "rgba(0, 135, 115,0.8)",
-                    "rgba(107, 185, 131,0.8)",
-                    "rgba(242, 201, 117,0.8)",
-                    "rgba(237, 99, 83,0.8)",
-                    "rgba(242, 190, 84,0.8)",
-                    "rgba(240, 217, 207,0.8)",
-                ]
-            }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Market Value Current and Forecast (%)',
-                }
-            },
-            scales: {
-                xAxes: [{
-                    barPercentage: 0.5,
-                    categoryPercentage: 1
-                }],
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: !1
-                    }
+        new Chart(barChart, {
+            type: "bar",
+            data: {
+                labels: {!! json_encode($marketyear) !!},
+                datasets: [{
+                    label: "Market Value Current and Forecast",
+                    data: {!! json_encode($marketvalue) !!},
+                    backgroundColor: [
+                        "rgba(28, 51, 65,0.8)",
+                        "rgba(0, 135, 115,0.8)",
+                        "rgba(107, 185, 131,0.8)",
+                        "rgba(242, 201, 117,0.8)",
+                        "rgba(237, 99, 83,0.8)",
+                        "rgba(242, 190, 84,0.8)",
+                        "rgba(240, 217, 207,0.8)",
+                    ]
                 }]
             },
-            legend: {
-                display: !1
-            }
-        }
-    });
-
-    const pieChart = document.getElementById('mypieChart');
-    new Chart(pieChart, {
-        type: "pie",
-        data: {
-            // labels: ["CAGR", "Others"],
-            datasets: [{
-                data: [
-                    @if (isset($reports->getReportCAGR->cagr))
-                        {
-                            {
-                                $reports - > getReportCAGR - > cagr
-                            }
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Market Value Current and Forecast (%)',
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        barPercentage: 0.5,
+                        categoryPercentage: 1
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: !1
                         }
-                    @endif
-                ],
-                backgroundColor: [
-                    "rgba(255, 99, 132, 0.8)",
-                    "rgba(54, 162, 235, 0.8)",
-                    "rgba(255, 206, 86, 0.8)",
-                    "rgba(75, 192, 192, 0.8)"
-                ]
-            }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'CAGR Report (%)'
+                    }]
+                },
+                legend: {
+                    display: !1
                 }
             }
-        },
-    });
+        });
 
-
-    const regionChart = document.getElementById('myregionChart');
-    new Chart(regionChart, {
-        type: "pie",
-        data: {
-            labels: {
-                !!json_encode($regionname) !!
+        const pieChart = document.getElementById('mypieChart');
+        new Chart(pieChart, {
+            type: "pie",
+            data: {
+                // labels: ["CAGR", "Others"],
+                datasets: [{
+                    data: [
+                        @if (isset($reports->getReportCAGR->cagr))
+                            {{ $reports->getReportCAGR->cagr }}
+                        @endif
+                    ],
+                    backgroundColor: [
+                        "rgba(255, 99, 132, 0.8)",
+                        "rgba(54, 162, 235, 0.8)",
+                        "rgba(255, 206, 86, 0.8)",
+                        "rgba(75, 192, 192, 0.8)"
+                    ]
+                }]
             },
-            datasets: [{
-                data: {
-                    !!json_encode($regionvalue) !!
-                },
-                backgroundColor: [
-                    "rgba(28, 51, 65,0.8)",
-                    "rgba(0, 135, 115,0.8)",
-                    "rgba(107, 185, 131,0.8)",
-                    "rgba(242, 201, 117,0.8)",
-                    "rgba(237, 99, 83,0.8)",
-                    "rgba(242, 190, 84,0.8)",
-                    "rgba(240, 217, 207,0.8)",
-                    "rgba(135, 174, 180,0.8)",
-                    "rgba(21, 62, 92,0.8)",
-                    "rgba(237, 85, 96,0.8)",
-                    // "rgba(201, 223, 241,0.8)",
-                    // "rgba(240, 217, 207,0.9)"
-                ]
-            }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Region-wise Report (%)'
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'CAGR Report (%)'
+                    }
                 }
             },
-        }
-    });
+        });
 
-    const marketshareChart = document.getElementById('mshareChart');
-    new Chart(marketshareChart, {
-        type: "doughnut",
-        data: {
-            labels: {
-                !!json_encode($marketsharename) !!
+
+        const regionChart = document.getElementById('myregionChart');
+        new Chart(regionChart, {
+            type: "pie",
+            data: {
+                labels: {!! json_encode($regionname) !!},
+                datasets: [{
+                    data: {!! json_encode($regionvalue) !!},
+                    backgroundColor: [
+                        "rgba(28, 51, 65,0.8)",
+                        "rgba(0, 135, 115,0.8)",
+                        "rgba(107, 185, 131,0.8)",
+                        "rgba(242, 201, 117,0.8)",
+                        "rgba(237, 99, 83,0.8)",
+                        "rgba(242, 190, 84,0.8)",
+                        "rgba(240, 217, 207,0.8)",
+                        "rgba(135, 174, 180,0.8)",
+                        "rgba(21, 62, 92,0.8)",
+                        "rgba(237, 85, 96,0.8)",
+                        // "rgba(201, 223, 241,0.8)",
+                        // "rgba(240, 217, 207,0.9)"
+                    ]
+                }]
             },
-            datasets: [{
-                data: {
-                    !!json_encode($marketsharevalue) !!
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Region-wise Report (%)'
+                    }
                 },
-                backgroundColor: [
-                    "rgba(28, 51, 65,0.8)",
-                    "rgba(0, 135, 115,0.8)",
-                    "rgba(107, 185, 131,0.8)",
-                    "rgba(242, 201, 117,0.8)",
-                    "rgba(237, 99, 83,0.8)",
-                    "rgba(242, 190, 84,0.8)",
-                    "rgba(240, 217, 207,0.8)",
-                    "rgba(135, 174, 180,0.8)",
-                    "rgba(21, 62, 92,0.8)",
-                    "rgba(237, 85, 96,0.8)",
-                ]
-            }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Market Share Report (%)'
-                }
-            },
-        }
+            }
+        });
 
-    });
+        const marketshareChart = document.getElementById('mshareChart');
+        new Chart(marketshareChart, {
+            type: "doughnut",
+            data: {
+                labels: {!! json_encode($marketsharename) !!},
+                datasets: [{
+                    data: {!! json_encode($marketsharevalue) !!},
+                    backgroundColor: [
+                        "rgba(28, 51, 65,0.8)",
+                        "rgba(0, 135, 115,0.8)",
+                        "rgba(107, 185, 131,0.8)",
+                        "rgba(242, 201, 117,0.8)",
+                        "rgba(237, 99, 83,0.8)",
+                        "rgba(242, 190, 84,0.8)",
+                        "rgba(240, 217, 207,0.8)",
+                        "rgba(135, 174, 180,0.8)",
+                        "rgba(21, 62, 92,0.8)",
+                        "rgba(237, 85, 96,0.8)",
+                    ]
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Market Share Report (%)'
+                    }
+                },
+            }
+
+        });
 </script>
 
 @endsection
