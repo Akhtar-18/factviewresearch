@@ -10,8 +10,9 @@ class RobotsController extends Controller
     public function index()
     {
         $content = "User-agent: *
-        \nDisallow: /private/
-        \nAllow: /public/
+        \nDisallow: /enquiry/*
+        \nDisallow: /buynow/*
+        \nDisallow: /all-reports?search=*
         \nSitemap: https://factviewresearch.com/sitemap.xml"; // Default robots.txt content
 
         return response($content)->header('Content-Type', 'text/plain');

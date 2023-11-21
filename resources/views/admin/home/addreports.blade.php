@@ -138,7 +138,8 @@
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="mb-2">Details<span class="text-danger"></span></label>
-                                                <textarea type="text" class="form-control" name="sdetails[]"></textarea>
+                                                <!-- <textarea type="text" class="form-control" name="sdetails[]"></textarea> -->
+                                                <input type="text" name="sdetails[]" class="form-control">
                                                 @if ($errors->has('sdetails[]'))
                                                     <span class="text-danger">{{ $errors->first('sdetails[]') }}</span>
                                                 @endif
@@ -702,7 +703,8 @@
             <div class="col-md-5">\
                 <div class="form-group">\
                         <label class="mb-2">Details<span class="text-danger"></span></label>\
-                        <textarea type="text" class="form-control"  name="sdetails[]"></textarea>\
+                        <input type="text" name="sdetails[]" class="form-control">\
+                        <!-- <textarea type="text" class="form-control"  name="sdetails[]"></textarea> -->\
                 </div>\
             </div>\
             <div class="col-md-2 mt-3">\
