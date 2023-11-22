@@ -267,6 +267,11 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('seoImports', [ReportsController::class, 'seoImports']);
             Route::post('SegmentImports', [ReportsController::class, 'SegmentImports']);
 
+            Route::match(['GET', 'POST'], '/TblSummaryDelete', [ReportsController::class, 'TblSummaryDelete']);
+            Route::match(['GET', 'POST'], '/MarketGraphDelete', [ReportsController::class, 'MarketGraphDelete']);
+            Route::match(['GET', 'POST'], '/SegmentTypeDelete', [ReportsController::class, 'SegmentTypeDelete']);
+            Route::match(['GET', 'POST'], '/removeregionDelete', [ReportsController::class, 'removeregionDelete']);
+            Route::match(['GET', 'POST'], '/removemarketshare', [ReportsController::class, 'removemarketshare']);
         });
 
         /****************************** Enquiry ******************/

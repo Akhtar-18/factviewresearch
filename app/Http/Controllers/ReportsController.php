@@ -654,4 +654,121 @@ class ReportsController extends Controller
             }
         }
     }
+
+    function TblSummaryDelete(Request $request)
+    {
+        $Update=TblSummary::find($request->id)->delete();
+        if($Update){
+            return response()->json([
+                'success'=>true,
+                'message'=>['Report status successfully change'],
+                'data'=>[
+                    'reload'=>true,
+                ]
+            ]);
+        }
+        else{
+            return response()->json([
+                'success'=>false,
+                'message'=>['Error for change status'],
+                'data'=>[
+                    'redirect'=>'',
+                ]
+            ]);
+        }
+    }
+
+    function MarketGraphDelete(Request $request)
+    {
+        $Update=MarketGraphicalModel::find($request->id)->delete();
+        if($Update){
+            return response()->json([
+                'success'=>true,
+                'message'=>['Report status successfully change'],
+                'data'=>[
+                    'reload'=>true,
+                ]
+            ]);
+        }
+        else{
+            return response()->json([
+                'success'=>false,
+                'message'=>['Error for change status'],
+                'data'=>[
+                    'redirect'=>'',
+                ]
+            ]);
+        }
+    }
+    function SegmentTypeDelete(Request $request)
+    {
+        SegmentGraphicalModel::where('segment_types',$request->id)->delete();
+        $Update=SegmentType::find($request->id)->delete();
+        
+        if($Update){
+            return response()->json([
+                'success'=>true,
+                'message'=>['Report status successfully change'],
+                'data'=>[
+                    'reload'=>true,
+                ]
+            ]);
+        }
+        else{
+            return response()->json([
+                'success'=>false,
+                'message'=>['Error for change status'],
+                'data'=>[
+                    'redirect'=>'',
+                ]
+            ]);
+        }
+    }
+
+    function removeregionDelete(Request $request)
+    {
+        $Update=RegionGraphicalModel::find($request->id)->delete();
+        if($Update){
+            return response()->json([
+                'success'=>true,
+                'message'=>['Report status successfully change'],
+                'data'=>[
+                    'reload'=>true,
+                ]
+            ]);
+        }
+        else{
+            return response()->json([
+                'success'=>false,
+                'message'=>['Error for change status'],
+                'data'=>[
+                    'redirect'=>'',
+                ]
+            ]);
+        }
+    }
+
+    function removemarketshare(Request $request)
+    {
+        $Update=MarketShareGraphicalModel::find($request->id)->delete();
+        if($Update){
+            return response()->json([
+                'success'=>true,
+                'message'=>['Report status successfully change'],
+                'data'=>[
+                    'reload'=>true,
+                ]
+            ]);
+        }
+        else{
+            return response()->json([
+                'success'=>false,
+                'message'=>['Error for change status'],
+                'data'=>[
+                    'redirect'=>'',
+                ]
+            ]);
+        }
+    }
+
 }
