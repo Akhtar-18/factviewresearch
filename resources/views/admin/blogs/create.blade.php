@@ -94,7 +94,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="mb-2">Schema <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="schema">{{ old('schema') }}</textarea>
+                                <input type="text" class="form-control" name="schema" value="{{ old('schema') }}">
                                 @if ($errors->has('schema'))
                                     <span class="text-danger">{{ $errors->first('schema') }}</span>
                                 @endif
@@ -103,7 +103,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="mb-2">Meta Title <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="meta_title">{{ old('meta_title') }}</textarea>
+                                <input type="text" class="form-control" name="meta_title" value="{{ old('meta_title') }}">
                                 @if ($errors->has('meta_title'))
                                     <span class="text-danger">{{ $errors->first('meta_title') }}</span>
                                 @endif
@@ -112,7 +112,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="mb-2">Meta Description <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="meta_des">{{ old('meta_des') }}</textarea>
+                                <input type="text" class="form-control" name="meta_des" value="{{ old('meta_des') }}">
                                 @if ($errors->has('meta_des'))
                                     <span class="text-danger">{{ $errors->first('meta_des') }}</span>
                                 @endif
@@ -121,7 +121,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="mb-2">Meta Keywords <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="metal_keywords">{{ old('metal_keywords') }}</textarea>
+                                <input type="text" class="form-control" name="metal_keywords" value="{{ old('metal_keywords') }}">
                                 @if ($errors->has('metal_keywords'))
                                     <span class="text-danger">{{ $errors->first('metal_keywords') }}</span>
                                 @endif

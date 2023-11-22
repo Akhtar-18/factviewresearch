@@ -98,7 +98,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="mb-2">Schema <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="schema">@if(isset($case_studies->schema)){{$case_studies->schema}}@endif</textarea>
+                                <input type="text" class="form-control" name="schema" value="{{ $case_studies->schema??'' }}">
                                 @if ($errors->has('schema'))
                                     <span class="text-danger">{{ $errors->first('schema') }}</span>
                                 @endif
@@ -107,7 +107,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="mb-2">Meta Title <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="meta_title">@if(isset($case_studies->meta_title)){{$case_studies->meta_title}}@endif</textarea>
+                                <input type="text" class="form-control" name="meta_title" value="{{ $case_studies->meta_title??'' }}">
                                 @if ($errors->has('meta_title'))
                                     <span class="text-danger">{{ $errors->first('meta_title') }}</span>
                                 @endif
@@ -116,7 +116,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="mb-2">Meta Description <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="meta_des">@if(isset($case_studies->meta_des)){{$case_studies->meta_des}}@endif</textarea>
+                                <input type="text" class="form-control" name="meta_des" value="{{ $case_studies->meta_des??'' }}">
                                 @if ($errors->has('meta_des'))
                                     <span class="text-danger">{{ $errors->first('meta_des') }}</span>
                                 @endif
@@ -125,7 +125,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="mb-2">Meta Keywords <span class="text-danger"></span></label>
-                                <textarea class="form-control"  name="metal_keywords">@if(isset($case_studies->metal_keywords)){{$case_studies->metal_keywords}}@endif</textarea>
+                                <input type="text" class="form-control" name="metal_keywords" value="{{ $case_studies->metal_keywords??'' }}">
                                 @if ($errors->has('metal_keywords'))
                                     <span class="text-danger">{{ $errors->first('metal_keywords') }}</span>
                                 @endif
