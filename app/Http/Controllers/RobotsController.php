@@ -13,6 +13,12 @@ class RobotsController extends Controller
         \nDisallow: /enquiry/*
         \nDisallow: /buynow/*
         \nDisallow: /all-reports?search=*
+        \nDisallow: /all-reports?page=*
+        \nDisallow: /report-category/*
+        \nDisallow: /reportsubcategory/*
+        \nDisallow: /enquiry/*/request
+        \nDisallow: /enquiry/*/discount
+        \nDisallow: /enquiry/*/enquiry
         \nSitemap: https://factviewresearch.com/sitemap.xml"; // Default robots.txt content
 
         return response($content)->header('Content-Type', 'text/plain');
