@@ -12,13 +12,20 @@ class RobotsController extends Controller
         $content = "User-agent: *
         \nDisallow: /enquiry/*
         \nDisallow: /buynow/*
-        \nDisallow: /all-reports?search=*
-        \nDisallow: /all-reports?page=*
+        \nDisallow: /all-reports?search=
+        \nDisallow: /all-reports?page=
         \nDisallow: /report-category/*
         \nDisallow: /reportsubcategory/*
-        \nDisallow: /enquiry/*/request
-        \nDisallow: /enquiry/*/discount
-        \nDisallow: /enquiry/*/enquiry
+        \nDisallow: /enquiry/*/request$
+        \nDisallow: /enquiry/*/discount$
+        \nDisallow: /enquiry/*/enquiry$
+        \nDisallow: /services/*
+        \nDisallow: /all-blogs/*
+        \nDisallow: /all-case-studies/*
+        \nDisallow: /all-press-releases/*
+        \nDisallow: /blog/*
+        \nDisallow: /press-release/*
+        \nDisallow: /case-study/*
         \nSitemap: https://factviewresearch.com/sitemap.xml"; // Default robots.txt content
 
         return response($content)->header('Content-Type', 'text/plain');
