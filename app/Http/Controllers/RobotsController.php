@@ -16,9 +16,9 @@ class RobotsController extends Controller
         \nDisallow: /all-reports?page=
         \nDisallow: /report-category/*
         \nDisallow: /reportsubcategory/*
-        \nDisallow: /enquiry/*/request$
-        \nDisallow: /enquiry/*/discount$
-        \nDisallow: /enquiry/*/enquiry$
+        \nDisallow: /enquiry/*/request
+        \nDisallow: /enquiry/*/discount
+        \nDisallow: /enquiry/*/enquiry
         \nDisallow: /services/*
         \nDisallow: /all-blogs/*
         \nDisallow: /all-case-studies/*
