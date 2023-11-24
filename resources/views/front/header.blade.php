@@ -15,23 +15,23 @@
     <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('front/img/logos/fvr-114-114.png') }}">
 
     <!-- plugins -->
-    <link rel="stylesheet" href="{{ asset('front/css/plugins.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/css/plugins.css') }}" defer>
 
     <!-- revolution slider css -->
-    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/settings.css') }}">
-    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/layers.css') }}">
-    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/navigation.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/settings.css') }}" defer>
+    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/layers.css') }}" defer>
+    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/navigation.css') }}" defer>
 
     <!-- quform css -->
-    <link rel="stylesheet" href="{{ asset('front/quform/css/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/quform/css/base.css') }}" defer>
 
     <!-- search css -->
-    <link rel="stylesheet" href="{{ asset('front/search/search.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/search/search.css') }}" defer>
 
     <!-- theme core css -->
-    <link href="{{ asset('front/css/styles-4.css') }}" rel="stylesheet">
+    <link href="{{ asset('front/css/styles-4.css') }}" rel="stylesheet" defer>
 
-    <script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+    <script async src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style type="text/css">
         li.pagination .active a {
@@ -66,7 +66,7 @@
         gtag('config', 'G-HES2Q3T6V1');
     </script>
 
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    <script type="text/javascript" async src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
     <script type="text/javascript">
         var usrlang = navigator.language ||
