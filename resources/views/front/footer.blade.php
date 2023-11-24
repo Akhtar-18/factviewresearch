@@ -222,6 +222,63 @@
     }
 </script> -->
 
+
+<script type="text/javascript">
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        });
+
+        $(".btn-submit").click(function(e) {
+
+            e.preventDefault();
+            var ButtonText = $(this).find('button[type="button"]').html();
+            /*$(this).find('button').prop('disabled', true);
+            $(this).find('button').html('Loading ...');*/
+            $(this).find('.btn-submit').prop('disabled', true);
+            $(this).find('.btn-submit').html('Loading ...');
+
+
+            $(this).find('button[type="button"]').prop('disabled', true);
+            $(this).find('button[type="button"]').html('Loading ...');
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('submit.enquiry') }}",
+                data: $('#contactUsForm').serialize(),
+                success: function(data) {
+                    if ($.isEmptyObject(data.error)) {
+                        window.location.href = "{{ url('thankyou') }}/" + data.id;
+                    } else {
+                        printErrorMsg(data.error);
+                    }
+                }
+            });
+
+        });
+
+        function printErrorMsg(msg) {
+            $(".print-error-msg").find("ul").html('');
+            $(".print-error-msg").css('display', 'block');
+            $.each(msg, function(key, value) {
+                $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
+            });
+        }
+
+        $('#reload').click(function() {
+            $.ajax({
+                type: 'GET',
+                url: '{{ route('reload-from-captcha') }}',
+                success: function(data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>

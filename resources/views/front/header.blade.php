@@ -31,7 +31,8 @@
     <!-- theme core css -->
     <link href="{{ asset('front/css/styles-4.css') }}" rel="stylesheet" defer>
 
-    <script async src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- <script async src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style type="text/css">
         li.pagination .active a {
