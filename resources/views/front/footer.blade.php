@@ -163,12 +163,6 @@
 
 <script>
     $(document).ready(function() {
-        /*$('body').bind('cut copy', function(e) {
-            e.preventDefault();
-        });
-        $("body").on("contextmenu", function(e) {
-            return false;
-        });*/
         $("body").on("cut copy", function(e) {
             e.preventDefault();
         });
@@ -181,7 +175,6 @@
     //         return false;
     //     });
     // });
-
 </script>
 
 <!--Start of Tawk.to Script-->
@@ -200,84 +193,61 @@
 </script>
 <!--End of Tawk.to Script-->
 
-<!-- <script type="text/javascript">
-    var usrlang = navigator.language ||
-        navigator.userLanguage;
-    console.log(
-        "User's preferred language is: " +
-        usrlang);
-
-    function googleTranslateElementInit() {
-        setCookie('googtrans', '/en/' + usrlang, 1);
-        new google.translate.TranslateElement({
-            pageLanguage: 'ES',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
-    }
-
-    function setCookie(key, value, expiry) {
-        var expires = new Date();
-        expires.setTime(expires.getTime() + (expiry 24 60 60 1000));
-        document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
-    }
-</script> -->
-
-
 <script type="text/javascript">
-        $(document).ready(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+
+    $(".btn-submit").click(function(e) {
+
+        e.preventDefault();
+        var ButtonText = $(this).find('button[type="button"]').html();
+        /*$(this).find('button').prop('disabled', true);
+        $(this).find('button').html('Loading ...');*/
+        $(this).find('.btn-submit').prop('disabled', true);
+        $(this).find('.btn-submit').html('Loading ...');
+
+
+        $(this).find('button[type="button"]').prop('disabled', true);
+        $(this).find('button[type="button"]').html('Loading ...');
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('submit.enquiry') }}",
+            data: $('#contactUsForm').serialize(),
+            success: function(data) {
+                if ($.isEmptyObject(data.error)) {
+                    window.location.href = "{{ url('thankyou') }}/" + data.id;
+                } else {
+                    printErrorMsg(data.error);
                 }
-            });
+            }
         });
 
-        $(".btn-submit").click(function(e) {
+    });
 
-            e.preventDefault();
-            var ButtonText = $(this).find('button[type="button"]').html();
-            /*$(this).find('button').prop('disabled', true);
-            $(this).find('button').html('Loading ...');*/
-            $(this).find('.btn-submit').prop('disabled', true);
-            $(this).find('.btn-submit').html('Loading ...');
-
-
-            $(this).find('button[type="button"]').prop('disabled', true);
-            $(this).find('button[type="button"]').html('Loading ...');
-
-            $.ajax({
-                type: 'POST',
-                url: "{{ route('submit.enquiry') }}",
-                data: $('#contactUsForm').serialize(),
-                success: function(data) {
-                    if ($.isEmptyObject(data.error)) {
-                        window.location.href = "{{ url('thankyou') }}/" + data.id;
-                    } else {
-                        printErrorMsg(data.error);
-                    }
-                }
-            });
-
+    function printErrorMsg(msg) {
+        $(".print-error-msg").find("ul").html('');
+        $(".print-error-msg").css('display', 'block');
+        $.each(msg, function(key, value) {
+            $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
         });
+    }
 
-        function printErrorMsg(msg) {
-            $(".print-error-msg").find("ul").html('');
-            $(".print-error-msg").css('display', 'block');
-            $.each(msg, function(key, value) {
-                $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
-            });
-        }
-
-        $('#reload').click(function() {
-            $.ajax({
-                type: 'GET',
-                url: '{{ route('reload-from-captcha') }}',
-                success: function(data) {
-                    $(".captcha span").html(data.captcha);
-                }
-            });
+    $('#reload').click(function() {
+        $.ajax({
+            type: 'GET',
+            url: '{{ route('reload-from-captcha') }}',
+            success: function(data) {
+                $(".captcha span").html(data.captcha);
+            }
         });
-    </script>
+    });
+</script>
 
 </body>
 

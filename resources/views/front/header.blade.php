@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
-
     <!-- metas -->
     <meta charset="utf-8">
     <meta name="author" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style type="text/css">
+        li.pagination .active a {
+            background-color: #212529 !important;
+        }
+
+        .testmonial-single p:before {
+            display: none !important;
+        }
+    </style>
+    <style>
+        #google_translate_element,
+        .skiptranslate {
+            display: none;
+        }
+
+        body {
+            top: 0 !important;
+        }
+    </style>
     <link rel="shortcut icon" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
@@ -32,27 +48,9 @@
     <link href="{{ asset('front/css/styles-4.css') }}" rel="stylesheet" defer>
 
     <!-- <script async src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <style type="text/css">
-        li.pagination .active a {
-            background-color: #212529 !important;
-        }
 
-        .testmonial-single p:before {
-            display: none !important;
-        }
-    </style>
-    <style>
-        #google_translate_element,
-        .skiptranslate {
-            display: none;
-        }
-
-        body {
-            top: 0 !important;
-        }
-    </style>
     <meta name="google-site-verification" content="ttXl7RH9nKnXlHD17fSjZEaoD-uIiT5OROVTnU4EPG0" />
 
     <!-- Google tag (gtag.js) -->
@@ -67,9 +65,9 @@
         gtag('config', 'G-HES2Q3T6V1');
     </script>
 
-    <script type="text/javascript" async src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    <script async type="text/javascript" async src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
-    <script type="text/javascript">
+    <script async type="text/javascript">
         var usrlang = navigator.language ||
             navigator.userLanguage;
         console.log(
@@ -220,35 +218,6 @@
     @if ($route == 'front.report')
         @yield('reportmetasection')
     @endif
-
-    <!-- favicon -->
-
-    <!-- <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-    </script>
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        var userLang = navigator.language || navigator.userLanguage; // Get the user's browser language
-        console.log(userLang);
-        new google.translate.TranslateElement({
-            pageLanguage: userLang,
-            includedLanguages: userLang,
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
-    }
-    //googleTranslateElementInit();
-</script> -->
-    <!-- <div id="google_translate_element"></div>
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        var userLang = navigator.language || navigator.userLanguage; // Get the user's browser language
-        console.log(userLang);
-        new google.translate.TranslateElement({
-            pageLanguage: 'ar',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
-    }
-</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-</script> -->
 
 </head>
 
