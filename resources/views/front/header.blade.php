@@ -65,7 +65,7 @@
         gtag('config', 'G-HES2Q3T6V1');
     </script>
 
-    <script async type="text/javascript" async src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    <script async type="text/javascript" async src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
     <script async type="text/javascript">
         var usrlang = navigator.language ||
@@ -93,13 +93,12 @@
     @endphp
     @if ($route == 'front.home')
         <meta name="keywords"
-            content="Market research, Data analysis, Fact-finding, Research studies, Statistical analysis, Research reports, Data-driven insights, Research methodologies, Data visualization, Survey analysis" />
+            content="Market Research Reports, Custom Research and Consulting, Micro Monitoring & Intelligence Procurement" />
         <meta name="description"
-            content="Unlock valuable insights through data-driven Market Research. Expert Fact-Finding, Research Studies, and Statistical Analysis. Explore our Research Reports and Data Visualization methodologies" />
+            content="Factview Research pioneers the future of market intelligence, delivering unparalleled insights, your business decisions & insightful analysis." />
 
         <!-- title  -->
-        <title>Market Research Reports, Industry Reports, Market Research, Data Analysis, Fact-Finding | FactView
-            Research</title>
+        <title>Factview Research | Market Research | Consulting Services</title>
     @endif
 
     @if ($route == 'front.services')
@@ -223,7 +222,7 @@
 </head>
 
 <body>
-    <div id="google_translate_element" hidden></div>
+    <div id="google_translate_element"></div>
     <!-- PAGE LOADING
     ================================================== -->
     <!-- <div id="preloader"></div> -->
