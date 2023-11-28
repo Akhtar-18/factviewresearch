@@ -215,6 +215,7 @@
         <!-- title  -->
         <title>Market Research Services, Competitive Services</title>
     @endif
+
     @if ($route == 'front.report')
         @yield('reportmetasection')
     @endif
@@ -222,7 +223,7 @@
 </head>
 
 <body>
-    <div id="google_translate_element"></div>
+    <div id="google_translate_element" hidden></div>
     <!-- PAGE LOADING
     ================================================== -->
     <!-- <div id="preloader"></div> -->
