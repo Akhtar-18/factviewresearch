@@ -4,8 +4,7 @@
     Research')
 @section('frontpage')
 
-    <!-- REVOLUTION SLIDER
-                                                ================================================== -->
+    <!-- REVOLUTION SLIDER -->
     <section-new class="top-position top-position3">
         <!------- Add container fluid --->
         <div class="container-fluid">
@@ -34,8 +33,7 @@
         </div>
     </section-new>
 
-    <!-- ABOUT
-                                                ================================================== -->
+    <!-- ABOUT -->
     <section class="md">
         <div class="container">
             <div class="row align-items-center">
