@@ -7,6 +7,8 @@
     <!-- REVOLUTION SLIDER
                                             ================================================== -->
     <section-new class="top-position top-position3">
+        <!------- Add container fluid --->
+        <div class="container-fluid">
         <div class="row slider-fade">
             <div class="owl-carousel owl-theme w-100">
                 @if (GetSlider())
@@ -28,6 +30,7 @@
                     @endforeach
                 @endif
             </div>
+        </div>
         </div>
     </section-new>
 
