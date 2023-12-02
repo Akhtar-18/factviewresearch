@@ -253,7 +253,7 @@
                                         @foreach (getClient() as $client)
                                             <div class="item"><img alt="partner-image"
                                                     src="{{ asset('clients/images/') }}/{{ $client->image }}"
-                                                    width="50%"></div>
+                                                    width="200" height="50"></div>
                                         @endforeach
                                     @endif
                                 </div>
@@ -463,6 +463,6 @@
     {{-- @include('front.client-section') --}}
 
 
-    
+
 
 @endsection

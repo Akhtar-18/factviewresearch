@@ -8,7 +8,7 @@
                 <a href="{{ url('/') }}" class="navbar-brand logodefault">
                     @if (getCompanyDetail())
                         <img id="logo" src="{{ asset('company_logo') }}/{{ getCompanyDetail()->company_logo }}"
-                            alt="logo">
+                            alt="logo" width="200" height="50">
                     @elseif(isset(getCompanyDetail()->company_name))
                         {{ getCompanyDetail()->company_name }}
                     @endif

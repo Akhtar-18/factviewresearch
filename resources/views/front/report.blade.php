@@ -154,7 +154,7 @@
                                                                 @if (getCompanyDetail())
                                                                     <img id="logo"
                                                                         src="{{ asset('company_logo') }}/{{ getCompanyDetail()->company_logo }}"
-                                                                        alt="logo">
+                                                                        alt="logo" width="200" height="50">
                                                                 @elseif(isset(getCompanyDetail()->company_name))
                                                                     {{ getCompanyDetail()->company_name }}
                                                                 @endif
@@ -478,7 +478,7 @@
                                                 @if (getClient())
                                                     @foreach (getClient() as $client)
                                                         <div class="item"><img alt="partner-image"
-                                                                src="{{ asset('clients/images/') }}/{{ $client->image }}">
+                                                                src="{{ asset('clients/images/') }}/{{ $client->image }}" width="200" height="50">
                                                         </div>
                                                     @endforeach
                                                 @endif

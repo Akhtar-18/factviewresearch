@@ -10,7 +10,7 @@
                 @if (getClient())
                     @foreach (getClient() as $client)
                         <div class="item"><img alt="partner-image"
-                                src="{{ asset('clients/images/') }}/{{ $client->image }}"></div>
+                                src="{{ asset('clients/images/') }}/{{ $client->image }}" width="200" height="50"></div>
                     @endforeach
                 @endif
             </div>
