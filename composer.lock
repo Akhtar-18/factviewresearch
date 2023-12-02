@@ -6524,16 +6524,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v10.11.1",
+            "version": "v10.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "6fb8571f9da39b8f256298e98bbcf6dd86900888"
+                "reference": "9165711838eb0c503efad380551673d92e089e12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/6fb8571f9da39b8f256298e98bbcf6dd86900888",
-                "reference": "6fb8571f9da39b8f256298e98bbcf6dd86900888",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/9165711838eb0c503efad380551673d92e089e12",
+                "reference": "9165711838eb0c503efad380551673d92e089e12",
                 "shasum": ""
             },
             "require": {
@@ -6599,7 +6599,7 @@
             ],
             "support": {
                 "issues": "https://github.com/yajra/laravel-datatables/issues",
-                "source": "https://github.com/yajra/laravel-datatables/tree/v10.11.1"
+                "source": "https://github.com/yajra/laravel-datatables/tree/v10.8.0"
             },
             "funding": [
                 {
@@ -6607,7 +6607,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-25T13:00:21+00:00"
+            "time": "2023-08-12T02:08:05+00:00"
         }
     ],
     "packages-dev": [
@@ -7023,16 +7023,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.26.2",
+            "version": "v1.24.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "c0177786b1cd05b687b0fa11364aeeecb42cd3d8"
+                "reference": "3a373bb2845623aed2017c672dc61c84ae974890"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/c0177786b1cd05b687b0fa11364aeeecb42cd3d8",
-                "reference": "c0177786b1cd05b687b0fa11364aeeecb42cd3d8",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/3a373bb2845623aed2017c672dc61c84ae974890",
+                "reference": "3a373bb2845623aed2017c672dc61c84ae974890",
                 "shasum": ""
             },
             "require": {
@@ -7084,7 +7084,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2023-11-27T14:46:06+00:00"
+            "time": "2023-09-01T14:05:17+00:00"
         },
         {
             "name": "league/glide",

@@ -5,37 +5,37 @@
 @section('frontpage')
 
     <!-- REVOLUTION SLIDER
-                                            ================================================== -->
+                                                ================================================== -->
     <section-new class="top-position top-position3">
         <!------- Add container fluid --->
         <div class="container-fluid">
-        <div class="row slider-fade">
-            <div class="owl-carousel owl-theme w-100">
-                @if (GetSlider())
-                    @foreach (GetSlider() as $list)
-                        <div class="text-center item bg-img" data-overlay-dark="7"
-                            data-background="{{ asset('images') }}/{{ $list->slider_image }}">
-                            <div class="h-100 d-table caption position-relative">
-                                <div class="overflow-hidden d-table-cell align-middle h-100">
-                                    <h2 class="alt-font text-success m-0">{{ $list->heading }}</h2>
-                                    <h5 class="text-warning">{{ $list->subheading }}</h5>
-                                    <!-- <p class="d-none d-lg-block mb-3 mb-lg-4">We provide best for our client and respect their business design idea.</p> -->
-                                    <p><a href="{{ route('front.contact') }}" class="butn medium primary">
-                                            <span class="alt-font">Learn More</span><i
-                                                class="fas fa-angle-right text-white ms-2"></i>
-                                        </a></p>
+            <div class="row slider-fade">
+                <div class="owl-carousel owl-theme w-100">
+                    @if (GetSlider())
+                        @foreach (GetSlider() as $list)
+                            <div class="text-center item bg-img" data-overlay-dark="7"
+                                data-background="{{ asset('images') }}/{{ $list->slider_image }}">
+                                <div class="h-100 d-table caption position-relative">
+                                    <div class="overflow-hidden d-table-cell align-middle h-100">
+                                        <h2 class="alt-font text-success m-0">{{ $list->heading }}</h2>
+                                        <h5 class="text-warning">{{ $list->subheading }}</h5>
+                                        <!-- <p class="d-none d-lg-block mb-3 mb-lg-4">We provide best for our client and respect their business design idea.</p> -->
+                                        <p><a href="{{ route('front.contact') }}" class="butn medium primary">
+                                                <span class="alt-font">Learn More</span><i
+                                                    class="fas fa-angle-right text-white ms-2"></i>
+                                            </a></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                @endif
+                        @endforeach
+                    @endif
+                </div>
             </div>
-        </div>
         </div>
     </section-new>
 
     <!-- ABOUT
-                                            ================================================== -->
+                                                ================================================== -->
     <section class="md">
         <div class="container">
             <div class="row align-items-center">
@@ -99,7 +99,7 @@
 
 
     <!-- COUNTER
-                                            ================================================== -->
+                                                ================================================== -->
     <section class="parallax md" style="background: #2a66b1">
         <div class="container">
             <div class="row mt-n1-9">
@@ -145,7 +145,7 @@
 
 
     <!-- REPORTS
-                                            ================================================== -->
+                                                ================================================== -->
     <section>
         <div class="container">
             <div class="row">
@@ -194,7 +194,7 @@
 
 
     <!-- BLOGS
-                                            ================================================== -->
+                                                ================================================== -->
     <section>
         <div class="container">
 
@@ -247,7 +247,7 @@
 
 
     <!-- Press Releases
-                                            ================================================== -->
+                                                ================================================== -->
     <section>
         <div class="container">
 
@@ -301,7 +301,7 @@
     </section>
 
     <!-- Case Studies
-                                            ================================================== -->
+                                                ================================================== -->
     <section>
         <div class="container">
 
