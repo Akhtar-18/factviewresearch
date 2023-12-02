@@ -55,7 +55,7 @@
                         @foreach (getTestimonial() as $testimonial)
                             <div class="testimonial-style4 text-center">
                                 <img src="{{ asset('testimonials/client_image/') }}/{{ $testimonial->client_image }}"
-                                    alt="..." class="d-inline-block">
+                                    alt="..." class="d-inline-block" width="200" height="50">
                                 <p class="my-4">{!! html_entity_decode($testimonial->comments) !!}</p>
                                 <span
                                     class="name font-weight-600 text-uppercase font-size12 alt-font small">{{ $testimonial->name }}
