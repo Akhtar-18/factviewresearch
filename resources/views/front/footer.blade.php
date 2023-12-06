@@ -4,10 +4,10 @@
 
             <div class="col-lg-4 col-md-6 mt-1-9">
 
-                <!-- <img alt="footer-logo" src="img/logos/logo-footer.png"> -->
+                <!-- <img alt="footer-logo" defer async src="img/logos/logo-footer.png"> -->
                 <a href="{{ url('/') }}" class="navbar-brand logodefault">
                     @if (getCompanyDetail())
-                        <img id="logo" src="{{ asset('company_logo') }}/{{ getCompanyDetail()->company_logo }}"
+                        <img id="logo" defer async src="{{ asset('company_logo') }}/{{ getCompanyDetail()->company_logo }}"
                             alt="logo" width="200" height="50">
                     @elseif(isset(getCompanyDetail()->company_name))
                         {{ getCompanyDetail()->company_name }}
@@ -124,40 +124,40 @@
 <!-- all js include start -->
 
 <!-- jQuery -->
-<script src="{{ asset('front/js/jquery.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/jquery.min.js') }}"></script>
 
 <!-- popper js -->
-<script src="{{ asset('front/js/popper.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/popper.min.js') }}"></script>
 
 <!-- bootstrap -->
-<script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/bootstrap.min.js') }}"></script>
 
 <!-- core.min.js -->
-<script src="{{ asset('front/js/core.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/core.min.js') }}"></script>
 
 <!-- search -->
-<script src="{{ asset('front/search/search.js') }}"></script>
+<script defer async src="{{ asset('front/search/search.js') }}"></script>
 
 <!-- revolution slider js files start -->
-<script src="{{ asset('front/js/rev_slider/jquery.themepunch.tools.min.js') }}"></script>
-<script src="{{ asset('front/js/rev_slider/jquery.themepunch.revolution.min.js') }}"></script>
-<script src="{{ asset('front/js/rev_slider/extensions/revolution.extension.actions.min.js') }}"></script>
-<script src="{{ asset('front/js/rev_slider/extensions/revolution.extension.carousel.min.js') }}"></script>
-<script src="{{ asset('front/js/rev_slider/extensions/revolution.extension.kenburn.min.js') }}"></script>
-<script src="{{ asset('front/js/rev_slider/extensions/revolution.extension.layeranimation.min.js') }}"></script>
-<script src="{{ asset('front/js/rev_slider/extensions/revolution.extension.migration.min.js') }}"></script>
-<script src="{{ asset('front/js/rev_slider/extensions/revolution.extension.navigation.min.js') }}"></script>
-<script src="{{ asset('front/js/rev_slider/extensions/revolution.extension.parallax.min.js') }}"></script>
-<script src="{{ asset('front/js/rev_slider/extensions/revolution.extension.slideanims.min.js') }}"></script>
-<script src="{{ asset('front/js/rev_slider/extensions/revolution.extension.video.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/rev_slider/jquery.themepunch.tools.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/rev_slider/jquery.themepunch.revolution.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.actions.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.carousel.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.kenburn.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.migration.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.navigation.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.parallax.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.slideanims.min.js') }}"></script>
+<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.video.min.js') }}"></script>
 
 <!-- theme core scripts -->
-<script src="{{ asset('front/js/main.js') }}"></script>
+<script defer async src="{{ asset('front/js/main.js') }}"></script>
 
-<script src="{{ asset('front/quform/js/plugins.js') }}"></script>
+<script defer async src="{{ asset('front/quform/js/plugins.js') }}"></script>
 
 <!-- quform scripts js -->
-<script src="{{ asset('front/quform/js/scripts.js') }}"></script>
+<script defer async src="{{ asset('front/quform/js/scripts.js') }}"></script>
 
 <!-- all js include end -->
 
@@ -185,7 +185,7 @@
         var s1 = document.createElement("script"),
             s0 = document.getElementsByTagName("script")[0];
         s1.async = true;
-        s1.src = 'https://embed.tawk.to/64f61afda91e863a5c119a1a/1h9glislg';
+        s1.defer async src = 'https://embed.tawk.to/64f61afda91e863a5c119a1a/1h9glislg';
         s1.charset = 'UTF-8';
         s1.setAttribute('crossorigin', '*');
         s0.parentNode.insertBefore(s1, s0);
