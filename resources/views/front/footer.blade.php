@@ -193,7 +193,7 @@
 </script>
 <!--End of Tawk.to Script-->
 
-<script type="text/javascript">
+<script defer async type="text/javascript">
     $(document).ready(function() {
         $.ajaxSetup({
             headers: {

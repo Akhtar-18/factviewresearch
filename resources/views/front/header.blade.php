@@ -54,8 +54,8 @@
     <meta name="google-site-verification" content="ttXl7RH9nKnXlHD17fSjZEaoD-uIiT5OROVTnU4EPG0" />
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HES2Q3T6V1"></script>
-    <script>
+    <script defer async src="https://www.googletagmanager.com/gtag/js?id=G-HES2Q3T6V1"></script>
+    <script defer async>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -67,7 +67,7 @@
 
     <script defer async type="text/javascript" async src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
-    <script async type="text/javascript">
+    <script defer async type="text/javascript">
         var usrlang = navigator.language ||
             navigator.userLanguage;
         console.log(
