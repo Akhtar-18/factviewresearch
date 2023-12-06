@@ -31,21 +31,21 @@
     <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('front/img/logos/fvr-114-114.png') }}">
 
     <!-- plugins -->
-    <link rel="stylesheet" href="{{ asset('front/css/plugins.css') }}" async>
+    <link rel="stylesheet" href="{{ asset('front/css/plugins.css') }}" async media="print" onload="this.media='all'">
 
     <!-- revolution slider css -->
-    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/settings.css') }}" async>
-    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/layers.css') }}" async>
-    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/navigation.css') }}" async>
+    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/settings.css') }}" async media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/layers.css') }}" async media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/navigation.css') }}" async media="print" onload="this.media='all'">
 
     <!-- quform css -->
-    <link rel="stylesheet" href="{{ asset('front/quform/css/base.css') }}" async>
+    <link rel="stylesheet" href="{{ asset('front/quform/css/base.css') }}" async media="print" onload="this.media='all'">
 
     <!-- search css -->
-    <link rel="stylesheet" href="{{ asset('front/search/search.css') }}" async>
+    <link rel="stylesheet" href="{{ asset('front/search/search.css') }}" async media="print" onload="this.media='all'">
 
     <!-- theme core css -->
-    <link href="{{ asset('front/css/styles-4.css') }}" rel="stylesheet" async>
+    <link href="{{ asset('front/css/styles-4.css') }}" rel="stylesheet" async media="print" onload="this.media='all'">
 
     <!-- <script async src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
     <script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
