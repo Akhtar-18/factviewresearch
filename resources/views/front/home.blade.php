@@ -13,7 +13,13 @@
                     @if (GetSlider())
                         @foreach (GetSlider() as $list)
                             <div class="text-center item bg-img" data-overlay-dark="7"
-                                data-background="{{ asset('images') }}/{{ $list->slider_image }}">
+                                data-background="{{ asset('images') }}/{{ $list->slider_image }}"
+                                srcset="
+                                {{ asset('images') }}/{{ $list->slider_image }} 480w,
+                                {{ asset('images') }}/{{ $list->slider_image }} 800w,
+                                {{ asset('images') }}/{{ $list->slider_image }} 1200w"
+                                sizes="(max-width: 480px) 100vw, (max-width: 800px) 80vw, 1200px" alt="Image Description"
+                                loading="lazy">
                                 <div class="h-100 d-table caption position-relative">
                                     <div class="overflow-hidden d-table-cell align-middle h-100">
                                         <h2 class="alt-font text-success m-0">{{ $list->heading }}</h2>
@@ -97,7 +103,7 @@
 
 
     <!-- COUNTER
-                                                ================================================== -->
+                                                    ================================================== -->
     <section class="parallax md" style="background: #2a66b1">
         <div class="container">
             <div class="row mt-n1-9">
@@ -143,7 +149,7 @@
 
 
     <!-- REPORTS
-                                                ================================================== -->
+                                                    ================================================== -->
     <section>
         <div class="container">
             <div class="row">
@@ -192,7 +198,7 @@
 
 
     <!-- BLOGS
-                                                ================================================== -->
+                                                    ================================================== -->
     <section>
         <div class="container">
 
@@ -245,7 +251,7 @@
 
 
     <!-- Press Releases
-                                                ================================================== -->
+                                                    ================================================== -->
     <section>
         <div class="container">
 
@@ -299,7 +305,7 @@
     </section>
 
     <!-- Case Studies
-                                                ================================================== -->
+                                                    ================================================== -->
     <section>
         <div class="container">
 
