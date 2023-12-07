@@ -31,30 +31,30 @@
     <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('front/img/logos/fvr-114-114.png') }}">
 
     <!-- plugins -->
-    <link rel="stylesheet" href="{{ asset('front/css/plugins.css') }}" async >
+    <link rel="stylesheet" href="{{ asset('front/css/plugins.css') }}" defer>
 
     <!-- revolution slider css -->
-    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/settings.css') }}" async >
-    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/layers.css') }}" async >
-    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/navigation.css') }}" async >
+    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/settings.css') }}" defer>
+    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/layers.css') }}" defer>
+    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/navigation.css') }}" defer>
 
     <!-- quform css -->
-    <link rel="stylesheet" href="{{ asset('front/quform/css/base.css') }}" async >
+    <link rel="stylesheet" href="{{ asset('front/quform/css/base.css') }}" defer>
 
     <!-- search css -->
-    <link rel="stylesheet" href="{{ asset('front/search/search.css') }}" async >
+    <link rel="stylesheet" href="{{ asset('front/search/search.css') }}" defer>
 
     <!-- theme core css -->
-    <link href="{{ asset('front/css/styles-4.css') }}" rel="stylesheet" async >
+    <link href="{{ asset('front/css/styles-4.css') }}" rel="stylesheet" >
 
-    <!-- <script async src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
-    <script defer async src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="google-site-verification" content="ttXl7RH9nKnXlHD17fSjZEaoD-uIiT5OROVTnU4EPG0" />
 
     <!-- Google tag (gtag.js) -->
-    <script defer async src="https://www.googletagmanager.com/gtag/js?id=G-HES2Q3T6V1"></script>
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-HES2Q3T6V1"></script>
     <script defer async>
         window.dataLayer = window.dataLayer || [];
 
@@ -65,9 +65,9 @@
         gtag('config', 'G-HES2Q3T6V1');
     </script>
 
-    <script defer async type="text/javascript" async src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    <script defer type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
-    <script defer async type="text/javascript">
+    <script defer type="text/javascript">
         var usrlang = navigator.language ||
             navigator.userLanguage;
         console.log(
