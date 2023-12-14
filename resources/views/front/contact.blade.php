@@ -39,7 +39,7 @@
                         <div class="alert alert-danger print-error-msg" style="display:none">
                             <ul></ul>
                         </div>
-                        <form class="contact quform" id="contactUsForm" action="#" method="post"
+                        <form class="contact quform contactform"  action="{{ route('submit.contact_enquiry') }}" id="contactUsForm" action="#" method="post"
                             enctype="multipart/form-data">
                             <div class="quform-elements">
                                 <div class="row">
@@ -121,7 +121,7 @@
                                     <!-- Begin Submit button -->
                                     <div class="col-md-12">
                                         <div class="quform-submit-inner">
-                                            <button class="butn btn-submit" type="button"><span>Submit
+                                            <button class="butn btn-submit" type="submit"><span>Submit
                                                     comment</span></button>
                                         </div>
                                         <div class="quform-loading-wrap text-start"><span class="quform-loading"></span>
@@ -218,26 +218,6 @@
             });
         });
 
-        $(".btn-submit").click(function(e) {
-
-            e.preventDefault();
-
-
-            $.ajax({
-                type: 'POST',
-                url: "{{ route('submit.contact_enquiry') }}",
-                data: $('#contactUsForm').serialize(),
-                success: function(data) {
-                    if ($.isEmptyObject(data.error)) {
-                        //alert(data.success);
-                        location.reload();
-                    } else {
-                        printErrorMsg(data.error);
-                    }
-                }
-            });
-
-        });
 
         function printErrorMsg(msg) {
             $(".print-error-msg").find("ul").html('');

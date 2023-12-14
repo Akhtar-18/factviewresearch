@@ -56,7 +56,7 @@
                             <ul></ul>
                         </div>
 
-                        <form class="contact" id="contactUsForm"  name="contactUsForm" enctype="multipart/form-data"
+                        <form class="contact ajaxformfileupload" action="{{ route('submit.buynow') }}" id="contactUsForm"  name="contactUsForm" enctype="multipart/form-data"
                             method="POST">
                             <div class="quform-elements">
                                 <div class="row">
@@ -331,27 +331,31 @@
             });
         });
 
-        $(".btn-submit").click(function(e) {
+  
 
-            e.preventDefault();
-            var ButtonText = $(this).find('button[type="button"]').html();
-            $(this).find('button').prop('disabled', true);
-            $(this).find('button').html('Loading ...');
+    //     $(".btn-submit").click(function(e) {
 
-            $.ajax({
-                type: 'POST',
-                url: "{{ route('submit.buynow') }}",
-                data: $('#contactUsForm').serialize(),
-                success: function(data) {
-                    if ($.isEmptyObject(data.error)) {
-                        window.location.href = "{{ url('thankyou') }}/" + data.id;
-                    } else {
-                        printErrorMsg(data.error);
-                    }
-                }
-            });
+    //         e.preventDefault();
+    //         // var ButtonText = $(this).find('button[type="button"]').html();
+    //         // $(this).find('button').prop('disabled', true);
+    //         // $(this).find('button').html('Loading ...');
+    //         $(this).find('button[type="submit"]').prop('disabled', true);
+    //    $(this).find('button[type="submit"]').html('Loading ...');
 
-        });
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: "{{ route('submit.buynow') }}",
+    //             data: $('#contactUsForm').serialize(),
+    //             success: function(data) {
+    //                 if ($.isEmptyObject(data.error)) {
+    //                     window.location.href = "{{ url('thankyou') }}/" + data.id;
+    //                 } else {
+    //                     printErrorMsg(data.error);
+    //                 }
+    //             }
+    //         });
+
+    //     });
 
         function printErrorMsg(msg) {
             $(".print-error-msg").find("ul").html('');

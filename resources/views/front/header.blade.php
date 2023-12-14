@@ -48,7 +48,8 @@
     <link href="{{ asset('front/css/styles-4.css') }}" rel="stylesheet" defer>
 
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
-    <script defer async src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script defer async src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="google-site-verification" content="ttXl7RH9nKnXlHD17fSjZEaoD-uIiT5OROVTnU4EPG0" />

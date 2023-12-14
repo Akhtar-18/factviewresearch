@@ -178,7 +178,7 @@
 </script>
 
 <!--Start of Tawk.to Script-->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     var Tawk_API = Tawk_API || {},
         Tawk_LoadStart = new Date();
     (function() {
@@ -190,7 +190,7 @@
         s1.setAttribute('crossorigin', '*');
         s0.parentNode.insertBefore(s1, s0);
     })();
-</script>
+</script> -->
 <!--End of Tawk.to Script-->
 
 <script defer async type="text/javascript">
@@ -202,33 +202,101 @@
         });
     });
 
-    $(".btn-submit").click(function(e) {
+    $("body").on("submit",".ajaxformfileupload", function(event){
+    event.preventDefault();
+    // if($(this).parsley().isValid() ) {
+        // alert(11);
+        var formdata   = $(this);
+       var dataValue  = new FormData(this);//new FormData(formdata[0]);
+       var UrlValue   = $(this).attr('action');
 
-        e.preventDefault();
-        var ButtonText = $(this).find('button[type="button"]').html();
-        /*$(this).find('button').prop('disabled', true);
-        $(this).find('button').html('Loading ...');*/
-        $(this).find('.btn-submit').prop('disabled', true);
-        $(this).find('.btn-submit').html('Loading ...');
+       var ButtonText = $(this).find('button[type="submit"]').html();
+       /*$(this).find('button').prop('disabled', true);
+       $(this).find('button').html('Loading ...');*/
+       
+       $(this).find('button[type="submit"]').prop('disabled', true);
+       $(this).find('button[type="submit"]').html('Loading ...');
 
-
-        $(this).find('button[type="button"]').prop('disabled', true);
-        $(this).find('button[type="button"]').html('Loading ...');
-
-        $.ajax({
-            type: 'POST',
-            url: "{{ route('submit.enquiry') }}",
-            data: $('#contactUsForm').serialize(),
-            success: function(data) {
+       //alert(dataValue);
+       $.ajax({
+           url     : UrlValue,
+           method  : 'post',
+           data    :dataValue,
+           headers:
+           {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           },
+           processData: false,
+           contentType: false,
+           beforeSend: function( xhr ) {
+               
+           },
+           success: function(data) {
                 if ($.isEmptyObject(data.error)) {
                     window.location.href = "{{ url('thankyou') }}/" + data.id;
                 } else {
                     printErrorMsg(data.error);
                 }
-            }
-        });
+            },
+           error: function(data) {
+               console.log("error ",data);
+               printErrorMsg(data.error);
+               console.log(ButtonText);
+               formdata.find('button[type="submit"]').prop('disabled', false);
+               formdata.find('button[type="submit"]').html(ButtonText);
+           }
+       });
+       //return false;
+//    }
+});
 
-    });
+$("body").on("submit",".contactform", function(event){
+    event.preventDefault();
+    // if($(this).parsley().isValid() ) {
+        // alert(11);
+        var formdata   = $(this);
+       var dataValue  = new FormData(this);//new FormData(formdata[0]);
+       var UrlValue   = $(this).attr('action');
+
+       var ButtonText = $(this).find('button[type="submit"]').html();
+       /*$(this).find('button').prop('disabled', true);
+       $(this).find('button').html('Loading ...');*/
+       
+       $(this).find('button[type="submit"]').prop('disabled', true);
+       $(this).find('button[type="submit"]').html('Loading ...');
+
+       //alert(dataValue);
+       $.ajax({
+           url     : UrlValue,
+           method  : 'post',
+           data    :dataValue,
+           headers:
+           {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           },
+           processData: false,
+           contentType: false,
+           beforeSend: function( xhr ) {
+               
+           },
+           success: function(data) {
+                if ($.isEmptyObject(data.error)) {
+                    location.reload();
+                } else {
+                    printErrorMsg(data.error);
+                }
+            },
+           error: function(data) {
+               console.log("error ",data);
+               printErrorMsg(data.error);
+               console.log(ButtonText);
+               formdata.find('button[type="submit"]').prop('disabled', false);
+               formdata.find('button[type="submit"]').html(ButtonText);
+           }
+       });
+       //return false;
+//    }
+});
 
     function printErrorMsg(msg) {
         $(".print-error-msg").find("ul").html('');

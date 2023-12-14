@@ -70,7 +70,7 @@
                             <ul></ul>
                         </div>
 
-                        <form class="contact" name="contactUsForm" id="contactUsForm" enctype="multipart/form-data"
+                        <form class="contact ajaxformfileupload" action="{{ route('submit.enquiry') }}" name="contactUsForm" id="contactUsForm" enctype="multipart/form-data"
                             method="POST">
                             <div class="quform-elements">
                                 <div class="row">
@@ -230,7 +230,7 @@
                                     <!-- Begin Submit button -->
                                     <div class="col-md-12 text-center">
                                         <div class="quform-submit-inner">
-                                            <button class="butn btn-submit" type="button"><span>Submit</span></button>
+                                            <button class="butn btn-submit" type="submit"><span>Submit</span></button>
                                         </div>
                                         <div class="quform-loading-wrap text-start"><span class="quform-loading"></span>
                                         </div>
