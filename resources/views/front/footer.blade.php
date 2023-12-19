@@ -159,38 +159,10 @@
 <!-- quform scripts js -->
 <script defer async src="{{ asset('front/quform/js/scripts.js') }}"></script>
 
+<script defer async src="{{ asset('front/js/custom.js') }}"></script>
+
 <!-- all js include end -->
 
-<script>
-    $(document).ready(function() {
-        $("body").on("cut copy", function(e) {
-            e.preventDefault();
-        });
-    });
-    // $(document).ready(function() {
-    //     $('body').bind('cut copy', function(e) {
-    //         e.preventDefault();
-    //     });
-    //     $("body").on("contextmenu", function(e) {
-    //         return false;
-    //     });
-    // });
-</script>
-
-<!--Start of Tawk.to Script-->
-<!-- <script type="text/javascript">
-    var Tawk_API = Tawk_API || {},
-        Tawk_LoadStart = new Date();
-    (function() {
-        var s1 = document.createElement("script"),
-            s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.defer async src = 'https://embed.tawk.to/64f61afda91e863a5c119a1a/1h9glislg';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
-    })();
-</script>  -->
 
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
