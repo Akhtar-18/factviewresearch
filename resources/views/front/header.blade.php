@@ -3,92 +3,28 @@
 <head>
     <!-- metas -->
     <meta charset="utf-8">
-    <meta name="author" content="" />
+
+    <link rel="canonical" href="http://factviewresearch.com/" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <style type="text/css">
-        li.pagination .active a {
-            background-color: #212529 !important;
-        }
-
-        .testmonial-single p:before {
-            display: none !important;
-        }
-    </style>
-    <style>
-        #google_translate_element,
-        .skiptranslate {
-            display: none;
-        }
-
-        body {
-            top: 0 !important;
-        }
-    </style>
+    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5'/> 
+    <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
     <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('front/img/logos/fvr-114-114.png') }}">
-
     <!-- plugins -->
-    <link rel="stylesheet" href="{{ asset('front/css/plugins.css') }}" defer>
-
-    <!-- revolution slider css -->
-    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/settings.css') }}" defer>
-    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/layers.css') }}" defer>
-    <link rel="stylesheet" href="{{ asset('front/css/rev_slider/navigation.css') }}" defer>
-
+    <link rel="preload" href="{{ asset('front/css/plugins.css') }}" rel="stylesheet" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" tyle="text/css" href="{{ asset('front/css/plugins.css') }}"></noscript>
     <!-- quform css -->
     <link rel="stylesheet" href="{{ asset('front/quform/css/base.css') }}" defer>
-
     <!-- search css -->
     <link rel="stylesheet" href="{{ asset('front/search/search.css') }}" defer>
-
     <!-- theme core css -->
-    <link href="{{ asset('front/css/styles-4.css') }}" rel="stylesheet" defer>
+    <link rel="stylesheet" href="{{ asset('front/css/styles-4.css') }}" defer>
+    <link rel="stylesheet" href="{{ asset('front/css/responsive.css') }}" media="screen and (max-width: 600px)" defer>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
-    <!-- <script defer async src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <meta name="google-site-verification" content="ttXl7RH9nKnXlHD17fSjZEaoD-uIiT5OROVTnU4EPG0" />
-
-    <!-- Google tag (gtag.js) -->
-    <script defer async src="https://www.googletagmanager.com/gtag/js?id=G-HES2Q3T6V1"></script>
-    <script defer async async>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-HES2Q3T6V1');
-    </script>
-
-    <script defer async type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-    </script>
-    <script defer async type="text/javascript">
-        var usrlang = navigator.language ||
-            navigator.userLanguage;
-        console.log(
-            "User's preferred language is: " +
-            usrlang);
-
-        function googleTranslateElementInit() {
-            setCookie('googtrans', '/en/' + usrlang, 1);
-            new google.translate.TranslateElement({
-                pageLanguage: 'ES',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-
-        function setCookie(key, value, expiry) {
-            var expires = new Date();
-            expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
-            document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
-        }
-    </script>
+    <script type="text/javascript" src="{{ asset('front/js/ajax.js') }}"></script>
+    
     @php
         $route = Route::currentRouteName();
     @endphp
@@ -220,6 +156,30 @@
         @yield('reportmetasection')
     @endif
 
+
+    <meta name="document-type" content="Public" />
+    <meta name="Page-Topic" content="Market Research Reports" />
+    <meta name="copyright" content="Fact View Research" />
+    <meta name="classification" content="market research reports" />
+    <meta name="document-classification" content="Market Research Reports Services" />
+    <meta name="distribution" content="global" />
+    <meta name="coverage" content="global" />
+    <meta name="abstract" content="consulting services, market research reports, industry analysis, reports" />
+    <meta name="author" content="FactViewResearch,https://www.factviewresearch.com" />
+    <meta name="Audience" content="All, Business, Management, Research, Services" />
+    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="google-site-verification" content="ttXl7RH9nKnXlHD17fSjZEaoD-uIiT5OROVTnU4EPG0" />
+
+    <!-- Google tag (gtag.js) -->
+    <script defer async src="https://www.googletagmanager.com/gtag/js?id=G-HES2Q3T6V1"></script>
+    <script defer async async>
+        function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-HES2Q3T6V1");
+    </script>
+
+    <script defer async type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script defer async type="text/javascript" src="{{ asset('front/js/translate.js') }}"></script>
+
 </head>
 
 <body>
@@ -249,27 +209,22 @@
                                             {{ getCompanyDetail()->email_address }}
                                         @endif
                                     </li>
-                                    <!-- <li><i class="fas fa-map-marker-alt"></i>
-                                        @if (getCompanyDetail())
-{{ getCompanyDetail()->address }}
-@endif
-                                    </li> -->
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-3 d-none d-md-block">
                             <ul class="top-social-icon ps-0">
                                 <li><a
-                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i
+                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif" target="_blank" aria-label="social"><i
                                             class="fab fa-facebook-f"></i></a></li>
                                 <li><a
-                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif"><i
+                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif" target="_blank" aria-label="social"><i
                                             class="fab fa-twitter"></i></a></li>
                                 <li><a
-                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif"><i
+                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif" target="_blank" aria-label="social"><i
                                             class="fab fa-instagram"></i></a></li>
                                 <li><a
-                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"><i
+                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif" target="_blank" aria-label="social"><i
                                             class="fab fa-linkedin-in"></i></a></li>
                             </ul>
                         </div>
@@ -285,11 +240,9 @@
                         <form class="search-form" action="{{ route('front.reports') }}" method="GET">
                             <div class="input-group">
                                 <span class="input-group-addon cursor-pointer">
-                                    <button class="search-form_submit fas fa-search text-white"
-                                        type="submit"></button>
+                                    <button class="search-form_submit fas fa-search text-white" type="submit" arial-label="search"></button>
                                 </span>
-                                <input type="text" class="search-form_input form-control" name="search"
-                                    autocomplete="off" placeholder="Type & hit enter...">
+                                <input type="text" class="search-form_input form-control" name="search" autocomplete="off" placeholder="Type & hit enter...">
                                 <span class="input-group-addon close-search"><i class="fas fa-times mt-1"></i></span>
                             </div>
                         </form>
@@ -307,8 +260,8 @@
                                         <a href="{{ route('front.home') }}" class="navbar-brand logodefault">
                                             @if (getCompanyDetail())
                                                 <img id="logo"
-                                                    src="{{ asset('company_logo') }}/{{ getCompanyDetail()->company_logo }}"
-                                                    alt="logo" width="200" height="50">
+                                                    src="{{ getCompanyDetail()->company_logo }}?tr=w-200,h-40,fo-webp"
+                                                    alt="logo" loading="lazy" width="200" height="40">
                                             @elseif(isset(getCompanyDetail()->company_name))
                                                 {{ getCompanyDetail()->company_name }}
                                             @endif
@@ -321,7 +274,7 @@
                                     <!-- menu area -->
                                     <ul class="navbar-nav ms-auto" id="nav" style="display: none;">
                                         <li class="current"><a href="{{ route('front.home') }}">Home</a></li>
-                                        <li><a href="">Industries</a>
+                                        <li><a href="#industries">Industries</a>
                                             <ul class="row megamenu">
                                                 @if (GetReportMenu())
                                                     @foreach (GetReportMenu() as $cate)
@@ -343,7 +296,7 @@
                                                 @endif
                                             </ul>
                                         </li>
-                                        <li><a href="">Services</a>
+                                        <li><a href="#services">Services</a>
 
                                             @if (GetServiceMenu())
                                                 <ul>
@@ -355,7 +308,7 @@
                                                 </ul>
                                             @endif
                                         </li>
-                                        <li><a href="">About Us</a>
+                                        <li><a href="#about">About Us</a>
                                             <ul>
                                                 <li><a href="{{ route('front.about') }}">About Company</a></li>
                                                 <li><a href="{{ route('front.whowe') }}">Who We Are</a></li>
@@ -365,7 +318,7 @@
                                                 <li><a href="{{ route('front.partners') }}">Partners</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="">Media/Insights</a>
+                                        <li><a href="#media">Media/Insights</a>
                                             <ul>
                                                 <li><a href="{{ route('front.blogs') }}">Blogs</a></li>
 
@@ -384,8 +337,7 @@
                                     <!-- atribute navigation -->
                                     <div class="attr-nav">
                                         <ul>
-                                            <li class="search"><a href=""><i class="fas fa-search"></i></a>
-                                            </li>
+                                            <li class="search"><a href="#search" aria-label="search"><i class="fas fa-search"></i></a></li>
                                         </ul>
                                     </div>
                                     <!-- end atribute navigation -->

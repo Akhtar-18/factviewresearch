@@ -37,8 +37,7 @@
                         <div class="post">
                             <div class="post-img">
                                 <a href="" class="w-100">
-                                    <img src="{{ asset('blogs') }}/{{ $blog->image }}"
-                                        alt="@if (isset($blog->image_alt)) {{ $blog->image_alt }} @endif">
+                                    <img src="{{ asset('blogs') }}/{{ $blog->image }}?tr=w-1128,h-auto,fo-webp" loading="lazy" width="1128" alt="@if (isset($blog->image_alt)) {{ $blog->image_alt }} @endif image">
                                 </a>
                             </div>
                             <div class="content">

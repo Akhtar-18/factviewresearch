@@ -12,13 +12,13 @@
     <title>Login</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{ url('') }}/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('') }}/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{ url('') }}/admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ asset('') }}/admin/css/sb-admin-2.min.css" rel="stylesheet">
     <style>
         .bg-login-image {
     background: url(dd/admin/RMlogo.png) !important;
@@ -45,7 +45,7 @@
                             <div class="col-lg-6 d-none d-lg-block bg-login-image text-center">
                                 <div class="p-5">
                                 @if(getCompanyDetail())
-                                            <img src="{{asset('company_logo')}}/{{getCompanyDetail()->company_logo}}" align="center" width="100%">
+                                            <img src="{{getCompanyDetail()->company_logo}}" align="center" width="100%">
                                             @elseif(isset(getCompanyDetail()->company_name))
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">{{getCompanyDetail()->company_name}}</h1>
@@ -108,14 +108,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{ url('') }}/admin/vendor/jquery/jquery.min.js"></script>
-    <script src="{{ url('') }}/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('') }}/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="{{ asset('') }}/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{ url('') }}/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ asset('') }}/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{ url('') }}/admin/js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('') }}/admin/js/sb-admin-2.min.js"></script>
     <script>
          $(document).ready(function(){
             $('#check').click(function(){

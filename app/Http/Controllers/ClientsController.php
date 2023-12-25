@@ -29,7 +29,7 @@ class ClientsController extends Controller
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('image', function($row){
-                      $btns = '<img src="/clients/images'.'/'.$row->image.'" width="100">';
+                      $btns = '<img src="'.$row->image.'" width="100">';
                       return $btns;
                })
 
@@ -90,13 +90,13 @@ class ClientsController extends Controller
         $request->validated();
         $input = $request->all();
   
-        if ($image = $request->file('image')) {
-            $destinationPath = public_path('/').'/clients/images/';
-            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $postImage);
-            $input['image'] = "$postImage";
-        }
-  
+        // if ($image = $request->file('image')) {
+        //     $destinationPath = public_path('/').'/clients/images/';
+        //     $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+        //     $image->move($destinationPath, $postImage);
+        //     $input['image'] = "$postImage";
+        // }
+        $input['image'] = $request->image;
         ClientsModel::create($input);
         return redirect('/admin/clients')->with('success','Post created successfully.');
 
@@ -122,18 +122,18 @@ class ClientsController extends Controller
       $input = $request->all();
       $slider=ClientsModel::find($id);    
   
-        if ($image = $request->file('image')) 
-        {
-            $destinationPath = public_path('/').'/clients/images/';
-            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $postImage);
-            $input['image'] = "$postImage";
-        }
-        else
-        {
-            unset($input['image']);
-        }
-          
+        // if ($image = $request->file('image')) 
+        // {
+        //     $destinationPath = public_path('/').'/clients/images/';
+        //     $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+        //     $image->move($destinationPath, $postImage);
+        //     $input['image'] = "$postImage";
+        // }
+        // else
+        // {
+        //     unset($input['image']);
+        // }
+        $input['image'] = $request->image;
         $slider->update($input);
   
         return redirect('admin/clients/')->with('success','Post updated successfully');

@@ -37,8 +37,8 @@
                         <div class="post">
                             <div class="post-img">
                                 <a href="" class="w-100">
-                                    <img src="{{ asset('press-releases') }}/{{ $press->image }}"
-                                        alt="@if (isset($press->image_alt)) {{ $press->image_alt }} @endif">
+                                    <img src="{{ $press->image }}?tr=w-1128,h-auto,fo-webp" loading="lazy" width="1128"
+                                        alt="@if (isset($press->image_alt)) {{ $press->image_alt }} @endif image">
                                 </a>
                             </div>
                             <div class="content">

@@ -84,12 +84,13 @@ class ContactDetailsController extends Controller
     public function submit(ContactDetailsRequest $request)
     {
         $request->validated();
-        if ($image = $request->file('company_logo')) {
-          $destinationPath = public_path('/').'company_logo/';
-          $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-          $image->move($destinationPath, $postImage);
-          $input['company_logo'] = "$postImage";
-      }
+      //   if ($image = $request->file('company_logo')) {
+      //     $destinationPath = public_path('/').'company_logo/';
+      //     $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+      //     $image->move($destinationPath, $postImage);
+      //     $input['company_logo'] = "$postImage";
+      // }
+      $input['company_logo']=$request->company_logo;
         $input = $request->all();
         ContactDetailsModel::create($input);
         return redirect('/admin/contactdetails')->with('success','Post created successfully.');
@@ -116,18 +117,18 @@ class ContactDetailsController extends Controller
       $request->validated();
       $input = $request->all();
       $service=ContactDetailsModel::find($id);
-      if ($image = $request->file('company_logo')) 
-        {
-            $destinationPath = public_path('/').'company_logo/';
-            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $postImage);
-            $input['company_logo'] = "$postImage";
-        }
-        else
-        {
-            unset($input['company_logo']);
-        }
-
+      // if ($image = $request->file('company_logo')) 
+      //   {
+      //       $destinationPath = public_path('/').'company_logo/';
+      //       $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+      //       $image->move($destinationPath, $postImage);
+      //       $input['company_logo'] = "$postImage";
+      //   }
+      //   else
+      //   {
+      //       unset($input['company_logo']);
+      //   }
+      $input['company_logo']=$request->company_logo;
       $service->update($input);
 
         return redirect('admin/contactdetails/')->with('success','Post updated successfully');

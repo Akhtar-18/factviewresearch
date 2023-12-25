@@ -29,7 +29,7 @@ class HomePageSliderController extends Controller
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('slider_images', function($row){
-                      $btns = '<img src="/images'.'/'.$row->slider_image.'" width="100">';
+                      $btns = '<img src="'.$row->slider_image.'" width="100">';
                       return $btns;
                })
                ->addColumn('content', function($row){
@@ -93,13 +93,13 @@ class HomePageSliderController extends Controller
     {
         $request->validated();
         $input = $request->all();
-  
-        if ($image = $request->file('slider_image')) {
-            $destinationPath = public_path('/').'images/';
-            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $postImage);
-            $input['slider_image'] = "$postImage";
-        }
+        $input['slider_image']= $request->slider_image;
+        // if ($image = $request->file('slider_image')) {
+        //     $destinationPath = public_path('/').'images/';
+        //     $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+        //     $image->move($destinationPath, $postImage);
+        //     $input['slider_image'] = "$postImage";
+        // }
   
         HomeSliderModel::create($input);
         return redirect('/admin/slider')->with('success','Slider created successfully.');
@@ -126,17 +126,18 @@ class HomePageSliderController extends Controller
       $input = $request->all();
       $slider=HomeSliderModel::find($id);    
   
-        if ($image = $request->file('slider_image')) 
-        {
-            $destinationPath = public_path('/').'images/';
-            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $postImage);
-            $input['slider_image'] = "$postImage";
-        }
-        else
-        {
-            unset($input['slider_image']);
-        }
+        // if ($image = $request->file('slider_image')) 
+        // {
+        //     $destinationPath = public_path('/').'images/';
+        //     $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+        //     $image->move($destinationPath, $postImage);
+        //     $input['slider_image'] = "$postImage";
+        // }
+        // else
+        // {
+        //     unset($input['slider_image']);
+        // }
+        $input['slider_image']= $request->slider_image;
           
         $slider->update($input);
   

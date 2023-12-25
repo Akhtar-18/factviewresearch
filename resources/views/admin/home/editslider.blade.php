@@ -48,7 +48,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="mb-2">Slider Image <span class="text-danger">*</span></label>
-                                <input type="file" class="form-control" name="slider_image" placeholder="Enter heading">
+                                <input type="text" class="form-control" name="slider_image" placeholder="Enter URL" value="{{$sliders->slider_image}}">
                                 @if ($errors->has('slider_image'))
                                     <span class="text-danger">{{ $errors->first('slider_image') }}</span>
                                 @endif

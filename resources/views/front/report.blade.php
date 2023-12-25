@@ -153,7 +153,7 @@
                                                                 class="navbar-brand logodefault">
                                                                 @if (getCompanyDetail())
                                                                     <img id="logo"
-                                                                        src="{{ asset('company_logo') }}/{{ getCompanyDetail()->company_logo }}"
+                                                                        src="{{ getCompanyDetail()->company_logo }}"
                                                                         alt="logo" width="200" height="50">
                                                                 @elseif(isset(getCompanyDetail()->company_name))
                                                                     {{ getCompanyDetail()->company_name }}
@@ -445,7 +445,7 @@
                                     @if (getTestimonial())
                                         @foreach (getTestimonial() as $testimonial)
                                             <div class="testimonial-style4 text-center">
-                                                <img src="{{ asset('testimonials/client_image/') }}/{{ $testimonial->client_image }}"
+                                                <img src="{{ $testimonial->client_image }}"
                                                     alt="..." class="d-inline-block" width="200" height="50">
                                                 <p class="my-4">{!! html_entity_decode($testimonial->comments) !!}</p>
                                                 <span
@@ -478,7 +478,7 @@
                                                 @if (getClient())
                                                     @foreach (getClient() as $client)
                                                         <div class="item"><img alt="partner-image"
-                                                                src="{{ asset('clients/images/') }}/{{ $client->image }}" width="200" height="50">
+                                                                src="{{ $client->image }}" width="200" height="50">
                                                         </div>
                                                     @endforeach
                                                 @endif

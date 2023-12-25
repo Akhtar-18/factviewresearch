@@ -55,10 +55,10 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="mb-2">Image <span class="text-danger"></span></label>
-                                <input type="file" class="form-control"
-                                placeholder="Enter twitter"
+                                <input type="text" class="form-control"
+                                placeholder="Enter Image Url"
                                 name="image"
-                                value="{{ old('image') }}"
+                                value="{{ $blog->image }}"
                                 >
                                 @if ($errors->has('image'))
                                     <span class="text-danger">{{ $errors->first('image') }}</span>

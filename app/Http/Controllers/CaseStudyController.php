@@ -77,16 +77,16 @@ class CaseStudyController extends Controller
             'url'=>'required|unique:press_releases'
         ]);
 
-        if ($request->file('image'))
-        {
-          $image=ImageUpload('case-studies',$request->file('image'));
-        }
-        else
-        {
-          $image="";
-        }
+        // if ($request->file('image'))
+        // {
+        //   $image=ImageUpload('case-studies',$request->file('image'));
+        // }
+        // else
+        // {
+        //   $image="";
+        // }
         $input = $request->all();
-        $input['image']=$image;
+        $input['image']=$request->image;
         CaseStudy::create($input);
         return redirect('/admin/admin-case-studies')->with('success','Case Studies created successfully.');
 
@@ -114,15 +114,15 @@ class CaseStudyController extends Controller
         ]);
       $input = $request->all();
       $blog=CaseStudy::find($id);
-        if ($request->file('image'))
-        {
-            $image=ImageUpload('case-studies',$request->file('image'));
-        }
-        else
-        {
-            $image=$blog->image;
-        }
-        $input['image']=$image;
+        // if ($request->file('image'))
+        // {
+        //     $image=ImageUpload('case-studies',$request->file('image'));
+        // }
+        // else
+        // {
+        //     $image=$blog->image;
+        // }
+        $input['image']=$request->image;
         $blog->update($input);
 
         return redirect('admin/admin-case-studies/')->with('success','Case Studies updated successfully');

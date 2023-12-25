@@ -25,7 +25,7 @@ class ClientsRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'image'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image'=> 'required'
         ];
     }
 }

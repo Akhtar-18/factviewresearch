@@ -52,9 +52,10 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="mb-2">Client Image (@if(isset($testimonial->client_image)){{$testimonial->client_image}}@endif)</label>
-                                <input type="file" class="form-control"
-                                placeholder="Enter profile"
+                                <input type="text" class="form-control"
+                                placeholder="Enter Client image url"
                                 name="client_image"
+                                value="{{$testimonial->client_image}}"
                                 >
                                 @if ($errors->has('client_image'))
                                     <span class="text-danger">{{ $errors->first('client_image') }}</span>

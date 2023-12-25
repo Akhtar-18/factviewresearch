@@ -1,4 +1,4 @@
-<footer style="background: #2a66b1">
+<footer>
     <div class="container">
         <div class="row mt-n1-9">
 
@@ -7,8 +7,8 @@
                 <!-- <img alt="footer-logo" defer async src="img/logos/logo-footer.png"> -->
                 <a href="{{ url('/') }}" class="navbar-brand logodefault">
                     @if (getCompanyDetail())
-                        <img id="logo" defer async src="{{ asset('company_logo') }}/{{ getCompanyDetail()->company_logo }}"
-                            alt="logo" width="200" height="50">
+                        <img id="logo" defer async src="{{ getCompanyDetail()->company_logo }}?tr=w-200,h-39,fo-webp"
+                            alt="logo" width="200" height="39">
                     @elseif(isset(getCompanyDetail()->company_name))
                         {{ getCompanyDetail()->company_name }}
                     @endif
@@ -16,19 +16,19 @@
 
                 @if (aboutData())
                     @foreach (aboutData() as $about)
-                        <p class="mt-3 display-30">{!! html_entity_decode(strip_tags(wordLimitset($about->content, 100))) !!}</p>
+                        <p class="mt-3 display-30">{!! html_entity_decode(strip_tags(wordLimitset($about->content, 35))) !!}</p>
                     @endforeach
                 @endif
                 <div class="mt-4 footer-social-icons">
                     <ul class="mb-0 ps-0">
-                        <li><a href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i
+                        <li><a class="facebook" href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif" target="_blank" aria-label="social"><i
                                     class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif"><i
+                        <li><a class="twitter" href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif" target="_blank" aria-label="social"><i
                                     class="fab fa-twitter"></i></a></li>
-                        <li><a href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif"><i
+                        <li><a class="instagram" href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif" target="_blank" aria-label="social"><i
                                     class="fab fa-instagram"></i></a></li>
                         <!-- <li><a href="#!"><i class="fab fa-youtube"></i></a></li> -->
-                        <li><a href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"><i
+                        <li><a class="linkedin" href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif" target="_blank" aria-label="social"><i
                                     class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
@@ -104,11 +104,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-md-start text-center mb-1 mb-md-0">
-                    <p class="mb-0">&copy; Copyright <span class="current-year"></span>. All Rights Reserved.</p>
+                    <p class="mb-0">Copyright &copy;2023 Fact View Research. All Rights Reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end text-center display-30">
-                    Design and Developed by: <a href="" target="_blank"
-                        class="text-light-gray">FactViewResearch</a>
+                    Design & Developed by: FactViewResearch
                 </div>
             </div>
         </div>
@@ -119,187 +118,53 @@
 
 <!-- SCROLL TO TOP
     ================================================== -->
-<a href="#!" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
+<!--<a href="#!top" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>-->
 
 <!-- all js include start -->
-
 <!-- jQuery -->
-<script defer async src="{{ asset('front/js/jquery.min.js') }}"></script>
-
+<script defer async type="text/javascript" src="{{ asset('front/js/jquery.min.js') }}"></script>
 <!-- popper js -->
-<script defer async src="{{ asset('front/js/popper.min.js') }}"></script>
-
+<script defer async type="text/javascript" src="{{ asset('front/js/popper.min.js') }}"></script>
 <!-- bootstrap -->
-<script defer async src="{{ asset('front/js/bootstrap.min.js') }}"></script>
-
+<script defer async type="text/javascript" src="{{ asset('front/js/bootstrap.min.js') }}"></script>
 <!-- core.min.js -->
-<script defer async src="{{ asset('front/js/core.min.js') }}"></script>
-
+<script defer async type="text/javascript" src="{{ asset('front/js/core.min.js') }}"></script>
 <!-- search -->
-<script defer async src="{{ asset('front/search/search.js') }}"></script>
+<script defer async type="text/javascript" src="{{ asset('front/search/search.js') }}"></script>
 
 <!-- revolution slider js files start -->
-<script defer async src="{{ asset('front/js/rev_slider/jquery.themepunch.tools.min.js') }}"></script>
-<script defer async src="{{ asset('front/js/rev_slider/jquery.themepunch.revolution.min.js') }}"></script>
-<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.actions.min.js') }}"></script>
-<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.carousel.min.js') }}"></script>
-<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.kenburn.min.js') }}"></script>
-<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.layeranimation.min.js') }}"></script>
-<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.migration.min.js') }}"></script>
-<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.navigation.min.js') }}"></script>
-<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.parallax.min.js') }}"></script>
-<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.slideanims.min.js') }}"></script>
-<script defer async src="{{ asset('front/js/rev_slider/extensions/revolution.extension.video.min.js') }}"></script>
+<!--<script defer async type="text/javascript" src="{{ asset('front/js/rev_slider/jquery.themepunch.tools.min.js') }}"></script>-->
+<!--<script defer async type="text/javascript" src="{{ asset('front/js/rev_slider/jquery.themepunch.revolution.min.js') }}"></script>-->
+<!--<script defer async type="text/javascript" src="{{ asset('front/js/rev_slider/extensions/revolution.extension.actions.min.js') }}"></script>-->
+<!--<script defer async type="text/javascript" src="{{ asset('front/js/rev_slider/extensions/revolution.extension.carousel.min.js') }}"></script>-->
+<!--<script defer async type="text/javascript" src="{{ asset('front/js/rev_slider/extensions/revolution.extension.kenburn.min.js') }}"></script>-->
+<!--<script defer async type="text/javascript" src="{{ asset('front/js/rev_slider/extensions/revolution.extension.layeranimation.min.js') }}"></script>-->
+<!--<script defer async type="text/javascript" src="{{ asset('front/js/rev_slider/extensions/revolution.extension.migration.min.js') }}"></script>-->
+<!--<script defer async type="text/javascript" src="{{ asset('front/js/rev_slider/extensions/revolution.extension.navigation.min.js') }}"></script>-->
+<!--<script defer async type="text/javascript" src="{{ asset('front/js/rev_slider/extensions/revolution.extension.parallax.min.js') }}"></script>-->
+<!--<script defer async type="text/javascript" src="{{ asset('front/js/rev_slider/extensions/revolution.extension.slideanims.min.js') }}"></script>-->
+<!--<script defer async type="text/javascript" src="{{ asset('front/js/rev_slider/extensions/revolution.extension.video.min.js') }}"></script>-->
 
 <!-- theme core scripts -->
-<script defer async src="{{ asset('front/js/main.js') }}"></script>
-
-<script defer async src="{{ asset('front/quform/js/plugins.js') }}"></script>
-
+<script defer async type="text/javascript" src="{{ asset('front/js/main.js') }}"></script>
 <!-- quform scripts js -->
-<script defer async src="{{ asset('front/quform/js/scripts.js') }}"></script>
-
-<script defer async src="{{ asset('front/js/custom.js') }}"></script>
-
+<script defer async type="text/javascript" src="{{ asset('front/quform/js/plugins.js') }}"></script>
+<script defer async type="text/javascript" src="{{ asset('front/quform/js/scripts.js') }}"></script>
+<script defer async type="text/javascript" src="{{ asset('front/js/custom.js') }}"></script>
 <!-- all js include end -->
 
-
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/64f61afda91e863a5c119a1a/1h9glislg';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
+// <script type="text/javascript">
+// var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+// (function(){
+// var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+// s1.async=true;
+// s1.src='https://embed.tawk.to/64f61afda91e863a5c119a1a/1h9glislg';
+// s1.charset='UTF-8';
+// s1.setAttribute('crossorigin','*');
+// s0.parentNode.insertBefore(s1,s0);
+// })();
+// </script>
 <!--End of Tawk.to Script-->
-
-<script defer async type="text/javascript">
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    });
-
-    $("body").on("submit",".ajaxformfileupload", function(event){
-    event.preventDefault();
-    // if($(this).parsley().isValid() ) {
-        // alert(11);
-        var formdata   = $(this);
-       var dataValue  = new FormData(this);//new FormData(formdata[0]);
-       var UrlValue   = $(this).attr('action');
-
-       var ButtonText = $(this).find('button[type="submit"]').html();
-       /*$(this).find('button').prop('disabled', true);
-       $(this).find('button').html('Loading ...');*/
-       
-       $(this).find('button[type="submit"]').prop('disabled', true);
-       $(this).find('button[type="submit"]').html('Loading ...');
-
-       //alert(dataValue);
-       $.ajax({
-           url     : UrlValue,
-           method  : 'post',
-           data    :dataValue,
-           headers:
-           {
-               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-           },
-           processData: false,
-           contentType: false,
-           beforeSend: function( xhr ) {
-               
-           },
-           success: function(data) {
-                if ($.isEmptyObject(data.error)) {
-                    window.location.href = "{{ url('thankyou') }}/" + data.id;
-                } else {
-                    printErrorMsg(data.error);
-                }
-            },
-           error: function(data) {
-               console.log("error ",data);
-               printErrorMsg(data.error);
-               console.log(ButtonText);
-               formdata.find('button[type="submit"]').prop('disabled', false);
-               formdata.find('button[type="submit"]').html(ButtonText);
-           }
-       });
-       //return false;
-//    }
-});
-
-$("body").on("submit",".contactform", function(event){
-    event.preventDefault();
-    // if($(this).parsley().isValid() ) {
-        // alert(11);
-        var formdata   = $(this);
-       var dataValue  = new FormData(this);//new FormData(formdata[0]);
-       var UrlValue   = $(this).attr('action');
-
-       var ButtonText = $(this).find('button[type="submit"]').html();
-       /*$(this).find('button').prop('disabled', true);
-       $(this).find('button').html('Loading ...');*/
-       
-       $(this).find('button[type="submit"]').prop('disabled', true);
-       $(this).find('button[type="submit"]').html('Loading ...');
-
-       //alert(dataValue);
-       $.ajax({
-           url     : UrlValue,
-           method  : 'post',
-           data    :dataValue,
-           headers:
-           {
-               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-           },
-           processData: false,
-           contentType: false,
-           beforeSend: function( xhr ) {
-               
-           },
-           success: function(data) {
-                if ($.isEmptyObject(data.error)) {
-                    location.reload();
-                } else {
-                    printErrorMsg(data.error);
-                }
-            },
-           error: function(data) {
-               console.log("error ",data);
-               printErrorMsg(data.error);
-               console.log(ButtonText);
-               formdata.find('button[type="submit"]').prop('disabled', false);
-               formdata.find('button[type="submit"]').html(ButtonText);
-           }
-       });
-       //return false;
-//    }
-});
-
-    function printErrorMsg(msg) {
-        $(".print-error-msg").find("ul").html('');
-        $(".print-error-msg").css('display', 'block');
-        $.each(msg, function(key, value) {
-            $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
-        });
-    }
-
-    $('#reload').click(function() {
-        $.ajax({
-            type: 'GET',
-            url: '{{ route('reload-from-captcha') }}',
-            success: function(data) {
-                $(".captcha span").html(data.captcha);
-            }
-        });
-    });
-</script>
 
 </body>
 

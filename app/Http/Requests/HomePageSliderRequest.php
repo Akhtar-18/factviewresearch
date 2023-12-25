@@ -25,7 +25,7 @@ class HomePageSliderRequest extends FormRequest
     {
         return [
             'heading' => 'required',
-            'slider_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'slider_image' => 'required',
         ];
     }
 }

@@ -41,10 +41,10 @@
                                 <label class="mb-2">Company Logo <span class="text-danger"></span></label>
                                 <br>
                                 @if(isset($contact->company_logo))logo Name({{$contact->company_logo}})@endif
-                                <input type="file" class="form-control"
-                                placeholder="Enter Company Name"
+                                <input type="text" class="form-control"
+                                placeholder="Enter Company Logo"
                                 name="company_logo"
-                                value="{{ old('company_logo') }}"
+                                value="{{ $contact->company_logo }}"
                                 >
                                 @if ($errors->has('company_logo'))
                                     <span class="text-danger">{{ $errors->first('company_logo') }}</span>

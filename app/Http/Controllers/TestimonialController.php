@@ -35,7 +35,7 @@ class TestimonialController extends Controller
                 return $contents;
               })
               ->addColumn('client_image', function($row){
-                $contents = '<img src="'.URL::to('testimonials/client_image/').'/'.$row->client_image.'" width="150">';
+                $contents = '<img src="'.$row->client_image.'" width="150">';
                 return $contents;
               })
 
@@ -94,13 +94,13 @@ class TestimonialController extends Controller
     public function submit(TestimonialRequest $request)
     {
         $request->validated();
-        if ($image = $request->file('client_image')) {
-            $destinationPath = public_path('/').'/testimonials/client_image';
-            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $postImage);
-            $input['client_image'] = "$postImage";
-        }
-        //$input['client_image']=$client_image;
+        // if ($image = $request->file('client_image')) {
+        //     $destinationPath = public_path('/').'/testimonials/client_image';
+        //     $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+        //     $image->move($destinationPath, $postImage);
+        //     $input['client_image'] = "$postImage";
+        // }
+        $input['client_image']=$request->client_image;
         $input = $request->all();
         TestimonialModel::create($input);
         return redirect('/admin/testimonials')->with('success','Post created successfully.');
@@ -127,15 +127,15 @@ class TestimonialController extends Controller
       $request->validated();
       $input = $request->all();
       $testimonial=TestimonialModel::find($id);     
-      if ($request->file('client_image'))
-      {
-        $client_image=ImageUpload('testimonials/client_image',$request->file('client_image'));
-      }
-      else
-      {
-        $client_image=$testimonial->client_image;
-      }
-      $input['client_image']=$client_image;
+      // if ($request->file('client_image'))
+      // {
+      //   $client_image=ImageUpload('testimonials/client_image',$request->file('client_image'));
+      // }
+      // else
+      // {
+      //   $client_image=$testimonial->client_image;
+      // }
+      $input['client_image']=$request->client_image;
       $testimonial->update($input);
   
         return redirect('admin/testimonials/')->with('success','Post updated successfully');

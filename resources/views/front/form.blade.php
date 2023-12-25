@@ -252,7 +252,7 @@
                                     @if (getClient())
                                         @foreach (getClient() as $client)
                                             <div class="item"><img alt="partner-image"
-                                                    src="{{ asset('clients/images/') }}/{{ $client->image }}"
+                                                    src="{{ $client->image }}"
                                                     width="200" height="50"></div>
                                         @endforeach
                                     @endif
@@ -354,7 +354,7 @@
                                             @foreach (getTestimonial() as $testimonial)
                                                 <div class="testmonial-single">
                                                     <p class="text-primary">{!! html_entity_decode($testimonial->comments) !!}</p>
-                                                    <img src="{{ asset('testimonials/client_image/') }}/{{ $testimonial->client_image }}"
+                                                    <img src="{{ $testimonial->client_image }}"
                                                         class="rounded-circle" style="width:100px;" alt="...">
                                                     <h4 class="pt-4 text-primary">{{ $testimonial->name }}
                                                     </h4>

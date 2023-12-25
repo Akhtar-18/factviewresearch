@@ -53,7 +53,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="mb-2">Client Image </label>
-                                <input type="file" class="form-control" placeholder="client_image" name="client_image">
+                                <input type="text" class="form-control" placeholder="Enter Client image url" name="client_image">
                                 @if ($errors->has('client_image'))
                                     <span class="text-danger">{{ $errors->first('client_image') }}</span>
                                 @endif

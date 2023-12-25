@@ -77,16 +77,16 @@ class BlogController extends Controller
             'url'=>'required|unique:blogs'
         ]);
 
-        if ($request->file('image'))
-        {
-          $image=ImageUpload('blogs',$request->file('image'));
-        }
-        else
-        {
-          $image="";
-        }
+        // if ($request->file('image'))
+        // {
+        //   $image=ImageUpload('blogs',$request->file('image'));
+        // }
+        // else
+        // {
+        //   $image="";
+        // }
         $input = $request->all();
-        $input['image']=$image;
+        $input['image']=$request->image;
         Blog::create($input);
         return redirect('/admin/admin-blogs')->with('success','Blog created successfully.');
 
@@ -119,15 +119,16 @@ class BlogController extends Controller
       $blog=Blog::find($id);
 
 
-        if ($request->file('image'))
-        {
-        $image=ImageUpload('blogs',$request->file('image'));
-        }
-        else
-        {
-        $image=$blog->image;
-        }
-      $input['image']=$image;
+      //   if ($request->file('image'))
+      //   {
+      //   $image=ImageUpload('blogs',$request->file('image'));
+      //   }
+      //   else
+      //   {
+      //   $image=$blog->image;
+      //   }
+      // $input['image']=$image;
+      $input['image']=$request->image;
       $blog->update($input);
 
         return redirect('admin/admin-blogs/')->with('success','Blog updated successfully');

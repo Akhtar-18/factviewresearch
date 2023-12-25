@@ -77,16 +77,16 @@ class PressReleaseController extends Controller
             'url'=>'required|unique:press_releases'
         ]);
 
-        if ($request->file('image'))
-        {
-          $image=ImageUpload('press-releases',$request->file('image'));
-        }
-        else
-        {
-          $image="";
-        }
+        // if ($request->file('image'))
+        // {
+        //   $image=ImageUpload('press-releases',$request->file('image'));
+        // }
+        // else
+        // {
+        //   $image="";
+        // }
         $input = $request->all();
-        $input['image']=$image;
+        $input['image']=$request->image;
         PressRelease::create($input);
         return redirect('/admin/admin-press-releases')->with('success','Press Releases created successfully.');
 
@@ -119,15 +119,15 @@ class PressReleaseController extends Controller
       $blog=PressRelease::find($id);
 
 
-        if ($request->file('image'))
-        {
-        $image=ImageUpload('press-releases',$request->file('image'));
-        }
-        else
-        {
-        $image=$blog->image;
-        }
-      $input['image']=$image;
+        // if ($request->file('image'))
+        // {
+        // $image=ImageUpload('press-releases',$request->file('image'));
+        // }
+        // else
+        // {
+        // $image=$blog->image;
+        // }
+        $input['image']=$request->image;
       $blog->update($input);
 
         return redirect('admin/admin-press-releases/')->with('success','Press Releases updated successfully');
