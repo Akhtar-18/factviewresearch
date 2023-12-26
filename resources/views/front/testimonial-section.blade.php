@@ -11,8 +11,10 @@
                 @if (getTestimonial())
                     @foreach (getTestimonial() as $testimonial)
                         <div class="testimonial-style4 text-center">
+                            @if($testimonial->client_image)
                             <img src="{{ $testimonial->client_image }}?tr=w-68,h-auto,fo-webp"
                             alt="{{ $testimonial->name }}" class="d-inline-block" loading="lazy" width="68" height="68">
+                            @endif
                             <p class="my-4">{!! html_entity_decode($testimonial->comments) !!}</p>
                             <span
                                 class="name font-weight-600 text-uppercase font-size12 alt-font small">{{ $testimonial->name }}

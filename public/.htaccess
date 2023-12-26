@@ -2,8 +2,14 @@
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
+   <IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+   </IfModule>
 
     RewriteEngine On
+    RewriteCond %{HTTP_HOST} ^www\.factviewresearch\.com [NC]
+    RewriteRule ^(.*)$ https://factviewresearch.com/$1 [L,R=301]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
