@@ -14,7 +14,7 @@
     <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('front/img/logos/fvr-114-114.png') }}">
     <!-- plugins -->
     <link rel="preload" href="{{ asset('front/css/plugins.css') }}" rel="stylesheet" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="stylesheet" tyle="text/css" href="{{ asset('front/css/plugins.css') }}">
+    <link rel="stylesheet" tyle="text/css" href="{{ asset('front/css/plugins.css') }}" defer>
     <!-- quform css -->
     <link rel="stylesheet" href="{{ asset('front/quform/css/base.css') }}" defer>
     <!-- search css -->
@@ -23,8 +23,8 @@
     <link rel="stylesheet" href="{{ asset('front/css/styles-4.css') }}" defer>
     <link rel="stylesheet" href="{{ asset('front/css/responsive.css') }}" media="screen and (max-width: 600px)" defer>
 
-    <!-- <script type="text/javascript" src="{{ asset('front/js/ajax.js') }}"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('front/js/ajax.js') }}"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     
     @php
         $route = Route::currentRouteName();
