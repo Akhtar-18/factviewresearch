@@ -4,7 +4,7 @@
     <!-- metas -->
     <meta charset="utf-8">
 
-    <link rel="canonical" href="http://factviewresearch.com/" />
+   
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5'/> 
     <!-- Favicon -->
@@ -14,7 +14,7 @@
     <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('front/img/logos/fvr-114-114.png') }}">
     <!-- plugins -->
     <link rel="preload" href="{{ asset('front/css/plugins.css') }}" rel="stylesheet" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" tyle="text/css" href="{{ asset('front/css/plugins.css') }}"></noscript>
+    <link rel="stylesheet" tyle="text/css" href="{{ asset('front/css/plugins.css') }}">
     <!-- quform css -->
     <link rel="stylesheet" href="{{ asset('front/quform/css/base.css') }}" defer>
     <!-- search css -->
@@ -157,7 +157,7 @@
         @yield('reportmetasection')
     @endif
 
-
+    <link rel="canonical" href="http://factviewresearch.com/" />
     <meta name="document-type" content="Public" />
     <meta name="Page-Topic" content="Market Research Reports" />
     <meta name="copyright" content="Fact View Research" />
