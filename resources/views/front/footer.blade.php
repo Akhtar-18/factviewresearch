@@ -122,22 +122,22 @@
 
 <!-- all js include start -->
 <!-- jQuery -->
-<script type="text/javascript" src="{{ asset('front/js/jquery.min.js') }}"></script>
+<script defer async type="text/javascript" src="{{ asset('front/js/jquery.min.js') }}"></script>
 <!-- popper js -->
-<script type="text/javascript" src="{{ asset('front/js/popper.min.js') }}"></script>
+<script defer async type="text/javascript" src="{{ asset('front/js/popper.min.js') }}"></script>
 <!-- bootstrap -->
-<script type="text/javascript" src="{{ asset('front/js/bootstrap.min.js') }}"></script>
+<script defer async type="text/javascript" src="{{ asset('front/js/bootstrap.min.js') }}"></script>
 <!-- core.min.js -->
-<script type="text/javascript" src="{{ asset('front/js/core.min.js') }}"></script>
+<script defer async type="text/javascript" src="{{ asset('front/js/core.min.js') }}"></script>
 <!-- search -->
-<script type="text/javascript" src="{{ asset('front/search/search.js') }}"></script>
+<script defer async type="text/javascript" src="{{ asset('front/search/search.js') }}"></script>
 
 <!-- theme core scripts -->
-<script type="text/javascript" src="{{ asset('front/js/main.js') }}"></script>
+<script defer async type="text/javascript" src="{{ asset('front/js/main.js') }}"></script>
 <!-- quform scripts js -->
-<script type="text/javascript" src="{{ asset('front/quform/js/plugins.js') }}"></script>
-<script type="text/javascript" src="{{ asset('front/quform/js/scripts.js') }}"></script>
-<script type="text/javascript" src="{{ asset('front/js/custom.js') }}"></script>
+<script defer async type="text/javascript" src="{{ asset('front/quform/js/plugins.js') }}"></script>
+<script defer async type="text/javascript" src="{{ asset('front/quform/js/scripts.js') }}"></script>
+<script defer async type="text/javascript" src="{{ asset('front/js/custom.js') }}"></script>
 <!-- all js include end -->
  <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
