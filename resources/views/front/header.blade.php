@@ -8,12 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5'/> 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('front/img/logos/fvr-114-114.png') }}">
+    <link rel="shortcut icon" href="https://ik.imagekit.io/0g6xszoan/favicon/fvr-72-72.png">
+    <link rel="apple-touch-icon" href="https://ik.imagekit.io/0g6xszoan/favicon/fvr-72-72.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://ik.imagekit.io/0g6xszoan/favicon/fvr-72-72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://ik.imagekit.io/0g6xszoan/favicon/fvr-114-114.png">
     <!-- plugins -->
-    <link rel="preload" href="{{ asset('front/css/plugins.css') }}" rel="stylesheet" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="{{ asset('front/css/plugins.css') }}" rel="stylesheet" as="style" onload="this.onload=null;this.rel='stylesheet'" defer>
     <link rel="stylesheet" tyle="text/css" href="{{ asset('front/css/plugins.css') }}" defer>
     <!-- quform css -->
     <link rel="stylesheet" href="{{ asset('front/quform/css/base.css') }}" defer>
@@ -23,8 +23,8 @@
     <link rel="stylesheet" href="{{ asset('front/css/styles-4.css') }}" defer>
     <link rel="stylesheet" href="{{ asset('front/css/responsive.css') }}" media="screen and (max-width: 600px)" defer>
 
-    <script type="text/javascript" src="{{ asset('front/js/ajax.js') }}"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <!-- <script type="text/javascript" src="{{ asset('front/js/ajax.js') }}"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
     @php
         $route = Route::currentRouteName();
