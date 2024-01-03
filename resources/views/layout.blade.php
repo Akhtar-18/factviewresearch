@@ -12,19 +12,19 @@
     <title>@yield('title')</title>
 
      <!-- favicon -->
-     <link rel="shortcut icon" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
-     <link rel="apple-touch-icon" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
-     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('front/img/logos/fvr-72-72.png') }}">
-     <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('front/img/logos/fvr-114-114.png') }}">
+     <link rel="shortcut icon" href="{{ url('front/img/logos/fvr-72-72.png') }}">
+     <link rel="apple-touch-icon" href="{{ url('front/img/logos/fvr-72-72.png') }}">
+     <link rel="apple-touch-icon" sizes="72x72" href="{{ url('front/img/logos/fvr-72-72.png') }}">
+     <link rel="apple-touch-icon" sizes="114x114" href="{{ url('front/img/logos/fvr-114-114.png') }}">
 
-    <link href="{{ asset('') }}/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ url('') }}/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href=https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <link href="{{ asset('') }}/admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ url('') }}/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <link href="{{ asset('') }}/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{ url('') }}/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -625,14 +625,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('') }}/admin/vendor/jquery/jquery.min.js"></script>
-    <script src="{{ asset('') }}/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url('') }}/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="{{ url('') }}/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
     <!-- <script src="{{ url('') }}/admin/endor/jquery-easing/jquery.easing.min.js"></script> -->
 
     <!-- Custom scripts for all pages-->
-    <script src="{{ asset('') }}/admin/js/sb-admin-2.min.js"></script>
+    <script src="{{ url('') }}/admin/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
     <!-- <script src="{{ url('') }}/admin/vendor/chart.js/Chart.min.js"></script> -->
@@ -644,11 +644,11 @@
 
 
     <!-- Page level plugins -->
-    <script src="{{ asset('') }}/admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{ asset('') }}/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ url('') }}/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ url('') }}/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{ asset('') }}/admin/js/demo/datatables-demo.js"></script>
+    <script src="{{ url('') }}/admin/js/demo/datatables-demo.js"></script>
 
     <!-- <script>
         tinymce.init({
