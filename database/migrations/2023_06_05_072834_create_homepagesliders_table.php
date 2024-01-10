@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('homepagesliders', function (Blueprint $table) {
             $table->id();
-            $table->string('heading',200)->index();
-            $table->string('subheading',200)->nullable()->index();
-            $table->longText('content')->nullable()->index();
-            $table->string('slider_image')->nullable()->index();
+            $table->string('heading',200);
+            $table->string('subheading',200)->nullable();
+            $table->text('content')->nullable();
+            $table->string('slider_image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

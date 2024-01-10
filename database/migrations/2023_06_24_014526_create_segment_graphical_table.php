@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('report_id')->index();
             $table->string('segmentname',200)->index()->nullable();
             $table->string('segmentvalue',150)->index()->nullable();
-            $table->foreign('report_id')->references('id')->on('reports')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

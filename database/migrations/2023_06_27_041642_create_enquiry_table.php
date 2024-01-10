@@ -22,8 +22,7 @@ return new class extends Migration
             $table->string('country')->nullable();
             $table->string('contact_no')->nullable();
             $table->string('organizations')->nullable();
-            $table->longText('others')->nullable();
-            $table->foreign('report_id')->references('id')->on('reports')->onDelete('cascade');
+            $table->text('others')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

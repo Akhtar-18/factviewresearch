@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();
             $table->string('linkedin')->nullable();
-            $table->longText('company_logo')->nullable();
+            $table->text('company_logo')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

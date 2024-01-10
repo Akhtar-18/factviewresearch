@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('report_payments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('report_id')->nullable();
-            $table->foreign('report_id')->references('id')->on('reports')->constrained()->cascedeOnDelete();
             $table->string('name',120)->nullable();
             $table->string('company_name',120)->nullable();
             $table->string('job_title',120)->nullable();

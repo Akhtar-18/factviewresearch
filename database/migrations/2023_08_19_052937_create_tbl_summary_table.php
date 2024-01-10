@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('report_id')->nullable();
             $table->string('heading',150)->nullable();
             $table->text('details')->nullable();
-            $table->foreign('report_id')->references('id')->on('reports')->onDelete('cascade');
             $table->timestamps();
         });
     }

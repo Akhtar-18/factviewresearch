@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('country')->nullable();
             $table->string('contact_no')->nullable();
             $table->string('subject')->nullable();
-            $table->longText('msg')->nullable();
+            $table->text('msg')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

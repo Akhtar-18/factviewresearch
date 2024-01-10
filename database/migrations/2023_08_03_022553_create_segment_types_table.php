@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('segmenttypename',120)->nullable();
             $table->unsignedBigInteger('report_id')->nullable();
-            $table->foreign('report_id')->references('id')->on('reports')->constrained()->cascedeOnDelete();
             $table->timestamps();
         });
     }

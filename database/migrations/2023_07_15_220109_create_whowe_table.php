@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('whowe', function (Blueprint $table) {
             $table->id();
             $table->string('heading',200);
-            $table->longText('content')->nullable();
+            $table->text('content')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

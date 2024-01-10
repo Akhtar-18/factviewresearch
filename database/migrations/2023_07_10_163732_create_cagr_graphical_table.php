@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('report_id');
             $table->string('cagr',100)->nullable();
-            $table->foreign('report_id')->references('id')->on('reports')->constrained()->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('about_us', function (Blueprint $table) {
             $table->id();
-            $table->string('heading',200)->index();
-            $table->longText('content')->nullable()->index();
+            $table->string('heading',200);
+            $table->text('content')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

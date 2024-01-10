@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('getintouch', function (Blueprint $table) {
             $table->id();
             $table->string('heading',200)->index();
-            $table->longText('content')->nullable()->index();
+            $table->text('content')->nullable()->index();
             $table->softDeletes();
             $table->timestamps();
         });

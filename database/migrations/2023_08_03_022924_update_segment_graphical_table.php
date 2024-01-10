@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::table('segment_graphical', function (Blueprint $table) {
             $table->unsignedBigInteger('segment_types')->nullable();
-            $table->foreign('segment_types')->references('id')->on('segment_types')->constrained()->cascedeOnDelete();
         });
     }
 

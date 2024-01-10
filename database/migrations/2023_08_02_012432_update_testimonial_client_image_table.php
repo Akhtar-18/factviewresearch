@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('testimonials', function (Blueprint $table) {
-            $table->longText('client_image')->nullable()->after('comments');
+            $table->text('client_image')->nullable()->after('comments');
         });
     }
 
