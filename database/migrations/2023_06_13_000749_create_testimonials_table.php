@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->string('name')->index();
-            $table->text('profile')->nullable()->index();
+            $table->string('profile')->index();
             $table->text('comments')->nullable();
             $table->softDeletes();
             $table->timestamps();
