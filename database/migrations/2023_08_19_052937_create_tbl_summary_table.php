@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tbl_summary', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('report_id')->nullable();
-            $table->string('heading',150)->nullable();
+            $table->string('heading', 150)->nullable();
             $table->text('details')->nullable();
             $table->timestamps();
         });
