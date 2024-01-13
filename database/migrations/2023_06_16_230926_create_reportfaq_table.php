@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('reportfaq', function (Blueprint $table) {
             $table->id();
             $table->integer('report_id');
-            $table->text('question')->nullable()->index();
-            $table->text('answer')->nullable()->index();
+            $table->string('question')->index();
+            $table->string('answer')->index();
             $table->softDeletes();
             $table->timestamps();
         });
