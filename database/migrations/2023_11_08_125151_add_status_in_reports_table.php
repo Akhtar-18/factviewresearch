@@ -26,7 +26,6 @@ return new class extends Migration
     public function down()
     {
         Schema::table('reports', function (Blueprint $table) {
-            $table->string('status')->after('metal_keywords');
             $table->dropColumn('status');
         });
     }

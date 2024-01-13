@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('segment_graphical', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('report_id')->index();
-            $table->string('segmentname',200)->index()->nullable();
-            $table->string('segmentvalue',150)->index()->nullable();
+            $table->string('segmentname', 200)->index()->nullable();
+            $table->string('segmentvalue', 150)->index()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
