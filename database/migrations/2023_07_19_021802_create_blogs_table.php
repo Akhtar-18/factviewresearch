@@ -16,15 +16,15 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('blog_category_id')->index()->nullable();
-            $table->text('heading')->index()->nullable();
-            $table->text('url')->index()->nullable();
+            $table->string('heading')->index();
+            $table->string('url')->index();
             $table->text('description')->nullable();
             $table->text('image')->nullable();
             $table->text('image_alt')->nullable();
             $table->text('schema')->nullable();
-            $table->text('meta_title')->nullable()->index();
-            $table->text('meta_des')->nullable()->index();
-            $table->text('metal_keywords')->nullable()->index();
+            $table->text('meta_title')->index();
+            $table->text('meta_des')->index();
+            $table->text('metal_keywords')->index();
             $table->timestamps();
         });
     }
