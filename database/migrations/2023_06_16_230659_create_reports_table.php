@@ -18,7 +18,7 @@ return new class extends Migration
             $table->bigInteger('category_id')->index()->nullable();
             $table->unsignedBigInteger('sub_category_id')->index()->nullable();
             $table->string('heading')->index();
-            $table->text('url')->index();
+            $table->string('url')->index();
             $table->text('description')->nullable();
             $table->text('toc')->nullable();
             $table->text('segment')->nullable();
@@ -30,9 +30,9 @@ return new class extends Migration
             $table->text('image_alt')->nullable();
             $table->text('customized')->nullable();
             $table->text('schema')->nullable();
-            $table->text('meta_title')->nullable()->index();
-            $table->text('meta_des')->nullable()->index();
-            $table->text('metal_keywords')->nullable()->index();
+            $table->string('meta_title')->index();
+            $table->string('meta_des')->index();
+            $table->string('metal_keywords')->index();
             $table->softDeletes();
             $table->timestamps();
         });
