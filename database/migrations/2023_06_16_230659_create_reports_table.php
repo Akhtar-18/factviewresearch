@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('category_id')->index()->nullable();
             $table->unsignedBigInteger('sub_category_id')->index()->nullable();
-            $table->text('heading')->index();
+            $table->string('heading')->index();
             $table->text('url')->index();
             $table->text('description')->nullable();
             $table->text('toc')->nullable();
