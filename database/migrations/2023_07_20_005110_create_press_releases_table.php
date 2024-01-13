@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('press_releases', function (Blueprint $table) {
             $table->id();
-            $table->text('heading')->index()->nullable();
-            $table->text('url')->index()->nullable();
+            $table->string('heading')->index();
+            $table->string('url')->index();
             $table->text('description')->nullable();
             $table->text('image')->nullable();
             $table->text('image_alt')->nullable();
             $table->text('schema')->nullable();
-            $table->text('meta_title')->nullable()->index();
-            $table->text('meta_des')->nullable()->index();
-            $table->text('metal_keywords')->nullable()->index();
+            $table->string('meta_title')->index();
+            $table->string('meta_des')->index();
+            $table->string('metal_keywords')->index();
             $table->timestamps();
         });
     }
