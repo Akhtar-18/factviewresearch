@@ -12,19 +12,19 @@
     <title>@yield('title')</title>
 
      <!-- favicon -->
-     <link rel="shortcut icon" href="{{ url('front/img/logos/fvr-72-72.png') }}">
-     <link rel="apple-touch-icon" href="{{ url('front/img/logos/fvr-72-72.png') }}">
-     <link rel="apple-touch-icon" sizes="72x72" href="{{ url('front/img/logos/fvr-72-72.png') }}">
-     <link rel="apple-touch-icon" sizes="114x114" href="{{ url('front/img/logos/fvr-114-114.png') }}">
+     <link rel="shortcut icon" href="https://ik.imagekit.io/0g6xszoan/favicon/fvr-72-72.png">
+    <link rel="apple-touch-icon" href="https://ik.imagekit.io/0g6xszoan/favicon/fvr-72-72.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://ik.imagekit.io/0g6xszoan/favicon/fvr-72-72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://ik.imagekit.io/0g6xszoan/favicon/fvr-114-114.png">
 
-    <link href="{{ url('') }}/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
-        href=https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <link href="{{ url('') }}/admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ asset('admin/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <link href="{{ url('') }}/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -264,36 +264,36 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         @if (auth()->user()->can('slider-list'))
-                            <a class="collapse-item" href="{{ url('admin/slider') }}">Slider</a>
+                            <a class="collapse-item" href="{{ asset('admin/slider') }}">Slider</a>
                         @endif
                         @if (auth()->user()->can('aboutus-list'))
-                            <a class="collapse-item" href="{{ url('admin/aboutus') }}">About Us</a>
+                            <a class="collapse-item" href="{{ asset('admin/aboutus') }}">About Us</a>
                         @endif
                         @if (auth()->user()->can('services-list'))
-                            <a class="collapse-item" href="{{ url('admin/services') }}">Services</a>
+                            <a class="collapse-item" href="{{ asset('admin/services') }}">Services</a>
                         @endif
                         @if (auth()->user()->can('contactdetails-list'))
-                            <a class="collapse-item" href="{{ url('admin/contactdetails') }}">Contact Details</a>
+                            <a class="collapse-item" href="{{ asset('admin/contactdetails') }}">Contact Details</a>
                         @endif
                         @if (auth()->user()->can('whowe-list'))
-                            <a class="collapse-item" href="{{ url('admin/whowe') }}">Who We Are</a>
+                            <a class="collapse-item" href="{{ asset('admin/whowe') }}">Who We Are</a>
                         @endif
                         @if (auth()->user()->can('whychoose-list'))
-                            <a class="collapse-item" href="{{ url('admin/whychoose') }}">Why Choose Us</a>
+                            <a class="collapse-item" href="{{ asset('admin/whychoose') }}">Why Choose Us</a>
                         @endif
                         @if (auth()->user()->can('getintouch-list'))
-                            <a class="collapse-item" href="{{ url('admin/getintouch') }}">Get In Touch With Us</a>
+                            <a class="collapse-item" href="{{ asset('admin/getintouch') }}">Get In Touch With Us</a>
                         @endif
                         @if (auth()->user()->can('clients-list'))
-                            <a class="collapse-item" href="{{ url('admin/clients') }}">Clients</a>
+                            <a class="collapse-item" href="{{ asset('admin/clients') }}">Clients</a>
                         @endif
                         @if (auth()->user()->can('testimonials-list'))
-                            <a class="collapse-item" href="{{ url('admin/testimonials') }}">Testimonials</a>
+                            <a class="collapse-item" href="{{ asset('admin/testimonials') }}">Testimonials</a>
                         @endif
                         @if (auth()->user()->can('careers-list'))
-                            <a class="collapse-item" href="{{ url('admin/careers') }}">Careers</a>
+                            <a class="collapse-item" href="{{ asset('admin/careers') }}">Careers</a>
                         @endif
-                        <a class="collapse-item" href="{{ url('admin/audio-video') }}">Audio & Video</a>
+                        <a class="collapse-item" href="{{ asset('admin/audio-video') }}">Audio & Video</a>
                     </div>
                 </div>
             </li>
@@ -337,17 +337,17 @@
                             <h6 class="collapse-header">Reports</h6>
 
                             @if (auth()->user()->can('reportcategory-list'))
-                                <a class="collapse-item" href="{{ url('admin/reportcategory') }}">Report Category</a>
+                                <a class="collapse-item" href="{{ asset('admin/reportcategory') }}">Report Category</a>
                             @endif
                             {{-- @if (auth()->user()->can('reportsubcategory-list'))
                                 <a class="collapse-item" href="{{ route('report.subcategory.index') }}">Report Sub
                                     Category</a>
                             @endif --}}
                             @if (auth()->user()->can('reports-list'))
-                                <a class="collapse-item" href="{{ url('admin/reports') }}">Reports</a>
+                                <a class="collapse-item" href="{{ asset('admin/reports') }}">Reports</a>
                             @endif
                             @if (auth()->user()->can('reportsbulk-list'))
-                                <a class="collapse-item" href="{{ url('admin/reports/bulk-upload') }}">Bulk
+                                <a class="collapse-item" href="{{ asset('admin/reports/bulk-upload') }}">Bulk
                                     Upload</a>
                             @endif
                         </div>
@@ -357,7 +357,7 @@
             <!---- Enquiry------>
             @if (auth()->user()->can('enquiry-list'))
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('admin/enquiry') }}">
+                    <a class="nav-link" href="{{ asset('admin/enquiry') }}">
                         <i class="fas fa-fw fa-comments"></i>
                         <span>Enquiries</span></a>
                 </li>
@@ -391,16 +391,16 @@
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Blog:</h6>
-                            <!-- <a class="collapse-item" href="{{ url('admin/blog-category') }}">Blogs Category</a> -->
+                            <!-- <a class="collapse-item" href="{{ asset('admin/blog-category') }}">Blogs Category</a> -->
                             @if (auth()->user()->can('blog-list'))
-                                <a class="collapse-item" href="{{ url('admin/admin-blogs') }}">Blogs</a>
+                                <a class="collapse-item" href="{{ asset('admin/admin-blogs') }}">Blogs</a>
                             @endif
                             @if (auth()->user()->can('adminpressreleases-list'))
-                                <a class="collapse-item" href="{{ url('admin/admin-press-releases') }}">Press
+                                <a class="collapse-item" href="{{ asset('admin/admin-press-releases') }}">Press
                                     Releases</a>
                             @endif
                             @if (auth()->user()->can('admincasestudies-list'))
-                                <a class="collapse-item" href="{{ url('admin/admin-case-studies') }}">Case
+                                <a class="collapse-item" href="{{ asset('admin/admin-case-studies') }}">Case
                                     Studies</a>
                             @endif
                         </div>
