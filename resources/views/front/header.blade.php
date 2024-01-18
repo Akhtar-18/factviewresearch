@@ -4,9 +4,9 @@
     <!-- metas -->
     <meta charset="utf-8">
 
-   
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5'/> 
+    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5'/>
     <!-- Favicon -->
     <link rel="shortcut icon" href="https://ik.imagekit.io/0g6xszoan/favicon/fvr-72-72.png">
     <link rel="apple-touch-icon" href="https://ik.imagekit.io/0g6xszoan/favicon/fvr-72-72.png">
@@ -25,7 +25,7 @@
 
     <!-- <script type="text/javascript" src="{{ asset('front/js/ajax.js') }}"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
+
     @php
         $route = Route::currentRouteName();
     @endphp
@@ -157,7 +157,7 @@
         @yield('reportmetasection')
     @endif
 
-    <link rel="canonical" href="http://factviewresearch.com/" />
+    <link rel="canonical" href="https://factviewresearch.com/" />
     <meta name="document-type" content="Public" />
     <meta name="Page-Topic" content="Market Research Reports" />
     <meta name="copyright" content="Fact View Research" />
@@ -166,9 +166,9 @@
     <meta name="distribution" content="global" />
     <meta name="coverage" content="global" />
     <meta name="abstract" content="consulting services, market research reports, industry analysis, reports" />
-    <meta name="author" content="FactViewResearch,https://www.factviewresearch.com" />
+    <meta name="author" content="FactViewResearch, https://www.factviewresearch.com" />
     <meta name="Audience" content="All, Business, Management, Research, Services" />
-    
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="google-site-verification" content="ttXl7RH9nKnXlHD17fSjZEaoD-uIiT5OROVTnU4EPG0" />
 
