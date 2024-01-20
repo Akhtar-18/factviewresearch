@@ -114,13 +114,15 @@
                                         <p>
                                             <!-- {!! html_entity_decode($reports->description) !!} -->
                                             @php
-                                                $content = html_entity_decode($reports->description);
-                                                $containsLink = strpos($content, '<a') !== false;
-                                            @endphp
+        $content = html_entity_decode($reports->description);
+        $containsLink = strpos($content, '<a') !== false || strpos($content, '<a href=') !== false;
+    @endphp
 
-                                            @if ($containsLink) <span style="color: blue;">{!! $content !!}</span>
+    @if ($containsLink)
+        <span style="color: blue;">{!! $content !!}</span>
     @else
-        {!! $content !!} @endif
+        {!! $content !!}
+    @endif
                                         </p>
 
                                         <div class="row">
