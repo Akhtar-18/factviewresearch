@@ -20,7 +20,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-12">
-                <form action="{{ url('admin/admin-press-releases/update')}}/{{$blog->id}}" method="POST" enctype='multipart/form-data'>
+                <form action="{{ secure_url('admin/admin-press-releases/update')}}/{{$blog->id}}" method="POST" enctype='multipart/form-data'>
                     @csrf
                     <div class="row">
                         <div class="col-md-3">
@@ -78,7 +78,7 @@
                                 @endif
                             </div>
                         </div>
-                        
+
 
                         <div class="col-md-12">
                             <div class="form-group">
@@ -90,7 +90,7 @@
                             </div>
                         </div>
 
-                       
+
                         <div class="col-md-12">
                             <hr class="bg-info">
                             <p><b> SEO Section</b></p>
@@ -147,7 +147,7 @@
 </div>
 
 <script>
-    
+
 
 function getSlug()
     {
@@ -166,8 +166,8 @@ function getSlug()
         });
     }
 
-    
-    
+
+
 
 </script>
 @endsection

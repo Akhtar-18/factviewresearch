@@ -20,7 +20,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-12">
-                <form action="{{ url('admin/contactdetails/update/')}}/{{ $contact->id }}" method="POST" enctype='multipart/form-data'>
+                <form action="{{ secure_url('admin/contactdetails/update/')}}/{{ $contact->id }}" method="POST" enctype='multipart/form-data'>
                     @csrf
                     <div class="row">
                     <div class="col-md-4">
@@ -67,7 +67,7 @@
                         <div class="col-md-4">
                         <label class="mb-2">Contact No <span class="text-danger">*</span></label>
                             <div class="input-group">
-                                
+
                                 <div class="input-group-prepend">
                                 <input type="text" name="no_prefix" class="form-control"  value="{{ $contact->no_prefix }}" placeholder="+91" required>
                                 @if ($errors->has('no_prefix'))

@@ -20,7 +20,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-12">
-                <form action="{{ url('admin/services/submit')}}" method="POST" enctype='multipart/form-data'>
+                <form action="{{ secure_url('admin/services/submit')}}" method="POST" enctype='multipart/form-data'>
                     @csrf
                     <div class="row">
                         <div class="col-md-6">

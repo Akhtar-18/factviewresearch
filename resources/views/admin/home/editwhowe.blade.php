@@ -20,7 +20,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-12">
-                <form action="{{ url('admin/whowe/update/')}}/{{ $whowe->id }}" method="POST" enctype='multipart/form-data'>
+                <form action="{{ secure_url('admin/whowe/update/')}}/{{ $whowe->id }}" method="POST" enctype='multipart/form-data'>
                     @csrf
                     <div class="row">
                         <div class="col-md-4">
