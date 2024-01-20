@@ -2,7 +2,7 @@
 @section('title','Client List')
 @section('page')
 <div class="container-fluid">
-    
+
 
 <!-- Page Heading -->
 <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1> -->
@@ -47,14 +47,14 @@
     var table = $('#dataTable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('admin/clients/list') }}",
+        ajax: "{{ secure_url('admin/clients/list') }}",
         columns: [
             {data: 'name', name: 'name'},
             {data: 'image', name: 'image'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
-     
+
   });
 </script>
 @endsection

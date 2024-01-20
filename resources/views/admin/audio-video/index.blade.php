@@ -2,7 +2,7 @@
 @section('title','Audio & Video List')
 @section('page')
 <div class="container-fluid">
-    
+
 
 <!-- Page Heading -->
 <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1> -->
@@ -45,14 +45,14 @@
     var table = $('#dataTable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('admin/audio-video/list') }}",
+        ajax: "{{ secure_url('admin/audio-video/list') }}",
         columns: [
             {data: 'audio', name: 'audio'},
             {data: 'video', name: 'video'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
-     
+
   });
 </script>
 @endsection

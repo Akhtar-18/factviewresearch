@@ -2,7 +2,7 @@
 @section('title','About Us List')
 @section('page')
 <div class="container-fluid">
-    
+
 
 <!-- Page Heading -->
 <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1> -->
@@ -45,14 +45,14 @@
     var table = $('#dataTable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('admin/aboutus/list') }}",
+        ajax: "{{ secure_url('admin/aboutus/list') }}",
         columns: [
             {data: 'heading', name: 'heading'},
             {data: 'content', name: 'content'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
-     
+
   });
 </script>
 @endsection

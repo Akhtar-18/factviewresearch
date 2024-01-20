@@ -2,7 +2,7 @@
 @section('title','Enquiry List')
 @section('page')
 <div class="container-fluid">
-    
+
 
 <!-- Page Heading -->
 <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1> -->
@@ -19,7 +19,7 @@
     </div>
     <div class="card-body">
     <!-- <nav>
-  
+
 </nav> -->
 <div class="tab-content" id="nav-tabContent">
   <div class="tab-pane fade show active" id="nav-enquiry" role="tabpanel" aria-labelledby="nav-enquiry-tab">
@@ -149,7 +149,7 @@
     var table = $('#dataTable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('admin/enquiry/list') }}",
+        ajax: "{{ secure_url('admin/enquiry/list') }}",
         columns: [
             {data: 'report_id', name: 'report_id'},
             {data: 'name', name: 'name'},
@@ -161,7 +161,7 @@
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
-     
+
   });
 </script>
 
@@ -170,7 +170,7 @@
     var table = $('#dataTable2').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('admin/enquiry/request') }}",
+        ajax: "{{ secure_url('admin/enquiry/request') }}",
         columns: [
             {data: 'report_id', name: 'report_id'},
             {data: 'name', name: 'name'},
@@ -182,7 +182,7 @@
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
-     
+
   });
 </script>
 
@@ -191,7 +191,7 @@
     var table = $('#dataTable3').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('admin/enquiry/discount') }}",
+        ajax: "{{ secure_url('admin/enquiry/discount') }}",
         columns: [
             {data: 'report_id', name: 'report_id'},
             {data: 'name', name: 'name'},
@@ -203,7 +203,7 @@
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
-     
+
   });
 </script>
 
@@ -212,7 +212,7 @@
     var table = $('#dataTable4').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('admin/enquiry/contact') }}",
+        ajax: "{{ secure_url('admin/enquiry/contact') }}",
         columns: [
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
@@ -222,7 +222,7 @@
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
-     
+
   });
 </script>
 @endsection

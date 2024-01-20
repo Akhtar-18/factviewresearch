@@ -2,7 +2,7 @@
 @section('title','Blog Category List')
 @section('page')
 <div class="container-fluid">
-    
+
 
 <!-- Page Heading -->
 <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1> -->
@@ -43,13 +43,13 @@
     var table = $('#dataTable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('admin/blog-category/list') }}",
+        ajax: "{{ secure_url('admin/blog-category/list') }}",
         columns: [
             {data: 'category_name', name: 'category_name'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
-     
+
   });
 </script>
 @endsection

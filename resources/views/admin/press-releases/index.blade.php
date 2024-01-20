@@ -11,23 +11,23 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Press Releases List</h6>
-       
+
         <a href="{{ route('admin.admin-press-releases.add') }}">
             <span class="btn btn-primary float-right">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i> Add New
             </span>
         </a>
 
-        
-       
+
+
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                       
-                    
+
+
                         <th>Heading </th>
                         <th>Url</th>
                         <th>Action</th>
@@ -35,8 +35,8 @@
                 </thead>
                 <tfoot>
                     <tr>
-                       
-                    
+
+
                         <th>Heading </th>
                         <th>Url</th>
                         <th>Action</th>
@@ -53,7 +53,7 @@
     var table = $('#dataTable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('admin/admin-press-releases/list') }}",
+        ajax: "{{ secure_url('admin/admin-press-releases/list') }}",
         columns: [
             {data: 'heading', name: 'heading'},
             {data: 'url', name: 'url'},

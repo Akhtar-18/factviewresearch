@@ -2,7 +2,7 @@
 @section('title','Careers List')
 @section('page')
 <div class="container-fluid">
-    
+
 
 <!-- Page Heading -->
 <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1> -->
@@ -11,7 +11,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Careers List</h6>
-        
+
         @can('careers-create')
         <a href="{{ route('admin.careers.add') }}">
             <span class="btn btn-primary float-right">
@@ -48,14 +48,14 @@
     var table = $('#dataTable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('admin/careers/list') }}",
+        ajax: "{{ secure_url('admin/careers/list') }}",
         columns: [
             {data: 'heading', name: 'heading'},
             {data: 'content', name: 'content'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
-     
+
   });
 </script>
 @endsection
