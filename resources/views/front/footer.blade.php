@@ -2,12 +2,12 @@
     <div class="container">
         <div class="row mt-n1-9">
 
-            <div class="col-lg-4 col-md-6 mt-1-9">
+            <div class="col-lg-4 col-md-6 mt-1-9 footer-logo">
 
                 <!-- <img alt="footer-logo" defer async src="img/logos/logo-footer.png"> -->
                 <a href="{{ url('/') }}" class="navbar-brand logodefault">
                     @if (getCompanyDetail())
-                        <img id="logo" class="footer-logo" defer async src="{{ getCompanyDetail()->company_logo }}?tr=w-200,h-39,fo-webp"
+                        <img id="logo" defer async src="{{ getCompanyDetail()->company_logo }}?tr=w-200,h-39,fo-webp"
                             alt="logo" width="200" height="39">
                     @elseif(isset(getCompanyDetail()->company_name))
                         {{ getCompanyDetail()->company_name }}
