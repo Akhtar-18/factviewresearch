@@ -115,7 +115,7 @@
                                             <!-- {!! html_entity_decode($reports->description) !!} -->
                                             @php
         $content = html_entity_decode($reports->description);
-        $containsLink = strpos($content, '<a') !== false || strpos($content, '<a href=') !== false;
+        $containsLink = preg_match('/<a\s/', $content);
     @endphp
 
     @if ($containsLink)
