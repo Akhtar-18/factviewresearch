@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row mt-n1-9">
 
-            <div class="col-lg-4 col-md-6 mt-1-9 footer-logo">
+            <div class="col-lg-4 col-md-6 mt-1-9" id="footer-logo">
 
                 <!-- <img alt="footer-logo" defer async src="img/logos/logo-footer.png"> -->
                 <a href="{{ url('/') }}" class="navbar-brand logodefault">
