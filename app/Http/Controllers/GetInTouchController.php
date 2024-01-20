@@ -16,7 +16,7 @@ class GetInTouchController extends Controller
        $this->middleware('permission:getintouch-edit', ['only' => ['edit','update']]);
        $this->middleware('permission:getintouch-delete', ['only' => ['destroy']]);
   }
-  
+
     public function index()
     {
         return view('admin.home.getintouch');
@@ -37,7 +37,7 @@ class GetInTouchController extends Controller
               ->addColumn('action', function($row){
                 if(auth()->user()->can('getintouch-edit'))
                 {
-                  $editbtn='<a  href="'.url('admin/getintouch/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
+                  $editbtn='<a  href="'.secure_url('admin/getintouch/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
                 }
                 else
                 {
@@ -53,11 +53,11 @@ class GetInTouchController extends Controller
                 }
 
 
-                $btn =  $editbtn.'|'.$deletebtn.' 
-                
+                $btn =  $editbtn.'|'.$deletebtn.'
+
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/getintouch/delete/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/getintouch/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -75,7 +75,7 @@ class GetInTouchController extends Controller
             </div>
         </div>
     </div>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['content','action'])
@@ -95,7 +95,7 @@ class GetInTouchController extends Controller
         GetInTouchModel::create($input);
         return redirect('/admin/getintouch')->with('success','Post created successfully.');
 
-        
+
     }
    public function edit($id)
    {
@@ -116,14 +116,14 @@ class GetInTouchController extends Controller
    {
     $request->validated();
       $input = $request->all();
-      $about=GetInTouchModel::find($id);        
+      $about=GetInTouchModel::find($id);
       $about->update($input);
-  
+
         return redirect('admin/getintouch/')->with('success','Post updated successfully');
    }
   public function delete($id)
   {
-    $about=GetInTouchModel::find($id);   
+    $about=GetInTouchModel::find($id);
     $about->delete();
     return redirect('admin/getintouch/')->with('success','Post Deleted successfully');
   }

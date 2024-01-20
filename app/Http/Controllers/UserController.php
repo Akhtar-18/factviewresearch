@@ -1,7 +1,7 @@
 <?php
-    
+
 namespace App\Http\Controllers;
-    
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -28,7 +28,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         return view('admin.home.users');
-        
+
     }
 
 
@@ -39,12 +39,12 @@ class UserController extends Controller
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('role', function($row){
-      
+
                         $btns = $row->getRoleNames();
-  
+
                          return $btns;
                  })
-               
+
               ->addColumn('action', function($row){
                 if(auth()->user()->can('users-edit'))
                 {
@@ -65,7 +65,7 @@ class UserController extends Controller
                 $btn = $editbtn.'|'.$deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/users/delete/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/users/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -83,14 +83,14 @@ class UserController extends Controller
             </div>
         </div>
     </div>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
         }
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -101,7 +101,7 @@ class UserController extends Controller
         $roles = Role::pluck('name','name')->all();
         return view('users.create',compact('roles'));
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -116,17 +116,17 @@ class UserController extends Controller
             'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
-    
+
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-    
+
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
-    
+
         return redirect()->route('users.index')
                         ->with('success','User created successfully');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -138,7 +138,7 @@ class UserController extends Controller
         $user = User::find($id);
         return view('users.show',compact('user'));
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -150,10 +150,10 @@ class UserController extends Controller
         $user = User::find($id);
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->first();
-    
+
         return view('users.edit',compact('user','roles','userRole'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -169,24 +169,24 @@ class UserController extends Controller
             'password' => 'same:confirm-password',
             'roles' => 'required'
         ]);
-    
+
         $input = $request->all();
-        if(!empty($input['password'])){ 
+        if(!empty($input['password'])){
             $input['password'] = Hash::make($input['password']);
         }else{
-            $input = Arr::except($input,array('password'));    
+            $input = Arr::except($input,array('password'));
         }
-    
+
         $user = User::find($id);
         $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
-    
+
         $user->assignRole($request->input('roles'));
-    
+
         return redirect()->route('users.index')
                         ->with('success','User updated successfully');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *

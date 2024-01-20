@@ -33,7 +33,7 @@ class ContactDetailsController extends Controller
               ->addColumn('action', function($row){
                 if(auth()->user()->can('contactdetails-edit'))
                 {
-                  $editbtn='<a  href="'.url('admin/contactdetails/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
+                  $editbtn='<a  href="'.secure_url('admin/contactdetails/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
                 }
                 else
                 {
@@ -50,7 +50,7 @@ class ContactDetailsController extends Controller
                 $btn = $editbtn.'|'.$deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/contactdetails/delete/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/contactdetails/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -117,7 +117,7 @@ class ContactDetailsController extends Controller
       $request->validated();
       $input = $request->all();
       $service=ContactDetailsModel::find($id);
-      // if ($image = $request->file('company_logo')) 
+      // if ($image = $request->file('company_logo'))
       //   {
       //       $destinationPath = public_path('/').'company_logo/';
       //       $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();

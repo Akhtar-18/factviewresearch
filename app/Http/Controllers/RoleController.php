@@ -1,5 +1,5 @@
 <?php
-    
+
 namespace App\Http\Controllers;
 
 
@@ -24,7 +24,7 @@ class RoleController extends Controller
     //      $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
     //      $this->middleware('permission:role-delete', ['only' => ['destroy']]);
     // }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +43,7 @@ class RoleController extends Controller
             $data = Role::select('*')->orderBy('id','desc');
             return DataTables::of($data)
                     ->addIndexColumn()
-               
+
               ->addColumn('action', function($row){
                 if(auth()->user()->can('role-edit'))
                 {
@@ -64,7 +64,7 @@ class RoleController extends Controller
                 $btn = $editbtn.'|'.$deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/roles/delete/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/roles/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -82,14 +82,14 @@ class RoleController extends Controller
             </div>
         </div>
     </div>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
         }
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -100,7 +100,7 @@ class RoleController extends Controller
         $permission = Permission::get();
         return view('roles.create',compact('permission'));
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -113,10 +113,10 @@ class RoleController extends Controller
             'name' => 'required|unique:roles,name',
             'permission' => 'required',
         ]);
-    
+
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
-    
+
         return redirect()->route('roles.index')
                         ->with('success','Role created successfully');
     }
@@ -132,10 +132,10 @@ class RoleController extends Controller
         $rolePermissions = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
             ->where("role_has_permissions.role_id",$id)
             ->get();
-    
+
         return view('roles.show',compact('role','rolePermissions'));
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -147,11 +147,11 @@ class RoleController extends Controller
         $role = Role::find($id);
         $permission = Permission::get();
         $rolePermissions = $role->permissions->pluck('name')->toArray();;
-    
+
         //  dd($permission);
         return view('roles.edit',compact('role','permission','rolePermissions'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -165,13 +165,13 @@ class RoleController extends Controller
             'name' => 'required',
             'permission' => 'required',
         ]);
-    
+
         $role = Role::find($id);
         $role->name = $request->input('name');
         $role->save();
-    
+
         $role->syncPermissions($request->input('permission'));
-    
+
         return redirect()->route('roles.index')
                         ->with('success','Role updated successfully');
     }

@@ -10,7 +10,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class TestimonialController extends Controller
 {
-    
+
   function __construct()
     {
          $this->middleware('permission:testimonials-list|testimonials-create|testimonials-edit|testimonials-delete', ['only' => ['index','show']]);
@@ -39,11 +39,11 @@ class TestimonialController extends Controller
                 return $contents;
               })
 
-               
+
               ->addColumn('action', function($row){
                 if(auth()->user()->can('testimonials-edit'))
                 {
-                  $editbtn='<a  href="'.url('admin/testimonials/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
+                  $editbtn='<a  href="'.secure_url('admin/testimonials/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
                 }
                 else
                 {
@@ -60,7 +60,7 @@ class TestimonialController extends Controller
                 $btn = $editbtn.'|'.$deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/testimonials/delete/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/testimonials/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -78,7 +78,7 @@ class TestimonialController extends Controller
             </div>
         </div>
     </div>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['client_image','comments','action'])
@@ -105,7 +105,7 @@ class TestimonialController extends Controller
         TestimonialModel::create($input);
         return redirect('/admin/testimonials')->with('success','Post created successfully.');
 
-        
+
     }
    public function edit($id)
    {
@@ -126,7 +126,7 @@ class TestimonialController extends Controller
    {
       $request->validated();
       $input = $request->all();
-      $testimonial=TestimonialModel::find($id);     
+      $testimonial=TestimonialModel::find($id);
       // if ($request->file('client_image'))
       // {
       //   $client_image=ImageUpload('testimonials/client_image',$request->file('client_image'));
@@ -137,12 +137,12 @@ class TestimonialController extends Controller
       // }
       $input['client_image']=$request->client_image;
       $testimonial->update($input);
-  
+
         return redirect('admin/testimonials/')->with('success','Post updated successfully');
    }
   public function delete($id)
   {
-    $testimonials=TestimonialModel::find($id);   
+    $testimonials=TestimonialModel::find($id);
     $testimonials->delete();
     return redirect('admin/testimonials/')->with('success','Post Deleted successfully');
   }

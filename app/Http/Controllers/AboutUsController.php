@@ -33,13 +33,13 @@ class AboutUsController extends Controller
                 return $contents;
               })
 
-               
+
               ->addColumn('action', function($row)
               {
 
                 if(auth()->user()->can('aboutus-edit'))
                 {
-                  $editbtn='<a  href="'.url('admin/aboutus/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
+                  $editbtn='<a  href="'.secure_url('admin/aboutus/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
                 }
                 else
                 {
@@ -57,7 +57,7 @@ class AboutUsController extends Controller
                 $btn = $editbtn.'|'.$deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/aboutus/delete/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/aboutus/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -75,7 +75,7 @@ class AboutUsController extends Controller
             </div>
         </div>
     </div>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['content','action'])
@@ -95,7 +95,7 @@ class AboutUsController extends Controller
         AboutUsModel::create($input);
         return redirect('/admin/aboutus')->with('success','About created successfully.');
 
-        
+
     }
    public function edit($id)
    {
@@ -115,14 +115,14 @@ class AboutUsController extends Controller
    public function update($id,Request $request)
    {
       $input = $request->all();
-      $about=AboutUsModel::find($id);        
+      $about=AboutUsModel::find($id);
       $about->update($input);
-  
+
         return redirect('admin/aboutus/')->with('success','About updated successfully');
    }
   public function delete($id)
   {
-    $about=AboutUsModel::find($id);   
+    $about=AboutUsModel::find($id);
     $about->delete();
     return redirect('admin/aboutus/')->with('success','About Deleted successfully');
   }

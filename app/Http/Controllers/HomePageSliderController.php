@@ -37,11 +37,11 @@ class HomePageSliderController extends Controller
                 return $contents;
               })
 
-               
+
               ->addColumn('action', function($row){
                 if(auth()->user()->can('slider-edit'))
                 {
-                  $editbtn='<a  href="'.url('admin/slider/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
+                  $editbtn='<a  href="'.secure_url('admin/slider/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
                 }
                 else
                 {
@@ -58,7 +58,7 @@ class HomePageSliderController extends Controller
                 $btn = $editbtn.'|'.$deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/slider/delete/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/slider/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -76,7 +76,7 @@ class HomePageSliderController extends Controller
             </div>
         </div>
     </div>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['content','slider_images','action'])
@@ -100,11 +100,11 @@ class HomePageSliderController extends Controller
         //     $image->move($destinationPath, $postImage);
         //     $input['slider_image'] = "$postImage";
         // }
-  
+
         HomeSliderModel::create($input);
         return redirect('/admin/slider')->with('success','Slider created successfully.');
 
-        
+
     }
    public function edit($id)
    {
@@ -124,9 +124,9 @@ class HomePageSliderController extends Controller
    public function update($id,Request $request)
    {
       $input = $request->all();
-      $slider=HomeSliderModel::find($id);    
-  
-        // if ($image = $request->file('slider_image')) 
+      $slider=HomeSliderModel::find($id);
+
+        // if ($image = $request->file('slider_image'))
         // {
         //     $destinationPath = public_path('/').'images/';
         //     $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -138,17 +138,17 @@ class HomePageSliderController extends Controller
         //     unset($input['slider_image']);
         // }
         $input['slider_image']= $request->slider_image;
-          
+
         $slider->update($input);
-  
+
         return redirect('admin/slider/')->with('success','Slider updated successfully');
    }
   public function delete($id)
   {
-    $slider=HomeSliderModel::find($id);   
+    $slider=HomeSliderModel::find($id);
     $destinationPath = public_path('/').'images/';
     $destinationPathimage=$destinationPath.$slider->slider_image;
-    unlink($destinationPathimage); 
+    unlink($destinationPathimage);
     $slider->delete();
     return redirect('admin/slider/')->with('success','Slider Deleted successfully');
   }

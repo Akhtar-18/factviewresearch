@@ -26,11 +26,11 @@ class ReportSubCategoryController extends Controller
                 return $contents;
               })
 
-               
+
               ->addColumn('action', function($row){
                 if(auth()->user()->can('reportcategory-edit'))
                 {
-                  $editbtn='<a  href="'.url('admin/reportsubcategory/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
+                  $editbtn='<a  href="'.secure_url('admin/reportsubcategory/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
                 }
                 else
                 {
@@ -47,7 +47,7 @@ class ReportSubCategoryController extends Controller
                 $btn = $editbtn.'|'.$deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/reportsubcategory/delete/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/reportsubcategory/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -65,7 +65,7 @@ class ReportSubCategoryController extends Controller
             </div>
         </div>
     </div>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['category_id','action'])
@@ -89,7 +89,7 @@ class ReportSubCategoryController extends Controller
         ReportSubCategoryModel::create($input);
         return redirect('/admin/reportsubcategory')->with('success','SubCategory created successfully.');
 
-        
+
     }
    public function edit($id)
    {
@@ -114,14 +114,14 @@ class ReportSubCategoryController extends Controller
         'sub_category'=>'required',
     ]);
       $input = $request->all();
-      $career=ReportSubCategoryModel::find($id);        
+      $career=ReportSubCategoryModel::find($id);
       $career->update($input);
-  
+
         return redirect('admin/reportsubcategory/')->with('success','Sub Category updated successfully');
    }
   public function delete($id)
   {
-    $careers=ReportSubCategoryModel::find($id);   
+    $careers=ReportSubCategoryModel::find($id);
     $careers->delete();
     return redirect('admin/reportsubcategory/')->with('success','Sub Category Deleted successfully');
   }
@@ -138,7 +138,7 @@ class ReportSubCategoryController extends Controller
       {
         echo '<option value="'.$list->id.'">'.$list->sub_category.'</option>';
       }
-        
+
     }
-  } 
+  }
 }

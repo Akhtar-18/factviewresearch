@@ -33,11 +33,11 @@ class ClientsController extends Controller
                       return $btns;
                })
 
-               
+
               ->addColumn('action', function($row){
                 if(auth()->user()->can('clients-edit'))
                 {
-                  $editbtn='<a  href="'.url('admin/clients/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
+                  $editbtn='<a  href="'.secure_url('admin/clients/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
                 }
                 else
                 {
@@ -54,7 +54,7 @@ class ClientsController extends Controller
                 $btn = $editbtn.'|'.$deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/clients/delete/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/clients/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -72,7 +72,7 @@ class ClientsController extends Controller
             </div>
         </div>
     </div>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['image','action'])
@@ -89,7 +89,7 @@ class ClientsController extends Controller
     {
         $request->validated();
         $input = $request->all();
-  
+
         // if ($image = $request->file('image')) {
         //     $destinationPath = public_path('/').'/clients/images/';
         //     $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -100,7 +100,7 @@ class ClientsController extends Controller
         ClientsModel::create($input);
         return redirect('/admin/clients')->with('success','Post created successfully.');
 
-        
+
     }
    public function edit($id)
    {
@@ -120,9 +120,9 @@ class ClientsController extends Controller
    public function update($id,Request $request)
    {
       $input = $request->all();
-      $slider=ClientsModel::find($id);    
-  
-        // if ($image = $request->file('image')) 
+      $slider=ClientsModel::find($id);
+
+        // if ($image = $request->file('image'))
         // {
         //     $destinationPath = public_path('/').'/clients/images/';
         //     $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -135,15 +135,15 @@ class ClientsController extends Controller
         // }
         $input['image'] = $request->image;
         $slider->update($input);
-  
+
         return redirect('admin/clients/')->with('success','Post updated successfully');
    }
   public function delete($id)
   {
-    $Clients=ClientsModel::find($id);   
+    $Clients=ClientsModel::find($id);
     $destinationPath = public_path('/').'/clients/images/';
     $destinationPathimage=$destinationPath.$Clients->image;
-    unlink($destinationPathimage); 
+    unlink($destinationPathimage);
     $Clients->delete();
     return redirect('admin/clients/')->with('success','Post Deleted successfully');
   }

@@ -16,7 +16,7 @@ class CareersController extends Controller
          $this->middleware('permission:careers-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:careers-delete', ['only' => ['destroy']]);
   }
-    
+
     public function index()
     {
         return view('admin.home.careersslist');
@@ -34,11 +34,11 @@ class CareersController extends Controller
                 return $contents;
               })
 
-               
+
               ->addColumn('action', function($row){
                 if(auth()->user()->can('careers-edit'))
                 {
-                  $editbtn='<a  href="'.url('admin/careers/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
+                  $editbtn='<a  href="'.secure_url('admin/careers/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
                 }
                 else
                 {
@@ -55,7 +55,7 @@ class CareersController extends Controller
                 $btn = $editbtn.'|'.$deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/careers/delete/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/careers/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -73,7 +73,7 @@ class CareersController extends Controller
             </div>
         </div>
     </div>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['content','action'])
@@ -93,7 +93,7 @@ class CareersController extends Controller
         CareersModel::create($input);
         return redirect('/admin/careers')->with('success','Post created successfully.');
 
-        
+
     }
    public function edit($id)
    {
@@ -114,14 +114,14 @@ class CareersController extends Controller
    {
       $request->validated();
       $input = $request->all();
-      $career=CareersModel::find($id);        
+      $career=CareersModel::find($id);
       $career->update($input);
-  
+
         return redirect('admin/careers/')->with('success','Post updated successfully');
    }
   public function delete($id)
   {
-    $careers=CareersModel::find($id);   
+    $careers=CareersModel::find($id);
     $careers->delete();
     return redirect('admin/careers/')->with('success','Post Deleted successfully');
   }

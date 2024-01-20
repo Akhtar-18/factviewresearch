@@ -28,16 +28,16 @@ class EnquiryController extends Controller
                         return $contents;
                       })
 
-               
+
               ->addColumn('action', function($row)
               {
-                
+
                   $deletebtn='<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#DeleteModal'.$row->id.'"><i class="fa fa-trash"></i></a>';
 
                 $btn = $deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/enquiry/delete/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/enquiry/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -55,13 +55,13 @@ class EnquiryController extends Controller
             </div>
         </div>
     </div>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['report_id','action'])
                     ->make(true);
         }
-        
+
     }
 
     public function reportRequest(Request $request)
@@ -78,16 +78,16 @@ class EnquiryController extends Controller
                         return $contents;
                       })
 
-               
+
               ->addColumn('action', function($row)
               {
-                
+
                   $deletebtn='<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#DeleteModal'.$row->id.'"><i class="fa fa-trash"></i></a>';
 
                 $btn = $deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/enquiry/delete/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/enquiry/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -105,13 +105,13 @@ class EnquiryController extends Controller
             </div>
         </div>
     </div>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['report_id','action'])
                     ->make(true);
         }
-        
+
     }
 
     public function reportDiscount(Request $request)
@@ -128,16 +128,16 @@ class EnquiryController extends Controller
                         return $contents;
                       })
 
-               
+
               ->addColumn('action', function($row)
               {
-                
+
                   $deletebtn='<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#DeleteModal'.$row->id.'"><i class="fa fa-trash"></i></a>';
 
                 $btn = $deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/enquiry/delete/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/enquiry/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -155,18 +155,18 @@ class EnquiryController extends Controller
             </div>
         </div>
     </div>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['report_id','action'])
                     ->make(true);
         }
-        
+
     }
 
     public function delete($id)
     {
-      $enquiry=ReportEnquiryModel::find($id);   
+      $enquiry=ReportEnquiryModel::find($id);
       $enquiry->delete();
       return redirect('admin/enquiry/')->with('success','Enquiry Deleted successfully');
     }
@@ -174,7 +174,7 @@ class EnquiryController extends Controller
 
     public function deletecontact($id)
     {
-      $enquiry=ContactEnquiryModel::find($id);   
+      $enquiry=ContactEnquiryModel::find($id);
       $enquiry->delete();
       return redirect('admin/enquiry/')->with('success','Contact Enquiry Deleted successfully');
     }
@@ -188,13 +188,13 @@ class EnquiryController extends Controller
                     ->addIndexColumn()
               ->addColumn('action', function($row)
               {
-                
+
                   $deletebtn='<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#DeleteModal'.$row->id.'"><i class="fa fa-trash"></i></a>';
 
                 $btn = $deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/enquiry/deletecontact/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/enquiry/deletecontact/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -212,12 +212,12 @@ class EnquiryController extends Controller
             </div>
         </div>
     </div>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
         }
-        
+
     }
 }

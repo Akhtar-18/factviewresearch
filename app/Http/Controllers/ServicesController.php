@@ -46,11 +46,11 @@ class ServicesController extends Controller
                 return $contents;
               })
 
-               
+
               ->addColumn('action', function($row){
                 if(auth()->user()->can('services-edit'))
                 {
-                  $editbtn='<a  href="'.url('admin/services/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
+                  $editbtn='<a  href="'.secure_url('admin/services/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
                 }
                 else
                 {
@@ -67,7 +67,7 @@ class ServicesController extends Controller
                 $btn = $editbtn.'|'.$deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.url('admin/services/delete/').'/'.$row->id.'" method="post">
+        <form action="'.secure_url('admin/services/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -85,7 +85,7 @@ class ServicesController extends Controller
             </div>
         </div>
     </div>';
-     
+
                             return $btn;
                     })
                     ->rawColumns(['slug','content','action'])
@@ -105,7 +105,7 @@ class ServicesController extends Controller
         ServicesModel::create($input);
         return redirect('/admin/services')->with('success','Services created successfully.');
 
-        
+
     }
    public function edit($id)
    {
@@ -126,14 +126,14 @@ class ServicesController extends Controller
    {
       //$request->validated();
       $input = $request->all();
-      $service=ServicesModel::find($id);        
+      $service=ServicesModel::find($id);
       $service->update($input);
-  
+
         return redirect('admin/services/')->with('success','Services updated successfully');
    }
   public function delete($id)
   {
-    $service=ServicesModel::find($id);   
+    $service=ServicesModel::find($id);
     $service->delete();
     return redirect('admin/services/')->with('success','Services Deleted successfully');
   }
