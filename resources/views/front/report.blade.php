@@ -111,18 +111,20 @@
                                 </ul>
                                 <div class="resp-tabs-container hor_1">
                                     <div>
-                                        <p>
-                                            <!-- {!! html_entity_decode($reports->description) !!} -->
-                                            @php
-        $content = html_entity_decode($reports->description);
-        $containsLink = preg_match('/<a\s/', $content);
-    @endphp
+                                        @php
+    $content = html_entity_decode($reports->description);
+    $dom = new DOMDocument();
+    $dom->loadHTML($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
-    @if ($containsLink)
-        <span style="color: blue;">{!! $content !!}</span>
-    @else
-        {!! $content !!}
-    @endif
+    $links = $dom->getElementsByTagName('a');
+    foreach ($links as $link) {
+        $link->setAttribute('style', 'color: blue;');
+    }
+
+    $styledContent = $dom->saveHTML();
+@endphp
+
+<p>{!! $styledContent !!}</p>
                                         </p>
 
                                         <div class="row">
