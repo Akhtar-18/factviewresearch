@@ -36,8 +36,7 @@
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
 
-    <script type="text/javascript" src="https://cdn.tiny.cloud/1/js51e5us3hhorrqlcnw3snzar7es6okjmb6h860sbclvf2kd/tinymce/6/tinymce.min.js"
-        referrerpolicy="origin"></script>
+   <script src="https://cdn.tiny.cloud/1/a9aynqzsx35zq4rrj8kbql2jq9chhsi708mnjcgt97gqzzy0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <style type="text/css">
         .tox .tox-statusbar__text-container {
             display: none !important;
