@@ -7,7 +7,7 @@
                 <!-- <img alt="footer-logo" defer async src="img/logos/logo-footer.png"> -->
                 <a href="{{ url('/') }}" class="navbar-brand logodefault">
                     @if (getCompanyDetail())
-                        <img id="logo" defer async src="{{ getCompanyDetail()->company_logo }}?tr=w-200,h-39,fo-webp"
+                        <img id="logo" class="footer-logo" defer async src="{{ getCompanyDetail()->company_logo }}?tr=w-200,h-39,fo-webp"
                             alt="logo" width="200" height="39">
                     @elseif(isset(getCompanyDetail()->company_name))
                         {{ getCompanyDetail()->company_name }}
@@ -171,7 +171,7 @@ s0.parentNode.insertBefore(s1,s0);
        var ButtonText = $(this).find('button[type="submit"]').html();
        /*$(this).find('button').prop('disabled', true);
        $(this).find('button').html('Loading ...');*/
-       
+
        $(this).find('button[type="submit"]').prop('disabled', true);
        $(this).find('button[type="submit"]').html('Loading ...');
 
@@ -187,7 +187,7 @@ s0.parentNode.insertBefore(s1,s0);
            processData: false,
            contentType: false,
            beforeSend: function( xhr ) {
-               
+
            },
            success: function(data) {
                 if ($.isEmptyObject(data.error)) {
@@ -219,7 +219,7 @@ $("body").on("submit",".contactform", function(event){
        var ButtonText = $(this).find('button[type="submit"]').html();
        /*$(this).find('button').prop('disabled', true);
        $(this).find('button').html('Loading ...');*/
-       
+
        $(this).find('button[type="submit"]').prop('disabled', true);
        $(this).find('button[type="submit"]').html('Loading ...');
 
@@ -235,7 +235,7 @@ $("body").on("submit",".contactform", function(event){
            processData: false,
            contentType: false,
            beforeSend: function( xhr ) {
-               
+
            },
            success: function(data) {
                 if ($.isEmptyObject(data.error)) {
