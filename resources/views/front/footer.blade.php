@@ -5,10 +5,10 @@
             <div class="col-lg-4 col-md-6 mt-1-9">
 
                 <!-- <img alt="footer-logo" defer async src="img/logos/logo-footer.png"> -->
-                <a href="{{ url('/') }}" class="navbar-brand logodefault">
+                <a href="{{ url('/') }}" class="navbar-brand logodefault" id="footer-logo">
                     @if (getCompanyDetail())
                         <img id="logo" defer async src="{{ getCompanyDetail()->company_logo }}?tr=w-200,h-39,fo-webp"
-                            alt="logo" width="200" height="39" class="footer-logo">
+                            alt="logo" width="200" height="39">
                     @elseif(isset(getCompanyDetail()->company_name))
                         {{ getCompanyDetail()->company_name }}
                     @endif
