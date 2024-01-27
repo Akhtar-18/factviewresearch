@@ -1,5 +1,4 @@
 <?php
-// app/Http/Controllers/RobotsController.php
 
 namespace App\Http\Controllers;
 
