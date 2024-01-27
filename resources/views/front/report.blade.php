@@ -112,16 +112,20 @@
                                 <div class="resp-tabs-container hor_1">
                                     <div>
                                         <p>
-                                            <!-- {!! html_entity_decode($reports->description) !!} -->
                                             @php
                                                 $content = html_entity_decode($reports->description);
+                                                // Check if the content contains anchor tags
                                                 $containsLink = strpos($content, '<a') !== false;
                                             @endphp
 
-                                            @if ($containsLink) <span style="color: blue;">{!! $content !!}</span>
-    @else
-        {!! $content !!} @endif
+                                            @if ($containsLink)
+                                                <!-- Replace 'style="color: blue;"' with your desired formatting -->
+                                                {!! str_replace('<a', '<a style="color: blue;"', $content) !!}
+                                            @else
+                                                {!! $content !!}
+                                            @endif
                                         </p>
+
 
                                         <div class="row">
                                             @if (count($reports->getReportTblSummary) > 0)
