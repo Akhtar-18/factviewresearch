@@ -60,7 +60,7 @@
                     <div class="title text-center mb-2">
                         <h5 class="text-center">
                             @if (isset($reports->heading))
-                                <a href="{{$reports->url}}">{{ $reports->heading }}</a>
+                                {{ $reports->heading }}
                             @endif
                         </h5>
                     </div>
