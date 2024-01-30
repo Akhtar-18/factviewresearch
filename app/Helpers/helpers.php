@@ -49,7 +49,7 @@ if (!function_exists('getClient')) {
 if (!function_exists('GetReportMenu')) {
     function GetReportMenu()
     {
-        $getReportMenuData = ReportCategoryModel::with('getSubCategory')->select(['id', 'cat_name'])->get();
+        $getReportMenuData = ReportCategoryModel::with('getSubCategory')->select(['id', 'cat_name'])->limit(8)->get();
         return $getReportMenuData;
     }
 }
@@ -57,7 +57,7 @@ if (!function_exists('GetReportMenu')) {
 if (!function_exists('GetServiceMenu')) {
     function GetServiceMenu()
     {
-        $getServiceMenuData = ServicesModel::select(['id', 'heading','slug'])->get();
+        $getServiceMenuData = ServicesModel::select(['id', 'heading','slug'])->limit(5)->get();
         return $getServiceMenuData;
     }
 }
