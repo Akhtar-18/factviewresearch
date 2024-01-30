@@ -26,7 +26,7 @@
     <div class="container">
         <div class="section-heading">
             <br />
-            <h1 class="text-primary">Market Research Industry, Competitive Industry</h1>
+            <h1 class="text-primary">Market Research Industry, Competitive Industry </h1>
             <br />
         </div>
         <div class="position-relative">
