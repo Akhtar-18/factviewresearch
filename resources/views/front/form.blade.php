@@ -58,11 +58,11 @@
                     </div>
 
                     <div class="title text-center mb-2">
-                        <h5 class="text-center">
+                        <a href="{{ route('front.report',$reports->url)}}"><h5 class="text-center">
                             @if (isset($reports->heading))
                                 {{ $reports->heading }}
                             @endif
-                        </h5>
+                        </h5></a>
                     </div>
                     <div class="col-md-12"><br /></div>
                     <div class="contact-form-box mt-2">
