@@ -295,6 +295,12 @@
                                                         </li>
                                                     @endforeach
                                                 @endif
+                                                <li class="col-lg-3">
+                                                            <a
+                                                                href="{{route('front.all-category')}}"><span
+                                                                    class="d-block m-0 mb-lg-3 py-2 py-lg-0 px-1-9 px-lg-0 text-uppercase sub-title">All Industries
+                                                                    &raquo;</span></a>
+                                                </li>
                                             </ul>
                                         </li>
                                         <li><a href="#services">Services</a>
@@ -306,6 +312,9 @@
                                                                 href="{{ route('front.service-single', $service->slug) }}">{{ $service->heading }}</a>
                                                         </li>
                                                     @endforeach
+
+                                                    <li><a href="{{ route('front.services') }}">All Services</a>
+                                                    </li>
                                                 </ul>
                                             @endif
                                         </li>

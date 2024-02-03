@@ -597,4 +597,11 @@ class FrontController extends Controller
    return view('front.payment-success',compact('reports'));
  
      }
+
+
+    public function allcategory()
+    {
+        $data['category']= ReportCategoryModel::select(['id','cat_name'])->get();
+        return view('front.all-category',$data);
+    }
 }

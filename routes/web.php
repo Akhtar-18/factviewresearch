@@ -45,6 +45,8 @@ Route::match(['GET', 'POST'], '/enquiry/{id}/{type}', [FrontController::class, '
 
 Route::get('/all-reports', [FrontController::class, 'reports'])->name('front.reports');
 
+Route::get('/all-category', [FrontController::class, 'allcategory'])->name('front.all-category');
+
 Route::get('/fetch_datas', [FrontController::class, 'fetch_datas'])->name('front.fetch_datas');
 
 Route::get('/report-category/{id}', [FrontController::class, 'reportcategory'])->name('front.reportcategory');

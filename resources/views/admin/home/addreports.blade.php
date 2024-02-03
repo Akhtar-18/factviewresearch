@@ -274,16 +274,18 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="mb-2">Year<span class="text-danger"></span></label>
-                                                <input type="text" class="form-control" name="marketyear[]"
-                                                    placeholder="Year">
+                                                <input type="text" class="form-control"  name="marketyear[]"
+                                                    placeholder="Year" >
                                             </div>
+                                            
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="mb-2">Percentage<span class="text-danger"></span></label>
-                                                <input type="text" class="form-control" name="marketvalue[]"
-                                                    placeholder="Percentage">
+                                                <input type="text" class="form-control" id="marketvalue0" name="marketvalue[]"
+                                                    placeholder="Percentage" onkeyup="checkvalue('marketvalue0')">
                                             </div>
+                                            <span class="text-danger" id="error_marketvalue0"></span>
                                         </div>
                                         <div class="col-md-12" id="marketvalue">
 
@@ -326,9 +328,11 @@
                                                                 <input type="text" name="segmentname[]"
                                                                     class="form-control" placeholder="Sub Type">
                                                             </td>
-                                                            <td><input type="text" class="form-control"
-                                                                    name="segmentvalue[]" placeholder="Percentage"
-                                                                    value="">
+                                                            <td>
+                                                                <input type="text" class="form-control"
+                                                                    name="segmentvalue[]" id="segmentvalue0" placeholder="Percentage"
+                                                                    value="" onkeyup="checkvalue('segmentvalue0')">
+                                                                    <span class="text-danger" id="error_segmentvalue0"></span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -351,8 +355,9 @@
                                             <div class="form-group">
                                                 <label class="mb-2">Percentage<span class="text-danger"></span></label>
                                                 <input type="text" class="form-control" name="regionvalue[]"
-                                                    placeholder="Region Percentage">
+                                                    placeholder="Region Percentage" id="regionvalue0" onkeyup="checkvalue('regionvalue0')">
                                             </div>
+                                            <span class="text-danger" id="error_regionvalue0"></span>
                                         </div>
                                         <div class="col-md-12" id="regions"></div>
                                     </div>
@@ -373,8 +378,9 @@
                                             <div class="form-group">
                                                 <label class="mb-2">Percentage<span class="text-danger"></span></label>
                                                 <input type="text" class="form-control" name="marketsharevalue[]"
-                                                    placeholder="Percentage">
+                                                    placeholder="Percentage" id="marketsharevalue0" onkeyup="checkvalue('marketsharevalue0')">
                                             </div>
+                                            <span class="text-danger" id="error_marketsharevalue0"></span>
                                         </div>
                                         <div class="col-md-12" id="marketshares"></div>
                                     </div>
@@ -488,7 +494,8 @@
                          <td>\
                            <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">\
                           </td>\
-                          <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">\
+                          <td><input type="text" class="form-control" id="segmentvalue'+segmentCount+'" name="segmentvalue[]" placeholder="Percentage" value="" onkeyup=checkvalue("segmentvalue'+segmentCount+'")>\
+                          <span class="text-danger" id="error_segmentvalue'+segmentCount+'"></span>\
                         </td>\
                         </tr>\
                       </tbody>\
@@ -512,7 +519,7 @@
                           <td>\
                            <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">\
                           </td>\
-                          <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">\
+                          <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="" >\
                         </td>\
                         </tr>';
             if (idss) {
@@ -614,7 +621,8 @@
                     <div class="col-md-5">\
                         <div class="form-group">\
                             <label class="mb-2">Percentage<span class="text-danger"></span></label>\
-                            <input type="text" class="form-control" name="marketvalue[]" placeholder="Percentage">\
+                            <input type="text" class="form-control" id="marketvalue'+loopmarketvalueCount+'" name="marketvalue[]" placeholder="Percentage" onkeyup=checkvalue("marketvalue'+loopmarketvalueCount+'")>\
+                            <span class="text-danger" id="error_marketvalue'+loopmarketvalueCount+'"></span>\
                         </div>\
                     </div>\
                     <div class="col-md-2 mt-3">\
@@ -644,8 +652,9 @@
                     <div class="col-md-5">\
                         <div class="form-group">\
                             <label class="mb-2">Percentage<span class="text-danger"></span></label>\
-                            <input type="text" class="form-control" name="regionvalue[]" placeholder="Region Percentage">\
+                            <input type="text" class="form-control" name="regionvalue[]" id="regionvalue'+loopregionCount+'" placeholder="Region Percentage" onkeyup=checkvalue("regionvalue'+loopregionCount+'")>\
                         </div>\
+                        <span class="text-danger" id="error_regionvalue'+loopregionCount+'"></span>\
                     </div>\
                     <div class="col-md-2 mt-3">\
                         <a onclick="addregion()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
@@ -794,5 +803,27 @@
         function removesummary(ids) {
             $('#rowsummary' + ids).remove();
         }
+
+
+       
+            function checkvalue(id){
+                var inputValue = $('#'+id).val();
+                var html='';
+                if (!validateDecimal(inputValue)) {
+                    $('#'+id).val(html);
+                    $('#error_'+id).text('Allow Only Number and decimal');
+                }
+                else
+                {
+                    
+                    $('#error_'+id).text(html);
+                }
+            }
+
+            function validateDecimal(inputValue) {
+                var numberPattern = /^-?\d+(\.\d*)?$/;
+                return numberPattern.test(inputValue);
+            }
+        
     </script>
 @endsection
