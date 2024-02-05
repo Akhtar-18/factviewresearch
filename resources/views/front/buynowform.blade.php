@@ -12,7 +12,7 @@
                 <div class="col-md-12">
                     <ul class="ps-0">
                         <li><a href="{{ route('front.home') }}">Home</a></li>
-                        <li><a href="#">{{ $reports->heading }}</a>
+                        <li><a href="#"  class="text-white">{{ $reports->heading }}</a>
                         </li>
 
 
@@ -55,7 +55,7 @@
                         <div class="alert alert-danger print-error-msg" style="display:none">
                             <ul></ul>
                         </div>
-
+                        {!! NoCaptcha::renderJs() !!}
                         <form class="contact ajaxformfileupload" action="{{ route('submit.buynow') }}" id="contactUsForm"  name="contactUsForm" enctype="multipart/form-data"
                             method="POST">
                             <div class="quform-elements">
@@ -224,7 +224,7 @@
                                     </div>
 
                                     <!-- Begin Textarea element -->
-
+                                    {!! NoCaptcha::display() !!}
                                     <!-- End Textarea element -->
 
                                     <!-- Begin Submit button -->

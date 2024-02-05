@@ -451,6 +451,7 @@ class FrontController extends Controller
     {
         //return $request;
 
+
         $validator = Validator::make($request->all(), [
 
             'name'           => 'required',
@@ -459,7 +460,12 @@ class FrontController extends Controller
             'contact'  => 'required|numeric',
             'lisence_amount' => 'required',
             'company_name'=>'required',
-            'job_title' =>'required'
+            'job_title' =>'required',
+            'g-recaptcha-response' => 'required|captcha',
+            [
+                'g-recaptcha-response.required' => 'You must check the reCAPTCHA.',
+                'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
+            ]
         ]);
 
 

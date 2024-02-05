@@ -9,21 +9,22 @@
         <div class="container">
 
             <div class="row">
+           
 
                 <div class="col-md-12">
                     <ul class="ps-0">
                         <li><a href="{{ route('front.home') }}">Home</a></li>
                         @if ($type == 'request')
-                            <li><a href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}"
-                                    class="text-white">{{ 'REQUEST SAMPLE' }}</a>
+                            <li><a  class="text-white" href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'request']) }}"
+                                    >{{ 'REQUEST SAMPLE' }}</a>
                             </li>
                         @elseif($type == 'enquiry')
-                            <li><a href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'enquiry']) }}"
-                                    class="text-white">{{ 'ENQUIRY BEFORE BUYING' }}</a>
+                            <li><a  class="text-white" href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'enquiry']) }}"
+                                    >{{ 'ENQUIRY BEFORE BUYING' }}</a>
                             </li>
                         @elseif($type == 'discount')
-                            <li><a href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'discount']) }}"
-                                    class="text-white">{{ 'ASK FOR DISCOUNT' }}</a>
+                            <li><a  class="text-white" href="{{ route('front.enquiry', ['id' => $reports->url, 'type' => 'discount']) }}"
+                                    >{{ 'ASK FOR DISCOUNT' }}</a>
                             </li>
                         @endif
 
@@ -69,7 +70,7 @@
                         <div class="alert alert-danger print-error-msg" style="display:none">
                             <ul></ul>
                         </div>
-
+                        {!! NoCaptcha::renderJs() !!}
                         <form class="contact ajaxformfileupload" action="{{ route('submit.enquiry') }}" name="contactUsForm" id="contactUsForm" enctype="multipart/form-data"
                             method="POST">
                             <div class="quform-elements">
@@ -204,28 +205,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- End Textarea element -->
-                                    <div class="col-md-4">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <div class="captcha">
-                                                    <span>{!! captcha_img() !!}</span>
-                                                    <a type="button" class="btn btn-danger" class="reload"
-                                                        id="reload">
-                                                        &#x21bb;
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <input id="captcha" type="text" class="form-control"
-                                                    placeholder="Enter Captcha" name="captcha">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {!! NoCaptcha::display() !!}
 
                                     <!-- Begin Submit button -->
                                     <div class="col-md-12 text-center">
