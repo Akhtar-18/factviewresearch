@@ -290,7 +290,7 @@ class FrontController extends Controller
             'country'        => 'required',
             'contact_no'  => 'required|numeric',
             'organizations' => 'required',
-            'captcha' => 'required|captcha'
+            
 
         ]);
 
@@ -347,7 +347,7 @@ class FrontController extends Controller
             'email'          => 'required|email',
             'contact_no'  => 'required|numeric',
             'subject' => 'required',
-            'captcha' => 'required|captcha'
+            
 
         ]);
 

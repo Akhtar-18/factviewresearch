@@ -39,6 +39,7 @@
                         <div class="alert alert-danger print-error-msg" style="display:none">
                             <ul></ul>
                         </div>
+                        {!! NoCaptcha::renderJs() !!}
                         <form class="contact quform contactform"  action="{{ route('submit.contact_enquiry') }}" id="contactUsForm" action="#" method="post"
                             enctype="multipart/form-data">
                             <div class="quform-elements">
@@ -99,25 +100,9 @@
                                     <!-- End Textarea element -->
 
                                     <!-- Begin Captcha element -->
-                                    <div class="col-md-12">
-                                        <div class="quform-element">
-                                            <div class="form-group mt-4 mb-4">
-                                                <div class="captcha">
-                                                    <span>{!! captcha_img() !!}</span>
-                                                    <button type="button" class="btn btn-danger" class="reload"
-                                                        id="reload">
-                                                        &#x21bb;
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="form-group mb-4">
-                                                <input id="captcha" type="text" class="form-control"
-                                                    placeholder="Enter Captcha" name="captcha">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {!! NoCaptcha::display() !!}
                                     <!-- End Captcha element -->
-
+                                   
                                     <!-- Begin Submit button -->
                                     <div class="col-md-12">
                                         <div class="quform-submit-inner">
