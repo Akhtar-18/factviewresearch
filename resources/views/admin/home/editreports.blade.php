@@ -333,8 +333,10 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label class="mb-2">Percentage<span class="text-danger"></span></label>
-                                <input type="text" class="form-control" name="marketvalue[]" placeholder="Percentage" value="@if (isset($row->marketvalue)) {{ $row->marketvalue }} @endif">
+                                <input type="text" class="form-control" id="marketvalue{{$keys}}" name="marketvalue[]" placeholder="Percentage" value="@if (isset($row->marketvalue)) {{ $row->marketvalue }} @endif" 
+                                onkeyup="checkvalue('marketvalue{{$keys}}')">
                             </div>
+                            <span class="text-danger" id="error_marketvalue{{$keys}}"></span>
                         </div>
                         <div class="col-md-2 mt-3">
                             <a onclick="addmarketvalue()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;
@@ -395,7 +397,9 @@
                                             <td>
                                                 <input type="text" name="segmentname[]" class="form-control" placeholder="Sub Type" value="@if (isset($subtype->segmentname)) {{ $subtype->segmentname }} @endif">
                                             </td>
-                                            <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="@if (isset($subtype->segmentvalue)) {{ $subtype->segmentvalue }} @endif">
+                                            <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="@if (isset($subtype->segmentvalue)) {{ $subtype->segmentvalue }} @endif" 
+                                            id="segmentvalue{{$keys}}" onkeyup="checkvalue('segmentvalue{{$keys}}')">
+                                            <span class="text-danger" id="error_segmentvalue{{$keys}}"></span>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -435,7 +439,9 @@
                                             <td>
                                                 <input type="text" name="segmentname[]" class="form-control" placeholder="Sub Type">
                                             </td>
-                                            <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">
+                                            <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="" 
+                                            id="segmentvalue0" onkeyup="checkvalue('segmentvalue0')">
+                                            <span class="text-danger" id="error_segmentvalue0"></span>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -459,8 +465,10 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label class="mb-2">Percentage<span class="text-danger"></span></label>
-                                <input type="text" class="form-control" name="regionvalue[]" placeholder="Region Percentage" value="@if (isset($region->regionvalue)) {{ $region->regionvalue }} @endif">
+                                <input type="text" class="form-control" name="regionvalue[]" placeholder="Region Percentage" value="@if (isset($region->regionvalue)) {{ $region->regionvalue }} @endif"
+                                id="regionvalue{{$keyse}}" onkeyup="checkvalue('regionvalue{{$keyse}}')">
                             </div>
+                            <span class="text-danger" id="error_regionvalue{{$keyse}}"></span>
                         </div>
                         <div class="col-md-2 mt-3">
                         <a onclick="addregion()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;
@@ -493,8 +501,10 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label class="mb-2">Percentage<span class="text-danger"></span></label>
-                                <input type="text" class="form-control" name="marketsharevalue[]" placeholder="Percentage" value="@if (isset($res->marketsharevalue)) {{ $res->marketsharevalue }} @endif">
+                                <input type="text" class="form-control" name="marketsharevalue[]" placeholder="Percentage" value="@if (isset($res->marketsharevalue)) {{ $res->marketsharevalue }} @endif"
+                                id="marketsharevalue{{$keyss}}" onkeyup="checkvalue('marketsharevalue{{$keyss}}')">
                             </div>
+                            <span class="text-danger" id="error_marketsharevalue{{$keyss}}"></span>
                         </div>
                         <div class="col-md-2 mt-3">
                         <a onclick="addmarketshare()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;
@@ -717,7 +727,8 @@
                          <td>\
                            <input type="text" name="segmentname[]"  class="form-control" placeholder="Sub Type">\
                           </td>\
-                          <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="">\
+                          <td><input type="text" class="form-control" id="segmentvalue'+segmentCount+'" name="segmentvalue[]" placeholder="Percentage" value="" onkeyup=checkvalue("segmentvalue'+segmentCount+'")>\
+                          <span class="text-danger" id="error_segmentvalue'+segmentCount+'"></span>\
                         </td>\
                         </tr>\
                       </tbody>\
@@ -792,7 +803,8 @@
                     <div class="col-md-5">\
                         <div class="form-group">\
                             <label class="mb-2">Percentage<span class="text-danger"></span></label>\
-                            <input type="text" class="form-control" name="marketvalue[]" placeholder="Percentage">\
+                            <input type="text" class="form-control" name="marketvalue[]" id="marketvalue'+loopmarketvalueCount+'" placeholder="Percentage" onkeyup=checkvalue("marketvalue'+loopmarketvalueCount+'")>\
+                            <span class="text-danger" id="error_marketvalue'+loopmarketvalueCount+'"></span>\
                         </div>\
                     </div>\
                     <div class="col-md-2 mt-3">\
@@ -838,8 +850,9 @@
                     <div class="col-md-5">\
                         <div class="form-group">\
                             <label class="mb-2">Percentage<span class="text-danger"></span></label>\
-                            <input type="text" class="form-control" name="regionvalue[]" placeholder="Region Percentage">\
+                            <input type="text" class="form-control" id="regionvalue'+loopregionCount+'" name="regionvalue[]" placeholder="Region Percentage" onkeyup=checkvalue("regionvalue'+loopregionCount+'")>\
                         </div>\
+                        <span class="text-danger" id="error_regionvalue'+loopregionCount+'"></span>\
                     </div>\
                     <div class="col-md-2 mt-3">\
                         <a onclick="addregion()" class="btn btn-success mt-3" style="width: 70px;"><i class="fa fa-plus-circle"></i></a>&nbsp;\
@@ -1038,5 +1051,25 @@
         }
         $('#rowsummary' + ids).remove();
     }
+
+
+    function checkvalue(id){
+                var inputValue = $('#'+id).val();
+                var html='';
+                if (!validateDecimal(inputValue)) {
+                    $('#'+id).val(html);
+                    $('#error_'+id).text('Allow Only Number and decimal');
+                }
+                else
+                {
+                    
+                    $('#error_'+id).text(html);
+                }
+            }
+
+            function validateDecimal(inputValue) {
+                var numberPattern = /^-?\d+(\.\d*)?$/;
+                return numberPattern.test(inputValue);
+            }
 </script>
 @endsection
