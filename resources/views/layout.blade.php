@@ -36,8 +36,7 @@
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
 
-   <!-- <script src="https://cdn.tiny.cloud/1/a9aynqzsx35zq4rrj8kbql2jq9chhsi708mnjcgt97gqzzy0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>-->
-   <script src="https://cdn.tiny.cloud/1/qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+   <script src="https://cdn.tiny.cloud/1/jjaibajf7dymkczdbplbmqkec9ot797mlqztxwdeijvubuja/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
     <style type="text/css">
         .tox .tox-statusbar__text-container {
