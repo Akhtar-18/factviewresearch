@@ -149,7 +149,7 @@
     var table = $('#dataTable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ secure_url('admin/enquiry/list') }}",
+        ajax: "{{ url('admin/enquiry/list') }}",
         columns: [
             {data: 'report_id', name: 'report_id'},
             {data: 'name', name: 'name'},
@@ -170,7 +170,7 @@
     var table = $('#dataTable2').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ secure_url('admin/enquiry/request') }}",
+        ajax: "{{ url('admin/enquiry/request') }}",
         columns: [
             {data: 'report_id', name: 'report_id'},
             {data: 'name', name: 'name'},
@@ -191,7 +191,7 @@
     var table = $('#dataTable3').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ secure_url('admin/enquiry/discount') }}",
+        ajax: "{{ url('admin/enquiry/discount') }}",
         columns: [
             {data: 'report_id', name: 'report_id'},
             {data: 'name', name: 'name'},
@@ -212,7 +212,7 @@
     var table = $('#dataTable4').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ secure_url('admin/enquiry/contact') }}",
+        ajax: "{{ url('admin/enquiry/contact') }}",
         columns: [
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},

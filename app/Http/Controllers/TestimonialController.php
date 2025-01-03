@@ -43,7 +43,7 @@ class TestimonialController extends Controller
               ->addColumn('action', function($row){
                 if(auth()->user()->can('testimonials-edit'))
                 {
-                  $editbtn='<a  href="'.secure_url('admin/testimonials/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
+                  $editbtn='<a  href="'.url('admin/testimonials/edit/'.$row->id).'" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>';
                 }
                 else
                 {
@@ -60,7 +60,7 @@ class TestimonialController extends Controller
                 $btn = $editbtn.'|'.$deletebtn.'
         <div class="modal fade" id="DeleteModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <form action="'.secure_url('admin/testimonials/delete/').'/'.$row->id.'" method="post">
+        <form action="'.url('admin/testimonials/delete/').'/'.$row->id.'" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

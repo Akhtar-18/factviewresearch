@@ -47,7 +47,7 @@
     var table = $('#dataTable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ secure_url('admin/getintouch/list') }}",
+        ajax: "{{ url('admin/getintouch/list') }}",
         columns: [
             {data: 'heading', name: 'heading'},
             {data: 'content', name: 'content'},

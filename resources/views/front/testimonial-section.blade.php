@@ -15,9 +15,9 @@
                             <img src="{{ $testimonial->client_image }}?tr=w-68,h-auto,fo-webp"
                             alt="{{ $testimonial->name }}" class="d-inline-block" loading="lazy" width="68" height="68">
                             @endif
-                            <p class="my-4">{!! html_entity_decode($testimonial->comments) !!}</p>
+                            <p class="my-2">{!! html_entity_decode($testimonial->comments) !!}</p>
                             <span
-                                class="name font-weight-600 text-uppercase font-size12 alt-font small">{{ $testimonial->name }}
+                                class="name font-weight-600 text-uppercase alt-font small">{{ $testimonial->name }}
                                 - {{ $testimonial->profile }}</span>
                             <span class="quote font-weight-600 text-uppercase d-block alt-font opacity2">“</span>
                         </div>

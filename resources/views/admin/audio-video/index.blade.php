@@ -45,7 +45,7 @@
     var table = $('#dataTable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ secure_url('admin/audio-video/list') }}",
+        ajax: "{{ url('admin/audio-video/list') }}",
         columns: [
             {data: 'audio', name: 'audio'},
             {data: 'video', name: 'video'},

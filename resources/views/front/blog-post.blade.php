@@ -79,13 +79,10 @@
                                 </div>
                                 <div class="share-post">
                                     <span>Share Post</span>
-                                    <ul class="ps-0 mb-0">
-                                        <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href=""><i class="fab fa-youtube"></i></a></li>
-                                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
-                                    </ul>
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url()) }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::url()) }}&text={{ urlencode($blog->heading) }}" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(Request::url()) }}&title={{ urlencode($blog->heading) }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="mailto:?subject={{ urlencode($blog->heading) }}&body={{ urlencode(Request::url()) }}"><i class="fas fa-envelope"></i></a>
                                 </div>
                             </div>
                         </div>

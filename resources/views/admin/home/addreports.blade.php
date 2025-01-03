@@ -20,7 +20,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="{{ secure_url('admin/reports/submit') }}" method="POST" enctype='multipart/form-data'>
+                        <form action="{{ url('admin/reports/submit') }}" method="POST" enctype='multipart/form-data'>
                             @csrf
                             <div class="row">
                                 <div class="col-md-3">
@@ -277,7 +277,7 @@
                                                 <input type="text" class="form-control"  name="marketyear[]"
                                                     placeholder="Year" >
                                             </div>
-                                            
+
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -805,7 +805,7 @@
         }
 
 
-       
+
             function checkvalue(id){
                 var inputValue = $('#'+id).val();
                 var html='';
@@ -815,7 +815,7 @@
                 }
                 else
                 {
-                    
+
                     $('#error_'+id).text(html);
                 }
             }
@@ -824,6 +824,6 @@
                 var numberPattern = /^-?\d+(\.\d*)?$/;
                 return numberPattern.test(inputValue);
             }
-        
+
     </script>
 @endsection

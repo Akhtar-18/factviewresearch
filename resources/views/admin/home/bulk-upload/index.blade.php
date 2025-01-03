@@ -34,7 +34,7 @@
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                     data-parent="#accordion">
                                     <div class="card-body">
-                                        <form action="{{ secure_url('admin/reports/reportContentImports') }}" method="POST"
+                                        <form action="{{ url('admin/reports/reportContentImports') }}" method="POST"
                                             enctype='multipart/form-data'>
                                             @csrf
                                             <div class="row">
@@ -74,7 +74,7 @@
                                 <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo"
                                     data-parent="#accordion">
                                     <div class="card-body">
-                                        <form action="{{ secure_url('admin/reports/reportFaqImports') }}" method="POST"
+                                        <form action="{{ url('admin/reports/reportFaqImports') }}" method="POST"
                                             enctype='multipart/form-data'>
                                             @csrf
                                             <div class="row">
@@ -114,7 +114,7 @@
                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                                     data-parent="#accordion">
                                     <div class="card-body">
-                                        <form action="{{ secure_url('admin/reports/marketValueImports') }}" method="POST"
+                                        <form action="{{ url('admin/reports/marketValueImports') }}" method="POST"
                                             enctype='multipart/form-data'>
                                             @csrf
                                             <div class="row">
@@ -156,7 +156,7 @@
                                 <div id="collapseSegment" class="collapse" aria-labelledby="headingSegment"
                                     data-parent="#accordion">
                                     <div class="card-body">
-                                        <form action="{{ secure_url('admin/reports/SegmentImports') }}" method="POST"
+                                        <form action="{{ url('admin/reports/SegmentImports') }}" method="POST"
                                             enctype='multipart/form-data'>
                                             @csrf
                                             <div class="row">
@@ -198,7 +198,7 @@
                                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
                                     data-parent="#accordion">
                                     <div class="card-body">
-                                        <form action="{{ secure_url('admin/reports/seoImports') }}" method="POST"
+                                        <form action="{{ url('admin/reports/seoImports') }}" method="POST"
                                             enctype='multipart/form-data'>
                                             @csrf
                                             <div class="row">

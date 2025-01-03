@@ -80,7 +80,6 @@ Research')
                     <!-- feature box item-->
                     <div class="bg-white border border-color-light-black p-4 feature-box-08">
                         <div class="p-0 mb-3 mb-md-12 alt-font">
-                            <i class="ti-world display-18" style="color:#fc9f2d;"></i>
                             <h3 class="h5 mb-0 mt-2 w-100">{{ $service->heading }}</h3>
                         </div>
 

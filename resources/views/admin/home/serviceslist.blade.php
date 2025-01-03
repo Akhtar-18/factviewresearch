@@ -49,7 +49,7 @@
             var table = $('#dataTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ secure_url('admin/services/list') }}",
+                ajax: "{{ url('admin/services/list') }}",
                 columns: [{
                         data: 'heading',
                         name: 'heading'

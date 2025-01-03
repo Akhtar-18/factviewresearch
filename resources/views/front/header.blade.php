@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- metas -->
     <meta charset="utf-8">
 
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5'/>
+    <meta name='viewport'
+        content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5' />
     <!-- Favicon -->
     <link rel="shortcut icon" href="https://ik.imagekit.io/0g6xszoan/favicon/fvr-72-72.png">
     <link rel="apple-touch-icon" href="https://ik.imagekit.io/0g6xszoan/favicon/fvr-72-72.png">
     <link rel="apple-touch-icon" sizes="72x72" href="https://ik.imagekit.io/0g6xszoan/favicon/fvr-72-72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="https://ik.imagekit.io/0g6xszoan/favicon/fvr-114-114.png">
     <!-- plugins -->
-    <link rel="preload" href="{{ asset('front/css/plugins.css') }}" rel="stylesheet" as="style" onload="this.onload=null;this.rel='stylesheet'" defer>
+    <link rel="preload" href="{{ asset('front/css/plugins.css') }}" rel="stylesheet" as="style"
+        onload="this.onload=null;this.rel='stylesheet'" defer>
     <link rel="stylesheet" tyle="text/css" href="{{ asset('front/css/plugins.css') }}" defer>
     <!-- quform css -->
     <link rel="stylesheet" href="{{ asset('front/quform/css/base.css') }}" defer>
@@ -175,10 +178,14 @@
     <!-- Google tag (gtag.js) -->
     <script defer async src="https://www.googletagmanager.com/gtag/js?id=G-HES2Q3T6V1"></script>
     <script defer async async>
-        function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-HES2Q3T6V1");
+        function gtag() {
+            dataLayer.push(arguments)
+        }
+        window.dataLayer = window.dataLayer || [], gtag("js", new Date), gtag("config", "G-HES2Q3T6V1");
     </script>
 
-    <script defer async type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script defer async type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script defer async type="text/javascript" src="{{ asset('front/js/translate.js') }}"></script>
 
 </head>
@@ -215,18 +222,16 @@
                         </div>
                         <div class="col-md-3 d-none d-md-block">
                             <ul class="top-social-icon ps-0">
-                                <li><a
-                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif" target="_blank" aria-label="social"><i
-                                            class="fab fa-facebook-f"></i></a></li>
-                                <li><a
-                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif" target="_blank" aria-label="social"><i
-                                            class="fab fa-twitter"></i></a></li>
-                                <li><a
-                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif" target="_blank" aria-label="social"><i
-                                            class="fab fa-instagram"></i></a></li>
-                                <li><a
-                                        href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif" target="_blank" aria-label="social"><i
-                                            class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"
+                                        target="_blank" aria-label="social"><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li><a href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif"
+                                        target="_blank" aria-label="social"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif"
+                                        target="_blank" aria-label="social"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"
+                                        target="_blank" aria-label="social"><i class="fab fa-linkedin-in"></i></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -241,9 +246,11 @@
                         <form class="search-form" action="{{ route('front.reports') }}" method="GET">
                             <div class="input-group">
                                 <span class="input-group-addon cursor-pointer">
-                                    <button class="search-form_submit fas fa-search text-white" type="submit" arial-label="search"></button>
+                                    <button class="search-form_submit fas fa-search text-white" type="submit"
+                                        arial-label="search"></button>
                                 </span>
-                                <input type="text" class="search-form_input form-control" name="search" autocomplete="off" placeholder="Type & hit enter...">
+                                <input type="text" class="search-form_input form-control" name="search"
+                                    autocomplete="off" placeholder="Type & hit enter...">
                                 <span class="input-group-addon close-search"><i class="fas fa-times mt-1"></i></span>
                             </div>
                         </form>
@@ -275,14 +282,32 @@
                                     <!-- menu area -->
                                     <ul class="navbar-nav ms-auto" id="nav" style="display: none;">
                                         <li class="current"><a href="{{ route('front.home') }}">Home</a></li>
+
                                         <li><a href="#industries">Industries</a>
+
+                                            @if (GetReportMenu())
+                                                <ul>
+                                                    @foreach (GetReportMenu() as $cate)
+                                                        <li><a
+                                                                href="@if (isset($cate->cat_name)) {{ route('front.reportcategory', gerenaretslug(strtolower($cate->cat_name))) }} @endif"><i class="fas fa-industry"></i>{{ $cate->cat_name }}</a>
+                                                        </li>
+                                                    @endforeach
+
+                                                    <li><a href="{{ route('front.all-category') }}">All Industries</a>
+                                                    </li>
+                                                </ul>
+                                            @endif
+                                        </li>
+
+                                        <!-- <li><a href="#industries">Industries</a>
                                             <ul class="row megamenu">
                                                 @if (GetReportMenu())
                                                     @foreach (GetReportMenu() as $cate)
                                                         <li class="col-lg-3">
-                                                            <a
-                                                                href="@if (isset($cate->cat_name)) {{ route('front.reportcategory', gerenaretslug(strtolower($cate->cat_name))) }} @endif"><span
-                                                                    class="d-block m-0 mb-lg-3 py-2 py-lg-0 px-1-9 px-lg-0 text-uppercase sub-title">{{ $cate->cat_name }}
+                                                            <a href="@if (isset($cate->cat_name)) {{ route('front.reportcategory', gerenaretslug(strtolower($cate->cat_name))) }} @endif">
+
+                                                                <span
+                                                                    class="d-block m-0 mb-lg-3 py-2 py-lg-0 px-1-9 px-lg-0 text-uppercase sub-title"><i class="fas fa-industry"></i>{{ $cate->cat_name }}
                                                                     &raquo;</span></a>
 
                                                             {{-- <ul>
@@ -296,13 +321,13 @@
                                                     @endforeach
                                                 @endif
                                                 <li class="col-lg-3">
-                                                            <a
-                                                                href="{{route('front.all-category')}}"><span
-                                                                    class="d-block m-0 mb-lg-3 py-2 py-lg-0 px-1-9 px-lg-0 text-uppercase sub-title">All Industries
-                                                                    &raquo;</span></a>
+                                                    <a href="{{ route('front.all-category') }}"><span
+                                                            class="d-block m-0 mb-lg-3 py-2 py-lg-0 px-1-9 px-lg-0 text-uppercase sub-title">All
+                                                            Industries
+                                                            &raquo;</span></a>
                                                 </li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                         <li><a href="#services">Services</a>
 
                                             @if (GetServiceMenu())
@@ -347,7 +372,8 @@
                                     <!-- atribute navigation -->
                                     <div class="attr-nav">
                                         <ul>
-                                            <li class="search"><a href="#search" aria-label="search"><i class="fas fa-search"></i></a></li>
+                                            <li class="search"><a href="#search" aria-label="search"><i
+                                                        class="fas fa-search"></i></a></li>
                                         </ul>
                                     </div>
                                     <!-- end atribute navigation -->

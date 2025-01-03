@@ -69,21 +69,17 @@
                                         <i aria-hidden="true" class="fas fa-file-alt text-primary-new"></i> Format: <i
                                             aria-hidden="true" class="fas fa-file-pdf text-danger"></i> PDF
                                     </li>|
-                                    <li><i aria-hidden="true" class="fas fa-share-alt text-primary-new"></i> Share: <a
-                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i
-                                                class="fab fa-facebook-f"></i></a>
+                                    <li><i aria-hidden="true" class="fas fa-share-alt text-primary-new"></i> Share:
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url()) }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
                                     </li>
-                                    <li><a
-                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif"><i
-                                                class="fab fa-twitter"></i></a>
+                                    <li>
+                                        <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::url()) }}&text={{ urlencode($reports->heading) }}" target="_blank"><i class="fab fa-twitter"></i></a>
                                     </li>
-                                    <li><a
-                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif"><i
-                                                class="fab fa-instagram"></i></a>
+                                    <li>
+                                        <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(Request::url()) }}&title={{ urlencode($reports->heading) }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                                     </li>
-                                    <li><a
-                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"><i
-                                                class="fab fa-linkedin-in"></i></a>
+                                    <li>
+                                        <a href="mailto:?subject={{ urlencode($reports->heading) }}&body={{ urlencode(Request::url()) }}"><i class="fas fa-envelope"></i></a>
                                     </li>
                                     </li>
                                 </ul>
@@ -296,7 +292,7 @@
                     </div>
                 </article>
 
-
+                @if (isset($reports->getReportFaq) && count($reports->getReportFaq) > 0)
                 <div class="col-md-12">
                     <div class="section-heading">
                         <h2>Frequently Asked Questions</h2>
@@ -330,12 +326,13 @@
 
                     </div>
                 </div>
+                @endif
 
                 <div class="col-md-12">
                     <br />
                 </div>
 
-
+                @if (!empty($reports->customized))
                 <div class="col-md-12">
                     <div class="section-heading">
                         <h2>Get Your Customized Report</h2>
@@ -358,7 +355,7 @@
                         </div>
                     </article>
                 </div>
-
+                @endif
 
             </div>
             <!-- end blog left -->

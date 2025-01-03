@@ -20,7 +20,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ secure_url('admin/reports/update') }}/{{ $report->id }}" method="POST" enctype='multipart/form-data'>
+                    <form action="{{ url('admin/reports/update') }}/{{ $report->id }}" method="POST" enctype='multipart/form-data'>
                         @csrf
                         <div class="row">
                             <div class="col-md-3">
@@ -333,7 +333,7 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label class="mb-2">Percentage<span class="text-danger"></span></label>
-                                <input type="text" class="form-control" id="marketvalue{{$keys}}" name="marketvalue[]" placeholder="Percentage" value="@if (isset($row->marketvalue)) {{ $row->marketvalue }} @endif" 
+                                <input type="text" class="form-control" id="marketvalue{{$keys}}" name="marketvalue[]" placeholder="Percentage" value="@if (isset($row->marketvalue)) {{ $row->marketvalue }} @endif"
                                 onkeyup="checkvalue('marketvalue{{$keys}}')">
                             </div>
                             <span class="text-danger" id="error_marketvalue{{$keys}}"></span>
@@ -397,7 +397,7 @@
                                             <td>
                                                 <input type="text" name="segmentname[]" class="form-control" placeholder="Sub Type" value="@if (isset($subtype->segmentname)) {{ $subtype->segmentname }} @endif">
                                             </td>
-                                            <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="@if (isset($subtype->segmentvalue)) {{ $subtype->segmentvalue }} @endif" 
+                                            <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="@if (isset($subtype->segmentvalue)) {{ $subtype->segmentvalue }} @endif"
                                             id="segmentvalue{{$keys}}" onkeyup="checkvalue('segmentvalue{{$keys}}')">
                                             <span class="text-danger" id="error_segmentvalue{{$keys}}"></span>
                                             </td>
@@ -439,7 +439,7 @@
                                             <td>
                                                 <input type="text" name="segmentname[]" class="form-control" placeholder="Sub Type">
                                             </td>
-                                            <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value="" 
+                                            <td><input type="text" class="form-control" name="segmentvalue[]" placeholder="Percentage" value=""
                                             id="segmentvalue0" onkeyup="checkvalue('segmentvalue0')">
                                             <span class="text-danger" id="error_segmentvalue0"></span>
                                             </td>
@@ -1062,7 +1062,7 @@
                 }
                 else
                 {
-                    
+
                     $('#error_'+id).text(html);
                 }
             }
