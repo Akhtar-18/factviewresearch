@@ -251,7 +251,7 @@
                                     <div id="row"></div>
                                 </div>
 
-                                <div class="col-md-12">
+                                <!--<div class="col-md-12">
                                     <hr class="bg-info">
                                     <p class="h5"><b>Graphical Section</b></p>
                                     <div class="row">
@@ -387,7 +387,7 @@
 
 
 
-                                </div>
+                                </div>-->
 
                                 <div class="col-md-12">
                                     <div class="form-group">

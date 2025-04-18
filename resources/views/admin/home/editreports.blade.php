@@ -303,7 +303,7 @@
                     <div id="row"></div>
                 </div>
 
-                <div class="col-md-12">
+                <!--<div class="col-md-12">
                     <hr class="bg-info">
                     <p class="h5"><b>Graphical Section</b></p>
                     <div class="row">
@@ -390,7 +390,6 @@
                                         <tr>
                                             <td><a class="add btn btn-sm btn-success text-white" onclick="add('{{ $i }}')" style="width: 70px;"><i class='fa fa-plus-circle'></i></a>
                                                 &nbsp;
-                                                <!-- <a class="add btn btn-sm btn-danger text-white" onclick="removesub('{{ $i }}')" style="width: 70px;"><i class="fa fa-trash"></i></a> -->
                                                 <input type="hidden" name="product_array_key[]" class="form-control" value="{{ $kess }}">
                                                 <input type="hidden" name="subtyppeof_id[]" class="form-control" value="@if (isset($subtype->id)) {{ $subtype->id }} @endif">
                                             </td>
@@ -523,7 +522,7 @@
                     </div>
                     @endif
 
-                </div>
+                </div> -->
 
                 <div class="col-md-12">
                     <div class="form-group">
