@@ -36,9 +36,14 @@
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
 
-   <script src="https://cdn.tiny.cloud/1/jjaibajf7dymkczdbplbmqkec9ot797mlqztxwdeijvubuja/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-
-    <style type="text/css">
+   <script src="{{ asset('tinymce\tinymce.min.js') }}" referrerpolicy="origin"></script>
+    <style>
+   .sticky-sidebar {
+    position: -webkit-sticky;  /* For Safari */
+    position: sticky;
+    top: 20px;  /* Adjust the value depending on how much space you want at the top */
+    z-index: 100;  /* Ensures the sidebar stays above other content */
+}
         .tox .tox-statusbar__text-container {
             display: none !important;
         }
