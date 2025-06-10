@@ -2,52 +2,60 @@
 @section('title', 'Market Research Services, Competitive Services')
 @section('frontpage')
 
-    <!-- PAGE TITLE
-                ================================================== -->
-    <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="ps-0">
-                        <li><a href="{{ route('front.home') }}">Home</a></li>
-                        <li><a href="{{ route('front.services') }}" class="text-white">Services</a></li>
-                    </ul>
+        <!-- Breadcrumb -->
+        <section class="breadcrumb">
+            <div class="breadcrumb_inner report_bg bg-[#091E33] relative py-10">
+                <div class="container relative h-full">
+                    <div class="breadcrumb_content flex flex-col items-start justify-center xl:w-[1000px] lg:w-[848px] md:w-5/6 w-full h-full">
+                        <h3 class="heading3 text-white mb-2">Market Research Services, Competitive Services</h3>
+                        <div class="list_breadcrumb flex items-center gap-2 animate animate_top" style="--i: 1">
+                            <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
+                            <span class="caption1 text-white opacity-40">/</span>
+                            <span class="caption1 text-white opacity-40">Services</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-        </div>
-    </section>
+        <!-- List blogs -->
+        <div class="blogs seprate_service_page relative lg:py-16 sm:py-14 py-10 bg-surface">
+            <div class="container flex max-lg:flex-col gap-y-12">
+                <div class="list lg:pr-20">
 
-    <!-- WE OFFER
-                ================================================== -->
-    <section>
-        <div class="container">
-            <div class="col-md-12 text-center">
-                <br />
-                <h1 class="text-primary">Market Research Services, Competitive Services</h1>
-                <br />
-            </div>
-            <div class="row mt-n1-9">
-                @if (count($services) > 0)
+                <ul class="list grid xl:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-7.5">
+                    @if (count($services) > 0)
                     @foreach ($services as $key => $service)
-                        <div class="col-md-4 col-lg-4 mt-1-9">
-                            <div class="service-simple">
-                                <div class="service-simple-inner">
-                                    <h3 class="display-28">{{ $service->heading }}</h3>
-                                    <div class="separator-line-horrizontal-full bg-medium-gray mt-2 mb-4"></div>
-                                    <p>{!! html_entity_decode(wordLimit($service->content)) !!}</p>
-                                    <a href="{{ route('front.service-single', $service->slug) }}"
-                                        class="butn small"><span>Know More</span></a>
-                                </div>
+                    <li class="category_item h-full animate animate_top" style="--i: {{$key+1}}">
+                        <div class="block category_inner block h-full p-7 rounded-lg bg-white shadow-md duration-300 hover:shadow-xl">
+                            <div class="flex items-center gap-3">
+                                <span class="ph ph-chart-line-up flex-shrink-0 text-4xl"></span>
+                                <h5 class="heading6 duration-300 hover:text-primary"><a href="{{ route('front.service-single', $service->slug) }}">{{ $service->heading }}</a></h5>
                             </div>
+                            <p class="desc mt-3 mb-3 text-secondary">{!! html_entity_decode(wordLimit($service->content)) !!}</p>
+                            <a href="{{ route('front.service-single', $service->slug) }}" class="button-main -border h-fit mt-3">Read more<i class="ph-bold ph-arrow-bend-up-right ml-2"></i></a>
                         </div>
-                    @endforeach
+                    </li>
+                     @endforeach
                 @endif
+                </ul>
+                    
+                </div>
+                <div class="blog_sidebar relative flex-shrink-0 lg:w-[360px] w-full h-fit">
+                    <div class="sidebarsticky">
+                    <div class="free_sample_block about overflow-hidden rounded-xl bg-surface duration-300">
+                        <div class="text-center px-5 py-3 border-b border-line">
+                            <h6 class="heading6">Get In Touch with Us</h6>
+                        </div>
+                        <div class="employer_info text-center p-5 pt-3">
+                            <p class="mb-3">The free sample includes data points such as market estimates, growth rate, size of the largest region and segment of the market.</p>
+                            <a href="tel:@if (getCompanyDetail()){{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif" class="button-main bg-dark w-full text-center blinking"><i class="ph ph-phone-call body1 mr-1"></i>@if (getCompanyDetail()){{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="footerend"></div>
             </div>
         </div>
-    </section>
 
-    @include('front.testimonial-section')
-    @include('front.client-section')
 @endsection

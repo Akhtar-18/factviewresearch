@@ -1,152 +1,117 @@
 @extends('front.layout')
 @section('title', 'Market Research Reports | Industry Research Reports')
 @section('frontpage')
-
-    <!-- PAGE TITLE
-                                ==========================      ======================== -->
-    <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="ps-0">
-                        <ul class="ps-0">
-                            <li><a href="{{ route('front.home') }}">Home</a></li>
-                            <li><a href="{{ route('front.reports') }}" class="text-white">Reports</a></li>
-                        </ul>
-                    </ul>
+<style>
+    .active{
+        background-color: #174f81;
+        color: #fff;
+    }
+</style>
+        <!-- Breadcrumb -->
+        <section class="breadcrumb">
+            <div class="breadcrumb_inner report_bg bg-[#091E33] relative py-15">
+                <!-- <div class="breadcrumb_bg absolute top-0 left-0 w-full h-full">
+                    <img src="./assets/images/components/breadcrumb_project.webp" alt="breadcrumb_project" class="w-full h-full object-cover" />
+                </div> -->
+                <div class="container relative h-full">
+                    <div class="breadcrumb_content flex flex-col items-start justify-center lg:w-[531px] md:w-5/6 w-full h-full">
+                        <div class="list_breadcrumb flex items-center gap-2 animate animate_top" style="--i: 1">
+                            <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
+                            <span class="caption1 text-white opacity-40">/</span>
+                            <span class="caption1 text-white">Report Store</span>
+                            <!-- <span class="caption1 text-white opacity-40">/</span>
+                            <span class="caption1 text-white opacity-60">Projects</span> -->
+                        </div>
+                        <h3 class="heading3 text-white mt-2 animate animate_top" style="--i: 2">Report Store</h3>
+                        <div class="form_search w-full mt-5 animate animate_top" style="--i: 3">
+                            <form action="{{ route('front.reports') }}" method="GET" class="form_inner flex items-center justify-between gap-6 gap-y-4 relative w-full p-3 rounded-lg bg-white">
+                                <div class="form_input relative w-full">
+                                    <span class="icon_search ph-bold ph-magnifying-glass absolute top-1/2 -translate-y-1/2 left-2 text-xl"></span>
+                                    <input type="text" name="search" class="input_search w-full h-full pl-10" placeholder="Job title, key words or company" required />
+                                </div>
+                                <button type="submit" class="button-main text-center flex-shrink-0" aria-label="search"><span class="btn_txt">Search</span><i class="ph-bold ph-arrow-bend-up-right arrow_right ml-1"></i><i class="ph-bold ph-magnifying-glass arrow_search"></i></button>
+                            </form>
+                        </div>
+                        <!-- <div class="list_tags flex flex-wrap items-center gap-3 mt-5 animate animate_top" style="--i: 4">
+                            <strong class="text-button-sm text-white">Services:</strong>
+                            <a href="#!" class="tag -small -border border-opacity-20 text-button-sm text-white hover:text-black hover:bg-white">Price Strategy</a>
+                            <a href="#!" class="tag -small -border border-opacity-20 text-button-sm text-white hover:text-black hover:bg-white">Market Entry Strategy</a>
+                        </div> -->
+                    </div>
                 </div>
             </div>
+        </section>
 
-        </div>
-    </section>
+        <!-- List employers -->
+        <div class="employers bg-surface lg:py-15 sm:py-14 py-10">
+            <div class="container flex max-lg:flex-col-reverse gap-y-10">
+                <div class="sidebar_inner -relative flex-shrink-0 lg:w-[300px] lg:pr-7 w-full">
 
-    <!-- ALL REPORTS
-                                ================================================== -->
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <br />
-                    <h1 class="text-primary">Market Research Reports | Industry Research Reports</h1>
-                    <br />
-                </div>
-
-                <!-- left panel section -->
-                <div class="col-lg-9 ps-lg-1-9" id="lists">
-                    @include('front.ajaxreport')
-
-                </div>
-                <!-- end left panel section -->
-
-                <!-- product grid right panel -->
-                <div class="col-lg-3">
-
-                    <div id="accordion" class="accordion-style2 mb-4">
+                    <ul id="NavMenu" class="list grid lg:gap-1 gap-1">
                         @foreach ($ReportCategory as $key => $cat)
-                            <div class="card">
-                                <div class="card-header" id="headingOne{{ $key }}">
-                                    <a href="{{ route('front.reportcategory', strtolower($cat->cat_name)) }}">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link" data-bs-toggle="collapse"
-                                                data-bs-target="#collapseOne{{ $key }}" aria-expanded="true"
-                                                aria-controls="collapseOne{{ $key }}">{{ $cat->cat_name }}</button>
-                                        </h5>
-                                    </a>
-                                </div>
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne{{ $key }}"
-                                    data-bs-parent="#accordion">
-                                    <div class="card-body">
-                                        <ul class="list-style-5">
-                                            @if (isset($cat->getSubCategory))
-                                                @foreach ($cat->getSubCategory as $sub)
-                                                    <li><a
-                                                            href="@if (isset($sub->sub_category)) {{ route('front.reportsubcategory', strtolower($sub->sub_category)) }} @endif">{{ $sub->sub_category }}</a>
-                                                    </li>
-                                                @endforeach
-                                            @endif
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                        <li class="">
+                            <a href="{{ route('front.reports')}}?id={{gerenaretslug(strtolower($cat->cat_name))}}" class="w-100 font-bold block border border-line rounded-md py-2 px-3 {{gerenaretslug(strtolower($cat->cat_name))==request()->id?'active':''}}"><i style="top:3px;" class="relative ph-bold ph-cpu text-xl"></i> {{ $cat->cat_name }} <i style="float:right;top:3px;" class="relative ph-bold ph-arrow-bend-up-right ml-2"></i></a>
+                        <li>
                         @endforeach
-                    </div>
-                    <div class="widget">
-                        <article class="card card-style1">
-                            <div class="card-header bg-primary text-white">
-                                Get In Touch With Us
+                    </ul>
+
+                    <div class="sidebarsticky">
+                    <div class="apply get_touch rounded-xl bg-white sm:mt-5 mt-5 lg:w-[272px] shadow-md duration-300">
+                        <div class="px-5 py-3 border-b border-line">
+                            <h6 class="heading6">Get In Touch with Us</h6>
+                        </div>
+
+                        <ul class="list grid xl:grid-cols-1 lg:grid-cols-1 sm:grid-cols-1 gap-4 justify-between px-5 py-3">
+                        <li class="flex items-start gap-2">
+                            <i class="ph ph-phone-call heading3 text-primary relative" style="top:4px;"></i>
+                            <div class="">
+                            <strong class="text-title">Call on:</strong>
+                            <p class="desc body2 text-secondary">@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif
+                            </p>
                             </div>
-                            <div class="card-body">
-                                <p class="text-center"><i
-                                        class="fas fa-headset display-20 dispaly-md-16 display-lg-10 text-primary"></i></p>
-                                <h5 class="text-primary text-center font-weight-600 mb-1">How can we help?</h5>
-                                <p class="text-primary text-center font-weight-500 display-30">Let's get in touch!!</p>
-                                <p class="text-center text-primary"><i class="fa fa-phone"></i><br /><a
-                                        href="tel:@if (getCompanyDetail()) {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }} @endif"
-                                        class="text-primary">
-                                        @if (getCompanyDetail())
-                                            {{ getCompanyDetail()->no_prefix }}{{ getCompanyDetail()->contact_no }}
-                                        @endif
-
-                                    </a></p>
-                                <p class="text-center text-primary"><i class="fa fa-envelope-open me-2"></i><br /><a
-                                        href="mailto:@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif"
-                                        class="text-primary">
-                                        @if (getCompanyDetail())
-                                            {{ getCompanyDetail()->email_address }}
-                                        @endif
-                                    </a></p>
-                                <br />
-                                <h6 class="text-primary text-center page-title-section">Follow Us</h6>
-
-                                <ul class="social-listing text-center ps-0 display-30">
-                                    <li><a
-                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif"><i
-                                                class="fab fa-facebook-f"></i></a>
-                                    </li>
-                                    <li><a
-                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif"><i
-                                                class="fab fa-twitter"></i></a>
-                                    </li>
-                                    <li><a
-                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif"><i
-                                                class="fab fa-instagram"></i></a>
-                                    </li>
-                                    <li><a
-                                            href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif"><i
-                                                class="fab fa-linkedin-in"></i></a>
-                                    </li>
-                                </ul>
-
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="ph ph-paper-plane-tilt heading3 text-primary relative" style="top:4px;"></i>
+                            <div class="">
+                            <strong class="text-title">Mail Us at:</strong>
+                            <p class="desc body2 text-secondary">@if (getCompanyDetail()) {{ getCompanyDetail()->email_address }} @endif
+                            </p>
                             </div>
-                        </article>
+                        </li>
+                    </ul>
+
+                        <div class="group_btn p-5">
+                            <button class="btn_open_popup apply_btn button-main bg-dark w-full text-center" data-type="modal_apply"><i class="ph ph-headset body1 mr-1"></i>Help Desk</button>
+                        </div>
                     </div>
+                    </div>
+
                 </div>
-                <!-- end product grid right panel -->
-
+                <div id="lists">
+                    @include('front.ajax.report')
+                </div>
             </div>
+            <div class="footerend"></div>
         </div>
-    </section>
 
-    <script>
-        $(document).ready(function() {
-            $(document).on('click', '.pager a', function(event) {
-                event.preventDefault();
-                var page = $(this).attr('href').split('page=')[1];
-                fetch_datas(page);
-            });
-
-            function fetch_datas(page) {
-                $.ajax({
-                    url: "fetch_datas?page=" + page,
-                    success: function(data) {
-                        //console.log(data);
-                        $('#lists').html(data);
-                    }
-                });
-            }
-
+<script>
+    $(document).ready(function() {
+        $(document).on('click', '.pager a', function(event) {
+            event.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+            fetch_datas(page);
         });
-    </script>
 
+        function fetch_datas(page) {
+            let id = '{{request()->id}}' ??'';
+            $.ajax({
+                url: "?page=" + page + "&id="+id,
+                success: function(data) {
+                    $('#lists').html(data);
+                }
+            });
+        }
+
+    });
+</script>
 @endsection

@@ -11,7 +11,7 @@
 
     @foreach ($reportsCategory as $reportcate)
     <url>
-        <loc>{{ url('/') }}/report-category/{{ gerenaretslug($reportcate->cat_name) }}</loc>
+        <loc>{{ route('front.reports')}}?id={{gerenaretslug(strtolower($reportcate->cat_name))}}</loc>
         <lastmod>{{ $reportcate->updated_at->tz('UTC')->toAtomString() }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>

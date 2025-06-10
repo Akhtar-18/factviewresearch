@@ -3,326 +3,213 @@
 @section('frontpage')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- PAGE TITLE
-                    ================================================== -->
-    <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
-        <div class="container">
 
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="ps-0">
-                        <li><a href="{{ route('front.home') }}">Home</a></li>
-                        <li><a href="#"  class="text-white">{{ $reports->heading }}</a>
-                        </li>
+        <!-- Breadcrumb -->
+        <section class="breadcrumb">
+            <div class="breadcrumb_inner report_bg bg-[#091E33] relative py-10">
+                <div class="container relative h-full">
+                    <div class="breadcrumb_content flex flex-col items-start justify-center xl:w-[1000px] lg:w-[848px] md:w-5/6 w-full h-full">
+                        <h3 class="heading3 text-white mb-2">Purchase</h3>
+                        <div class="list_breadcrumb flex items-center gap-2 animate animate_top" style="--i: 1">
+                            <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
+                            <span class="caption1 text-white opacity-40">/</span>
+                            <span class="caption1 text-white"><a href="#!">{{ $reports->heading }}</a></span>
 
-
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-        </div>
-    </section>
-
-
-    <!-- CONTACT
-                    ================================================== -->
-    <section class="md">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <br />
-                    <h1 class="text-primary">
-                        PURCHASE
-                    </h1>
-                    <br />
-                </div>
-                <!-- contact form -->
-                <div class="col-lg-8 mb-1-9 mb-lg-0">
-                    <div class="section-heading center">
-                        <h3>
-                            PURCHASE
-                        </h3>
-                    </div>
-                    <div class="title text-center mb-2">
-                        <h5 class="text-center">
-                            @if (isset($reports->heading))
-                                {{ $reports->heading }}
-                            @endif
-                        </h5>
-                    </div>
-                    <div class="col-md-12"><br /></div>
-                    <div class="contact-form-box">
-                        <div class="alert alert-danger print-error-msg" style="display:none">
-                            <ul></ul>
-                        </div>
-                        {!! NoCaptcha::renderJs() !!}
-                        <form class="contact ajaxformfileupload" action="{{ route('submit.buynow') }}" id="contactUsForm"  name="contactUsForm" enctype="multipart/form-data"
-                            method="POST">
-                            <div class="quform-elements">
-                                <div class="row">
-
-                                    <!-- Begin Text input element -->
-                                    <div class="col-md-6">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <label>Name:</label>
-                                                <input type="hidden" name="report_id"
-                                                    value="@if (isset($reports->id)) {{ $reports->id }} @endif">
-                                                <input class="form-control" id="name" type="text" name="name"
-                                                    placeholder="Enter Name" required />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Text input element -->
-                                    <!-- Begin Text input element -->
-                                    <div class="col-md-6">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <label>Company Name:</label>
-                                                <input class="form-control" id="name" type="text"
-                                                    name="company_name" placeholder="Enter Company Name" required />
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <label>Job Title:</label>
-                                                <input class="form-control" id="name" type="text" name="job_title"
-                                                    placeholder="Job Title" required />
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Text input element -->
-                                    <div class="col-md-6">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <label>Country:</label>
-                                                <select class="form-control" id="country" type="text"
-                                                    name="country_name" placeholder="Select Country" required>
-                                                    <option value="">Select Country</option>
-                                                    @if (getCountry())
-                                                        @foreach (getCountry() as $country)
-                                                            <option value="{{ $country['name'] }}">{{ $country['name'] }}
-                                                            </option>
-                                                        @endforeach
-                                                    @endif
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <label>State:</label>
-                                                <select class="form-control" id="country" type="text" name="state_name"
-                                                    placeholder="Select State" required>
-                                                    <option value="">Select Country</option>
-                                                    @if (getCountry())
-                                                        @foreach (getCountry() as $country)
-                                                            <option value="{{ $country['name'] }}">{{ $country['name'] }}
-                                                            </option>
-                                                        @endforeach
-                                                    @endif
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <label>City:</label>
-                                                <input class="form-control" id="name" type="text" name="city_name"
-                                                    placeholder="City name" required />
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <label>Zip Code:</label>
-                                                <input class="form-control" id="name" type="text" name="zip_code"
-                                                    placeholder="Zip Code" required />
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Begin Text input element -->
-                                    <div class="col-md-6">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <label>Email:</label>
-                                                <input class="form-control" id="email" type="text" name="email"
-                                                    placeholder="Enter Email" required />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- End Text input element -->
-                                    <div class="col-md-6">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <label>Contact No:</label>
-                                                <input class="form-control" id="contact_no" type="number"
-                                                    name="contact" placeholder="Enter Contact No" required />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Begin Text input element -->
-                                    <div class="col-md-6">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <label>License Type:</label>
-                                                <select class="form-control" id="lisence_amount" name="lisence_amount"
-                                                    placeholder="Select State" required>
-                                                    <option value="">Select License Type</option>
-                                                    @if ($reports->getReportLicenses)
-                                                        <option value="{{ $reports->getReportLicenses->single_user }}">
-                                                            {{ 'Single User' }}($
-                                                            {{ $reports->getReportLicenses->single_user }})</option>
-                                                        <option value="{{ $reports->getReportLicenses->multi_user }}">
-                                                            {{ 'Multi User' }}($
-                                                            {{ $reports->getReportLicenses->multi_user }})</option>
-                                                        <option
-                                                            value="{{ $reports->getReportLicenses->enterprise_user }}">
-                                                            {{ 'EnterPrise User' }}($
-                                                            {{ $reports->getReportLicenses->enterprise_user }})</option>
-                                                    @endif
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Text input element -->
-                                    <!-- Begin Text input element -->
-
-                                    <!-- End Text input element -->
-                                    <!-- Begin Text input element -->
-
-                                    <!-- End Text input element -->
-                                    <!-- Begin Text input element -->
-
-                                    <!-- End Text input element -->
-
-                                    <div class="col-md-12">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <label>Address :</label>
-                                                <textarea class="form-control h-100" id="message" name="address" rows="6" placeholder="Address" required></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Begin Textarea element -->
-                                    {!! NoCaptcha::display() !!}
-                                    <!-- End Textarea element -->
-
-                                    <!-- Begin Submit button -->
-                                    <div class="col-md-12 text-center">
-                                        <div class="quform-submit-inner">
-                                            <button class="butn btn-submit" type="submit"><span>Submit</span></button>
-                                        </div>
-                                        <div class="quform-loading-wrap text-start"><span class="quform-loading"></span>
-                                        </div>
-                                    </div>
-                                    <!-- End Submit button -->
-
-                                </div>
+        <section class="jobs_detail relative lg:pt-15 sm:pt-15 pt-15 lg:pb-14 sm:pb-14 pb-7">
+            <div class="container flex max-lg:flex-col gap-y-10">
+                <div class="jobs_inner w-full lg:pr-15">
+                    
+                        <div id="form-review" class="form-review">
+                            <div class="alert alert-danger print-error-msg" style="display:none">
+                                <ul></ul>
                             </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- end contact form  -->
-
-                <!-- contact detail -->
-                <div class="col-lg-4">
-                    <div class="contact-info-box ps-lg-1-9">
-                        <div class="widget">
-
-                            <article class="card card-style1">
-                                <div class="card-header bg-primary text-white">
-                                    Report Details
+                            {!! NoCaptcha::renderJs() !!}
+                            <form class="form grid sm:grid-cols-2 gap-4 gap-y-5 ajaxformfileupload" action="{{ route('submit.buynow') }}" enctype="multipart/form-data"
+                            method="POST">
+                                <div class="name relative">
+                                    <label class="font-semibold" for="username">Full name</label>
+                                    <input type="hidden" name="report_id" value="@if (isset($reports->id)) {{ $reports->id }} @endif">
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="name" name="name" type="text" placeholder="i.e Smith Due" required />
+                                    <i class="input_icon ph ph-user"></i>
                                 </div>
-                                <div class="card-body row">
-                                    <div class="col-sm-6">
-                                        Report ID
-
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        @if (isset($reports->id))
-                                            {{ $reports->id }}
+                                <div class="relative">
+                                    <label class="font-semibold" for="email">Company name</label>
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="company" name="company_name" type="text" placeholder="i.e FactView Research" required />
+                                    <i class="input_icon ph ph-buildings"></i>
+                                </div>
+                                <div class="relative">
+                                    <label class="font-semibold" for="email">Job Title</label>
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="company" name="job_title" type="text" placeholder="i.e Manager" required />
+                                    <i class="input_icon ph ph-buildings"></i>
+                                </div>
+                                <div class="country relative">
+                                    <label class="font-semibold" for="email">Select country</label>
+                                    <select class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="country" name="country_name" type="country" required>
+                                        <option selected disabled>Select any one</option>
+                                        @if (getCountry())
+                                            @foreach (getCountry() as $country)
+                                                <option value="{{ $country['name'] }}">{{ $country['name'] }}
+                                                </option>
+                                            @endforeach
                                         @endif
-
-                                    </div>
-                                    <div class="col-sm-6">
-                                        Category
-
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        @if (isset($reports->getCategoryName->cat_name))
-                                            {{ $reports->getCategoryName->cat_name }}
+                                    </select>
+                                    <i class="input_icon ph ph-globe-hemisphere-east"></i>
+                                </div>
+                                <div class="country relative">
+                                    <label class="font-semibold" for="email">Select State</label>
+                                    <select class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="country" name="state_name" type="country" required>
+                                        <option selected disabled>Select any one</option>
+                                        @if (getCountry())
+                                            @foreach (getCountry() as $country)
+                                                <option value="{{ $country['name'] }}">{{ $country['name'] }}
+                                                </option>
+                                            @endforeach
                                         @endif
+                                    </select>
+                                    <i class="input_icon ph ph-globe-hemisphere-east"></i>
+                                </div>
+                                <div class="relative">
+                                    <label class="font-semibold" for="email">City</label>
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="company" name="city_name" type="text" placeholder="i.e FactView Research" required />
+                                    <i class="input_icon ph ph-buildings"></i>
+                                </div>
+                                <div class="relative">
+                                    <label class="font-semibold" for="email">Zipcode</label>
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="company" name="zip_code" type="text" placeholder="i.e FactView Research" required />
+                                    <i class="input_icon ph ph-buildings"></i>
+                                </div>
+                                <div class="mail relative">
+                                    <label class="font-semibold" for="email">Email address</label>
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="email" type="email" name="email" placeholder="i.e example@gmail.com" required />
+                                    <i class="input_icon ph ph-envelope-simple-open"></i>
+                                </div>
+                                <div class="mail relative">
+                                    <label class="font-semibold" for="email">Contact number</label>
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="phone" type="number" name="contact" placeholder="i.e +91 1234567890" required />
+                                    <i class="input_icon ph ph-phone"></i>
+                                </div>
+                                <div class="country relative">
+                                    <label class="font-semibold" for="email">License Type</label>
+                                    <select class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="lisence_amount" name="lisence_amount" required>
+                                        <option selected disabled>Select any one</option>
+                                        @if ($reports->getReportLicenses)
+                                            <option value="{{ $reports->getReportLicenses->single_user }}">
+                                                {{ 'Single User' }}($
+                                                {{ $reports->getReportLicenses->single_user }})</option>
+                                            <option value="{{ $reports->getReportLicenses->multi_user }}">
+                                                {{ 'Multi User' }}($
+                                                {{ $reports->getReportLicenses->multi_user }})</option>
+                                            <option
+                                                value="{{ $reports->getReportLicenses->enterprise_user }}">
+                                                {{ 'EnterPrise User' }}($
+                                                {{ $reports->getReportLicenses->enterprise_user }})</option>
+                                        @endif
+                                    </select>
+                                    <i class="input_icon ph ph-globe-hemisphere-east"></i>
+                                </div>
+                                <div class="col-span-full message relative">
+                                    <i class="input_icon text_area ph ph-chat-dots"></i>
+                                    <label class="font-semibold" for="message">Address</label>
+                                    <textarea class="border w-full mt-1 px-4 py-3 border-line rounded-lg" id="message" name="address" rows="3" placeholder="i.e Write address here... " required></textarea>
+                                    <!-- <p style="line-height:1;"><small><b>15% Free Customization</b> (Mention the sections of the report that you would like to review so we will share the relevant chapters of report, for your Study):</small></p> -->
+                                </div>
+                                {!! NoCaptcha::display() !!}
+                                <div class="col-span-full">
+                                    <button class="button-main" type="submit">Send Enquiry <i class="ph ph-arrow-bend-up-right body1 ml-2"></i></button>
+                                </div>
+                            </form>
+                        </div>
 
-                                    </div>
-                                    <div class="col-sm-6">
-                                        Published Date
-
-                                    </div>
-
-                                    <div class="col-sm-6">
+                </div>
+                <div class="jobs_sidebar relative flex-shrink-0 lg:w-[380px] w-full h-fit">
+                    <div class="sidebarsticky">
+                        <div class="about overflow-hidden rounded-xl bg-surface border border-primary shadow-lg duration-300">
+                        <div class="flex items-center justify-between px-5 py-3 border-b border-line">
+                            <h6 class="heading6 text-primary">Report Details</h6>
+                        </div>
+                        <div class="employer_info p-5">
+                            <div class="flex items-start gap-5 w-full">
+                                <div class="report_img detail_page form"></div>
+                                <div>
+                                    <strong class="employers_name heading6">                     
+                                        @if (isset($reports->heading))
+                                        {{ $reports->heading }}
+                                        @endif
+                                    </strong>
+                                    <span class="employers_establish text-secondary mt-1 block">Published Date: 
                                         @if (isset($reports->publish_month))
                                             {{ date('F - Y', strtotime($reports->publish_month)) }}
                                         @endif
-
-                                    </div>
-                                    <div class="col-sm-6">
-                                        Pages
-
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        @if (isset($reports->pages))
-                                            {{ $reports->pages }}
-                                        @endif
-
-                                    </div>
-                                    <div class="col-sm-6">
-                                        Format
-
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        PDF
-
-                                    </div>
+                                    </span>
                                 </div>
-
-                            </article>
-
+                            </div>
+                            <div class="industry flex items-center justify-between w-full pt-5 pb-1 border-b border-line">
+                                <span class="text-secondary">Report Id:</span>
+                                <strong class="text-button">
+                                    @if (isset($reports->id))
+                                        {{ $reports->id }}
+                                    @endif
+                                </strong>
+                            </div>
+                            <div class="size flex items-center justify-between w-full py-1 border-b border-line">
+                                <span class="text-secondary">Category:</span>
+                                <strong class="text-button">
+                                    @if (isset($reports->getCategoryName->cat_name))
+                                        {{ $reports->getCategoryName->cat_name }}
+                                    @endif
+                                </strong>
+                            </div>
+                            <div class="address flex items-center justify-between w-full py-1 border-b border-line">
+                                <span class="text-secondary">Pages:</span>
+                                <strong class="text-button">
+                                    @if (isset($reports->pages))
+                                        {{ $reports->pages }}
+                                    @endif
+                                </strong>
+                            </div>
+                            <div class="address flex items-center justify-between w-full py-1 border-b border-line">
+                                <span class="text-secondary">Format:</span>
+                                <strong class="text-button">PDF</strong>
+                            </div>
+                            <div class="list_social flex flex-wrap items-center justify-between gap-4 w-full pt-5">
+                                <span class="text-secondary">Share:</span>
+                                <ul class="list flex flex-wrap items-center gap-2">
+                                    <li>
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url()) }}" target="_blank" class="w-10 h-10 flex items-center justify-center border border-line rounded-full text-black duration-300 bg-white hover:bg-primary">
+                                            <span class="ph ph-facebook-logo text-lg"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(Request::url()) }}&title={{ urlencode($reports->heading) }}" target="_blank" class="w-10 h-10 flex items-center justify-center border border-line rounded-full text-black duration-300 bg-white hover:bg-primary">
+                                            <span class="ph ph-linkedin-logo text-lg"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::url()) }}&text={{ urlencode($reports->heading) }}" target="_blank" class="w-10 h-10 flex items-center justify-center border border-line rounded-full text-black duration-300 bg-white hover:bg-primary">
+                                            <span class="ph ph-x-logo text-lg"></span>
+                                        </a>
+                                    </li>
+                                    <!-- <li>
+                                        <a href="https://www.instagram.com/" target="_blank" class="w-10 h-10 flex items-center justify-center border border-line rounded-full text-black duration-300 bg-white hover:bg-primary">
+                                            <span class="ph ph-whatsapp-logo text-lg"></span>
+                                        </a>
+                                    </li> -->
+                                </ul>
+                            </div>
                         </div>
                     </div>
+                    </div>
                 </div>
-                <!-- end contact detail -->
             </div>
-        </div>
-    </section>
-    @include('front.testimonial-section')
-    @include('front.client-section')
+        </section>
 
-
-    <script type="text/javascript">
+<script type="text/javascript">
         $(document).ready(function() {
             $.ajaxSetup({
                 headers: {

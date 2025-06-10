@@ -35,13 +35,13 @@ class FrontController extends Controller
     public function home()
     {
         $data['aboutData']=AboutUsModel::select(['heading','content'])->get();
-        $data['reportsData']=ReportsModel::with(['getCategoryName','getSubCategoryName'])->select(['id','category_id','sub_category_id','heading','url','pages','publish_month','description'])->where('status','1')->limit(6)->get();
+        $data['reportsData']=ReportsModel::with(['getCategoryName','getSubCategoryName'])->select(['id','category_id','sub_category_id','heading','url','pages','publish_month','description'])->where('status','1')->limit(4)->get();
         $data['contactData']=ContactDetailsModel::select(['company_name','address','contact_no','email_address','facebook','twitter','instagram','linkedin'])->get();
         $data['services']=ServicesModel::select(['id','heading','content','slug'])->latest('id')->limit(6)->get();
         $data['blogs']=Blog::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->limit(3)->get();
         $data['press']=PressRelease::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->limit(3)->get();
         $data['casses']=CaseStudy::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->limit(3)->get();
-        return view('front.home',$data);
+        return view('front.index',$data);
     }
 
     public function report($id, Request $request)
@@ -89,13 +89,22 @@ class FrontController extends Controller
         }
         else
         {
-            $data['reports']=ReportsModel::latest('id')->with(['getSubCategoryName','getCategoryName'])->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
+            $id = $request->id ?? '';
+            $data['reports']=ReportsModel::latest('id')->with(['getSubCategoryName','getCategoryName'])
+                ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
+                ->when(!empty($id),function ($query) use ($id) {
+                    $query->whereHas('getCategoryName', function ($q) use ($id) {
+                    $q->where('cat_name', 'like', '%' . $id . '%');
+            });
+                })
             ->where('status','1')->orderBy('id','desc')->paginate(10);
         }
+        if($request->ajax())
+        {
+            return view('front.ajax.report',$data);
+        }
         $data['ReportCategory']=ReportCategoryModel::with('getSubCategory')->select(['id','cat_name'])->get();
-
         $data['contactData']=ContactDetailsModel::select(['contact_no','email_address'])->first();
-        // dd( $data['reports']);
         return view('front.reports',$data);
     }
 
@@ -115,6 +124,7 @@ class FrontController extends Controller
             $data['reports']=ReportsModel::latest('id')->with(['getSubCategoryName','getCategoryName'])->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
             ->where('status','1')->orderBy('id','desc')->paginate(10);
         }
+        
         $data['ReportCategory']=ReportCategoryModel::with('getSubCategory')->select(['id','cat_name'])->get();
 
         $data['contactData']=ContactDetailsModel::select(['contact_no','email_address'])->first();
@@ -222,7 +232,7 @@ class FrontController extends Controller
              ->select(['id','category_id','heading','url','pages','publish_month','description','sub_category_id'])
              ->orderBy('id','desc')
              ->paginate(10);
-            return view('front.ajaxreport',compact('reports'));
+            return view('front.ajax.report',compact('reports'));
         }
     }
     public function about()
@@ -319,7 +329,7 @@ class FrontController extends Controller
 
 
 
-        //$email = 'minhaj.khan@researchforetell.com';
+        $email = 'minhaj.khan@researchforetell.com';
         $useremail = $request->email;
         $adminemail = 'minhaj.khan@factviewresearch.com';
         $salesemail = 'sales@factviewresearch.com';
@@ -334,7 +344,7 @@ class FrontController extends Controller
     function enquirythankyou($id)
     {
         $reports=ReportsModel::latest('id')
-             ->select(['id','heading'])->find($id);
+             ->select(['id','heading','url'])->find($id);
         return view('front.thankyou',compact('reports'));
     }
 
@@ -379,28 +389,31 @@ class FrontController extends Controller
         if($request->ajax())
         {
             $blogs=Blog::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
-            return view('front.ajaxblog',compact('blogs'));
+            return view('front.ajax.blog',compact('blogs'));
         }
     }
 
     public function blog($url,Request $request)
     {
         $data['blog']=Blog::select('*')->where('url',$url)->first();
-        return view('front.blog-post',$data);
+        $data['recent_blog'] = Blog::where('url','!=',$url)->orderBy('id','desc')->first();
+        $ids = [$data['blog']->id,$data['recent_blog']->id];
+        $data['latest'] = Blog::whereNotIn('id',$ids)->limit(4)->get();
+        return view('front.single-blog',$data);
     }
 
 
     public function pressreleases()
     {
         $data['press']=PressRelease::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
-        return view('front.press-grid',$data);
+        return view('front.press-release',$data);
     }
     public function fetch_press(Request $request)
     {
         if($request->ajax())
         {
             $press=PressRelease::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
-            return view('front.ajaxpress',compact('press'));
+            return view('front.ajax.press-releases',compact('press'));
         }
     }
 
@@ -413,14 +426,14 @@ class FrontController extends Controller
     public function casestudies()
     {
         $data['case']=CaseStudy::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
-        return view('front.case-studies-grid',$data);
+        return view('front.case-studies',$data);
     }
     public function fetch_case(Request $request)
     {
         if($request->ajax())
         {
             $case=CaseStudy::latest('id')->select(['id','heading','url','description','created_at','image','image_alt'])->paginate(10);
-            return view('front.ajaxcase',compact('case'));
+            return view('front.ajax.case-studies',compact('case'));
         }
     }
 
@@ -461,11 +474,11 @@ class FrontController extends Controller
             'lisence_amount' => 'required',
             'company_name'=>'required',
             'job_title' =>'required',
-            'g-recaptcha-response' => 'required|captcha',
-            [
-                'g-recaptcha-response.required' => 'You must check the reCAPTCHA.',
-                'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
-            ]
+            // 'g-recaptcha-response' => 'required|captcha',
+            // [
+            //     'g-recaptcha-response.required' => 'You must check the reCAPTCHA.',
+            //     'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
+            // ]
         ]);
 
 
@@ -591,7 +604,7 @@ class FrontController extends Controller
         $payment=ReportPayment::find($id);
         $reports=ReportsModel::latest('id')
         ->select(['id','heading'])->find($payment->report_id);
-   return view('front.payment-cancel',compact('reports'));
+        return view('front.payment-cancel',compact('reports'));
  
      }
      public function paymentSuccess($id,Request $request)
@@ -600,7 +613,7 @@ class FrontController extends Controller
         $payment=ReportPayment::find($id);
         $reports=ReportsModel::latest('id')
         ->select(['id','heading'])->find($payment->report_id);
-   return view('front.payment-success',compact('reports'));
+       return view('front.payment-success',compact('reports'));
  
      }
 

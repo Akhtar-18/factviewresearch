@@ -2,103 +2,55 @@
 @section('title', 'Case Studies Details')
 @section('frontpage')
 
-    <!-- PAGE TITLE
-            ================================================== -->
-    <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
-        <div class="container">
+<!-- Blog Detail -->
+<section class="blog_detail sm:py-20 py-10">
+    <div class="container flex max-lg:flex-col gap-y-12">
+        <div class="blog_content lg:pr-20">
+            <h2 class="heading2 title">{{ $case->heading }}</h2>
+            <div class="mt-4">
+                <div class="flex flex-wrap items-center gap-4">
+                    <div class="flex items-center gap-3">
+                        <img src="https://ik.imagekit.io/9sqym9p8y/@inabilansari/profile.svg" loading="lazy" alt="avatar/IMG-10" class="flex-shrink-0 w-9 h-9 rounded-full overflow-hidden" />
+                        <span>
+                            <span class="text-placehover">by </span>
+                            <span class="blog_author">FactView Research</span>
+                        </span>
+                    </div>
+                    <div class="line w-px h-4 bg-line"></div>
+                    <div class="date flex items-center gap-2">
+                        <span class="ph ph-calendar-blank text-xl"></span>
+                        <span class="blog_date caption1">{{ date('D M Y', strtotime($case->created_at)) }}</span>
+                    </div>
+                </div>
+            </div>
+            <img src="{{ $case->image }}" alt="@if (isset($case->image_alt)) {{ $case->image_alt }} @endif" class="blog_img w-full md:mt-7 mt-7 rounded-xl" />
+            <p class="body2 md:mt-10 mt-7">
+                {!! html_entity_decode($case->description) !!}
+            </p>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="ps-0">
-                        <li><a href="{{ route('front.home') }}">Home</a></li>
-                        <li><a href="{{ route('front.case-studies') }}" class="text-white">Case Studies</a></li>
-                        <li><a href="{{ route('front.case-study', ['url' => $case->url]) }}"
-                                class="text-white">{{ $case->heading }}</a></li>
+            <div class="action md:mt-10 mt-7">
+                <div class="list_social flex items-center gap-3 flex-wrap">
+                    <span>Share:</span>
+                    <ul class="list list_social flex flex-wrap items-center gap-2">
+                        <li>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url()) }}" target="_blank" class="facebook w-10 h-10 flex items-center justify-center rounded-full duration-300 text-white hover:bg-primary hover:text-white">
+                                <span class="ph ph-facebook-logo text-xl duration-100"></span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(Request::url()) }}&title={{ urlencode($case->heading) }}" target="_blank" class="linkedin w-10 h-10 flex items-center justify-center rounded-full duration-300 text-white hover:bg-primary hover:text-white">
+                                <span class="ph ph-linkedin-logo text-xl duration-100"></span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
 
         </div>
-    </section>
 
-    <!-- BLOG POST
-            ================================================== -->
-    <section class="blogs">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <br />
-                    <h1 class="text-primary">{{ $case->heading }}</h1>
-                    <br />
-                </div>
-                <!--  start blog left-->
-                <div class="col-lg-12 pe-xl-1-9 mb-1-9 mb-lg-0">
-                    <div class="posts">
-                        <div class="post">
-                            <div class="post-img">
-                                <a href="" class="w-100">
-                                    <img src="{{ $case->image }}?tr=w-1128,h-auto,fo-webp" loading="lazy" width="1128"
-                                        alt="@if (isset($case->image_alt)) {{ $case->image_alt }} @endif image">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="post-meta">
-                                    <div class="post-title">
-                                        <h2>{{ $case->heading }}</h2>
-                                    </div>
-                                    <ul class="meta ps-0">
-                                        <!-- <li>
-                                                    <a href="">
-                                                        <i class="fa fa-user" aria-hidden="true"></i> Admin
-                                                    </a>
-                                                </li> -->
-                                        <!-- <li>
-                                                    <a href="">
-                                                        <i class="fa fa-folder-open" aria-hidden="true"></i> Designin
-                                                    </a>
-                                                </li> -->
-                                        <li>
-                                            <a href="">
-                                                <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                                                {{ date('D M Y', strtotime($case->created_at)) }}
-                                            </a>
-                                        </li>
-                                        <!-- <li>
-                                                    <a href="">
-                                                        <i class="fa fa-tags" aria-hidden="true"></i> Blog
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="">
-                                                        <i class="fa fa-comments" aria-hidden="true"></i> 0 Comments
-                                                    </a>
-                                                </li> -->
-                                    </ul>
-                                </div>
-                                <div class="post-cont">
-                                    {!! html_entity_decode($case->description) !!}
-                                </div>
-                                <div class="share-post">
-                                    <span>Share Post</span>
-                                    <ul class="ps-0 mb-0">
-                                        <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href=""><i class="fab fa-youtube"></i></a></li>
-                                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-                <!-- end blog left -->
-
-            </div>
-        </div>
-    </section>
+        <div class="footerend"></div>
+    </div>
+</section>
 
 @endsection

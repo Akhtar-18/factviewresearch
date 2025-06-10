@@ -1,42 +1,20 @@
-@extends('front.layout')
-@section('title', 'Form Enquiry')
-@section('frontpage')
-<meta name="csrf-token" content="{{ csrf_token() }}">
+<?php include"include/header.php"; ?> 
+
 
         <!-- Breadcrumb -->
         <section class="breadcrumb">
             <div class="breadcrumb_inner report_bg bg-[#091E33] relative py-10">
                 <div class="container relative h-full">
                     <div class="breadcrumb_content flex flex-col items-start justify-center xl:w-[1000px] lg:w-[848px] md:w-5/6 w-full h-full">
-                        <h3 class="heading3 text-white mb-2">
-                            @if ($type == 'request')
-                                REQUEST SAMPLE
-                            @elseif($type == 'enquiry')
-                                ENQUIRY BEFORE BUYING
-                            @elseif($type == 'discount')
-                                ASK FOR DISCOUNT
-                            @endif
-                        </h3>
+                        <h3 class="heading3 text-white mb-2">Enquiry Before Buying</h3>
                         <div class="list_breadcrumb flex items-center gap-2 animate animate_top" style="--i: 1">
-                            <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
+                            <a href="index.html" class="caption1 text-white"><i class="ph ph-house"></i></a>
                             <span class="caption1 text-white opacity-40">/</span>
-                            <span class="caption1 text-white"><a href="#!">{{$reports->getCategoryName->cat_name ?? ''}}</a></span>
+                            <span class="caption1 text-white"><a href="#!">Automotive</a></span>
                             <span class="caption1 text-white opacity-40">/</span>
-                            <span class="caption1 text-white">
-                                <a href="{{ route('front.report',$reports->url)}}">
-                               {!! html_entity_decode(wordLimitset($reports->heading, 5)) !!}
-                                </a>
-                            </span>
+                            <span class="caption1 text-white"><a href="#!">Global Connected Car Market Size</a></span>
                             <span class="caption1 text-white opacity-40">/</span>
-                            <span class="caption1 text-white opacity-40">
-                            @if ($type == 'request')
-                                {{ 'REQUEST SAMPLE' }}
-                            @elseif($type == 'enquiry')
-                                {{ 'ENQUIRY BEFORE BUYING' }}
-                            @elseif($type == 'discount')
-                                {{ 'ASK FOR DISCOUNT' }}
-                            @endif
-                            </span>
+                            <span class="caption1 text-white opacity-40">Enquiry Before Buying</span>
                         </div>
                     </div>
                 </div>
@@ -48,51 +26,42 @@
                 <div class="jobs_inner w-full lg:pr-15">
                     
                         <div id="form-review" class="form-review">
-                            <form class="form grid sm:grid-cols-2 gap-4 gap-y-5 ajaxformfileupload" action="{{ route('submit.enquiry') }}" name="contactUsForm" id="contactUsForm" enctype="multipart/form-data">
+                            <form class="form grid sm:grid-cols-2 gap-4 gap-y-5">
                                 <div class="name relative">
                                     <label class="font-semibold" for="username">Full name</label>
-                                    <input type="hidden" name="types" value="{{ $type }}">
-                                    <input type="hidden" name="report_id" value="@if (isset($reports->id)) {{ $reports->id }} @endif">
-                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="name" type="text" name="name" placeholder="i.e Smith Due" required />
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="username" type="text" placeholder="i.e Smith Due" required />
                                     <i class="input_icon ph ph-user"></i>
                                 </div>
                                 <div class="mail relative">
                                     <label class="font-semibold" for="email">Email address</label>
-                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="email" type="email" name="email" placeholder="i.e example@gmail.com" required />
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="email" type="email" placeholder="i.e example@gmail.com" required />
                                     <i class="input_icon ph ph-envelope-simple-open"></i>
                                 </div>
                                 <div class="country relative">
                                     <label class="font-semibold" for="email">Select country</label>
-                                    <select class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="country" name="country" required>
+                                    <select class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="country" type="country" required>
                                         <option selected disabled>Select any one</option>
-                                        @if (getCountry())
-                                            @foreach (getCountry() as $country)
-                                                <option value="{{ $country['name'] }}">{{ $country['name'] }}
-                                                </option>
-                                            @endforeach
-                                        @endif
                                     </select>
                                     <i class="input_icon ph ph-globe-hemisphere-east"></i>
                                 </div>
                                 <div class="mail relative">
                                     <label class="font-semibold" for="email">Contact number</label>
-                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="contact_no" type="number" name="contact_no" placeholder="i.e +91 1234567890" required />
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="phone" type="phone" placeholder="i.e +91 1234567890" required />
                                     <i class="input_icon ph ph-phone"></i>
                                 </div>
                                 <div class="col-span-full relative">
                                     <label class="font-semibold" for="email">Company/Organization</label>
-                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="subject" type="text" name="organizations" placeholder="i.e FactView Research" required />
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="company" type="text" placeholder="i.e FactView Research" required />
                                     <i class="input_icon ph ph-buildings"></i>
                                 </div>
                                 <div class="col-span-full message relative">
                                     <i class="input_icon text_area ph ph-chat-dots"></i>
                                     <label class="font-semibold" for="message">Review</label>
-                                    <textarea class="border w-full mt-1 px-4 py-3 border-line rounded-lg" id="message" name="others" rows="3" placeholder="i.e Write comment here... " required></textarea>
+                                    <textarea class="border w-full mt-1 px-4 py-3 border-line rounded-lg" id="message" name="message" rows="3" placeholder="i.e Write comment here... " required></textarea>
                                     <p style="line-height:1;"><small><b>15% Free Customization</b> (Mention the sections of the report that you would like to review so we will share the relevant chapters of report, for your Study):</small></p>
                                 </div>
-                                {!! NoCaptcha::display() !!}
                                 <div class="col-span-full">
-                                    <button class="button-main"  type="submit">Send Request <i class="ph ph-arrow-bend-up-right body1 ml-2"></i></button>
+                                    <button class="button-main">Send Enquiry <i class="ph ph-arrow-bend-up-right body1 ml-2"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -114,27 +83,15 @@
                             </div>
                             <div class="industry flex items-center justify-between w-full pt-5 pb-1 border-b border-line">
                                 <span class="text-secondary">Report Id:</span>
-                                <strong class="text-button">
-                                    @if (isset($reports->id))
-                                            {{ $reports->id }}
-                                        @endif
-                                </strong>
+                                <strong class="text-button">6</strong>
                             </div>
                             <div class="size flex items-center justify-between w-full py-1 border-b border-line">
                                 <span class="text-secondary">Category:</span>
-                                <strong class="text-button">
-                                    @if (isset($reports->getCategoryName->cat_name))
-                                        {{ $reports->getCategoryName->cat_name }}
-                                    @endif
-                                </strong>
+                                <strong class="text-button">Automotive</strong>
                             </div>
                             <div class="address flex items-center justify-between w-full py-1 border-b border-line">
                                 <span class="text-secondary">Pages:</span>
-                                <strong class="text-button">
-                                    @if (isset($reports->pages))
-                                        {{ $reports->pages }}
-                                    @endif
-                                </strong>
+                                <strong class="text-button">200</strong>
                             </div>
                             <div class="address flex items-center justify-between w-full py-1 border-b border-line">
                                 <span class="text-secondary">Format:</span>
@@ -144,25 +101,25 @@
                                 <span class="text-secondary">Share:</span>
                                 <ul class="list flex flex-wrap items-center gap-2">
                                     <li>
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url()) }}" target="_blank" class="w-10 h-10 flex items-center justify-center border border-line rounded-full text-black duration-300 bg-white hover:bg-primary">
+                                        <a href="https://www.facebook.com/" target="_blank" class="w-10 h-10 flex items-center justify-center border border-line rounded-full text-black duration-300 bg-white hover:bg-primary">
                                             <span class="ph ph-facebook-logo text-lg"></span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(Request::url()) }}&title={{ urlencode($reports->heading) }}" target="_blank" class="w-10 h-10 flex items-center justify-center border border-line rounded-full text-black duration-300 bg-white hover:bg-primary">
+                                        <a href="https://www.linkedin.com/" target="_blank" class="w-10 h-10 flex items-center justify-center border border-line rounded-full text-black duration-300 bg-white hover:bg-primary">
                                             <span class="ph ph-linkedin-logo text-lg"></span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::url()) }}&text={{ urlencode($reports->heading) }}" target="_blank" class="w-10 h-10 flex items-center justify-center border border-line rounded-full text-black duration-300 bg-white hover:bg-primary">
+                                        <a href="https://www.twitter.com/" target="_blank" class="w-10 h-10 flex items-center justify-center border border-line rounded-full text-black duration-300 bg-white hover:bg-primary">
                                             <span class="ph ph-x-logo text-lg"></span>
                                         </a>
                                     </li>
-                                    <!-- <li>
+                                    <li>
                                         <a href="https://www.instagram.com/" target="_blank" class="w-10 h-10 flex items-center justify-center border border-line rounded-full text-black duration-300 bg-white hover:bg-primary">
                                             <span class="ph ph-whatsapp-logo text-lg"></span>
                                         </a>
-                                    </li> -->
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -172,4 +129,4 @@
             </div>
         </section>
 
-@endsection
+<?php include"include/footer.php"; ?>

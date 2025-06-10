@@ -2,47 +2,253 @@
 @section('title', 'Partners | Clients | Service Providers')
 @section('frontpage')
 
-    <!-- PAGE TITLE
-                        ================================================== -->
-    <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="ps-0">
-                        <li><a href="{{ route('front.home') }}">Home</a></li>
-                        <li><a href="{{ route('front.about') }}" class="text-white">About Us</a></li>
-                        <li><a href="{{ route('front.partners') }}" class="text-white">Partners</a></li>
-                    </ul>
+        <!-- Breadcrumb -->
+        <section class="breadcrumb">
+            <div class="breadcrumb_inner report_bg bg-[#091E33] relative py-10">
+                <div class="container relative h-full animate animate_top" style="--i: 1">
+                    <div class="breadcrumb_content flex flex-col items-start justify-center xl:w-[1000px] lg:w-[848px] md:w-5/6 w-full h-full">
+                        <h3 class="heading3 text-white mb-2">Partners</h3>
+                        <div class="list_breadcrumb flex items-center gap-2">
+                            <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
+                            <span class="caption1 text-white opacity-40">/</span>
+                            <span class="caption1 text-white opacity-40">Company</span>
+                            <span class="caption1 text-white opacity-40">/</span>
+                            <span class="caption1 text-white opacity-40">Partners</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-        </div>
-    </section>
-
-    <section class="md">
-        <div class="container">
-            <div class="col-md-12 text-center">
-
-                <h1 class="text-primary">Partners | Clients | Service Providers</h1>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-light box-hover p-10">
-        <div class="container">
-            <div class="position-relative">
-                <div class="owl-carousel owl-theme clients" id="clients">
-                    @if (getClient())
+        <!-- Brand -->
+        @if (getClient())
+        <section class="brand brand_page lg:py-14 sm:py-14 py-10">
+            <div class="container">
+                <h6 class="heading6 text-center">Trusted by leading enterprise organizations and freelancers globally</h6>
+                <div class="mt-8">
+                    <div class="list grid grid-cols-2 md:grid-cols-6">
                         @foreach (getClient() as $client)
-                            <div class="item"><img alt="partner-image"
-                                    src="{{ $client->image }}" width="200" height="50"></div>
+                        <div class="brand-item relative">
+                            <img src="{{ $client->image }}?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="1" class="duration-500 relative block mx-auto" />
+                        </div>
                         @endforeach
-                    @endif
+                        <!-- <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120956.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="2" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120943.jpg?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="3" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120808.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="4" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230726171114.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="5" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731122155.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="6" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731121607.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="1" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120956.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="2" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120943.jpg?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="3" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120808.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="4" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230726171114.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="5" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731122155.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="6" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731121607.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="1" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120956.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="2" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120943.jpg?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="3" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120808.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="4" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230726171114.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="5" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731122155.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="6" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731121607.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="1" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120956.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="2" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120943.jpg?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="3" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120808.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="4" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230726171114.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="5" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731122155.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="6" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731121607.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="1" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120956.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="2" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120943.jpg?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="3" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120808.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="4" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230726171114.png?tr=w-136,h-49,fo-webp,cm-pad_resize" width="136" height="49" loading="lazy" alt="5" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731122155.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="6" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731121607.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="1" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120956.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="2" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120943.jpg?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="3" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120808.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="4" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230726171114.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="5" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731122155.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="6" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731121607.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="1" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120956.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="2" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120943.jpg?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="3" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120808.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="4" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230726171114.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="5" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731122155.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="6" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731121607.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="1" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120956.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="2" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120943.jpg?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="3" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120808.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="4" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230726171114.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="5" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731122155.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="6" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731121607.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="1" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120956.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="2" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120943.jpg?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="3" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120808.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="4" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230726171114.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="5" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731122155.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="6" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731121607.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="1" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120956.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="2" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120943.jpg?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="3" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120808.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="4" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230726171114.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="5" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731122155.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="6" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731121607.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="1" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120956.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="2" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120943.jpg?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="3" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120808.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="4" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230726171114.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="5" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731122155.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="6" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731121607.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="1" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120956.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="2" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120943.jpg?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="3" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731120808.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="4" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230726171114.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="5" class="duration-500 relative" />
+                        </div>
+                        <div class="brand-item relative">
+                            <img src="https://ik.imagekit.io/0g6xszoan/clients/20230731122155.png?tr=w-136,h-49,fo-webp,cm-pad_resize" loading="lazy" alt="6" class="duration-500 relative" />
+                        </div> -->
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        @endif
 
 @endsection

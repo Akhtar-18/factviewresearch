@@ -2,9 +2,8 @@
 @section('title', 'Privacy Policy')
 @section('frontpage')
 
-    <!-- PAGE TITLE
-                        ================================================== -->
-    <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
+    <!-- PAGE TITLE ================================================== -->
+    <!-- <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
         <div class="container">
 
             <div class="row">
@@ -17,7 +16,23 @@
             </div>
 
         </div>
-    </section>
+    </section> -->
+     <section class="breadcrumb">
+            <div class="breadcrumb_inner report_bg bg-[#091E33] relative py-10">
+                <div class="container relative h-full">
+                    <div class="breadcrumb_content flex flex-col items-start justify-center xl:w-[1000px] lg:w-[848px] md:w-5/6 w-full h-full">
+                        <h3 class="heading3 text-white mb-2">Privacy Policy</h3>
+                        <div class="list_breadcrumb flex items-center gap-2 animate animate_top" style="--i: 1">
+                            <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
+                            <span class="caption1 text-white opacity-40">/</span>
+                            <span class="caption1 text-white opacity-40">Company</span>
+                            <span class="caption1 text-white opacity-40">/</span>
+                            <span class="caption1 text-white opacity-40">Privacy Policy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     <!-- ABOUT
                         ================================================== -->
@@ -25,7 +40,8 @@
         <div class="container">
 
             <div class="ps-lg-1-9">
-                <h1>Privacy Policy - FactView Research</h1>
+                <h3 class="heading2">Privacy Policy - FactView Research</h3>
+                <!-- <h1>Privacy Policy - FactView Research</h1> -->
                 <br /><br />
                 <p>Date: 20 July, 2023</p><br />
                 <p>1. Introduction:</p>
@@ -118,7 +134,5 @@
 
 
     @include('front.testimonial-section')
-    @include('front.client-section')
-
 
 @endsection

@@ -1,5 +1,5 @@
 @extends('front.layout')
-@section('title', "FactView Research's Blog")
+@section('title', 'Press Releases')
 @section('frontpage')
 
 
@@ -8,13 +8,13 @@
             <div class="breadcrumb_inner blog_style relative sm:py-20 py-10">
                 <div class="container relative h-full animate animate_top" style="--i: 1">
                     <div class="breadcrumb_content flex flex-col items-start justify-center xl:w-[1000px] lg:w-[848px] md:w-5/6 w-full h-full">
-                        <h3 class="heading3 text-white mb-2">Blog</h3>
+                        <h3 class="heading3 text-white mb-2">Press Releases</h3>
                         <div class="list_breadcrumb flex items-center gap-2">
                             <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
                             <span class="caption1 text-white opacity-40">/</span>
                             <span class="caption1 text-white opacity-40">Insights</span>
                             <span class="caption1 text-white opacity-40">/</span>
-                            <span class="caption1 text-white opacity-40">Blog</span>
+                            <span class="caption1 text-white opacity-40">Press Releases</span>
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
         <div class="blogs blog_page relative lg:py-16 sm:py-14 py-10">
             <div class="container flex max-lg:flex-col gap-y-12">
                 <div class="list lg:pr-20" id="lists">
-                    @include('front.ajax.blog')
+                    @include('front.ajax.press-releases')
                    
                 </div>
                 <div class="blog_sidebar relative flex-shrink-0 lg:w-[360px] w-full h-fit">
@@ -66,7 +66,7 @@
 
             function fetch_blogs(page) {
                 $.ajax({
-                    url: "fetch_blogs?page=" + page,
+                    url: "fetch_press?page=" + page,
                     success: function(data) {
                         //console.log(data);
                         $('#lists').html(data);

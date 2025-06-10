@@ -2,199 +2,118 @@
 @section('title', 'Contact Us')
 @section('frontpage')
 
-    <!-- PAGE TITLE
-                            ================================================== -->
-    <section class="page-title-section pt-1-9 pb-1-9 bg-primary">
-        <div class="container">
+        <!-- map -->
+        <section class="map">
+            <div class="map_inner lg:h-[360px] h-[360px]">
+                <iframe class="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d742.4556963440328!2d-87.62313632867398!3d41.896668148301984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd35498b7bfaf%3A0xaf89aff7166aaa5f!2sOlympia%20Centre%20Condos!5e0!3m2!1svi!2s!4v1721272000241!5m2!1svi!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="ps-0">
-                        <li><a href="{{ route('front.home') }}">Home</a></li>
-                        <li><a href="{{ route('front.contact') }}"class="text-white">Contact Us</a></li>
+        <!-- Contact Us -->
+        <section class="contact contact_page lg:pb-15 sm:pb-14 pb-10">
+            <div class="container flex max-lg:flex-col lg:items-start justify-between gap-y-10">
+                <div class="content lg:pt-15 sm:pt-15 pt-15 lg:w-5/12">
+                    <div class="heading">
+                        <h3 class="heading3">We’d love to help</h3>
+                        <p class="body2 text-secondary mt-3">We're here to assist you every step of the way. Let's make your goals a reality.</p>
+                    </div>
+                    <ul class="list grid xl:grid-cols-2 lg:grid-cols-1 sm:grid-cols-2 gap-8 justify-between sm:mt-8 mt-6">
+                        <li class="flex items-start gap-2">
+                            <i class="ph ph-map-pin heading2 text-primary relative" style="top:4px;"></i>
+                            <div class="">
+                                <strong class="text-title">Address:</strong>
+                                <p class="desc body2 text-secondary"> 
+                                @if (isset($contactData->address))
+                                    {{ $contactData->address }}
+                                @endif</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="ph ph-phone-call heading2 text-primary relative" style="top:4px;"></i>
+                            <div class="">
+                            <strong class="text-title">Call on:</strong>
+                            <p class="desc body2 text-secondary">
+                                @if (isset($contactData->no_prefix) && isset($contactData->contact_no))
+                                    {{ $contactData->no_prefix }}{{ $contactData->contact_no }}
+                                @endif
+                            </p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="ph ph-paper-plane-tilt heading2 text-primary relative" style="top:4px;"></i>
+                            <div class="">
+                            <strong class="text-title">Mail Us at:</strong>
+                            <p class="desc body2 text-secondary">
+                            @if (isset($contactData->email_address))
+                                {{ $contactData->email_address }}
+                            @endif
+                            </p>
+                            </div>
+                        </li>
+                        <li class="list_social flex flex-col gap-2">
+                            <strong class="text-title">Our social media:</strong>
+                            <div class="list flex flex-wrap items-center gap-3">
+                                <a href="@if (getCompanyDetail()) {{ getCompanyDetail()->facebook }} @endif" target="_blank" aria-label="social" class="facebook w-8 h-8 flex items-center justify-center text-white rounded-full duration-300 hover:bg-white">
+                                    <i class="ph ph-facebook-logo body1"></i>
+                                    <span class="blind">link to facebook</span>
+                                </a>
+                                <a href="@if (getCompanyDetail()) {{ getCompanyDetail()->linkedin }} @endif" target="_blank" aria-label="social" class="linkedin w-8 h-8 flex items-center justify-center text-white rounded-full duration-300 hover:bg-white">
+                                    <i class="ph ph-linkedin-logo body1"></i>
+                                    <span class="blind">link to linkedin</span>
+                                </a>
+                                <a href="@if (getCompanyDetail()) {{ getCompanyDetail()->twitter }} @endif" target="_blank" aria-label="social" class="twitter w-8 h-8 flex items-center justify-center text-white rounded-full duration-300 hover:bg-white ">
+                                    <i class="ph ph-x-logo body1"></i>
+                                    <span class="blind">link to twitter</span>
+                                </a>
+                                <a href="@if (getCompanyDetail()) {{ getCompanyDetail()->instagram }} @endif" target="_blank" aria-label="social" class="instagram w-8 h-8 flex items-center justify-center text-white rounded-full duration-300 hover:bg-white">
+                                    <i class="ph ph-instagram-logo body1"></i>
+                                    <span class="blind">link to instagram</span>
+                                </a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
+                {!! NoCaptcha::renderJs() !!}
+                <div class="form_area contact_page flex-shrink-0 xl:w-[520px] lg:w-1/2 sm:p-7 p-5 rounded-xl border-2 border-line bg-white shadow-lg duration-300">
+                            <form class="form grid sm:grid-cols-2 gap-4 gap-y-5 contactform" action="{{ route('submit.contact_enquiry') }}" method="post">
+                                <div class="name relative">
+                                    <label class="font-semibold" for="username">Full name</label>
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="username" name="name" type="text" placeholder="i.e Smith Due" required />
+                                    <i class="input_icon ph ph-user"></i>
+                                </div>
+                                <div class="mail relative">
+                                    <label class="font-semibold" for="email">Email address</label>
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="email" name="email" type="email" placeholder="i.e example@gmail.com" required />
+                                    <i class="input_icon ph ph-envelope-simple-open"></i>
+                                </div>
+                                <div class="subject relative">
+                                    <label class="font-semibold" for="email">Subject</label>
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="company" name="subject" type="text" placeholder="i.e I want support" required />
+                                    <i class="input_icon ph ph-buildings"></i>
+                                </div>
+                                <div class="phone relative">
+                                    <label class="font-semibold" for="phone">Contact number</label>
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="phone" type="phone" name="contact_no" placeholder="i.e +91 1234567890" required />
+                                    <i class="input_icon ph ph-phone"></i>
+                                </div>
+                                <div class="col-span-full message relative">
+                                    <i class="input_icon text_area ph ph-chat-dots"></i>
+                                    <label class="font-semibold" for="message">Write message</label>
+                                    <textarea class="border w-full mt-1 px-4 py-3 border-line rounded-lg" id="message" name="msg" rows="3" placeholder="Tell us a few words... " required></textarea>
+                                </div>
+                                {!! NoCaptcha::display() !!}
+                                <div class="col-span-full">
+                                    <button class="button-main" type="submit">Send Request <i class="ph ph-arrow-bend-up-right body1 ml-2"></i></button>
+                                </div>
+                            </form>
+                </div>
             </div>
-
-        </div>
-    </section>
+        </section>
 
 
-    <!-- CONTACT
-                            ================================================== -->
-    <section class="md">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <br />
-                    <h1 class="text-primary">Contact Us</h1>
-                    <br />
-                </div>
-                <!-- contact form -->
-                <div class="col-lg-6 mb-1-9 mb-lg-0">
-                    <div class="section-heading left">
-                        <h3>Let's connect with us</h3>
-                    </div>
-                    <div class="contact-form-box">
-                        <div class="alert alert-danger print-error-msg" style="display:none">
-                            <ul></ul>
-                        </div>
-                        {!! NoCaptcha::renderJs() !!}
-                        <form class="contact quform contactform"  action="{{ route('submit.contact_enquiry') }}" id="contactUsForm" action="#" method="post"
-                            enctype="multipart/form-data">
-                            <div class="quform-elements">
-                                <div class="row">
 
-                                    <!-- Begin Text input element -->
-                                    <div class="col-md-6">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <input class="form-control" id="name" type="text" name="name"
-                                                    placeholder="Your name here" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Text input element -->
 
-                                    <!-- Begin Text input element -->
-                                    <div class="col-md-6">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <input class="form-control" id="email" type="text" name="email"
-                                                    placeholder="Your email here" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Text input element -->
-
-                                    <!-- Begin Text input element -->
-                                    <div class="col-md-6">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <input class="form-control" id="subject" type="text" name="subject"
-                                                    placeholder="Your subject here" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Text input element -->
-
-                                    <!-- Begin Text input element -->
-                                    <div class="col-md-6">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <input class="form-control" id="contact_no" type="number" name="contact_no"
-                                                    placeholder="Your phone here" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Text input element -->
-
-                                    <!-- Begin Textarea element -->
-                                    <div class="col-md-12">
-                                        <div class="quform-element form-group">
-                                            <div class="quform-input">
-                                                <textarea class="form-control h-100" id="msg" name="msg" rows="3" placeholder="Tell us a few words"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Textarea element -->
-
-                                    <!-- Begin Captcha element -->
-                                    {!! NoCaptcha::display() !!}
-                                    <!-- End Captcha element -->
-                                   
-                                    <!-- Begin Submit button -->
-                                    <div class="col-md-12">
-                                        <div class="quform-submit-inner">
-                                            <button class="butn btn-submit" type="submit"><span>Submit
-                                                    comment</span></button>
-                                        </div>
-                                        <div class="quform-loading-wrap text-start"><span class="quform-loading"></span>
-                                        </div>
-                                    </div>
-                                    <!-- End Submit button -->
-
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- end contact form  -->
-
-                <!-- contact detail -->
-                <div class="col-lg-6">
-                    <div class="contact-info-box ps-lg-1-9">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="contact-info-section mt-0 pt-0">
-
-                                    <h4>Get in Touch With Us</h4>
-                                    <p>Please connect with us and solve your queries.</p>
-
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="contact-info-section">
-
-                                    <h4>The Office</h4>
-                                    <ul class="mb-0 ps-0 list-unstyled">
-                                        <li class="mb-2">
-                                            <p><i class="fas fa-map-marker-alt text-center"></i> <strong>Address:</strong>
-                                                @if (isset($contactData->address))
-                                                    {{ $contactData->address }}
-                                                @endif
-                                            </p>
-                                        </li>
-                                        <li class="mb-2">
-                                            <p><i class="fas fa-phone text-center"></i> <strong>Phone:</strong>
-                                                @if (isset($contactData->no_prefix) && isset($contactData->contact_no))
-                                                    {{ $contactData->no_prefix }}{{ $contactData->contact_no }}
-                                                @endif
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <p><i class="far fa-envelope text-center"></i> <strong>Email:</strong> <a
-                                                    href="">
-                                                    @if (isset($contactData->email_address))
-                                                        {{ $contactData->email_address }}
-                                                    @endif
-                                                </a></p>
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </div>
-                            <!-- <div class="col-12">
-                                    <div class="contact-info-section border-none pb-0 mb-0">
-
-                                        <h4>Business Hours</h4>
-                                        <ul class="list-style-2">
-                                            <li>Monday - Friday - 9am to 5pm</li>
-                                            <li>Saturday - 9am to 2pm</li>
-                                            <li>Sunday - Closed</li>
-                                        </ul>
-
-                                    </div>
-                                </div> -->
-
-                        </div>
-                    </div>
-                </div>
-                <!-- end contact detail -->
-            </div>
-        </div>
-    </section>
-
-    <!-- MAP
-                            ================================================== -->
-    <iframe class="map"
-        src="https://maps.google.com/maps?q=london&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" scrolling="no"
-        marginheight="0" marginwidth="0"></iframe>
-
-    @include('front.testimonial-section')
-    @include('front.client-section')
-
-    <script type="text/javascript">
+        <script type="text/javascript">
         $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
@@ -224,4 +143,5 @@
             });
         });
     </script>
+
 @endsection

@@ -1,6 +1,5 @@
-@include('front.header')
+@include('front.include.header')
 
 @yield('frontpage')
 
-@include('front.footer')
-
+@include('front.include.footer')

@@ -7,11 +7,7 @@
                 <div class="container">
                     <div class="footer_heading flex flex-wrap items-center justify-between gap-4 w-full md:pt-10 pt-7 md:pb-5 pb-4 border-b border-light">
                         <a href="{{ url('/') }}" class="footer_logo">
-                            @if (getCompanyDetail())
                             <img src="{{ getCompanyDetail()->company_logo }}?tr=w-auto,h-40,fo-auto" width="206" height="40" alt="logo-white" class="h-12" style="filter: brightness(0) invert(1)" />
-                            @elseif(isset(getCompanyDetail()->company_name))
-                                {{ getCompanyDetail()->company_name }}
-                            @endif
                         </a>
                         <div class="list_social flex flex-wrap items-center gap-4">
                             <span class="text-button text-white">Follow Us:</span>
@@ -41,23 +37,19 @@
                                 @if (aboutData())
                                     @foreach (aboutData() as $about)
                                 <p class="text-placehover text-justify">{!! html_entity_decode(strip_tags(wordLimitset($about->content, 35))) !!}</p>
-                                <!-- <strong class="heading block text-button text-white mt-5">Download App</strong> -->
-                                    @endforeach
+                                @endforeach
                                 @endif
+                                <!-- <strong class="heading block text-button text-white mt-5">Download App</strong> -->
                                 <div class="list-download footer_secure mt-6"></div>
                             </div>
                         </div>
                         <div class="footer_nav max-md:w-1/2">
                             <strong class="nav_heading text-button text-white">Industries</strong>
-                            @if (GetReportMenu())
                             <ul class="list_nav flex flex-col gap-1 mt-4">
                                 @foreach (GetReportMenu() as $cate)
-                                <li>
-                                    <a class="caption1 capitalize line-before line-white text-placehover hover:text-white duration-300" href="@if (isset($cate->cat_name)) {{ route('front.reportcategory', gerenaretslug(strtolower($cate->cat_name))) }} @endif">{{ $cate->cat_name }}</a>
-                                </li>
+                                <li><a class="caption1 capitalize line-before line-white text-placehover hover:text-white duration-300" href="{{ route('front.reports')}}?id={{gerenaretslug(strtolower($cate->cat_name))}}">{{ $cate->cat_name }}</a></li>
                                 @endforeach
                             </ul>
-                            @endif
                         </div>
                         <div class="footer_nav max-md:w-1/2">
                             <strong class="nav_heading text-button text-white">Useful Links</strong>
@@ -123,11 +115,7 @@
             </button>
             <div class="heading flex items-center justify-center mt-5">
                 <a href="{{ url('/') }}" class="logo">
-                    @if (getCompanyDetail())
                     <img src="{{ getCompanyDetail()->company_logo }}?tr=w-auto,h-38,fo-auto" width="196" height="38" alt="logo" class="h-9" />
-                    @elseif(isset(getCompanyDetail()->company_name))
-                        {{ getCompanyDetail()->company_name }}
-                    @endif
                 </a>
             </div>
             <form class="form-search relative mt-4 mx-5">
@@ -139,14 +127,29 @@
             <div class="mt-4">
                 <ul class="nav_mobile">
                     <li class="nav_item py-2">
-                        <a href="{{ route('front.all-category') }}" class="text-xl font-semibold flex items-center justify-between">
-                            Industries
+                        <a href="{{ url('/') }}" class="text-xl font-semibold flex items-center justify-between">
+                            Home
                         </a>
                     </li>
                     <li class="nav_item py-2">
-                        <a href="{{ route('front.all-category') }}" class="text-xl font-semibold flex items-center justify-between">
-                            Report Store
+                        <a href="#industries" class="text-xl font-semibold flex items-center justify-between">
+                            Industries<span class="text-right"><i class="ph ph-caret-right text-xl"></i></span>
                         </a>
+                        <div class="sub_nav_mobile">
+                            <button class="back_btn flex items-center gap-3"><i class="ph ph-caret-left text-xl"></i> Back</button>
+                            <div class="list-nav-item w-full pt-2 pb-6">
+                                <ul>
+                                    @foreach (GetReportMenu() as $cate)
+                                    <li>
+                                        <a href="{{ route('front.reports')}}?id={{gerenaretslug(strtolower($cate->cat_name))}}" class="inline-block text-xl font-semibold py-2 capitalize"> {{ $cate->cat_name }} </a>
+                                    </li>
+                                    @endforeach
+                                    <li>
+                                        <a href="{{ route('front.all-category') }}" class="inline-block text-xl font-semibold py-2 capitalize"> All Industries </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </li>
                     <li class="nav_item py-2">
                         <a href="#services" class="text-xl font-semibold flex items-center justify-between">
@@ -159,7 +162,7 @@
                                 <ul>
                                     @foreach (GetServiceMenu() as $service)
                                     <li>
-                                        <a href="{{ route('front.service-single', $service->slug) }}" class="inline-block text-xl font-semibold py-2 capitalize"> {{ $service->heading }}</a>
+                                        <a href="{{ route('front.service-single', $service->slug) }}" class="inline-block text-xl font-semibold py-2 capitalize"> {{ $service->heading }} </a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -169,7 +172,7 @@
                     </li>
                     <li class="nav_item py-2">
                         <a href="#company" class="text-xl font-semibold flex items-center justify-between">
-                            Company<span class="text-right"><i class="ph ph-caret-right text-xl"></i></span>
+                            About Us<span class="text-right"><i class="ph ph-caret-right text-xl"></i></span>
                         </a>
                         <div class="sub_nav_mobile">
                             <button class="back_btn flex items-center gap-3"><i class="ph ph-caret-left text-xl"></i> Back</button>
@@ -185,7 +188,7 @@
                                         <a href="{{ route('front.whyus') }}" class="inline-block text-xl font-semibold py-2 capitalize"> Why Choose us </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('front.testimonials') }}" class="inline-block text-xl font-semibold py-2 capitalize"> Client Reviews </a>
+                                        <a href="{{ route('front.testimonials') }}" class="inline-block text-xl font-semibold py-2 capitalize"> Client Testimonials </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('front.partners') }}" class="inline-block text-xl font-semibold py-2 capitalize"> Partners </a>
@@ -196,14 +199,14 @@
                     </li>
                     <li class="nav_item py-2">
                         <a href="#insights" class="text-xl font-semibold flex items-center justify-between">
-                            Media/Insight<span class="text-right"><i class="ph ph-caret-right text-xl"></i></span>
+                            Media/Insights<span class="text-right"><i class="ph ph-caret-right text-xl"></i></span>
                         </a>
                         <div class="sub_nav_mobile">
                             <button class="back_btn flex items-center gap-3"><i class="ph ph-caret-left text-xl"></i> Back</button>
                             <div class="list-nav-item w-full pt-2 pb-6">
                                 <ul>
                                     <li>
-                                        <a href="{{ route('front.blogs') }}" class="inline-block text-xl font-semibold py-2 capitalize"> Blog </a>
+                                        <a href="{{ route('front.blogs') }}" class="inline-block text-xl font-semibold py-2 capitalize"> Blogs </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('front.press-releases') }}" class="inline-block text-xl font-semibold py-2 capitalize"> Press Releases </a>
@@ -231,9 +234,8 @@
                 </ul>
             </div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="{{ asset('front/assets/js/jquery.min.js')}}"></script>
-        <script type="text/javascript" type="{{ asset('front/text/javascript" src="assets/js/phosphor-icons.js')}}"></script>
+
+        <script type="text/javascript" type="text/javascript" src="{{ asset('front/assets/js/phosphor-icons.js')}}"></script>
         <script type="text/javascript" src="{{ asset('front/assets/js/slick.min.js')}}"></script>
         <!--<script src="assets/js/leaflet.js'"></script>-->
         <script type="text/javascript" src="{{ asset('front/assets/js/swiper-bundle.min.js')}}"></script>
@@ -278,131 +280,6 @@ $(window).scroll(function () {
         $('#NavMenu li a').each(function(Key, Value) {
             if (Value['href'] === CurrentUrl) {
                 $(Value).parent().addClass('active');
-            }
-        });
-    });
-    
-</script>
-
-<script defer async type="text/javascript">
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    });
-
-    $("body").on("submit",".ajaxformfileupload", function(event){
-    event.preventDefault();
-    // if($(this).parsley().isValid() ) {
-        // alert(11);
-        var formdata   = $(this);
-       var dataValue  = new FormData(this);//new FormData(formdata[0]);
-       var UrlValue   = $(this).attr('action');
-
-       var ButtonText = $(this).find('button[type="submit"]').html();
-       /*$(this).find('button').prop('disabled', true);
-       $(this).find('button').html('Loading ...');*/
-
-       $(this).find('button[type="submit"]').prop('disabled', true);
-       $(this).find('button[type="submit"]').html('Loading ...');
-
-       //alert(dataValue);
-       $.ajax({
-           url     : UrlValue,
-           method  : 'post',
-           data    :dataValue,
-           headers:
-           {
-               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-           },
-           processData: false,
-           contentType: false,
-           beforeSend: function( xhr ) {
-
-           },
-           success: function(data) {
-                if ($.isEmptyObject(data.error)) {
-                    window.location.href = "{{ url('thankyou') }}/" + data.id;
-                } else {
-                    printErrorMsg(data.error);
-                }
-            },
-           error: function(data) {
-               console.log("error ",data);
-               printErrorMsg(data.error);
-               console.log(ButtonText);
-               formdata.find('button[type="submit"]').prop('disabled', false);
-               formdata.find('button[type="submit"]').html(ButtonText);
-           }
-       });
-       //return false;
-//    }
-});
-
-$("body").on("submit",".contactform", function(event){
-    event.preventDefault();
-    // if($(this).parsley().isValid() ) {
-        // alert(11);
-        var formdata   = $(this);
-       var dataValue  = new FormData(this);//new FormData(formdata[0]);
-       var UrlValue   = $(this).attr('action');
-
-       var ButtonText = $(this).find('button[type="submit"]').html();
-       /*$(this).find('button').prop('disabled', true);
-       $(this).find('button').html('Loading ...');*/
-
-       $(this).find('button[type="submit"]').prop('disabled', true);
-       $(this).find('button[type="submit"]').html('Loading ...');
-
-       //alert(dataValue);
-       $.ajax({
-           url     : UrlValue,
-           method  : 'post',
-           data    :dataValue,
-           headers:
-           {
-               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-           },
-           processData: false,
-           contentType: false,
-           beforeSend: function( xhr ) {
-
-           },
-           success: function(data) {
-                if ($.isEmptyObject(data.error)) {
-                    location.reload();
-                } else {
-                    printErrorMsg(data.error);
-                }
-            },
-           error: function(data) {
-               console.log("error ",data);
-               printErrorMsg(data.error);
-               console.log(ButtonText);
-               formdata.find('button[type="submit"]').prop('disabled', false);
-               formdata.find('button[type="submit"]').html(ButtonText);
-           }
-       });
-       //return false;
-//    }
-});
-
-    function printErrorMsg(msg) {
-        $(".print-error-msg").find("ul").html('');
-        $(".print-error-msg").css('display', 'block');
-        $.each(msg, function(key, value) {
-            $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
-        });
-    }
-
-    $('#reload').click(function() {
-        $.ajax({
-            type: 'GET',
-            url: "{{ route('reload-from-captcha') }}",
-            success: function(data) {
-                $(".captcha span").html(data.captcha);
             }
         });
     });
