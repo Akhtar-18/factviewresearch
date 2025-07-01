@@ -296,16 +296,23 @@
                     </div>
                     <div class="list_action flex items-center gap-7">
                         <a href="{{ route('front.contact') }}" class="button-main max-sm:hidden">Contact Us<i class="ph-bold ph-chat-dots body1 ml-1"></i></a>
-                        <!-- <div class="list_icon flex items-center gap-3">
-                            <a href="login.html" class="flex items-center gap-1 text-title text-white duration-300 hover:text-primary">
-                                <span class="ph-bold ph-user"></span>
-                                <span>Login</span>
-                            </a>
-                            <a href="register.html" class="flex items-center gap-1 text-title text-white duration-300 hover:text-primary">
-                                <span class="ph-bold ph-plus-circle"></span>
-                                <span>Register</span>
-                            </a>
-                        </div> -->
+                       <div class="notification_block relative">
+                        <button class="relative block">
+                            <span class="ph-bold ph-magnifying-glass text-2xl block"></span>
+                            <!-- <span class="absolute -top-0.5 right-0.5 w-2 h-2 bg-primary rounded-full"></span> -->
+                        </button>
+                        <div class="notification_submenu absolute w-[400px] p-3 top-[3.25rem] -right-3 bg-white rounded-md animate animate_top" style="--i: 3">
+                            <div class="form_search z-[1] w-full">
+                            <form action="{{ route('front.reports') }}" method="GET" class="form_inner flex items-center justify-between gap-6 gap-y-4 relative w-full p-0 rounded-lg bg-white">
+                                <div class="form_input relative w-full">
+                                    <!-- <span class="icon_search ph-bold ph-magnifying-glass absolute top-1/2 -translate-y-1/2 left-2 text-xl"></span> -->
+                                    <input type="text" class="input_search w-full h-full pl-0" name="search" placeholder="Report title, keywords or company" required />
+                                </div>
+                                <button type="submit" class="button-main text-center flex-shrink-0" aria-label="search"><i class="ph-bold ph-magnifying-glass"></i></button>
+                            </form>
+                            </div>
+                        </div>
+                        </div>
                         <button class="humburger_btn xl:hidden">
                             <span class="ph-bold ph-list text-4xl block">
                                 <span class="blind">button open menu mobile</span>

@@ -13,13 +13,13 @@
                         <h2 class="heading1 text-white animate animate_top" style="--i: 1">{{ $list->heading }}</h2>
                         <p class="body2 text-white mt-2 animate animate_top" style="--i: 2">{{ $list->subheading }}</p>
                         <div class="form_search max-xl:hidden z-[1] w-full md:mt-10 mt-7 animate animate_top" style="--i: 3">
-                            <form action="{{ route('front.reports') }}" method="GET" class="form_inner flex items-center justify-between gap-6 gap-y-4 relative w-full p-3 rounded-lg bg-white">
+                            <!-- <form action="{{ route('front.reports') }}" method="GET" class="form_inner flex items-center justify-between gap-6 gap-y-4 relative w-full p-3 rounded-lg bg-white">
                                 <div class="form_input relative w-full">
                                     <span class="icon_search ph-bold ph-magnifying-glass absolute top-1/2 -translate-y-1/2 left-2 text-xl"></span>
                                     <input type="text" name="search" class="input_search w-full h-full pl-10" placeholder="Report title, keywords or company" required />
                                 </div>
                                 <button type="submit" class="button-main text-center flex-shrink-0" aria-label="search"><span class="btn_txt">Search</span><i class="ph-bold ph-arrow-bend-up-right arrow_right ml-1"></i><i class="ph-bold ph-magnifying-glass arrow_search"></i></button>
-                            </form>
+                            </form> -->
                         </div>
                         <!-- <div class="list_tags max-xl:hidden flex flex-wrap items-center gap-3 mt-5 animate animate_top" style="--i: 4">
                             <strong class="text-button-sm text-white">Services:</strong>
