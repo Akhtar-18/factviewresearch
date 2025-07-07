@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
         <meta charset="UTF-8" />
@@ -155,16 +155,16 @@
         <meta name="coverage" content="global" />
         <meta name="abstract" content="consulting services, market research reports, industry analysis, reports" />
         <meta name="Audience" content="All, Business, Management, Research, Services" />
-        
+
        <meta name="csrf-token" content="{{ csrf_token() }}">
-        
+
         <!-- Style CSS -->
         <link rel="stylesheet" href="{{ asset('front/assets/css/swiper-bundle.min.css')}}" />
         <link rel="stylesheet" href="{{ asset('front/assets/css/slick.css')}}" />
-        
+
         <link rel="preload" href="{{ asset('front/assets/css/style.css')}}" rel="stylesheet" as="style" onload="this.onload=null;this.rel='stylesheet'" defer>
         <link rel="stylesheet" style="text/css" href="{{ asset('front/assets/css/style.css')}}" defer>
-    
+
         <link rel="stylesheet" href="{{ asset('front/dist/output-tailwind.css')}}" />
         <link rel="stylesheet" href="{{ asset('front/dist/output-scss.css')}}" />
         <script type="text/javascript" src="{{ asset('front/assets/js/jquery.min.js')}}"></script>
@@ -198,7 +198,7 @@
                             <img src="{{ getCompanyDetail()->company_logo }}?tr=w-auto,h-38,fo-auto" width="196" height="38" loading="lazy" alt="logo" class="logo-black md:h-[42px] h-9 w-auto hidden" />
                         </a>
                     </h1>
-                    
+
                 </div>
                 <div class="right flex items-center gap-6 h-full">
                     <div class="navigator h-full max-xl:hidden">

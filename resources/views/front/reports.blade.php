@@ -18,11 +18,11 @@
                         <div class="list_breadcrumb flex items-center gap-2 animate animate_top" style="--i: 1">
                             <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
                             <span class="caption1 text-white opacity-40">/</span>
-                            <span class="caption1 text-white">Report Store</span>
+                            <a href="{{ route('front.all-category') }}" class="caption1 text-white"><span class="caption1 text-white">Industries</span></a>
                             <!-- <span class="caption1 text-white opacity-40">/</span>
                             <span class="caption1 text-white opacity-60">Projects</span> -->
                         </div>
-                        <h3 class="heading3 text-white mt-2 animate animate_top" style="--i: 2">Report Store</h3>
+                        <h3 class="heading3 text-white mt-2 animate animate_top" style="--i: 2">Industries</h3>
                         <div class="form_search w-full mt-5 animate animate_top" style="--i: 3">
                             <form action="{{ route('front.reports') }}" method="GET" class="form_inner flex items-center justify-between gap-6 gap-y-4 relative w-full p-3 rounded-lg bg-white">
                                 <div class="form_input relative w-full">

@@ -11,9 +11,9 @@
                         <div class="list_breadcrumb flex items-center gap-2">
                             <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
                             <span class="caption1 text-white opacity-40">/</span>
-                            <span class="caption1 text-white opacity-40">Company</span>
+                            <a href="{{ route('front.about') }}" class="caption1 text-white"><span class="caption1 text-white">Company</span></a>
                             <span class="caption1 text-white opacity-40">/</span>
-                            <span class="caption1 text-white opacity-40">Partners</span>
+                            <a href="{{ route('front.partners') }}" class="caption1 text-white"><span class="caption1 text-white">Partners</span></a>
                         </div>
                     </div>
                 </div>

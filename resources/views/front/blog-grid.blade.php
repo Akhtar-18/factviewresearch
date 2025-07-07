@@ -12,9 +12,7 @@
                         <div class="list_breadcrumb flex items-center gap-2">
                             <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
                             <span class="caption1 text-white opacity-40">/</span>
-                            <span class="caption1 text-white opacity-40">Insights</span>
-                            <span class="caption1 text-white opacity-40">/</span>
-                            <span class="caption1 text-white opacity-40">Blog</span>
+                            <a href="{{ route('front.blogs') }}" class="caption1 text-white"><span class="caption1 text-white">Blogs</span></a>
                         </div>
                     </div>
                 </div>
@@ -26,7 +24,7 @@
             <div class="container flex max-lg:flex-col gap-y-12">
                 <div class="list lg:pr-20" id="lists">
                     @include('front.ajax.blog')
-                   
+
                 </div>
                 <div class="blog_sidebar relative flex-shrink-0 lg:w-[360px] w-full h-fit">
                     <div class="sidebarsticky">

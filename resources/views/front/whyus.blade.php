@@ -11,9 +11,9 @@
                         <div class="list_breadcrumb flex items-center gap-2">
                             <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
                             <span class="caption1 text-white opacity-40">/</span>
-                            <span class="caption1 text-white opacity-40">Company</span>
+                            <a href="{{ route('front.about') }}" class="caption1 text-white"><span class="caption1 text-white">Company</span></a>
                             <span class="caption1 text-white opacity-40">/</span>
-                            <span class="caption1 text-white opacity-40">Why Choose Us</span>
+                            <a href="{{ route('front.whyus') }}" class="caption1 text-white"><span class="caption1 text-white">Why Choose Us</span></a>
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
         <section class="features lg:py-15 sm:py-14 py-10">
             <div class="container">
                 <!-- <ul class="grid lg:grid-cols-3 gap-7.5">
-                   
+
                     <li>
                         <div class="flex flex-col items-start h-full p-7 bg-white border-2 border-transparent rounded-xl duration-500 shadow-md hover:border-line animate animate_top" style="--i: 1">
                             <span class="ph ph-user-check text-5xl"></span>

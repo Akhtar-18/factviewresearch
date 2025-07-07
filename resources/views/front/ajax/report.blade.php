@@ -35,16 +35,17 @@
                     <div class="flex items-start gap-3 mb-2">
                         <div class="report_img detail_page form"></div>
                         <div class="txt_desc">
-                            <div class="list_tag flex items-center gap-2.5 flex-wrap mb-3">
-                                <span class="project_tag tag bg-surface caption1 hover:text-white"><i class="ph ph-cpu mr-1 body1 relative" style="top:3px;"></i>{{$list->getCategoryName->cat_name??''}}</span>
-                                <span class="project_tag tag bg-surface caption1 hover:text-white"><i class="ph ph-file-pdf mr-1 body1 relative" style="top:3px;"></i>Format: PDF</span>
-                            </div>
+
                             <a href="{{ route('front.report', ['id' => $list->url]) }}" class="project_name heading6 duration-300 hover:underline">
                                 {{ $list->heading }}
                             </a>
+                            <div class="list_tag flex items-center gap-2.5 flex-wrap mb-3">
+                                <span class="project_tag tag bg-surface caption1"><i class="ph ph-cpu mr-1 body1 relative" style="top:3px;"></i>{{$list->getCategoryName->cat_name??''}}</span>
+                                <span class="project_tag tag bg-surface caption1"><i class="ph ph-file-pdf mr-1 body1 relative" style="top:3px;"></i>Format: PDF</span>
+                            </div>
                         </div>
                     </div>
-                    <p class="project_desc mb-2 text-secondary">{!! html_entity_decode(wordLimit($list->description,100)) !!}</p>
+                    <p class="project_desc mb-2 text-secondary">{!! html_entity_decode(wordLimit($list->description, 100)) !!}</p>
                     <p class="project_desc font-semibold text-primary mb-0 opacity-60">{{ $list->heading }}</p>
                 </div>
                 <div class="line flex-shrink-0 w-px h-full bg-line max-sm:hidden"></div>
@@ -58,10 +59,10 @@
                             <span class="text-secondary">Date: </span>
                             <span class="proposals">{{ date('M, Y', strtotime($list->publish_month)) }}</span>
                         </div>
-                        <div class="project_proposals sm:text-end">
+                        <!--<div class="project_proposals sm:text-end">
                             <span class="text-secondary">Format: </span>
                             <span class="proposals">PDF</span>
-                        </div>
+                        </div>-->
                     </div>
                     <a href="{{ route('front.report', ['id' => $list->url]) }}" class="button-main -border h-fit">Read&nbsp;more<i class="ph-bold ph-arrow-bend-up-right ml-2"></i></a>
                 </div>

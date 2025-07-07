@@ -62,10 +62,8 @@
                         <div class="footer_nav max-md:w-1/2">
                             <strong class="nav_heading text-button text-white">Useful Links</strong>
                             <ul class="list_nav flex flex-col gap-1 mt-4">
-                                <li><a class="caption1 capitalize line-before line-white text-placehover hover:text-white duration-300" href="{{ route('front.all-category') }}">Report Store</a></li>
                                 <li><a class="caption1 capitalize line-before line-white text-placehover hover:text-white duration-300" href="{{ route('front.services') }}">Our Services</a></li>
-                            </ul>
-                            <strong class="nav_heading text-button text-white block mt-5">Insights</strong>
+                                <strong class="nav_heading text-button text-white block mt-5">Insights</strong>
                             <ul class="list_nav flex flex-col gap-1 mt-4">
                                 <li><a class="caption1 capitalize line-before line-white text-placehover hover:text-white duration-300" href="{{ route('front.blogs') }}">Blog</a></li>
                                 <li><a class="caption1 capitalize line-before line-white text-placehover hover:text-white duration-300" href="{{ route('front.press-releases') }}">Press Releases</a></li>
@@ -141,11 +139,6 @@
                     <li class="nav_item py-2">
                         <a href="{{ route('front.all-category') }}" class="text-xl font-semibold flex items-center justify-between">
                             Industries
-                        </a>
-                    </li>
-                    <li class="nav_item py-2">
-                        <a href="{{ route('front.all-category') }}" class="text-xl font-semibold flex items-center justify-between">
-                            Report Store
                         </a>
                     </li>
                     <li class="nav_item py-2">
@@ -281,7 +274,7 @@ $(window).scroll(function () {
             }
         });
     });
-    
+
 </script>
 
 <script defer async type="text/javascript">

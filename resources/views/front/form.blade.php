@@ -46,19 +46,19 @@
         <section class="jobs_detail relative lg:pt-15 sm:pt-15 pt-15 lg:pb-14 sm:pb-14 pb-7">
             <div class="container flex max-lg:flex-col gap-y-10">
                 <div class="jobs_inner w-full lg:pr-15">
-                    
+
                         <div id="form-review" class="form-review">
                             <form class="form grid sm:grid-cols-2 gap-4 gap-y-5 ajaxformfileupload" action="{{ route('submit.enquiry') }}" name="contactUsForm" id="contactUsForm" enctype="multipart/form-data">
                                 <div class="name relative">
                                     <label class="font-semibold" for="username">Full name</label>
                                     <input type="hidden" name="types" value="{{ $type }}">
                                     <input type="hidden" name="report_id" value="@if (isset($reports->id)) {{ $reports->id }} @endif">
-                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="name" type="text" name="name" placeholder="i.e Smith Due" required />
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="name" type="text" name="name" placeholder="" required />
                                     <i class="input_icon ph ph-user"></i>
                                 </div>
                                 <div class="mail relative">
                                     <label class="font-semibold" for="email">Email address</label>
-                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="email" type="email" name="email" placeholder="i.e example@gmail.com" required />
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="email" type="email" name="email" placeholder="" required />
                                     <i class="input_icon ph ph-envelope-simple-open"></i>
                                 </div>
                                 <div class="country relative">
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="mail relative">
                                     <label class="font-semibold" for="email">Contact number</label>
-                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="contact_no" type="number" name="contact_no" placeholder="i.e +91 1234567890" required />
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="contact_no" type="number" name="contact_no" placeholder="" required />
                                     <i class="input_icon ph ph-phone"></i>
                                 </div>
                                 <div class="col-span-full relative">
