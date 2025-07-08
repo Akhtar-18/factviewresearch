@@ -7,11 +7,11 @@
     <div class="breadcrumb_inner report_bg bg-[#091E33] relative py-10">
         <div class="container relative h-full">
             <div class="breadcrumb_content flex flex-col items-start justify-center xl:w-[1000px] lg:w-[848px] md:w-5/6 w-full h-full">
-                <h3 class="heading3 text-white mb-2">Browse by category</h3>
+                <h3 class="heading3 text-white mb-2">Industries</h3>
                 <div class="list_breadcrumb flex items-center gap-2 animate animate_top" style="--i: 1">
                     <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
                     <span class="caption1 text-white opacity-40">/</span>
-                    <span class="caption1 text-white opacity-40">Category</span>
+                    <a href="{{ route('front.all-category') }}" class="caption1 text-white"><span class="caption1 text-white">Industries</span></a>
                 </div>
             </div>
         </div>

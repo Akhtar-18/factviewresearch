@@ -17,12 +17,13 @@
                 <div class="list_breadcrumb flex items-center gap-2 animate animate_top" style="--i: 1">
                     <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
                     <span class="caption1 text-white opacity-40">/</span>
-                    <span class="caption1 text-white"><a href="#!">
+
+                    <span class="caption1 text-white"><a href="{{ route('front.reports', ['id' => $reports->category_id]) }}" class="caption1 text-white">
                         @if (isset($reports->getCategoryName->cat_name))
                             {{ $reports->getCategoryName->cat_name }}
                         @endif</a></span>
                     <span class="caption1 text-white opacity-40">/</span>
-                    <span class="caption1 text-white opacity-60">{!! html_entity_decode(wordLimitset($reports->heading, 5)) !!}</span>
+                    <a href="{{ route('front.report', $reports->url) }}" class="caption1 text-white"><span class="caption1 text-white">{!! html_entity_decode(wordLimitset($reports->heading, 5)) !!}</span></a>
                 </div>
             </div>
         </div>
@@ -46,7 +47,7 @@
                             </div>
                             <div class="jobs_address -style-1 text-secondary">
                                 <span class="ph ph-factory text-xl"></span>
-                                <span class="address align-top">Industry: 
+                                <span class="address align-top">Industry:
                                     @if (isset($reports->getCategoryName->cat_name))
                                             {{ $reports->getCategoryName->cat_name }}
                                     @endif</span>
@@ -89,10 +90,9 @@
                     </div>
                 </div>
                 <div class="list_desc">
-                    
+
                     <div id="about_01" class="tab_list mt-5 active" role="tabpanel" aria-labelledby="report_tab01" aria-hidden="false">
                         <div class="row">
-                            <p>
                         @php
                             $content = html_entity_decode($reports->description);
                             // Check if the content contains anchor tags
@@ -105,7 +105,6 @@
                         @else
                             {!! $content !!}
                         @endif
-                    </p>
                                             @if (count($reports->getReportTblSummary) > 0)
                                                 <div class="col-md-12 mt-3">
                                                     <div class="table-responsive">

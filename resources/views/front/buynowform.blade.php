@@ -24,7 +24,7 @@
         <section class="jobs_detail relative lg:pt-15 sm:pt-15 pt-15 lg:pb-14 sm:pb-14 pb-7">
             <div class="container flex max-lg:flex-col gap-y-10">
                 <div class="jobs_inner w-full lg:pr-15">
-                    
+
                         <div id="form-review" class="form-review">
                             <div class="alert alert-danger print-error-msg" style="display:none">
                                 <ul></ul>
@@ -35,7 +35,7 @@
                                 <div class="name relative">
                                     <label class="font-semibold" for="username">Full name</label>
                                     <input type="hidden" name="report_id" value="@if (isset($reports->id)) {{ $reports->id }} @endif">
-                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="name" name="name" type="text" placeholder="i.e Smith Due" required />
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="name" name="name" type="text" placeholder="" required />
                                     <i class="input_icon ph ph-user"></i>
                                 </div>
                                 <div class="relative">
@@ -86,12 +86,12 @@
                                 </div>
                                 <div class="mail relative">
                                     <label class="font-semibold" for="email">Email address</label>
-                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="email" type="email" name="email" placeholder="i.e example@gmail.com" required />
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="email" type="email" name="email" placeholder="" required />
                                     <i class="input_icon ph ph-envelope-simple-open"></i>
                                 </div>
                                 <div class="mail relative">
                                     <label class="font-semibold" for="email">Contact number</label>
-                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="phone" type="number" name="contact" placeholder="i.e +91 1234567890" required />
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="phone" type="number" name="contact" placeholder="" required />
                                     <i class="input_icon ph ph-phone"></i>
                                 </div>
                                 <div class="country relative">
@@ -137,12 +137,12 @@
                             <div class="flex items-start gap-5 w-full">
                                 <div class="report_img detail_page form"></div>
                                 <div>
-                                    <strong class="employers_name heading6">                     
+                                    <strong class="employers_name heading6">
                                         @if (isset($reports->heading))
                                         {{ $reports->heading }}
                                         @endif
                                     </strong>
-                                    <span class="employers_establish text-secondary mt-1 block">Published Date: 
+                                    <span class="employers_establish text-secondary mt-1 block">Published Date:
                                         @if (isset($reports->publish_month))
                                             {{ date('F - Y', strtotime($reports->publish_month)) }}
                                         @endif
@@ -218,7 +218,7 @@
             });
         });
 
-  
+
 
     //     $(".btn-submit").click(function(e) {
 

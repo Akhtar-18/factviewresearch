@@ -10,9 +10,9 @@
                         <div class="list_breadcrumb flex items-center gap-2 animate animate_top" style="--i: 1">
                             <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
                             <span class="caption1 text-white opacity-40">/</span>
-                            <span class="caption1 text-white opacity-40">Services</span>
+                            <a href="{{ route('front.services') }}" class="caption1 text-white"><span class="caption1 text-white">Services</span></a>
                             <span class="caption1 text-white opacity-40">/</span>
-                            <span class="caption1 text-white opacity-60">{{ $services->heading }}</span>
+                            <a href="{{ route('front.service-single', $services->slug) }}" class="caption1 text-white"><span class="caption1 text-white">{{ $services->heading }}</span></a>
                         </div>
                     </div>
                 </div>

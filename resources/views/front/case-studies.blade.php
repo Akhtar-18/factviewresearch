@@ -12,9 +12,7 @@
                 <div class="list_breadcrumb flex items-center gap-2">
                     <a href="{{ route('front.home') }}" class="caption1 text-white"><i class="ph ph-house"></i></a>
                     <span class="caption1 text-white opacity-40">/</span>
-                    <span class="caption1 text-white opacity-40">Insights</span>
-                    <span class="caption1 text-white opacity-40">/</span>
-                    <span class="caption1 text-white opacity-40">Case Studies</span>
+                    <a href="{{ route('front.case-studies') }}" class="caption1 text-white"><span class="caption1 text-white">Case Studies</span></a>
                 </div>
             </div>
         </div>

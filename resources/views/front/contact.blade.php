@@ -14,7 +14,7 @@
             <div class="container flex max-lg:flex-col lg:items-start justify-between gap-y-10">
                 <div class="content lg:pt-15 sm:pt-15 pt-15 lg:w-5/12">
                     <div class="heading">
-                        <h3 class="heading3">We’d love to help</h3>
+                        <h3 class="heading3">We'd love to help</h3>
                         <p class="body2 text-secondary mt-3">We're here to assist you every step of the way. Let's make your goals a reality.</p>
                     </div>
                     <ul class="list grid xl:grid-cols-2 lg:grid-cols-1 sm:grid-cols-2 gap-8 justify-between sm:mt-8 mt-6">
@@ -22,7 +22,7 @@
                             <i class="ph ph-map-pin heading2 text-primary relative" style="top:4px;"></i>
                             <div class="">
                                 <strong class="text-title">Address:</strong>
-                                <p class="desc body2 text-secondary"> 
+                                <p class="desc body2 text-secondary">
                                 @if (isset($contactData->address))
                                     {{ $contactData->address }}
                                 @endif</p>
@@ -78,22 +78,22 @@
                             <form class="form grid sm:grid-cols-2 gap-4 gap-y-5 contactform" action="{{ route('submit.contact_enquiry') }}" method="post">
                                 <div class="name relative">
                                     <label class="font-semibold" for="username">Full name</label>
-                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="username" name="name" type="text" placeholder="i.e Smith Due" required />
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="username" name="name" type="text" required />
                                     <i class="input_icon ph ph-user"></i>
                                 </div>
                                 <div class="mail relative">
                                     <label class="font-semibold" for="email">Email address</label>
-                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="email" name="email" type="email" placeholder="i.e example@gmail.com" required />
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="email" name="email" type="email" required />
                                     <i class="input_icon ph ph-envelope-simple-open"></i>
                                 </div>
                                 <div class="subject relative">
                                     <label class="font-semibold" for="email">Subject</label>
-                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="company" name="subject" type="text" placeholder="i.e I want support" required />
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="company" name="subject" type="text" required />
                                     <i class="input_icon ph ph-buildings"></i>
                                 </div>
                                 <div class="phone relative">
                                     <label class="font-semibold" for="phone">Contact number</label>
-                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="phone" type="phone" name="contact_no" placeholder="i.e +91 1234567890" required />
+                                    <input class="w-full mt-1 px-4 py-3 border-line rounded-lg" id="phone" type="phone" name="contact_no" required />
                                     <i class="input_icon ph ph-phone"></i>
                                 </div>
                                 <div class="col-span-full message relative">
