@@ -25,12 +25,14 @@
                 <thead>
                     <tr>
                         <th>Category Name </th>
+                        <th>Icon</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>Category Name </th>
+                        <th>Icon</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
@@ -48,6 +50,7 @@
         ajax: "{{ url('admin/reportcategory/list') }}",
         columns: [
             {data: 'cat_name', name: 'cat_name'},
+            {data: 'icon', name: 'icon'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });

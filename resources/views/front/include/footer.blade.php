@@ -265,13 +265,13 @@ $(document).ready(function () {
   });
 });
 
-$(window).scroll(function () {
-  if ($(window).scrollTop() >= 300) {
-    $("#reportnav").addClass("fixed-header");
-  } else {
-    $("#reportnav").removeClass("fixed-header");
-  }
-});
+// $(window).scroll(function () {
+//   if ($(window).scrollTop() >= 300) {
+//     $("#reportnav").addClass("fixed-header");
+//   } else {
+//     $("#reportnav").removeClass("fixed-header");
+//   }
+// });
 </script>
 
 <script type="text/javascript">

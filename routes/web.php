@@ -273,6 +273,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::match(['GET', 'POST'], '/SegmentTypeDelete', [ReportsController::class, 'SegmentTypeDelete']);
             Route::match(['GET', 'POST'], '/removeregionDelete', [ReportsController::class, 'removeregionDelete']);
             Route::match(['GET', 'POST'], '/removemarketshare', [ReportsController::class, 'removemarketshare']);
+            Route::match(['GET', 'POST'], '/TblSummaryDetailsDelete', [ReportsController::class, 'TblSummaryDetailsDelete']);
         });
 
         /****************************** Enquiry ******************/

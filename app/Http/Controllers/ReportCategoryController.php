@@ -24,6 +24,13 @@ class ReportCategoryController extends Controller
                 $contents = strip_tags($row->content);
                 return $contents;
               })
+              ->addColumn('icon', function($row){
+                  if (!empty($row->icon)) {
+                      $iconPath = $row->icon; // or use Storage::url($row->icon) if stored in Laravel's storage
+                      return '<img src="'.$iconPath.'" alt="icon" width="40" height="40">';
+                  }
+                  return '';
+              })
 
 
               ->addColumn('action', function($row){
@@ -67,7 +74,7 @@ class ReportCategoryController extends Controller
 
                             return $btn;
                     })
-                    ->rawColumns(['content','action'])
+                    ->rawColumns(['content','icon','action'])
                     ->make(true);
         }
     }

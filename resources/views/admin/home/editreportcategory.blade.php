@@ -36,6 +36,19 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="mb-2">Icon Url <span class="text-danger"></span></label>
+                                <input type="text" class="form-control"
+                                placeholder="Enter Url"
+                                name="icon"
+                                value="{{ @$category->icon }}"
+                                required>
+                                @if ($errors->has('icon'))
+                                    <span class="text-danger">{{ $errors->first('icon') }}</span>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">

@@ -80,5 +80,9 @@ class ReportsModel extends Model
         {
             return $this->hasMany(TblSummary::class,'report_id','id')->select(['report_id','id','heading','details'])->limit(10);
         }
+        public function getReportSummaryDetails()
+        {
+            return $this->hasMany(ReportSummeryDetail::class,'report_id','id')->select(['report_id','id','heading','details'])->limit(10);
+        }
 }
 

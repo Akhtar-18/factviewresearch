@@ -22,6 +22,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ExportReport;
 use App\Imports\ReportContentImport;
 use App\Imports\SegmentImport;
+use App\Models\ReportSummeryDetail;
 use App\Models\TblSummary;
 use Illuminate\Support\Facades\URL;
 
@@ -29,14 +30,14 @@ class ReportsController extends Controller
 {
     public function index()
     {
-        return view('admin.home.reportslist');
+        return view('admin.reports.index');
     }
 
 
     public function list(Request $request)
     {
         if ($request->ajax()) {
-            $data = ReportsModel::with(['getCategoryName', 'getSubCategoryName'])->select(['id', 'category_id', 'sub_category_id', 'heading', 'url', 'pages', 'publish_month','status'])->orderBy('id', 'desc');
+            $data = ReportsModel::with(['getCategoryName', 'getSubCategoryName'])->select(['id', 'category_id', 'sub_category_id', 'heading', 'url', 'pages', 'publish_month', 'status'])->orderBy('id', 'desc');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('category_id', function ($row) {
@@ -60,21 +61,17 @@ class ReportsController extends Controller
                     return $url;
                 })
 
-                ->addColumn('status',function($row)
-                {
-                    if($row->status==1)
-                    {
-                        $activetitle="Active";
-                        $btn="btn-success";
-                        $statuss=0;
+                ->addColumn('status', function ($row) {
+                    if ($row->status == 1) {
+                        $activetitle = "Active";
+                        $btn = "btn-success";
+                        $statuss = 0;
+                    } else {
+                        $activetitle = "Deactive";
+                        $btn = "btn-danger";
+                        $statuss = 1;
                     }
-                    else
-                    {
-                        $activetitle="Deactive";
-                        $btn="btn-danger";
-                        $statuss=1;
-                    }
-                    $status='<a class="btn '.$btn.' changeStatusCustom" data-id="'.$row->id.'" data-status="'.$statuss.'" data-url="'.route('change-report-status').'">'.$activetitle.'</a>';
+                    $status = '<a class="btn ' . $btn . ' changeStatusCustom" data-id="' . $row->id . '" data-status="' . $statuss . '" data-url="' . route('change-report-status') . '">' . $activetitle . '</a>';
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
@@ -112,7 +109,7 @@ class ReportsController extends Controller
 
                     return $btn;
                 })
-                ->rawColumns(['category_id', 'url','status', 'action'])
+                ->rawColumns(['category_id', 'url', 'status', 'action'])
                 ->make(true);
         }
     }
@@ -120,7 +117,7 @@ class ReportsController extends Controller
     public function add(Request $request)
     {
         $data['category'] = ReportCategoryModel::select(['id', 'cat_name'])->get();
-        return view('admin.home.addreports', $data);
+        return view('admin.reports.create', $data);
     }
 
     public function submit(ReportsRequest $request)
@@ -168,21 +165,21 @@ class ReportsController extends Controller
         ReportsLicenseModel::create($insertLicenseData);
 
         /*************************Reports FAQ Create ************************/
-
-        foreach ($request->question as $key => $list) {
-            if (!empty($request->question[$key])) {
-                $insertFaqData = [
-                    'report_id' => $report_id,
-                    'question' => $request->question[$key],
-                    'answer' => $request->answer[$key],
-                ];
-                ReportsFaqModel::create($insertFaqData);
+        if (!empty($request->question) && is_array($request->question)) {
+            foreach ($request->question as $key => $list) {
+                if (!empty($request->question[$key])) {
+                    $insertFaqData = [
+                        'report_id' => $report_id,
+                        'question' => $request->question[$key],
+                        'answer' => $request->answer[$key],
+                    ];
+                    ReportsFaqModel::create($insertFaqData);
+                }
             }
-
         }
+
         // summary table
-        if($request->sheading)
-        {
+        if (!empty($request->sheading) && is_array($request->sheading)) {
             foreach ($request->sheading as $key => $list) {
                 if (!empty($request->sheading[$key])) {
                     $insertTblSummaryData = [
@@ -192,7 +189,6 @@ class ReportsController extends Controller
                     ];
                     TblSummary::create($insertTblSummaryData);
                 }
-    
             }
         }
 
@@ -208,73 +204,88 @@ class ReportsController extends Controller
 
 
         /*************************Reports Marketyear Graph Create ************************/
-
-        foreach ($request->marketyear as $key => $list) {
-            if (!empty($request->marketyear[$key])) {
-                $insertgraph = [
-                    'report_id' => $report_id,
-                    'marketyear' => $request->marketyear[$key],
-                    'marketvalue' => $request->marketvalue[$key],
-                ];
-                MarketGraphicalModel::create($insertgraph);
+        if (!empty($request->marketyear) && is_array($request->marketyear)) {
+            foreach ($request->marketyear as $key => $list) {
+                if (!empty($request->marketyear[$key])) {
+                    $insertgraph = [
+                        'report_id' => $report_id,
+                        'marketyear' => $request->marketyear[$key],
+                        'marketvalue' => $request->marketvalue[$key],
+                    ];
+                    MarketGraphicalModel::create($insertgraph);
+                }
             }
         }
 
 
         /*************************Reports Segment Graph Create ************************/
+        if (!empty($request->segmenttypename) && is_array($request->segmenttypename)) {
+            foreach ($request->segmenttypename as $key => $list) {
+                if (!empty($request->segmenttypename[$key])) {
+                    $SegmentTypeInsert = [
+                        'report_id' => $report_id,
+                        'segmenttypename' => $request->segmenttypename[$key]
+                    ];
+                    $segmentData = SegmentType::create($SegmentTypeInsert);
+                    $segment_types = $segmentData->id;
 
-        foreach ($request->segmenttypename as $key => $list) {
-            if (!empty($request->segmenttypename[$key])) {
-                $SegmentTypeInsert = [
-                    'report_id' => $report_id,
-                    'segmenttypename' => $request->segmenttypename[$key]
-                ];
-                $segmentData = SegmentType::create($SegmentTypeInsert);
-                $segment_types = $segmentData->id;
 
+                    foreach ($request->segmentname as $keys => $row) {
 
-                foreach ($request->segmentname as $keys => $row) {
-
-                    if (!empty($request->segmentname[$keys]) && $key == $request->product_array_key[$keys]) {
-                        $insertsegmentData = [
-                            'report_id' => $report_id,
-                            'segmentname' => $request->segmentname[$keys],
-                            'segmentvalue' => $request->segmentvalue[$keys],
-                            'segment_types' => $segment_types,
-                        ];
-                        SegmentGraphicalModel::create($insertsegmentData);
+                        if (!empty($request->segmentname[$keys]) && $key == $request->product_array_key[$keys]) {
+                            $insertsegmentData = [
+                                'report_id' => $report_id,
+                                'segmentname' => $request->segmentname[$keys],
+                                'segmentvalue' => $request->segmentvalue[$keys],
+                                'segment_types' => $segment_types,
+                            ];
+                            SegmentGraphicalModel::create($insertsegmentData);
+                        }
                     }
-
                 }
             }
-
         }
 
 
         /*************************Reports Region Graph Create ************************/
-
-        foreach ($request->regionname as $key => $list) {
-            if (!empty($request->regionvalue[$key])) {
-                $insertRegionData = [
-                    'report_id' => $report_id,
-                    'regionname' => $request->regionname[$key],
-                    'regionvalue' => $request->regionvalue[$key],
-                ];
-                RegionGraphicalModel::create($insertRegionData);
+        if (!empty($request->regionname) && is_array($request->regionname)) {
+            foreach ($request->regionname as $key => $list) {
+                if (!empty($request->regionvalue[$key])) {
+                    $insertRegionData = [
+                        'report_id' => $report_id,
+                        'regionname' => $request->regionname[$key],
+                        'regionvalue' => $request->regionvalue[$key],
+                    ];
+                    RegionGraphicalModel::create($insertRegionData);
+                }
             }
         }
 
 
         /*************************Reports Market Share Graph Create ************************/
-
-        foreach ($request->marketsharename as $key => $list) {
-            if (!empty($request->marketsharename[$key])) {
-                $insertmarketshareData = [
-                    'report_id' => $report_id,
-                    'marketsharename' => $request->marketsharename[$key],
-                    'marketsharevalue' => $request->marketsharevalue[$key],
-                ];
-                MarketShareGraphicalModel::create($insertmarketshareData);
+        if (!empty($request->marketsharename) && is_array($request->marketsharename)) {
+            foreach ($request->marketsharename as $key => $list) {
+                if (!empty($request->marketsharename[$key])) {
+                    $insertmarketshareData = [
+                        'report_id' => $report_id,
+                        'marketsharename' => $request->marketsharename[$key],
+                        'marketsharevalue' => $request->marketsharevalue[$key],
+                    ];
+                    MarketShareGraphicalModel::create($insertmarketshareData);
+                }
+            }
+        }
+        if(!empty($request->summery_heading) && is_array($request->summery_heading))
+        {
+            foreach ($request->summery_heading as $key => $list) {
+                if (!empty($request->summery_heading[$key])) {
+                    $insertSummaryDetailsData = [
+                        'report_id' => $report_id,
+                        'heading' => $request->summery_heading[$key],
+                        'details' => $request->summery_details[$key],
+                    ];
+                    ReportSummeryDetail::create($insertSummaryDetailsData);
+                }
             }
         }
 
@@ -295,6 +306,7 @@ class ReportsController extends Controller
             ->with('getReportRegiongraph')
             ->with('getReportCAGR')
             ->with('getReportTblSummary')
+            ->with('getReportSummaryDetails')
             ->find($id);
         if ($reportcategory == '') {
             return redirect('admin/reportcategory/')
@@ -303,7 +315,7 @@ class ReportsController extends Controller
             $data['category'] = ReportCategoryModel::select(['id', 'cat_name'])->get();
             $data['report'] = $reportcategory;
             //dd($data['report']);
-            return view('admin.home.editreports', $data);
+            return view('admin.reports.edit', $data);
         }
     }
 
@@ -365,7 +377,7 @@ class ReportsController extends Controller
 
 
         /*************************Reports FAQ Create ************************/
-        if ($request->question) {
+        if (!empty($request->question) && is_array($request->question)) {
             foreach ($request->question as $key => $list) {
                 if (!empty($request->answer[$key])) {
                     if ($request->faq_id[$key] != '') {
@@ -386,36 +398,34 @@ class ReportsController extends Controller
                         ReportsFaqModel::create($insertFaqData);
                     }
                 }
-
             }
         }
 
-       /*************************tbl summary ***************************/ 
-       //dd($request->sid);
-       if ($request->sheading) {
-        foreach ($request->sheading as $key => $list) {
-            if (!empty($request->sdetails[$key])) {
-                if ($request->sid[$key] != '') {
-                    $faqData = TblSummary::find($request->sid[$key]);
-                    $insertTblSummaryData = [
-                        'report_id' => $report_id,
-                        'heading' => $request->sheading[$key],
-                        'details' => $request->sdetails[$key],
-                    ];
-                    $faqData->update($insertTblSummaryData);
-                } else {
+        /*************************tbl summary ***************************/
+        //dd($request->sid);
+        if (!empty($request->sheading) && is_array($request->sheading)) {
+            foreach ($request->sheading as $key => $list) {
+                if (!empty($request->sdetails[$key])) {
+                    if ($request->sid[$key] != '') {
+                        $faqData = TblSummary::find($request->sid[$key]);
+                        $insertTblSummaryData = [
+                            'report_id' => $report_id,
+                            'heading' => $request->sheading[$key],
+                            'details' => $request->sdetails[$key],
+                        ];
+                        $faqData->update($insertTblSummaryData);
+                    } else {
 
-                    $insertTblSummaryData = [
-                        'report_id' => $report_id,
-                        'heading' => $request->sheading[$key],
-                        'details' => $request->sdetails[$key],
-                    ];
-                    TblSummary::create($insertTblSummaryData);
+                        $insertTblSummaryData = [
+                            'report_id' => $report_id,
+                            'heading' => $request->sheading[$key],
+                            'details' => $request->sdetails[$key],
+                        ];
+                        TblSummary::create($insertTblSummaryData);
+                    }
                 }
             }
-
         }
-    } 
 
 
         /**************************CAGR Graph Update **********************/
@@ -433,7 +443,7 @@ class ReportsController extends Controller
 
 
         /*************************Reports Marketyear Graph Create ************************/
-        if (isset($request->marketyear)) {
+        if (!empty($request->marketyear) && is_array($request->marketyear)) {
             foreach ($request->marketyear as $key => $list) {
                 if (!empty($request->marketyear[$key])) {
                     if ($request->market_id[$key] != '') {
@@ -454,65 +464,59 @@ class ReportsController extends Controller
                         MarketGraphicalModel::create($insertgraph);
                     }
                 }
-
             }
         }
 
         /*************************Reports Segment Graph Create ************************/
+        if (!empty($request->segmenttypename) && is_array($request->segmenttypename)) {
+            foreach ($request->segmenttypename as $key => $list) {
+                if (!empty($request->segmenttypename[$key])) {
 
-        foreach ($request->segmenttypename as $key => $list) {
-            if (!empty($request->segmenttypename[$key])) {
+                    if ($request->segmenttype_id[$key] != '') {
 
-                if ($request->segmenttype_id[$key] != '') {
-
-                    $dataSegment = SegmentType::find($request->segmenttype_id[$key]);
-                    $dataSegment->update(['report_id' => $report_id, 'segmenttypename' => $request->segmenttypename[$key]]);
-                    $segment_types = $request->segmenttype_id[$key];
-                } else {
-                    $SegmentTypeInsert = [
-                        'report_id' => $report_id,
-                        'segmenttypename' => $request->segmenttypename[$key]
-                    ];
-                    $segmentData = SegmentType::create($SegmentTypeInsert);
-                    $segment_types = $segmentData->id;
-
-                }
+                        $dataSegment = SegmentType::find($request->segmenttype_id[$key]);
+                        $dataSegment->update(['report_id' => $report_id, 'segmenttypename' => $request->segmenttypename[$key]]);
+                        $segment_types = $request->segmenttype_id[$key];
+                    } else {
+                        $SegmentTypeInsert = [
+                            'report_id' => $report_id,
+                            'segmenttypename' => $request->segmenttypename[$key]
+                        ];
+                        $segmentData = SegmentType::create($SegmentTypeInsert);
+                        $segment_types = $segmentData->id;
+                    }
 
 
-                if($request->segmentname)
-                {
-                    foreach ($request->segmentname as $keys => $row) {
+                    if ($request->segmentname) {
+                        foreach ($request->segmentname as $keys => $row) {
 
-                        if (!empty($request->segmentname[$keys]) && $key == $request->product_array_key[$keys]) {
-                            if ($request->subtyppeof_id[$keys] != '') {
-                                $Segmentdatas = SegmentGraphicalModel::find($request->subtyppeof_id[$keys]);
-                                $Segmentdatas->update([
-                                    'report_id' => $report_id,
-                                    'segmentname' => $request->segmentname[$keys],
-                                    'segmentvalue' => $request->segmentvalue[$keys],
-                                    'segment_types' => $segment_types,
-                                ]);
-                            } else {
-                                $insertsegmentData = [
-                                    'report_id' => $report_id,
-                                    'segmentname' => $request->segmentname[$keys],
-                                    'segmentvalue' => $request->segmentvalue[$keys],
-                                    'segment_types' => $segment_types,
-                                ];
-                                SegmentGraphicalModel::create($insertsegmentData);
+                            if (!empty($request->segmentname[$keys]) && $key == $request->product_array_key[$keys]) {
+                                if ($request->subtyppeof_id[$keys] != '') {
+                                    $Segmentdatas = SegmentGraphicalModel::find($request->subtyppeof_id[$keys]);
+                                    $Segmentdatas->update([
+                                        'report_id' => $report_id,
+                                        'segmentname' => $request->segmentname[$keys],
+                                        'segmentvalue' => $request->segmentvalue[$keys],
+                                        'segment_types' => $segment_types,
+                                    ]);
+                                } else {
+                                    $insertsegmentData = [
+                                        'report_id' => $report_id,
+                                        'segmentname' => $request->segmentname[$keys],
+                                        'segmentvalue' => $request->segmentvalue[$keys],
+                                        'segment_types' => $segment_types,
+                                    ];
+                                    SegmentGraphicalModel::create($insertsegmentData);
+                                }
                             }
-    
                         }
-    
                     }
                 }
-                
             }
-
         }
 
         /*************************Reports Region Graph Create ************************/
-        if (isset($request->regionname)) {
+        if (!empty($request->regionname) && is_array($request->regionname)) {
             foreach ($request->regionname as $key => $list) {
                 if (!empty($request->regionvalue[$key])) {
                     if ($request->region_id[$key] != '') {
@@ -533,13 +537,12 @@ class ReportsController extends Controller
                         RegionGraphicalModel::create($insertRegionData);
                     }
                 }
-
             }
         }
 
 
         /*************************Reports Market Share Graph Create ************************/
-        if (isset($request->marketsharename)) {
+        if (!empty($request->marketsharename) && is_array($request->marketsharename)) {
             foreach ($request->marketsharename as $key => $list) {
                 if (!empty($request->marketsharevalue[$key])) {
                     if ($request->marketshare_id[$key] != '') {
@@ -561,7 +564,30 @@ class ReportsController extends Controller
                         MarketShareGraphicalModel::create($insertmarketshareData);
                     }
                 }
+            }
+        }
 
+        if (!empty($request->summery_heading) && is_array($request->summery_heading)) {
+            foreach ($request->summery_heading as $key => $list) {
+                if (!empty($request->summery_details[$key])) {
+                    if ($request->summery_id[$key] != '') {
+                        $faqData = ReportSummeryDetail::find($request->summery_id[$key]);
+                        $insertTblSummaryData = [
+                            'report_id' => $report_id,
+                            'heading' => $request->summery_heading[$key],
+                            'details' => $request->summery_details[$key],
+                        ];
+                        $faqData->update($insertTblSummaryData);
+                    } else {
+
+                        $insertTblSummaryData = [
+                            'report_id' => $report_id,
+                            'heading' => $request->summery_heading[$key],
+                            'details' => $request->summery_details[$key],
+                        ];
+                        ReportSummeryDetail::create($insertTblSummaryData);
+                    }
+                }
             }
         }
 
@@ -571,6 +597,7 @@ class ReportsController extends Controller
     {
         $careers = ReportsModel::find($id);
         $careers->delete();
+
         $license = ReportsLicenseModel::where('report_id', $id);
         $license->delete();
 
@@ -582,10 +609,18 @@ class ReportsController extends Controller
 
         $segment = SegmentGraphicalModel::where('report_id', $id);
         $segment->delete();
+
         $region = RegionGraphicalModel::where('report_id', $id);
         $region->delete();
+
         $share = MarketShareGraphicalModel::where('report_id', $id);
         $share->delete();
+
+        $summery_details = ReportSummeryDetail::where('report_id', $id);
+        $summery_details->delete();
+
+        $tbl_summery_details = TblSummary::where('report_id', $id);
+        $tbl_summery_details->delete();
 
         return redirect('admin/reports/')->with('success', 'Report Deleted successfully');
     }
@@ -625,30 +660,28 @@ class ReportsController extends Controller
     {
         return Excel::download(new ExportReport, 'reports.csv');
     }
-    
+
 
     public function changestatus(Request $request)
     {
-        if ($request->ajax())
-        {
-            $data = array('status' => $request->status );
+        if ($request->ajax()) {
+            $data = array('status' => $request->status);
             $Update = ReportsModel::where('id', '=', $request->id)->update($data);
- 
-            if($Update){
+
+            if ($Update) {
                 return response()->json([
-                    'success'=>true,
-                    'message'=>['Report status successfully change'],
-                    'data'=>[
-                        'reload'=>true,
+                    'success' => true,
+                    'message' => ['Report status successfully change'],
+                    'data' => [
+                        'reload' => true,
                     ]
                 ]);
-            }
-            else{
+            } else {
                 return response()->json([
-                    'success'=>false,
-                    'message'=>['Error for change status'],
-                    'data'=>[
-                        'redirect'=>'',
+                    'success' => false,
+                    'message' => ['Error for change status'],
+                    'data' => [
+                        'redirect' => '',
                     ]
                 ]);
             }
@@ -657,22 +690,21 @@ class ReportsController extends Controller
 
     function TblSummaryDelete(Request $request)
     {
-        $Update=TblSummary::find($request->id)->delete();
-        if($Update){
+        $Update = TblSummary::find($request->id)->delete();
+        if ($Update) {
             return response()->json([
-                'success'=>true,
-                'message'=>['Report status successfully change'],
-                'data'=>[
-                    'reload'=>true,
+                'success' => true,
+                'message' => ['Report status successfully change'],
+                'data' => [
+                    'reload' => true,
                 ]
             ]);
-        }
-        else{
+        } else {
             return response()->json([
-                'success'=>false,
-                'message'=>['Error for change status'],
-                'data'=>[
-                    'redirect'=>'',
+                'success' => false,
+                'message' => ['Error for change status'],
+                'data' => [
+                    'redirect' => '',
                 ]
             ]);
         }
@@ -680,46 +712,44 @@ class ReportsController extends Controller
 
     function MarketGraphDelete(Request $request)
     {
-        $Update=MarketGraphicalModel::find($request->id)->delete();
-        if($Update){
+        $Update = MarketGraphicalModel::find($request->id)->delete();
+        if ($Update) {
             return response()->json([
-                'success'=>true,
-                'message'=>['Report status successfully change'],
-                'data'=>[
-                    'reload'=>true,
+                'success' => true,
+                'message' => ['Report status successfully change'],
+                'data' => [
+                    'reload' => true,
                 ]
             ]);
-        }
-        else{
+        } else {
             return response()->json([
-                'success'=>false,
-                'message'=>['Error for change status'],
-                'data'=>[
-                    'redirect'=>'',
+                'success' => false,
+                'message' => ['Error for change status'],
+                'data' => [
+                    'redirect' => '',
                 ]
             ]);
         }
     }
     function SegmentTypeDelete(Request $request)
     {
-        SegmentGraphicalModel::where('segment_types',$request->id)->delete();
-        $Update=SegmentType::find($request->id)->delete();
-        
-        if($Update){
+        SegmentGraphicalModel::where('segment_types', $request->id)->delete();
+        $Update = SegmentType::find($request->id)->delete();
+
+        if ($Update) {
             return response()->json([
-                'success'=>true,
-                'message'=>['Report status successfully change'],
-                'data'=>[
-                    'reload'=>true,
+                'success' => true,
+                'message' => ['Report status successfully change'],
+                'data' => [
+                    'reload' => true,
                 ]
             ]);
-        }
-        else{
+        } else {
             return response()->json([
-                'success'=>false,
-                'message'=>['Error for change status'],
-                'data'=>[
-                    'redirect'=>'',
+                'success' => false,
+                'message' => ['Error for change status'],
+                'data' => [
+                    'redirect' => '',
                 ]
             ]);
         }
@@ -727,22 +757,21 @@ class ReportsController extends Controller
 
     function removeregionDelete(Request $request)
     {
-        $Update=RegionGraphicalModel::find($request->id)->delete();
-        if($Update){
+        $Update = RegionGraphicalModel::find($request->id)->delete();
+        if ($Update) {
             return response()->json([
-                'success'=>true,
-                'message'=>['Report status successfully change'],
-                'data'=>[
-                    'reload'=>true,
+                'success' => true,
+                'message' => ['Report status successfully change'],
+                'data' => [
+                    'reload' => true,
                 ]
             ]);
-        }
-        else{
+        } else {
             return response()->json([
-                'success'=>false,
-                'message'=>['Error for change status'],
-                'data'=>[
-                    'redirect'=>'',
+                'success' => false,
+                'message' => ['Error for change status'],
+                'data' => [
+                    'redirect' => '',
                 ]
             ]);
         }
@@ -750,25 +779,45 @@ class ReportsController extends Controller
 
     function removemarketshare(Request $request)
     {
-        $Update=MarketShareGraphicalModel::find($request->id)->delete();
-        if($Update){
+        $Update = MarketShareGraphicalModel::find($request->id)->delete();
+        if ($Update) {
             return response()->json([
-                'success'=>true,
-                'message'=>['Report status successfully change'],
-                'data'=>[
-                    'reload'=>true,
+                'success' => true,
+                'message' => ['Report status successfully change'],
+                'data' => [
+                    'reload' => true,
                 ]
             ]);
-        }
-        else{
+        } else {
             return response()->json([
-                'success'=>false,
-                'message'=>['Error for change status'],
-                'data'=>[
-                    'redirect'=>'',
+                'success' => false,
+                'message' => ['Error for change status'],
+                'data' => [
+                    'redirect' => '',
                 ]
             ]);
         }
     }
 
+    function TblSummaryDetailsDelete(Request $request)
+    {
+        $Update = ReportSummeryDetail::find($request->id)->delete();
+        if ($Update) {
+            return response()->json([
+                'success' => true,
+                'message' => ['Report status successfully change'],
+                'data' => [
+                    'reload' => true,
+                ]
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => ['Error for change status'],
+                'data' => [
+                    'redirect' => '',
+                ]
+            ]);
+        }
+    }
 }
