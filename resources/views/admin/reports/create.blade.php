@@ -31,10 +31,10 @@
                                             <a class="nav-link active" id="custom-tabs-one-basic-tab" data-toggle="pill" href="#custom-tabs-one-basic" role="tab" aria-controls="custom-tabs-one-basic" aria-selected="true">Basic</a>
                                             </li>
                                             <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-one-content-tab" data-toggle="pill" href="#custom-tabs-one-content" role="tab" aria-controls="custom-tabs-one-content" aria-selected="false">Summery</a>
+                                            <a class="nav-link" id="custom-tabs-one-content-tab" data-toggle="pill" href="#custom-tabs-one-content" role="tab" aria-controls="custom-tabs-one-content" aria-selected="false">Summary</a>
                                             </li>
                                             <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-one-summery-details-tab" data-toggle="pill" href="#custom-tabs-one-summery-details" role="tab" aria-controls="custom-tabs-one-summery-details" aria-selected="false">Summery Details</a>
+                                            <a class="nav-link" id="custom-tabs-one-summery-details-tab" data-toggle="pill" href="#custom-tabs-one-summery-details" role="tab" aria-controls="custom-tabs-one-summery-details" aria-selected="false">Summary Details</a>
                                             </li>
                                             <li class="nav-item">
                                             <a class="nav-link" id="custom-tabs-one-report-component-tab" data-toggle="pill" href="#custom-tabs-one-report-component" role="tab" aria-controls="custom-tabs-one-report-component" aria-selected="false">Report Components</a>
@@ -178,7 +178,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        
+
                                             <div class="tab-pane fade" id="custom-tabs-one-content" role="tabpanel" aria-labelledby="custom-tabs-one-content-tab">
                                                 <div class="col-12 mb-2">
                                                     <div class="form-group">
