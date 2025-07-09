@@ -50,7 +50,14 @@
                     <ul id="NavMenu" class="list grid lg:gap-1 gap-1">
                         @foreach ($ReportCategory as $key => $cat)
                         <li class="">
-                            <a href="{{ route('front.reports')}}?id={{gerenaretslug(strtolower($cat->cat_name))}}" class="w-100 font-bold block border border-line rounded-md py-2 px-3 {{gerenaretslug(strtolower($cat->cat_name))==request()->id?'active':''}}"><i style="top:3px;" class="relative ph-bold ph-cpu text-xl"></i> {{ $cat->cat_name }} <i style="float:right;top:3px;" class="relative ph-bold ph-arrow-bend-up-right ml-2"></i></a>
+                            <a href="{{ route('front.reports')}}?id={{gerenaretslug(strtolower($cat->cat_name))}}" class="w-100 font-bold block border border-line rounded-md py-2 px-3 {{gerenaretslug(strtolower($cat->cat_name))==request()->id?'active':''}}">
+                            @if($cat->icon) 
+                            <!-- <img src="{{$cat->icon}}" class="relative text-xl" style="width:40px;top:3px;">    -->
+                            <i style="top:3px;" class="relative ph-bold ph-cpu text-xl"></i>
+                            @else
+                            <i style="top:3px;" class="relative ph-bold ph-cpu text-xl"></i>
+                            @endif
+                            {{ $cat->cat_name }} <i style="float:right;top:3px;" class="relative ph-bold ph-arrow-bend-up-right ml-2"></i></a>
                         <li>
                         @endforeach
                     </ul>

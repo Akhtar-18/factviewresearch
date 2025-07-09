@@ -26,9 +26,13 @@
             @if (count($category) > 0)
             @foreach ($category as $key => $row)
             <a href="{{ route('front.reports')}}?id={{gerenaretslug(strtolower($row->cat_name))}}" class="category_item flex flex-col items-center sm:p-7.5 p-5 rounded-xl bg-white shadow-md duration-300 hover:shadow-xl animate animate_top" style="--i: {{$key+1}}">
-                <div class="icon pb-3 w-fit line-before line-2px">
-                    <span class="ph-bold ph-cpu text-5xl"></span>
-                </div>
+                @if($row->icon)    
+                <img src="{{$row->icon}}" class="img-fluid" style="width:40px"> 
+                @else
+                    <div class="icon pb-3 w-fit line-before line-2px">
+                        <span class="ph-bold ph-cpu text-5xl"></span>
+                    </div>
+                @endif
                 <strong class="heading6 text-center mt-3">{{ $row->cat_name }}</strong>
             </a>
             @endforeach

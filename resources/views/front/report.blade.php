@@ -105,6 +105,17 @@
                         @else
                             {!! $content !!}
                         @endif
+
+                        @if(count($reports->getReportSummaryDetails)>0)
+                        @foreach($reports->getReportSummaryDetails as $details)
+                        <div class="col-md-12 mt-3">
+                            <h3><b>{{ $details->heading }}</b></h3>
+                            <div>
+                                {!! html_entity_decode($details->details) !!}
+                            </div>
+                        </div>
+                        @endforeach
+                        @endif
                                             @if (count($reports->getReportTblSummary) > 0)
                                                 <div class="col-md-12 mt-3">
                                                     <div class="table-responsive">

@@ -172,4 +172,71 @@
             </div>
         </section>
 
+<script defer async type="text/javascript">
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+
+    $("body").on("submit",".ajaxformfileupload", function(event){
+    event.preventDefault();
+   
+        var formdata   = $(this);
+       var dataValue  = new FormData(this);//new FormData(formdata[0]);
+       var UrlValue   = $(this).attr('action');
+
+       var ButtonText = $(this).find('button[type="submit"]').html();
+     
+
+       $(this).find('button[type="submit"]').prop('disabled', true);
+       $(this).find('button[type="submit"]').html('Loading ...');
+
+       
+       $.ajax({
+           url     : UrlValue,
+           method  : 'post',
+           data    :dataValue,
+           headers:
+           {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           },
+           processData: false,
+           contentType: false,
+           beforeSend: function( xhr ) {
+
+           },
+           success: function(data) {
+                if ($.isEmptyObject(data.error)) {
+                    window.location.href = "{{ url('thankyou') }}/" + data.id;
+                } else {
+                    printErrorMsg(data.error);
+                }
+                formdata.find('button[type="submit"]').prop('disabled', false);
+               formdata.find('button[type="submit"]').html(ButtonText);
+            },
+           error: function(data) {
+               console.log("error ",data);
+               printErrorMsg(data.error);
+               console.log(ButtonText);
+               formdata.find('button[type="submit"]').prop('disabled', false);
+               formdata.find('button[type="submit"]').html(ButtonText);
+           }
+       });
+
+});
+
+
+
+    function printErrorMsg(msg) {
+        $(".print-error-msg").find("ul").html('');
+        $(".print-error-msg").css('display', 'block');
+        $.each(msg, function(key, value) {
+            $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
+        });
+    }
+    </script>
+
 @endsection

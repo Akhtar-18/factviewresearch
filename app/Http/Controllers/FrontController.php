@@ -46,7 +46,9 @@ class FrontController extends Controller
 
     public function report($id, Request $request)
     {
-        $data['reports']=ReportsModel::with(['getReportLicenses','getReportFaq','getReportmarketgraph','getReportmarketsharegraph','getReportSegmentgraph','getReportRegiongraph','getCategoryName','getSubCategoryName','getReportCAGR','getReportTblSummary'])->where('status','1')->where('url',$id)->first();
+        $data['reports']=ReportsModel::with(['getReportLicenses','getReportFaq','getReportmarketgraph','getReportmarketsharegraph','getReportSegmentgraph',
+                    'getReportRegiongraph','getCategoryName','getSubCategoryName',
+                    'getReportCAGR','getReportTblSummary','getReportSummaryDetails'])->where('status','1')->where('url',$id)->first();
         $data['whyusData']=WhyChooseUsModel::select(['heading','content'])->get();
         $data['contactData']=ContactDetailsModel::select(['no_prefix','contact_no','email_address','facebook','twitter','instagram','linkedin'])->get();
 
@@ -103,7 +105,7 @@ class FrontController extends Controller
         {
             return view('front.ajax.report',$data);
         }
-        $data['ReportCategory']=ReportCategoryModel::with('getSubCategory')->select(['id','cat_name'])->get();
+        $data['ReportCategory']=ReportCategoryModel::with('getSubCategory')->select(['id','cat_name','icon'])->get();
         $data['contactData']=ContactDetailsModel::select(['contact_no','email_address'])->first();
         return view('front.reports',$data);
     }
@@ -620,7 +622,7 @@ class FrontController extends Controller
 
     public function allcategory()
     {
-        $data['category']= ReportCategoryModel::select(['id','cat_name'])->get();
+        $data['category']= ReportCategoryModel::select(['id','cat_name','icon'])->get();
         return view('front.all-category',$data);
     }
 }
